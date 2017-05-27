@@ -8,14 +8,14 @@
 <!-- * Add body parser middleware to express -->
 
 ### Create express routes to get all things
-* Add .get() routes for /contacts, /vehicles, /comments, /products
-* response.json() the appropriate array
+<!-- * Add .get() routes for /contacts, /vehicles, /comments, /products
+* response.json() the appropriate array -->
 
 ### Create express routes to get one thing
-* Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id
+<!-- * Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id
 * add a path variable for id
 * use the params.id to .find() the item from the appropriate array
-* response.json() the item found
+* response.json() the item found -->
 
 ### Create express routes to create one thing
 * Add .post() routes for /contacts, /vehicles, /comments, /products

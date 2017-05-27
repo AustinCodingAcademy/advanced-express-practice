@@ -56,6 +56,10 @@ app.get("/products/:id", (request, response) => {
   return response.json(foundProduct);
 });
 
+// POST REQUESTS FOR NEW ITEMS
+
+
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Listening on port:${port}`);
