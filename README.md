@@ -5,7 +5,7 @@
 * This is the starting point of the server, put all code here
 
 ### Body
-* Add body parser middleware to express
+<!-- * Add body parser middleware to express -->
 
 ### Create express routes to get all things
 * Add .get() routes for /contacts, /vehicles, /comments, /products
@@ -31,11 +31,11 @@ At this point, the web page should operate in the same manner as the redux fetch
 * Import and use the Routers in index.js
 
 # Part 3 - Controllers
-* Create controller files 
+* Create controller files
 * Import the arrays into the controller
 * Take the code from the routes and put it into the controller
 * create functions for list, show and create
-* Import and use the controller functions in the appropiate Router
+* Import and use the controller functions in the appropriate Router
 
 # Part 4 - Database
 * Create the mongoose models for Contact, Vehicle, Comment Product
@@ -55,7 +55,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * look for “GET_COMMENT_DONE”
 * contact
     * look for “GET_CONTACT_DONE”
-* 
+*
 
 ### Actions
 * Create actions in actions/index.js
@@ -68,7 +68,7 @@ At this point, the web page should operate in the same manner as the redux fetch
         * fetch(“/comments/“ + id)
     * getContact(id)
         * fetch(“/contacts/“ + id)
-* Create actions to handle the data 
+* Create actions to handle the data
     * getProductDone(product)
         * GET_PRODUCT_DONE
     * getVehicleDone(product)
@@ -99,7 +99,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * What should you do for Product.js, Contact.js and Comment.js
 
 ### React Router
-* Use react-router-dom 
+* Use react-router-dom
 * Import BrowserRouter, Switch and Route into App.js
 * Create routes for each detail component
     * /vehicle/:id -> Vehicle
