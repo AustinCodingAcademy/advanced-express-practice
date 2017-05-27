@@ -58,7 +58,37 @@ app.get("/products/:id", (request, response) => {
 
 // POST REQUESTS FOR NEW ITEMS
 
+app.post("/contacts", (request, response) => {
+  const newContact = {
+    ...request.body
+  };
+  contacts.push(newContact);
+  return response.json(newContact);
+});
 
+app.post("/vehicles", (request, response) => {
+  const newVehicle = {
+    ...request.body
+  };
+  vehicles.push(newVehicle);
+  return response.json(newVehicle);
+});
+
+app.post("/comments", (request, response) => {
+  const newComment = {
+    ...request.body
+  };
+  comments.push(newComment);
+  return response.json(newComment);
+});
+
+app.post("/products", (request, response) => {
+  const newProduct = {
+    ...request.body
+  };
+  products.push(newProduct);
+  return response.json(newProduct);
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
