@@ -5,7 +5,7 @@ import VehiclesContainer from "../containers/VehiclesContainer";
 import CommentsContainer from "../containers/CommentsContainer";
 import CreateThingsContainer from "../containers/CreateThingsContainer";
 
-function Contacts() {
+function Main() {
   return (
     <div>
       <div style={{float: "left", width: "49%"}}>
@@ -24,4 +24,4 @@ function Contacts() {
     </div>
   );
 }
-export default Contacts;
+export default Main;
