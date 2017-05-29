@@ -1,7 +1,13 @@
+
 import App from "./App";
 import "./App.css";
 import { connect } from "react-redux";
-import {loadContacts,loadProducts,loadVehicles,loadComments} from "./actions";
+import {
+  loadContacts,
+  loadProducts,
+  loadVehicles,
+  loadComments
+} from "./actions";
 
 
 function mapDispatchToProps(dispatch) {
@@ -21,4 +27,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

@@ -5,7 +5,7 @@ class CreateThings extends React.Component {
     super();
     this.state = {
       comment: {
-        body: ""
+        text: ""
       },
       contact: {
         name: "",
@@ -35,8 +35,8 @@ class CreateThings extends React.Component {
             }
           }}>
             <div>
-              Body: <input onChange={(e) => {
-                const comment = {body: e.target.value};
+              Text: <input onChange={(e) => {
+                const comment = {text: e.target.value};
                 this.setState({
                   comment: Object.assign(this.state.comment,comment)
                 });
@@ -141,9 +141,9 @@ class CreateThings extends React.Component {
             </div>
             <button>Create</button>
           </form>
-        </div>        
+        </div>
       </div>
-      
+
     );
   }
 }

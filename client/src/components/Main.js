@@ -1,22 +1,22 @@
 import React from "react";
-import ContactsContainer from "../containers/ContactsContainer";
-import ProductsContainer from "../containers/ProductsContainer";
-import VehiclesContainer from "../containers/VehiclesContainer";
-import CommentsContainer from "../containers/CommentsContainer";
+import ContactContainer from "../containers/ContactContainer";
+import ProductContainer from "../containers/ProductContainer";
+import VehicleContainer from "../containers/VehicleContainer";
+import CommentContainer from "../containers/CommentContainer";
 import CreateThingsContainer from "../containers/CreateThingsContainer";
 
-function Contacts() {
+function Main() {
   return (
     <div>
       <div style={{float: "left", width: "49%"}}>
         <h1>Comments </h1>
-        <CommentsContainer />
+        <CommentContainer />
         <h1>Contacts</h1>
-        <ContactsContainer />
+        <ContactContainer />
         <h1>Vehicles</h1>
-        <VehiclesContainer />
+        <VehicleContainer />
         <h1>Products</h1>
-        <ProductsContainer />
+        <ProductContainer />
       </div>
       <div style={{float: "left", width: "49%"}}>
         <CreateThingsContainer />
@@ -24,4 +24,4 @@ function Contacts() {
     </div>
   );
 }
-export default Contacts;
+export default Main;

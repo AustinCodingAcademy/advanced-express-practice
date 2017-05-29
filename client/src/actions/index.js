@@ -8,6 +8,7 @@ export function loadContacts() {
     });
   };
 }
+
 function contactsLoaded(contacts) {
   return {
     type: "CONTACTS_LOADED",
@@ -25,12 +26,14 @@ export function loadVehicles() {
     });
   };
 }
+
 function vehiclesLoaded(vehicles) {
   return {
     type: "VEHICLES_LOADED",
     value: vehicles
   };
 }
+
 export function loadComments() {
   return function (dispatch) {
     fetch("/comments")
@@ -41,12 +44,14 @@ export function loadComments() {
     });
   };
 }
+
 function commentsLoaded(comments) {
   return {
     type: "COMMENTS_LOADED",
     value: comments
   };
 }
+
 export function loadProducts() {
   return function (dispatch) {
     fetch("/products")
@@ -57,12 +62,14 @@ export function loadProducts() {
     });
   };
 }
+
 function productsLoaded(products) {
   return {
     type: "PRODUCTS_LOADED",
     value: products
   };
 }
+
 export function createProduct(product) {
   return function (dispatch) {
     fetch("/products", {
@@ -72,6 +79,7 @@ export function createProduct(product) {
     }).then(() => dispatch(loadProducts()));
   };
 }
+
 export function createContact(c) {
   return function (dispatch) {
     fetch("/contacts", {
@@ -81,6 +89,7 @@ export function createContact(c) {
     }).then(() => dispatch(loadContacts()));
   };
 }
+
 export function createVehicle(v) {
   return function (dispatch) {
     fetch("/vehicles", {
@@ -90,6 +99,7 @@ export function createVehicle(v) {
     }).then(() => dispatch(loadVehicles()));
   };
 }
+
 export function createComment(v) {
   return function (dispatch) {
     fetch("/comments", {
@@ -97,5 +107,73 @@ export function createComment(v) {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(v)
     }).then(() => dispatch(loadComments()));
+  };
+}
+
+export function getProduct(id) {
+  return function (dispatch) {
+    fetch(`/products/${id}`)
+      .then(res => res.json())
+      .then((product) => {
+        dispatch(getProductDone(product));
+      });
+  };
+}
+
+function getProductDone(product) {
+  return {
+    type: "GET_PRODUCT_DONE",
+    value: product
+  };
+}
+
+export function getVehicle(id) {
+  return function (dispatch) {
+    fetch(`/vehicles/${id}`)
+      .then(res => res.json())
+      .then((vehicle) => {
+        dispatch(getVehicleDone(vehicle));
+      });
+  };
+}
+
+function getVehicleDone(vehicle) {
+  return {
+    type: "GET_VEHICLE_DONE",
+    value: vehicle
+  };
+}
+
+export function getComment(id) {
+  return function (dispatch) {
+    fetch(`/comments/${id}`)
+      .then(res => res.json())
+      .then((comment) => {
+        dispatch(getCommentDone(comment));
+      });
+  };
+}
+
+function getCommentDone(comment) {
+  return {
+    type: "GET_COMMENT_DONE",
+    value: comment
+  };
+}
+
+export function getContact(id) {
+  return function (dispatch) {
+    fetch(`/contacts/${id}`)
+      .then(res => res.json())
+      .then((contact) => {
+        dispatch(getContactDone(contact));
+      });
+  };
+}
+
+function getContactDone(contact) {
+  return {
+    type: "GET_CONTACT_DONE",
+    value: contact
   };
 }
