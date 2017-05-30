@@ -1,10 +1,20 @@
 import { connect } from "react-redux";
-import Products from "../components/Products";
+import Product from "../components/Product";
+import { getProduct } from "../actions";
 
 function mapStateToProps(state) {
   return {
-    products: state.products
+    product: state.product
   };
 }
 
-export default connect(mapStateToProps)(Products);
+function mapDispatchToProps(dispatch) {
+  return {
+    getProduct: (id) => {
+      const action = getProduct(id);
+      dispatch(action);
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

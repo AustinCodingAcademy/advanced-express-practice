@@ -1,8 +1,8 @@
 import React from "react";
-import ContactContainer from "../containers/ContactContainer";
-import ProductContainer from "../containers/ProductContainer";
-import VehicleContainer from "../containers/VehicleContainer";
-import CommentContainer from "../containers/CommentContainer";
+import ContactsContainer from "../containers/ContactsContainer";
+import ProductsContainer from "../containers/ProductsContainer";
+import VehiclesContainer from "../containers/VehiclesContainer";
+import CommentsContainer from "../containers/CommentsContainer";
 import CreateThingsContainer from "../containers/CreateThingsContainer";
 
 function Main() {
@@ -10,13 +10,13 @@ function Main() {
     <div>
       <div style={{float: "left", width: "49%"}}>
         <h1>Comments </h1>
-        <CommentContainer />
+        <CommentsContainer />
         <h1>Contacts</h1>
-        <ContactContainer />
+        <ContactsContainer />
         <h1>Vehicles</h1>
-        <VehicleContainer />
+        <VehiclesContainer />
         <h1>Products</h1>
-        <ProductContainer />
+        <ProductsContainer />
       </div>
       <div style={{float: "left", width: "49%"}}>
         <CreateThingsContainer />

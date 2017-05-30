@@ -7,7 +7,7 @@ import commentRoutes from "./routes/CommentRoutes";
 import productRoutes from "./routes/ProductRoutes";
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/practice");
+mongoose.connect("mongodb://localhost/Advanced-React-Express");
 
 const app = express();
 
