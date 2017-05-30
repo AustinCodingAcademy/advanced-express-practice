@@ -1,20 +1,34 @@
 import express from "express";
-import CommentsRoutes from "./routes/CommentsRoutes";
-import ProductRoutes from "./routes/ProductRoutes";
-import VehiclesRoutes from "./routes/VehicleRoutes";
-import ContactRoutes from "./routes/ContactRoutes";
 import bodyParser from "body-parser";
+
+
+
+
+import ContactRoutes from "./routes/ContactRoutes";
+import CommentRoutes from "./routes/CommentRoutes";
+import VehiclesRoutes from "./routes/VehiclesRoutes";
+import ProductsRoutes from "./routes/ProductsRoutes";
+import mongoose from "mongoose";
+
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/address-book");
 
 const app = express();
 app.use(bodyParser.json());
 app.use(ContactRoutes);
+app.use(CommentRoutes);
 app.use(VehiclesRoutes);
-app.use(ProductRoutes);
-app.use(CommentsRoutes);
+app.use(ProductsRoutes);
 
 
-// –––––server–––––
+
+
+
+
 const port = process.env.PORT || 3001;
-app.listen(port, () => {
+app.listen(port, (err) => {
+  if(err){
   console.log(`Listening on port:${port}`);
+}
 });
