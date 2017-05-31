@@ -4,6 +4,17 @@ import products from "./products";
 import vehicles from "./vehicles";
 import contacts from "./contacts";
 import bodyParser from "body-parser";
+import mongoose from "mongoose";
+
+// create DB connection
+
+mongoose.connect("mongodb://localhost/advanced-express-practice");
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("MongoDB connected");
+});
 
 const app = express();
 app.use(bodyParser.json());
