@@ -5,6 +5,10 @@ import vehicles from "./vehicles";
 import contacts from "./contacts";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
+import Comment from "./models/Comment";
+import Contact from "./models/Contact";
+import Product from "./models/Product";
+import Vehicle from "./models/Vehicle";
 
 // create DB connection
 
@@ -22,19 +26,43 @@ app.use(bodyParser.json());
 // GET REQUESTS FOR BASE ROUTES
 
 app.get("/contacts", (request, response) => {
-  return response.json(contacts);
+  Contact.find().exec()
+    .then(data => {
+      return response.json(data);
+    })
+    .catch(() => {
+      return response.json("Error");
+    });
 });
 
 app.get("/vehicles", (request, response) => {
-  return response.json(vehicles);
+  Vehicle.find().exec()
+    .then(data => {
+      return response.json(data);
+    })
+    .catch(() => {
+      return response.json("Error");
+    });
 });
 
 app.get("/comments", (request, response) => {
-  return response.json(comments);
+  Comment.find().exec()
+    .then(data => {
+      return response.json(data);
+    })
+    .catch(() => {
+      return response.json("Error");
+    });
 });
 
 app.get("/products", (request, response) => {
-  return response.json(products);
+  Product.find().exec()
+    .then(data => {
+      return response.json(data);
+    })
+    .catch(() => {
+      return response.json("Error");
+    });
 });
 
 // GET REQUESTS FOR SPECIFIC ITEM ROUTES
@@ -70,35 +98,59 @@ app.get("/products/:id", (request, response) => {
 // POST REQUESTS FOR NEW ITEMS
 
 app.post("/contacts", (request, response) => {
-  const newContact = {
-    ...request.body
-  };
-  contacts.push(newContact);
-  return response.json(newContact);
+  const contact = new Contact(request.body);
+
+  contact.save()
+    .then(storedContact => {
+      console.log("Contact was saved");
+      return response.json(storedContact);
+    })
+    .catch(() => {
+      console.log("Contact was NOT saved");
+      return response.json("Error");
+    });
 });
 
 app.post("/vehicles", (request, response) => {
-  const newVehicle = {
-    ...request.body
-  };
-  vehicles.push(newVehicle);
-  return response.json(newVehicle);
+  const vehicle = new Vehicle(request.body);
+
+  vehicle.save()
+    .then(storedVehicle => {
+      console.log("Vehicle was saved");
+      return response.json(storedVehicle);
+    })
+    .catch(() => {
+      console.log("Vehicle was NOT saved");
+      return response.json("Error");
+    });
 });
 
 app.post("/comments", (request, response) => {
-  const newComment = {
-    ...request.body
-  };
-  comments.push(newComment);
-  return response.json(newComment);
+  const comment = new Comment(request.body);
+
+  comment.save()
+    .then(storedComment => {
+      console.log("Comment was saved");
+      return response.json(storedComment);
+    })
+    .catch(() => {
+      console.log("Comment was NOT saved");
+      return response.json("Error");
+    });
 });
 
 app.post("/products", (request, response) => {
-  const newProduct = {
-    ...request.body
-  };
-  products.push(newProduct);
-  return response.json(newProduct);
+  const product = new Product(request.body);
+
+  product.save()
+    .then(storedProduct => {
+      console.log("Product was saved");
+      return response.json(storedProduct);
+    })
+    .catch(() => {
+      console.log("Product was NOT saved");
+      return response.json("Error");
+    });
 });
 
 const port = process.env.PORT || 3001;
