@@ -38,8 +38,8 @@ At this point, the web page should operate in the same manner as the redux fetch
 * Import and use the controller functions in the appropriate Router
 
 # Part 4 - Database
-* Create the mongoose models for Contact, Vehicle, Comment Product
-* Change the code in the controllers to use the Models
+<!-- * Create the mongoose models for Contact, Vehicle, Comment Product
+* Change the code in the controllers to use the Models -->
 
 # Part 5 - Client
 
