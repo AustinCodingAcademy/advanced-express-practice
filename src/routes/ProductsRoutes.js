@@ -4,7 +4,7 @@ import {list, show, create} from "../controllers/ProductController";
 
 router.get("/products", list);
 
-router.get("/products:id", show);
+router.get("/products/:id", show);
 
 router.post("/products", create);
 

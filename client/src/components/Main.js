@@ -2,6 +2,7 @@ import React from "react";
 import ContactsContainer from "../containers/ContactsContainer";
 import ProductsContainer from "../containers/ProductsContainer";
 import VehiclesContainer from "../containers/VehiclesContainer";
+
 import CommentsContainer from "../containers/CommentsContainer";
 import CreateThingsContainer from "../containers/CreateThingsContainer";
 
@@ -15,6 +16,7 @@ function Contacts() {
         <ContactsContainer />
         <h1>Vehicles</h1>
         <VehiclesContainer />
+
         <h1>Products</h1>
         <ProductsContainer />
       </div>

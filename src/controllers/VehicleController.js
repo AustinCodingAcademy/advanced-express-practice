@@ -11,6 +11,7 @@ export function list(req, res){
 export function show(request, response){
   VehicleModel.findById(request.params.id).exec()
   .then(vehicle => {
+    console.log(vehicle);
     return response.json(vehicle);
   });
 }

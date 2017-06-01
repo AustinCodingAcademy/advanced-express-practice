@@ -5,7 +5,7 @@ import {list, show, create} from "../controllers/ContactsController";
 
 router.get("/contacts", list);
 
-router.get("/contacts:id", show);
+router.get("/contacts/:id", show);
 
 router.post("/contacts", create);
 
