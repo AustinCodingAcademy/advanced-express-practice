@@ -99,3 +99,67 @@ export function createComment(v) {
     }).then(() => dispatch(loadComments()));
   };
 }
+
+export function getProduct(id) {
+  return function (dispatch) {
+    fetch("/products/" + id, {
+      method: "GET",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(id)
+    }).then(() => dispatch(getProductDone()));
+  };
+}
+function getProductDone(product) {
+  return {
+    type: "GET_PRODUCT_DONE",
+    value: product
+  };
+}
+
+export function getVehicle(id) {
+  return function (dispatch) {
+    fetch("/vehicles/" + id, {
+      method: "GET",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(id)
+    }).then(() => dispatch(getVehicleDone()));
+  };
+}
+function getVehicleDone(vehicle) {
+  return {
+    type: "GET_VEHICLE_DONE",
+    value: vehicle
+  };
+}
+
+export function getComment(id) {
+  return function (dispatch) {
+    fetch("/comments/" + id, {
+      method: "GET",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(id)
+    }).then(() => dispatch(getCommentDone()));
+  };
+}
+function getCommentDone(comment) {
+  return {
+    type: "GET_COMMENT_DONE",
+    value: comment
+  };
+}
+
+export function getContact(id) {
+  return function (dispatch) {
+    fetch("/contacts/" + id, {
+      method: "GET",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(id)
+    }).then(() => dispatch(getContactsDone()));
+  };
+}
+function getContactsDone(contact) {
+  return {
+    type: "GET_CONTACT_DONE",
+    value: contact
+  };
+}

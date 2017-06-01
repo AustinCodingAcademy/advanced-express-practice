@@ -1,10 +1,22 @@
 import express from "express";
-import comments from "./comments";
-import products from "./products";
-import vehicle from "./vehicles";
-import contacts from "./contacts";
+import bodyParser from "body-parser";
+import vehicleRoutes from "./routes/VehicleRoutes";
+import commentRoutes from "./routes/CommentRoutes";
+import productRoutes from "./routes/ProductRoutes";
+import contactRoutes from "./routes/ContactRoutes";
+
+import mongoose from "mongoose";
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/address-book");
 
 const app = express();
+app.use(bodyParser.json());
+app.use(vehicleRoutes);
+app.use(commentRoutes);
+app.use(productRoutes);
+app.use(contactRoutes);
+
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
