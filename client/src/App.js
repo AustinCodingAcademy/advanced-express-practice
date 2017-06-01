@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import Main from "./components/Main";
+import CommentContainer from "./containers/CommentContainer";
+import ContactContainer from "./containers/ContactContainer";
+import ProductContainer from "./containers/ProductContainer";
+import VehicleContainer from "./containers/VehicleContainer";
 
 import {
  BrowserRouter,
@@ -21,54 +25,18 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <Main />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route path="/comment/:id" component={CommentContainer} />
+            <Route path="/contact/:id" component={ContactContainer} />
+            <Route path="/product/:id" component={ProductContainer} />
+            <Route path="/vehicle/:id" component={VehicleContainer} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
-    // return (
-    //   <BrowserRouter>
-    //     <div>
-    //       <Switch>
-    //         <Route path="/vehicle/:id" render={(props) => {
-    //           return (
-    //             <div>
-    //               <Vehicle />
-    //             </div>
-    //           );
-    //         }} />
-    //         <Route path="/" render={(props) => {
-    //           return (
-    //             <div>
-    //               <Main />
-    //             </div>
-    //           );
-    //         }} />
-    //       </Switch>
-    //     </div>
-    //   </BrowserRouter>
-    // );
   }
 }
 export default (App);
-
-
-// function App (props){
-//   return (
-//     <BrowserRouter>
-//      <div>
-//       <Switch>
-//         <Route path="/users" render={(props) => {
-//           return (
-//             <div>
-//               <SearchBoxContainer />
-//               <ListOfUsersContainer />
-//               <UserDetailContainer />
-//             </div>
-//           );
-//         }} />
-//         <Route path="/user" component={UserDetailContainer} />
-//        </Switch>
-//      </div>
-//    </BrowserRouter>
-//   );
-// }

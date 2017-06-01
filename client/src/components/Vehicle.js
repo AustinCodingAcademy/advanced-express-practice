@@ -1,15 +1,19 @@
-import React from "react";
-import CollapsableMapper from "./CollapsableMapper";
+import React, { Component } from "react";
 
-function Vehicle(props) {
-  return (
-    <CollapsableMapper
-      data={props.vehicle}
-      path="vehicle"
-      field="year"
-      field1="make"
-      field2="model"
-      />
-  );
+class Vehicle extends Component {
+  componentDidMount() {
+    this.props.getVehicle(this.props.match.params.id);
+  }
+  render() {
+    return (
+      <div>
+        <p>Year: {this.props.vehicle.year}</p>
+        <p>Make: {this.props.vehicle.make}</p>
+        <p>Model: {this.props.vehicle.model}</p>
+      </div>
+    );
+  }
 }
+
+
 export default Vehicle;

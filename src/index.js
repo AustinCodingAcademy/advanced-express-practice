@@ -12,13 +12,12 @@ mongoose.connect("mongodb://localhost/address-book");
 
 const app = express();
 app.use(bodyParser.json());
-app.use(vehicleRoutes);
 app.use(commentRoutes);
-app.use(productRoutes);
 app.use(contactRoutes);
-
+app.use(productRoutes);
+app.use(vehicleRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
-  console.log(`Listening on port:${port}`);
+  console.log(`Listening on port: ${port}`);
 });
