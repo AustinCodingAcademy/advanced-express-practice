@@ -339,3 +339,31 @@ app.put(productsPath + "/:id", (request, response, next) => {
       return console.log("comment failed to update");
     });
 });
+/*
+@TODO fix bug in vehicle model
+app.put(vehiclesPath + "/:id", (request, response, next) => {
+  const itemBody = request.body;
+
+  VehicleModel.findById(request.params.id).exec()
+    .then(data => {
+      data.imgUrl = itemBody.imgUrl || data.imgUrl;
+      data.year = itemBody.year || data.year;
+      data.make = itemBody.make || data.make;
+      data.model = itemBody.model || data.model;
+      data.price = itemBody.price || data.price;
+      data.km = itemBody.km || data.km;
+      data.miles = itemBody.miles || data.miles;
+      data.fuel = itemBody.fuel || data.fuel;
+      data.city = itemBody.city || data.city;
+
+      console.log("Vehicle ", request.params.id, " was updated");
+      return data.save();
+    })
+      .then(data => {
+        return response.json(data);
+      })
+      .catch(err => {
+        return console.log("Vehicle failed to update", err);
+      });
+});
+*/
