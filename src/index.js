@@ -295,3 +295,26 @@ app.put(commentsPath + "/:id", (request, response, next) => {
       return console.log("Comment update failed", err);
     });
 });
+
+app.put(contactsPath + "/:id", (request, response, next) => {
+  ContactModel.findById(request.params.id).exec()
+    .then(data => {
+      data.name = request.body.name || data.name;
+      data.occupation = request.body.occupation || data.occupation;
+
+      console.log("Contact ", request.params.id, "has been updated");
+      return data.save();
+    })
+    .then(data => {
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Contacted failed to update");
+    });
+});
+
+/*
+name: String,
+occupation: String,
+avatar: String
+*/
