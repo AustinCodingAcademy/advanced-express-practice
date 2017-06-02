@@ -1,11 +1,21 @@
 /*  eslint-disable no-unused-vars*/
 import express from "express";
 import bodyParser from "body-parser";
+import mongoose from "mongoose";
 import comments from "./localapi/comments";
 import contacts from "./localapi/contacts";
 import products from "./localapi/products";
 import vehicles from "./localapi/vehicles";
 
+// Mongoose and DB connection
+mongoose.connect("mongodb://localhost/ExpressPractice1");
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  // we're connected!
+  console.log("mongoose and db are connected"
+);
+});
 
 const app = express();
 
