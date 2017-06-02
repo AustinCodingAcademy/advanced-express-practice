@@ -16,6 +16,8 @@ app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
 
+
+// GETS
 app.get("/comments", (request, response) => {
   console.log("commments was received");
   return response.json(comments);
@@ -34,4 +36,12 @@ app.get("/products", (request, response) => {
 app.get("/vehicles", (request, response) => {
   console.log("vehicles was requested");
   return response.json(vehicles);
+});
+
+// POSTS
+app.post("/comments", (request, response) => {
+  console.log("comments was posted to");
+  const newComment = {_id: comments.length + 1, ...request.body};
+  comments.push(newComment);
+  return response.json(newComment);
 });
