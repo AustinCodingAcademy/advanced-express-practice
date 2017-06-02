@@ -301,6 +301,7 @@ app.put(contactsPath + "/:id", (request, response, next) => {
     .then(data => {
       data.name = request.body.name || data.name;
       data.occupation = request.body.occupation || data.occupation;
+      data.avatar = request.body.avatar || data.avatar;
 
       console.log("Contact ", request.params.id, "has been updated");
       return data.save();
@@ -313,8 +314,28 @@ app.put(contactsPath + "/:id", (request, response, next) => {
     });
 });
 
-/*
-name: String,
-occupation: String,
-avatar: String
-*/
+app.put(productsPath + "/:id", (request, response, next) => {
+  const itemBody = request.body;
+  ProductModel.findById(request.params.id).exec()
+    .then(data => {
+      data.name = itemBody.name || data.name;
+      data.description = itemBody.description || data.description;
+      data.reviewNum = itemBody.reviewNum || data.reviewNum;
+      data.rating = itemBody.rating || data.rating;
+      data.imgUrl = itemBody.imgUrl || data.imgUrl;
+      data.price = itemBody.price || data.price;
+      data.category = itemBody.category || data.category;
+      // @TODO Would change the logic here so we can add review one at a time
+      // insted of having to send all of the each time.
+      data.reviews = itemBody.reviews || data.reviews;
+
+      console.log("product ", request.params.id, "was updated");
+      return data.save();
+    })
+    .then(data => {
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("comment failed to update");
+    });
+});
