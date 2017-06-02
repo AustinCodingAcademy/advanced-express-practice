@@ -154,8 +154,6 @@ app.get(productsPath, (request, response) => {
 app.post(commentsPath, (request, response) => {
   const addedComment = new CommentModel(request.body);
 
-  comments.push(addedComment);
-
   addedComment.save()
     .then(() => {
       console.log("new comments was executed");
@@ -174,8 +172,6 @@ app.post(commentsPath, (request, response) => {
 app.post(contactsPath, (request, response) => {
   const addedContact = new ContactModel(request.body);
 
-  contacts.push(addedContact);
-
   addedContact.save()
     .then(() => {
       console.log("new contact was added");
@@ -189,8 +185,6 @@ app.post(contactsPath, (request, response) => {
 
 app.post(productsPath, (request, response) => {
   const addedProduct = new ProductModel(request.body);
-
-  products.push(addedProduct);
 
   addedProduct.save()
     .then(() => {
@@ -265,3 +259,19 @@ app.delete(productsPath + "/:id", (request, response) => {
       return console.log("Product failed to delete");
     });
 });
+
+/*
+@TODO fix bug in VehicleModel
+app.delete(vehiclesPath + "./:id", (request, response) => {
+  const query = request.params.id;
+
+  VehicleModel.findByIdAndRemove(query).exec()
+    .then(data => {
+      console.log("Vehicle ", query, "was deleted");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Vehicle failed to delete");
+    });
+});
+*/
