@@ -252,3 +252,16 @@ app.delete(contactsPath + "/:id", (request, response) => {
       return console.log("Contact failed to delete");
     });
 });
+
+app.delete(productsPath + "/:id", (request, response) => {
+  const query = request.params.id;
+
+  ProductModel.findByIdAndRemove(query).exec()
+    .then(data => {
+      console.log("Product ", query, "was deleted");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Product failed to delete");
+    });
+});
