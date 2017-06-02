@@ -13,7 +13,7 @@ const vehicleSchema = mongoose.Schema({
   isNew: Boolean
 });
 
-export default mongoose.model("Vehicles", vehicleSchema);
+export default mongoose.model("Vehicle", vehicleSchema);
 
 /*
 {

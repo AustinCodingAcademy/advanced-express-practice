@@ -5,9 +5,11 @@ import mongoose from "mongoose";
 import comments from "./localapi/comments";
 import CommentModel from "./models/CommentModel";
 import contacts from "./localapi/contacts";
+import ContactModel from "./models/ContactModel";
 import products from "./localapi/products";
+import ProductModel from "./models/ProductModel";
 import vehicles from "./localapi/vehicles";
-
+// import VModel from "./models/VModel";
 
 // Mongoose and DB connection
 // the localhost = PORT 27017 as the default because that's what mongoose is set to
@@ -118,8 +120,8 @@ app.post(commentsPath, (request, response) => {
       return response.json(addedComment);
     })
     .catch((err) => {
-      console.log("new comment WASNT saved", err);
-      return response.json("Not saved");
+      console.log("NO new comment saved", err);
+      return response.json("NO new comment saved");
     });
   // console.log("comments was posted to");
   // const newComment = {_id: comments.length + 1, ...request.body};
@@ -128,22 +130,58 @@ app.post(commentsPath, (request, response) => {
 });
 
 app.post(contactsPath, (request, response) => {
-  console.log("contacts were posted to");
-  const newContact = {_id: contacts.length + 1, ...request.body};
-  contacts.push(newContact);
-  return response.json(newContact);
+  const addedContact = new ContactModel(request.body);
+
+  addedContact.save()
+    .then(() => {
+      console.log("new contact was added");
+      return response.json(addedContact);
+    })
+    .catch((err) => {
+      console.log("NO new contact saved");
+      return response.json("NO new contact saved");
+    });
+
+  // console.log("contacts were posted to");
+  // const newContact = {_id: contacts.length + 1, ...request.body};
+  // contacts.push(newContact);
+  // return response.json(newContact);
 });
 
-app.post(contactsPath, (request, response) => {
-  console.log("new product was added");
-  const newProduct = {_id: products.length + 1, ...request.body};
-  products.push(newProduct);
-  return response.json(newProduct);
+app.post(productsPath, (request, response) => {
+  const addedProduct = new ProductModel(request.body);
+
+  addedProduct.save()
+    .then(() => {
+      console.log("new Product was saved");
+      return response.json(addedProduct);
+    })
+    .catch((err) => {
+      console.log("NO new product saved");
+      return response.json("NO new product saved");
+    });
+
+  // console.log("new product was added");
+  // const newProduct = {_id: products.length + 1, ...request.body};
+  // products.push(newProduct);
+  // return response.json(newProduct);
 });
 
-app.post(vehiclesPath, (request, response) => {
-  console.log("vehicles have a new vehicle");
-  const newVehicle = {_id: vehicles.length + 1, ...request.body};
-  vehicles.push(newVehicle);
-  return response.json(newVehicle);
-});
+// app.post(vehiclesPath, (request, response) => {
+//   const addedVehicle = new VModel(request.body);
+// 
+//   addedVehicle.save()
+//     .then(() => {
+//       console.log("New vehicle saved");
+//       return response.json(addedVehicle);
+//     })
+//     .catch((err) => {
+//       console.lot("NO new vehicle saved");
+//       return response.json("NO new vehicle saved");
+//     });
+
+  // console.log("vehicles have a new vehicle");
+  // const newVehicle = {_id: vehicles.length + 1, ...request.body};
+  // vehicles.push(newVehicle);
+  // return response.json(newVehicle);
+// });
