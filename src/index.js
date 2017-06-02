@@ -3,9 +3,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import comments from "./localapi/comments";
+import CommentModel from "./models/CommentModel";
 import contacts from "./localapi/contacts";
 import products from "./localapi/products";
 import vehicles from "./localapi/vehicles";
+
 
 // Mongoose and DB connection
 // the localhost = PORT 27017 as the default because that's what mongoose is set to
@@ -108,10 +110,21 @@ app.get(vehiclesPath, (request, response) => {
 
 // POSTS
 app.post(commentsPath, (request, response) => {
-  console.log("comments was posted to");
-  const newComment = {_id: comments.length + 1, ...request.body};
-  comments.push(newComment);
-  return response.json(newComment);
+  const addedComment = new CommentModel(request.body);
+
+  addedComment.save()
+    .then(() => {
+      console.log("new comments was executed");
+      return response.json(addedComment);
+    })
+    .catch((err) => {
+      console.log("new comment WASNT saved", err);
+      return response.json("Not saved");
+    });
+  // console.log("comments was posted to");
+  // const newComment = {_id: comments.length + 1, ...request.body};
+  // comments.push(newComment);
+  // return response.json(newComment);
 });
 
 app.post(contactsPath, (request, response) => {
