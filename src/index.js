@@ -45,3 +45,17 @@ app.post("/comments", (request, response) => {
   comments.push(newComment);
   return response.json(newComment);
 });
+
+app.post("/contacts", (request, response) => {
+  console.log("contacts were posted to");
+  const newContact = {_id: contacts.length + 1, ...request.body};
+  contacts.push(newContact);
+  return response.json(newContact);
+});
+
+app.post("/products", (request, response) => {
+  console.log("new product was added");
+  const newProduct = {_id: products.length + 1, ...request.body};
+  products.push(newProduct);
+  return response.json(newProduct);
+});
