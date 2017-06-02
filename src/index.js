@@ -16,6 +16,18 @@ app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
 
+// GET INDIVIDUALS
+app.get("/comments/:id", (request, response) => {
+  const query = request.params;
+  console.log("comment ", query.id, " has been requested");
+  const match = comments.find((comment) => {
+    return String(comment._id) === query.id;
+  });
+  if (match) {
+    return response.json(match);
+  }
+  return response.json("nothing in ", query.id);
+});
 
 // GETS
 app.get("/comments", (request, response) => {
@@ -38,6 +50,9 @@ app.get("/vehicles", (request, response) => {
   return response.json(vehicles);
 });
 
+
+
+
 // POSTS
 app.post("/comments", (request, response) => {
   console.log("comments was posted to");
@@ -58,4 +73,11 @@ app.post("/products", (request, response) => {
   const newProduct = {_id: products.length + 1, ...request.body};
   products.push(newProduct);
   return response.json(newProduct);
+});
+
+app.post("/vehicles", (request, response) => {
+  console.log("vehicles have a new vehicle");
+  const newVehicle = {_id: vehicles.length + 1, ...request.body};
+  vehicles.push(newVehicle);
+  return response.json(newVehicle);
 });
