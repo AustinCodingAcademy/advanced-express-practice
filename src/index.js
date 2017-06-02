@@ -29,6 +29,42 @@ app.get("/comments/:id", (request, response) => {
   return response.json("nothing in ", query.id);
 });
 
+app.get("/contacts/:id", (request, response) => {
+  const query = request.params;
+  console.log("contact ", query.id, " has been requested");
+  const match = contacts.find((person) => {
+    return String(person._id) === query.id;
+  });
+  if (match) {
+    return response.json(match);
+  }
+  return response.json("nothing in ", query.id);
+});
+
+app.get("/products/:id", (request, response) => {
+  const query = request.params;
+  console.log("product ", query.id, " was requested");
+  const match = products.find((prod) => {
+    return String(prod._id) === query.id;
+  });
+  if (match) {
+    return response.json(match);
+  }
+  return response.json("no products with id ", query.id);
+});
+
+app.get("/vehicles/:id", (request, response) => {
+  const query = request.params;
+  console.log("vehicle ", query.id, " was requested");
+  const match = vehicles.find((car) => {
+    return String(car._id) === query.id;
+  });
+  if (match) {
+    return response.json(match);
+  }
+  return response.json("no vehicles match the request ", query.id);
+});
+
 // GETS
 app.get("/comments", (request, response) => {
   console.log("commments was received");
