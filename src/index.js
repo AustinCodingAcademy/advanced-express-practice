@@ -19,7 +19,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/ExpressPractice1");
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
+db.once("open", () => {
   console.log("mongoose and db are connected"
 );
 });
@@ -39,16 +39,15 @@ const productsPath = "/products";
 const vehiclesPath = "/vehicles";
 
 // GET INDIVIDUALS by ID
-app.get(commentsPath + "/:id", (request, response) => {
+app.get(commentsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
   CommentModel.findById(query)
     .then((data) => {
-      console.log("Comment DB individual was requested");
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Comment DB individual fetch failed", err);
+      return next(err);
   // const query = request.params;
   // console.log("comment ", query.id, " has been requested");
   // const match = comments.find((comment) => {
@@ -61,7 +60,7 @@ app.get(commentsPath + "/:id", (request, response) => {
     });
 });
 
-app.get(contactsPath + "/:id", (request, response) => {
+app.get(contactsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
   ContactModel.findById(query)
@@ -70,11 +69,11 @@ app.get(contactsPath + "/:id", (request, response) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Contact DB individual fetch failed", err);
+      return next(err);
     });
 });
 
-app.get(productsPath + "/:id", (request, response) => {
+app.get(productsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
   ProductModel.findById(query)
@@ -83,13 +82,13 @@ app.get(productsPath + "/:id", (request, response) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Product DB individual fetch failed", err);
+      return next(err);
     });
 });
 
 /*
 // @TODO fix bug with VehicleModel
-app.get(vehiclesPath + "/:id", (request, response) => {
+app.get(vehiclesPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
   VehicleModel.findById(query)
@@ -98,60 +97,60 @@ app.get(vehiclesPath + "/:id", (request, response) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Vehicle DB individual fetch failed", err);
+      return next(err);
     });
 });
 */
 
 // GETS
-app.get(commentsPath, (request, response) => {
+app.get(commentsPath, (request, response, next) => {
   CommentModel.find({}).exec()
     .then(data => {
       console.log("fetched comments these", data);
       return response.json(data);
     })
     .catch(err => {
-      return console.log("fetch failed for commentz");
+      return next(err);
     });
 });
 
-app.get(contactsPath, (request, response) => {
+app.get(contactsPath, (request, response, next) => {
   ContactModel.find({}).exec()
     .then(data => {
       console.log("Contact DB was requested");
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Contacts DB fetch failed");
+      return next(err);
     });
 });
 
-app.get(productsPath, (request, response) => {
+app.get(productsPath, (request, response, next) => {
   ProductModel.find({}).exec()
     .then(data => {
       console.log("Product DB was fetched");
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Product DB fetch failed");
+      return next(err);
     });
 });
 
 // @TODO fix bug with VehicleModel
-// app.get(vehiclesPath, (request, response) => {
+// app.get(vehiclesPath, (request, response, next) => {
 //   VehicleModel.find({}).exec()
 //     .then(data => {
 //       console.log("Vehicle DB fetched");
 //       return response.data(data);
 //     })
 //     .catch(err => {
-//       return console.log("Vehicle DB fetch failed");
+//       return next(err);
 //     });
 // });
 
 
 // POSTS
-app.post(commentsPath, (request, response) => {
+app.post(commentsPath, (request, response, next) => {
   const addedComment = new CommentModel(request.body);
 
   addedComment.save()
@@ -160,8 +159,7 @@ app.post(commentsPath, (request, response) => {
       return response.json(addedComment);
     })
     .catch((err) => {
-      console.log("NO new comment saved", err);
-      return response.json("NO new comment saved");
+      return next(err);
     });
   // console.log("comments was posted to");
   // const newComment = {_id: comments.length + 1, ...request.body};
@@ -169,7 +167,7 @@ app.post(commentsPath, (request, response) => {
   // return response.json(newComment);
 });
 
-app.post(contactsPath, (request, response) => {
+app.post(contactsPath, (request, response, next) => {
   const addedContact = new ContactModel(request.body);
 
   addedContact.save()
@@ -178,12 +176,11 @@ app.post(contactsPath, (request, response) => {
       return response.json(addedContact);
     })
     .catch((err) => {
-      console.log("NO new contact saved");
-      return response.json("NO new contact saved");
+      return next(err);
     });
 });
 
-app.post(productsPath, (request, response) => {
+app.post(productsPath, (request, response, next) => {
   const addedProduct = new ProductModel(request.body);
 
   addedProduct.save()
@@ -192,13 +189,12 @@ app.post(productsPath, (request, response) => {
       return response.json(addedProduct);
     })
     .catch((err) => {
-      console.log("NO new product saved");
-      return response.json("NO new product saved");
+      return next(err);
     });
 });
 
 // @TODO fix bug with VehicleModel
-// app.post(vehiclesPath, (request, response) => {
+// app.post(vehiclesPath, (request, response, next) => {
 //   const addedVehicle = new VModel(request.body);
 //
 //   vehicles.push(addedVehicle);
@@ -209,8 +205,7 @@ app.post(productsPath, (request, response) => {
 //       return response.json(addedVehicle);
 //     })
 //     .catch((err) => {
-//       console.lot("NO new vehicle saved");
-//       return response.json("NO new vehicle saved");
+//       return next(err);
 //     });
 
   // console.log("vehicles have a new vehicle");
@@ -221,7 +216,7 @@ app.post(productsPath, (request, response) => {
 
 // DELETES
 
-app.delete(commentsPath + "/:id", (request, response) => {
+app.delete(commentsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
   CommentModel.findByIdAndRemove(query).exec()
@@ -230,11 +225,11 @@ app.delete(commentsPath + "/:id", (request, response) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Comment failed to delete", err);
+      return next(err);
     });
 });
 
-app.delete(contactsPath + "/:id", (request, response) => {
+app.delete(contactsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
   ContactModel.findByIdAndRemove(query).exec()
@@ -243,11 +238,11 @@ app.delete(contactsPath + "/:id", (request, response) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Contact failed to delete");
+      return next(err);
     });
 });
 
-app.delete(productsPath + "/:id", (request, response) => {
+app.delete(productsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
   ProductModel.findByIdAndRemove(query).exec()
@@ -256,13 +251,13 @@ app.delete(productsPath + "/:id", (request, response) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Product failed to delete");
+      return next(err);
     });
 });
 
 /*
 @TODO fix bug in VehicleModel
-app.delete(vehiclesPath + "./:id", (request, response) => {
+app.delete(vehiclesPath + "./:id", (request, response, next) => {
   const query = request.params.id;
 
   VehicleModel.findByIdAndRemove(query).exec()
@@ -271,7 +266,7 @@ app.delete(vehiclesPath + "./:id", (request, response) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Vehicle failed to delete");
+      return next(err);
     });
 });
 */
@@ -292,7 +287,7 @@ app.put(commentsPath + "/:id", (request, response, next) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Comment update failed", err);
+      return next(err);
     });
 });
 
@@ -310,7 +305,7 @@ app.put(contactsPath + "/:id", (request, response, next) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("Contacted failed to update");
+      return next(err);
     });
 });
 
@@ -336,7 +331,7 @@ app.put(productsPath + "/:id", (request, response, next) => {
       return response.json(data);
     })
     .catch(err => {
-      return console.log("comment failed to update");
+      return next(err);
     });
 });
 /*
@@ -363,7 +358,7 @@ app.put(vehiclesPath + "/:id", (request, response, next) => {
         return response.json(data);
       })
       .catch(err => {
-        return console.log("Vehicle failed to update", err);
+        return next(err);
       });
 });
 */
