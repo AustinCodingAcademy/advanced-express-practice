@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Vehicles from "../components/Vehicles";
+import loadVehicles from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -7,4 +8,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Vehicles);
+function mapDispatchToProps(dispatch) {
+  return {
+    loadVehicles: dispatch(loadVehicles)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Vehicles);

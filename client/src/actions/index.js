@@ -1,6 +1,6 @@
-export function loadContacts() {
+export function loadContacts(id) {
   return function (dispatch) {
-    fetch("/contacts")
+    fetch("/contacts/" + id)
     .then( (response) => {
       return response.json();
     }).then((contacts) => {
@@ -15,9 +15,9 @@ function contactsLoaded(contacts) {
   };
 }
 
-export function loadVehicles() {
+export function loadVehicles(id) {
   return function (dispatch) {
-    fetch("/vehicles")
+    fetch("/vehicles/" + id)
     .then( (response) => {
       return response.json();
     }).then((vehicles) => {
@@ -31,9 +31,9 @@ function vehiclesLoaded(vehicles) {
     value: vehicles
   };
 }
-export function loadComments() {
+export function loadComments(id) {
   return function (dispatch) {
-    fetch("/comments")
+    fetch("/comments/" + id)
     .then( (response) => {
       return response.json();
     }).then((comments) => {
@@ -47,9 +47,9 @@ function commentsLoaded(comments) {
     value: comments
   };
 }
-export function loadProducts() {
+export function loadProducts(id) {
   return function (dispatch) {
-    fetch("/products")
+    fetch("/products/" + id)
     .then( (response) => {
       return response.json();
     }).then((products) => {
