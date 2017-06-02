@@ -225,4 +225,17 @@ app.post(productsPath, (request, response) => {
   // return response.json(newVehicle);
 // });
 
-// REMOVES
+// DELETES
+
+app.delete(commentsPath + "/:id", (request, response) => {
+  const query = request.params.id;
+
+  CommentModel.findByIdAndRemove(query).exec()
+    .then(data => {
+      console.log("Comment ", query, "was removed");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Comment failed to delete", err);
+    });
+});
