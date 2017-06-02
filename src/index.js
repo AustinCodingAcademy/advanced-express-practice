@@ -239,3 +239,16 @@ app.delete(commentsPath + "/:id", (request, response) => {
       return console.log("Comment failed to delete", err);
     });
 });
+
+app.delete(contactsPath + "/:id", (request, response) => {
+  const query = request.params.id;
+
+  ContactModel.findByIdAndRemove(query).exec()
+    .then(data => {
+      console.log("Contact ", query, "was removed");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Contact failed to delete");
+    });
+});
