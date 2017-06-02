@@ -9,15 +9,17 @@ import ContactModel from "./models/ContactModel";
 import products from "./localapi/products";
 import ProductModel from "./models/ProductModel";
 import vehicles from "./localapi/vehicles";
-// import VModel from "./models/VModel";
+// @TODO fix bug with VehicleModel
+// import VehicleModel from "./models/VehicleModel";
 
+// this promise must be global so mongoose can use it with DB and in here
+mongoose.Promise = global.Promise;
 // Mongoose and DB connection
 // the localhost = PORT 27017 as the default because that's what mongoose is set to
 mongoose.connect("mongodb://localhost/ExpressPractice1");
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
-  // we're connected!
   console.log("mongoose and db are connected"
 );
 });
@@ -31,88 +33,128 @@ app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
 
-
 const commentsPath = "/comments";
 const contactsPath = "/contacts";
 const productsPath = "/products";
 const vehiclesPath = "/vehicles";
 
-// GET INDIVIDUALS
+// GET INDIVIDUALS by ID
 app.get(commentsPath + "/:id", (request, response) => {
-  const query = request.params;
-  console.log("comment ", query.id, " has been requested");
-  const match = comments.find((comment) => {
-    return String(comment._id) === query.id;
-  });
-  if (match) {
-    return response.json(match);
-  }
-  return response.json("nothing in ", query.id);
+  const query = request.params.id;
+
+  CommentModel.findById(query)
+    .then((data) => {
+      console.log("Comment DB individual was requested");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Comment DB individual fetch failed", err);
+  // const query = request.params;
+  // console.log("comment ", query.id, " has been requested");
+  // const match = comments.find((comment) => {
+  //   return String(comment._id) === query.id;
+  // });
+  // if (match) {
+  //   return response.json(match);
+  // }
+  // return response.json("nothing in ", query.id);
+    });
 });
 
 app.get(contactsPath + "/:id", (request, response) => {
-  const query = request.params;
-  console.log("contact ", query.id, " has been requested");
-  const match = contacts.find((person) => {
-    return String(person._id) === query.id;
-  });
-  if (match) {
-    return response.json(match);
-  }
-  return response.json("nothing in ", query.id);
+  const query = request.params.id;
+
+  ContactModel.findById(query)
+    .then((data) => {
+      console.log("Contact DB was requested");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Contact DB individual fetch failed", err);
+    });
 });
 
 app.get(productsPath + "/:id", (request, response) => {
-  const query = request.params;
-  console.log("product ", query.id, " was requested");
-  const match = products.find((prod) => {
-    return String(prod._id) === query.id;
-  });
-  if (match) {
-    return response.json(match);
-  }
-  return response.json("no products with id ", query.id);
+  const query = request.params.id;
+
+  ProductModel.findById(query)
+    .then((data) => {
+      console.log("Product DB individual was requested");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Product DB individual fetch failed", err);
+    });
 });
 
+/*
+// @TODO fix bug with VehicleModel
 app.get(vehiclesPath + "/:id", (request, response) => {
-  const query = request.params;
-  console.log("vehicle ", query.id, " was requested");
-  const match = vehicles.find((car) => {
-    return String(car._id) === query.id;
-  });
-  if (match) {
-    return response.json(match);
-  }
-  return response.json("no vehicles match the request ", query.id);
+  const query = request.params.id;
+
+  VehicleModel.findById(query)
+    .then((data) => {
+      console.log("Vehicle DB individual was requested");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Vehicle DB individual fetch failed", err);
+    });
 });
+*/
 
 // GETS
 app.get(commentsPath, (request, response) => {
-  console.log("commments was received");
-  return response.json(comments);
+  CommentModel.find({}).exec()
+    .then(data => {
+      console.log("fetched comments these", data);
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("fetch failed for commentz");
+    });
 });
 
 app.get(contactsPath, (request, response) => {
-  console.log("contacts was requested");
-  return response.json(contacts);
+  ContactModel.find({}).exec()
+    .then(data => {
+      console.log("Contact DB was requested");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Contacts DB fetch failed");
+    });
 });
 
 app.get(productsPath, (request, response) => {
-  console.log("products was requested");
-  return response.json(products);
+  ProductModel.find({}).exec()
+    .then(data => {
+      console.log("Product DB was fetched");
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Product DB fetch failed");
+    });
 });
 
-app.get(vehiclesPath, (request, response) => {
-  console.log("vehicles was requested");
-  return response.json(vehicles);
-});
-
-
+// @TODO fix bug with VehicleModel
+// app.get(vehiclesPath, (request, response) => {
+//   VehicleModel.find({}).exec()
+//     .then(data => {
+//       console.log("Vehicle DB fetched");
+//       return response.data(data);
+//     })
+//     .catch(err => {
+//       return console.log("Vehicle DB fetch failed");
+//     });
+// });
 
 
 // POSTS
 app.post(commentsPath, (request, response) => {
   const addedComment = new CommentModel(request.body);
+
+  comments.push(addedComment);
 
   addedComment.save()
     .then(() => {
@@ -132,6 +174,8 @@ app.post(commentsPath, (request, response) => {
 app.post(contactsPath, (request, response) => {
   const addedContact = new ContactModel(request.body);
 
+  contacts.push(addedContact);
+
   addedContact.save()
     .then(() => {
       console.log("new contact was added");
@@ -141,15 +185,12 @@ app.post(contactsPath, (request, response) => {
       console.log("NO new contact saved");
       return response.json("NO new contact saved");
     });
-
-  // console.log("contacts were posted to");
-  // const newContact = {_id: contacts.length + 1, ...request.body};
-  // contacts.push(newContact);
-  // return response.json(newContact);
 });
 
 app.post(productsPath, (request, response) => {
   const addedProduct = new ProductModel(request.body);
+
+  products.push(addedProduct);
 
   addedProduct.save()
     .then(() => {
@@ -160,16 +201,14 @@ app.post(productsPath, (request, response) => {
       console.log("NO new product saved");
       return response.json("NO new product saved");
     });
-
-  // console.log("new product was added");
-  // const newProduct = {_id: products.length + 1, ...request.body};
-  // products.push(newProduct);
-  // return response.json(newProduct);
 });
 
+// @TODO fix bug with VehicleModel
 // app.post(vehiclesPath, (request, response) => {
 //   const addedVehicle = new VModel(request.body);
-// 
+//
+//   vehicles.push(addedVehicle);
+//
 //   addedVehicle.save()
 //     .then(() => {
 //       console.log("New vehicle saved");
@@ -185,3 +224,5 @@ app.post(productsPath, (request, response) => {
   // vehicles.push(newVehicle);
   // return response.json(newVehicle);
 // });
+
+// REMOVES
