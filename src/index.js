@@ -275,3 +275,23 @@ app.delete(vehiclesPath + "./:id", (request, response) => {
     });
 });
 */
+
+// UPDATES
+
+app.put(commentsPath + "/:id", (request, response, next) => {
+  const query = request;
+
+  CommentModel.findById(query.params.id).exec()
+    .then(data => {
+      data.body = query.body.body || data.body;
+      data.postId = query.body.postId || data.postId;
+      console.log("comment ", query.params.id, "was updated");
+      return data.save();
+    })
+    .then(data => {
+      return response.json(data);
+    })
+    .catch(err => {
+      return console.log("Comment update failed", err);
+    });
+});
