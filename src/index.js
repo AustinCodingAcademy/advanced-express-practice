@@ -8,6 +8,7 @@ import products from "./localapi/products";
 import vehicles from "./localapi/vehicles";
 
 // Mongoose and DB connection
+// the localhost = PORT 27017 as the default because that's what mongoose is set to
 mongoose.connect("mongodb://localhost/ExpressPractice1");
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
