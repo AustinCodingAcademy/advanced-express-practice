@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import comments from "./localapi/comments";
 import contacts from "./localapi/contacts";
 import products from "./localapi/products";
-import vehicle from "./localapi/vehicles";
+import vehicles from "./localapi/vehicles";
 
 
 const app = express();
@@ -24,4 +24,14 @@ app.get("/comments", (request, response) => {
 app.get("/contacts", (request, response) => {
   console.log("contacts was requested");
   return response.json(contacts);
+});
+
+app.get("/products", (request, response) => {
+  console.log("products was requested");
+  return response.json(products);
+});
+
+app.get("/vehicles", (request, response) => {
+  console.log("vehicles was requested");
+  return response.json(vehicles);
 });
