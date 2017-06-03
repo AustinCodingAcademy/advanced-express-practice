@@ -1,5 +1,7 @@
-export const CONTACT_LOADED = "CONTACT_LOADED";
-export const VEHICLE_LOADED = "VEHICLE_LOADED";
+export const CONTACT_LOADED_DONE = "CONTACT_LOADED_DONE";
+export const VEHICLE_LOADED_DONE = "VEHICLE_LOADED_DONE";
+export const COMMENT_LOAD_DONE = "COMMENT_LOAD_DONE";
+export const PRODUCT_LOAD_DONE = "PRODUCT_LOAD_DONE";
 
 export function loadContacts() {
   return function (dispatch) {
@@ -30,7 +32,7 @@ export function getContact(contactID) {
 
 function contactLoaded(contact) {
   return {
-    type: CONTACT_LOADED,
+    type: CONTACT_LOADED_DONE,
     value: contact
   };
 }
@@ -76,35 +78,10 @@ export function getVehicle(vehicleID) {
 
 function vehicleLoaded(vehicle) {
   return {
-    type: "VEHICLE_LOADED",
+    type: VEHICLE_LOADED_DONE,
     value: vehicle
   };
 }
-
-/*
-export function getContact(contactID) {
-  return function (dispatch) {
-    fetch("/contacts" + contactID)
-    .then( response => {
-      return response.json();
-    })
-    .then( contact => {
-      dispatch(contactLoaded(contact));
-    })
-    .catch(err => {
-      // add next for error handling
-      return console.log(err);
-    });
-  };
-}
-
-function contactLoaded(contact) {
-  return {
-    type: CONTACT_LOADED,
-    value: contact
-  };
-}
-*/
 
 export function loadComments() {
   return function (dispatch) {
@@ -116,6 +93,29 @@ export function loadComments() {
     });
   };
 }
+
+export function getComment(commentID) {
+  return function (dispatch) {
+    fetch("/comments/" + commentID)
+    .then(response => {
+      return response.json();
+    })
+    .then( comment => {
+      dispatch(commentLoaded(comment));
+    })
+    .catch(err => {
+      return console.log(err, "Comment did not not load");
+    });
+  };
+}
+
+function commentLoaded(comment) {
+  return {
+    type: COMMENT_LOAD_DONE,
+    value: comment
+  };
+}
+
 function commentsLoaded(comments) {
   return {
     type: "COMMENTS_LOADED",
@@ -132,6 +132,29 @@ export function loadProducts() {
     });
   };
 }
+
+export function getProduct(productID) {
+  return function (dispatch) {
+    fetch("/products/" + productID)
+    .then( response => {
+      return response.json();
+    })
+    .then(product => {
+      dispatch(productLoaded(product));
+    })
+    .catch(err => {
+      return console.log(err, "Product didnt load");
+    });
+  };
+}
+
+function productLoaded(product) {
+  return {
+    type: PRODUCT_LOAD_DONE,
+    value: product
+  };
+}
+
 function productsLoaded(products) {
   return {
     type: "PRODUCTS_LOADED",
