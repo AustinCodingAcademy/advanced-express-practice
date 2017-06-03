@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class CollapsableMapper extends Component {
   constructor() {
@@ -10,14 +11,14 @@ class CollapsableMapper extends Component {
     let userDivs = "";
     if (this.state.visible) {
       buttonText = "Hide";
-      userDivs = this.props.data.map((d,i) => {
+      userDivs = this.props.data.map( (d,i) => {
         return (
           <div key={i}>
             {d[this.props.field]}
             {d[this.props.field1]}
             {d[this.props.field2]}
             {d[this.props.field3]}
-            <a href={"/" + this.props.path + "/" + d._id}> View </a>
+            <Link to={"/" + this.props.path + "/" + d._id}> View </Link>
           </div>
         );
       });
