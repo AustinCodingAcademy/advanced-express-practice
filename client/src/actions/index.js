@@ -61,6 +61,9 @@ export function getVehicle(id) {
       })
       .then((vehicle) => {
         dispatch(getVehicleDone(vehicle));
+      })
+      .catch((err) => {
+        return console.log(err);
       });
   };
 }
@@ -88,6 +91,28 @@ function commentsLoaded(comments) {
     value: comments
   };
 }
+
+export function getComment(id) {
+  return function (dispatch) {
+    fetch("/comments/" + id)
+      .then((response) => {
+        return response.json();
+      })
+      .then((comment) => {
+        dispatch(getCommentDone(comment));
+      })
+      .catch((err) => {
+        return console.log(err);
+      });
+  };
+}
+function getCommentDone(comment) {
+  return {
+    type: "GET_COMMENT_DONE",
+    value: comment
+  };
+}
+
 export function loadProducts() {
   return function (dispatch) {
     fetch("/products")
