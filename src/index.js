@@ -28,10 +28,20 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.get("/falseroute", (request, response, next) => {
+  console.log("false route is running");
+  const error = new Error("this is an error message");
+  return next(error);
+});
+
+// error handler middleware
 app.use((err, request, response, next) => {
   // request.specialMessage = "I am a special Error Message";
-  console.log("middleware is executed");
-  next();
+  console.log("error middleware is executed");
+  // this must have a status to return in the response correctly
+  return response.status(500).json({
+    message: err.message
+  });
 });
 
 // app.get("/", (request, response, next) => {
