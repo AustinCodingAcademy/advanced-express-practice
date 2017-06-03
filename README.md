@@ -31,11 +31,11 @@ At this point, the web page should operate in the same manner as the redux fetch
 * Import and use the Routers in index.js -->
 
 # Part 3 - Controllers
-* Create controller files
+<!-- * Create controller files
 * Import the arrays into the controller
 * Take the code from the routes and put it into the controller
 * create functions for list, show and create
-* Import and use the controller functions in the appropriate Router
+* Import and use the controller functions in the appropriate Router -->
 
 # Part 4 - Database
 <!-- * Create the mongoose models for Contact, Vehicle, Comment Product
