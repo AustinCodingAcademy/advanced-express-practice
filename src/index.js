@@ -1,14 +1,9 @@
-/*  eslint-disable no-unused-vars*/
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import comments from "./localapi/comments";
-import CommentModel from "./models/CommentModel";
-import contacts from "./localapi/contacts";
 import ContactModel from "./models/ContactModel";
-import products from "./localapi/products";
 import ProductModel from "./models/ProductModel";
-import vehicles from "./localapi/vehicles";
+import CommentsRouter from "./routers/CommentsRouter";
 // @TODO fix bug with VehicleModel
 // import VehicleModel from "./models/VehicleModel";
 
@@ -27,13 +22,7 @@ db.once("open", () => {
 const app = express();
 
 app.use(bodyParser.json());
-
-app.get("/falseroute", (request, response, next) => {
-  console.log("false route is running");
-  const error = new Error("this is an error message");
-  return next(error);
-});
-
+app.use(CommentsRouter);
 // error handler middleware
 app.use((err, request, response, next) => {
   // request.specialMessage = "I am a special Error Message";
@@ -43,11 +32,6 @@ app.use((err, request, response, next) => {
     message: err.message
   });
 });
-
-// app.get("/", (request, response, next) => {
-//   const message = request.specialMessage;
-//   response.send(message);
-// });
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
@@ -60,27 +44,6 @@ const productsPath = "/products";
 const vehiclesPath = "/vehicles";
 
 // GET INDIVIDUALS by ID  ************************************************
-
-app.get(commentsPath + "/:id", (request, response, next) => {
-  const query = request.params.id;
-
-  CommentModel.findById(query)
-    .then((data) => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-  // const query = request.params;
-  // console.log("comment ", query.id, " has been requested");
-  // const match = comments.find((comment) => {
-  //   return String(comment._id) === query.id;
-  // });
-  // if (match) {
-  //   return response.json(match);
-  // }
-  // return response.json("nothing in ", query.id);
-    });
-});
 
 app.get(contactsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
@@ -124,16 +87,6 @@ app.get(vehiclesPath + "/:id", (request, response, next) => {
 
 // GETS  ************************************************
 
-app.get(commentsPath, (request, response, next) => {
-  CommentModel.find({}).exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-
 app.get(contactsPath, (request, response, next) => {
   ContactModel.find({}).exec()
     .then(data => {
@@ -168,22 +121,6 @@ app.get(productsPath, (request, response, next) => {
 
 
 // POSTS ************************************************
-
-app.post(commentsPath, (request, response, next) => {
-  const addedComment = new CommentModel(request.body);
-
-  addedComment.save()
-    .then(() => {
-      return response.json(addedComment);
-    })
-    .catch((err) => {
-      return next(err);
-    });
-  // console.log("comments was posted to");
-  // const newComment = {_id: comments.length + 1, ...request.body};
-  // comments.push(newComment);
-  // return response.json(newComment);
-});
 
 app.post(contactsPath, (request, response, next) => {
   const addedContact = new ContactModel(request.body);
@@ -232,18 +169,6 @@ app.post(productsPath, (request, response, next) => {
 
 // DELETES  ************************************************
 
-app.delete(commentsPath + "/:id", (request, response, next) => {
-  const query = request.params.id;
-
-  CommentModel.findByIdAndRemove(query).exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-
 app.delete(contactsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
@@ -285,23 +210,6 @@ app.delete(vehiclesPath + "./:id", (request, response, next) => {
 */
 
 // UPDATES ************************************************
-
-app.put(commentsPath + "/:id", (request, response, next) => {
-  const query = request;
-
-  CommentModel.findById(query.params.id).exec()
-    .then(data => {
-      data.body = query.body.body || data.body;
-      data.postId = query.body.postId || data.postId;
-      return data.save();
-    })
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
 
 app.put(contactsPath + "/:id", (request, response, next) => {
   ContactModel.findById(request.params.id).exec()
