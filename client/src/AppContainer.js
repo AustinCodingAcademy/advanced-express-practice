@@ -3,7 +3,6 @@ import "./App.css";
 import { connect } from "react-redux";
 import {loadContacts,loadProducts,loadVehicles,loadComments} from "./actions";
 
-
 function mapDispatchToProps(dispatch) {
   return {
     loadContacts: function () {

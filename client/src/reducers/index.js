@@ -25,7 +25,18 @@ function contacts(state = [], action) {
   return state;
 }
 
+function contact(state = {}, action) {
+  if (action.type === "GET_CONTACT_DONE") {
+    return action.value;
+  }
+  return state;
+}
+
 const rootReducer = combineReducers({
-  comments,products,vehicles,contacts
+  comments,
+  products,
+  vehicles,
+  contacts,
+  contact
 });
 export default rootReducer;

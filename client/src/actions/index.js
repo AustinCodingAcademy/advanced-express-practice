@@ -23,6 +23,9 @@ export function getContact(id) {
       })
       .then((contact) => {
         dispatch(getContactDone(contact));
+      })
+      .catch((err) => {
+        return console.log(err);
       });
   };
 }
@@ -49,6 +52,26 @@ function vehiclesLoaded(vehicles) {
     value: vehicles
   };
 }
+
+export function getVehicle(id) {
+  return function (dispatch) {
+    fetch("/vehicles/" + id)
+      .then((response) => {
+        return response.json();
+      })
+      .then((vehicle) => {
+        dispatch(getVehicleDone(vehicle));
+      });
+  };
+}
+function getVehicleDone(vehicle) {
+  return {
+    type: "GET_VEHICLE_DONE",
+    value: vehicle
+  };
+}
+
+
 export function loadComments() {
   return function (dispatch) {
     fetch("/comments")

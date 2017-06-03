@@ -53,9 +53,8 @@ At this point, the web page should operate in the same manner as the redux fetch
     * look for “GET_PRODUCT_DONE”
 * comment
     * look for “GET_COMMENT_DONE”
-* contact
-    * look for “GET_CONTACT_DONE”
-*
+<!-- * contact
+    * look for “GET_CONTACT_DONE” -->
 
 ### Actions
 * Create actions in actions/index.js
@@ -66,8 +65,8 @@ At this point, the web page should operate in the same manner as the redux fetch
         * fetch(“/vehicles/“ + id)
     * getComment(id)
         * fetch(“/comments/“ + id)
-    * getContact(id)
-        * fetch(“/contacts/“ + id)
+    <!-- * getContact(id)
+        * fetch(“/contacts/“ + id) -->
 * Create actions to handle the data
     * getProductDone(product)
         * GET_PRODUCT_DONE
@@ -75,8 +74,8 @@ At this point, the web page should operate in the same manner as the redux fetch
         * GET_VEHICLE_DONE
     * getComment(comment)
         * GET_COMMENT_DONE
-    * getContact(contact)
-        * GET_CONTACT_DONE
+    <!-- * getContact(contact)
+        * GET_CONTACT_DONE -->
 
 
 ### Components
