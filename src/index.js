@@ -4,11 +4,21 @@ import products from "./products";
 import vehicle from "./vehicles";
 import contacts from "./contacts";
 import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import ContactRoute from "./Routes/ContactRoutes";
 
 const app = express();
 app.use(bodyParser.json());
+app.use(ContactRoute);
 
 const port = process.env.PORT || 3001;
+
+mongoose.connect("mongodb://localhost/contacts");
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error"));
+db.once("open", () => {
+  console.log("MongoDB connected!!");
+});
 
 app.listen(port, () => {
   console.log(`Listening on port:${port}`);
@@ -20,17 +30,56 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/contacts", (req, res) => {
-  return res.json(contacts);
-});
+// app.get("/contacts", (req, res) => {
+//   ContactModel.find({}).exec()
+//     .then((contact) => {
+//       return res.json(contact);
+//     });
+// });
+//
+// app.get("/contacts/:id", (req, res) => {
+//   ContactModel.findById(req.params.id).exec()
+//     .then(contact => {
+//       return res.json(contact);
+//     });
+// });
+//
+// app.post("/contacts", (req, res) => {
+//   const contact = new ContactModel(req.body);
+//   contact.save()
+//     .then(savedContact => {
+//       return res.json(savedContact);
+//     });
+// });
+//
+// app.put("/contacts/:id", (req, res) => {
+//   ContactModel.findById(req.params.id).exec()
+//     .then((contact) => {
+//       contact.name = req.body.name || contact.name;
+//       contact.occupation = req.body.occupation || contact.occupation;
+//       contact.avatar = req.body.avatar || contact.avatar;
+//
+//       return contact.save();
+//     })
+//     .then((contact) => {
+//       return res.json(contact);
+//     });
+// });
+//
+// app.delete("/contacts/:id", (req, res) => {
+//   ContactModel.findByIdAndRemove(req.params.id).exec()
+//     .then(() => {
+//       return res.json("Contact deleted!!!");
+//     });
+// });
 
-app.get("/contacts/:id", (request, response) => {
-  const targetedContact = contacts.find((contact) => {
-    return String(contact._id) === request.params.id;
-  });
-  // console.log("targetedContact", targetedContact);
-  return response.json(targetedContact || null);
-});
+// app.get("/contacts/:id", (request, response) => {
+//   const targetedContact = contacts.find((contact) => {
+//     return String(contact._id) === request.params.id;
+//   });
+//   // console.log("targetedContact", targetedContact);
+//   return response.json(targetedContact || null);
+// });
 
 app.post("/contacts", (req, res) => {
   contacts.push(req.body);
