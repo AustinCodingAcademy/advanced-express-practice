@@ -66,7 +66,7 @@ function productsLoaded(products) {
 }
 export function createProduct(product) {
   return function (dispatch) {
-    fetch("http://localhost:3101/product", {
+    fetch("http://localhost:3101/products", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(product)

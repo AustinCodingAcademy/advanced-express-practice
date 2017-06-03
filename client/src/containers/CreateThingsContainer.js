@@ -9,16 +9,16 @@ import {
 
 function mapDispatchToProps(dispatch) {
   return {
-    createProduct: function (product) {
+    createProduct: (product) => {
       dispatch(createProduct(product));
     },
-    createVehicle: function (v) {
+    createVehicle: (v) => {
       dispatch(createVehicle(v));
     },
-    createContact: function (contact) {
+    createContact: (contact) => {
       dispatch(createContact(contact));
     },
-    createComment: function (c) {
+    createComment: (c) => {
       dispatch(createComment(c));
     },
   };
