@@ -28,9 +28,19 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
-  console.log(`Listening on port:${port}`);
+app.use((request, response, next) => {
+  request.specialMessage = "I am a special Error Message";
+  next();
+});
+
+app.get("/", (request, response, next) => {
+  const message = request.specialMessage;
+  response.send(message);
+});
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Listening on port:${PORT}`);
 });
 
 const commentsPath = "/comments";
@@ -38,7 +48,8 @@ const contactsPath = "/contacts";
 const productsPath = "/products";
 const vehiclesPath = "/vehicles";
 
-// GET INDIVIDUALS by ID
+// GET INDIVIDUALS by ID  ************************************************
+
 app.get(commentsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
@@ -65,7 +76,6 @@ app.get(contactsPath + "/:id", (request, response, next) => {
 
   ContactModel.findById(query)
     .then((data) => {
-      console.log("Contact DB was requested");
       return response.json(data);
     })
     .catch(err => {
@@ -78,7 +88,6 @@ app.get(productsPath + "/:id", (request, response, next) => {
 
   ProductModel.findById(query)
     .then((data) => {
-      console.log("Product DB individual was requested");
       return response.json(data);
     })
     .catch(err => {
@@ -102,11 +111,11 @@ app.get(vehiclesPath + "/:id", (request, response, next) => {
 });
 */
 
-// GETS
+// GETS  ************************************************
+
 app.get(commentsPath, (request, response, next) => {
   CommentModel.find({}).exec()
     .then(data => {
-      console.log("fetched comments these", data);
       return response.json(data);
     })
     .catch(err => {
@@ -117,7 +126,6 @@ app.get(commentsPath, (request, response, next) => {
 app.get(contactsPath, (request, response, next) => {
   ContactModel.find({}).exec()
     .then(data => {
-      console.log("Contact DB was requested");
       return response.json(data);
     })
     .catch(err => {
@@ -128,7 +136,6 @@ app.get(contactsPath, (request, response, next) => {
 app.get(productsPath, (request, response, next) => {
   ProductModel.find({}).exec()
     .then(data => {
-      console.log("Product DB was fetched");
       return response.json(data);
     })
     .catch(err => {
@@ -149,13 +156,13 @@ app.get(productsPath, (request, response, next) => {
 // });
 
 
-// POSTS
+// POSTS ************************************************
+
 app.post(commentsPath, (request, response, next) => {
   const addedComment = new CommentModel(request.body);
 
   addedComment.save()
     .then(() => {
-      console.log("new comments was executed");
       return response.json(addedComment);
     })
     .catch((err) => {
@@ -172,7 +179,6 @@ app.post(contactsPath, (request, response, next) => {
 
   addedContact.save()
     .then(() => {
-      console.log("new contact was added");
       return response.json(addedContact);
     })
     .catch((err) => {
@@ -185,7 +191,6 @@ app.post(productsPath, (request, response, next) => {
 
   addedProduct.save()
     .then(() => {
-      console.log("new Product was saved");
       return response.json(addedProduct);
     })
     .catch((err) => {
@@ -214,14 +219,13 @@ app.post(productsPath, (request, response, next) => {
   // return response.json(newVehicle);
 // });
 
-// DELETES
+// DELETES  ************************************************
 
 app.delete(commentsPath + "/:id", (request, response, next) => {
   const query = request.params.id;
 
   CommentModel.findByIdAndRemove(query).exec()
     .then(data => {
-      console.log("Comment ", query, "was removed");
       return response.json(data);
     })
     .catch(err => {
@@ -234,7 +238,6 @@ app.delete(contactsPath + "/:id", (request, response, next) => {
 
   ContactModel.findByIdAndRemove(query).exec()
     .then(data => {
-      console.log("Contact ", query, "was removed");
       return response.json(data);
     })
     .catch(err => {
@@ -247,7 +250,6 @@ app.delete(productsPath + "/:id", (request, response, next) => {
 
   ProductModel.findByIdAndRemove(query).exec()
     .then(data => {
-      console.log("Product ", query, "was deleted");
       return response.json(data);
     })
     .catch(err => {
@@ -271,7 +273,7 @@ app.delete(vehiclesPath + "./:id", (request, response, next) => {
 });
 */
 
-// UPDATES
+// UPDATES ************************************************
 
 app.put(commentsPath + "/:id", (request, response, next) => {
   const query = request;
@@ -280,7 +282,6 @@ app.put(commentsPath + "/:id", (request, response, next) => {
     .then(data => {
       data.body = query.body.body || data.body;
       data.postId = query.body.postId || data.postId;
-      console.log("comment ", query.params.id, "was updated");
       return data.save();
     })
     .then(data => {
@@ -297,8 +298,6 @@ app.put(contactsPath + "/:id", (request, response, next) => {
       data.name = request.body.name || data.name;
       data.occupation = request.body.occupation || data.occupation;
       data.avatar = request.body.avatar || data.avatar;
-
-      console.log("Contact ", request.params.id, "has been updated");
       return data.save();
     })
     .then(data => {
@@ -323,8 +322,6 @@ app.put(productsPath + "/:id", (request, response, next) => {
       // @TODO Would change the logic here so we can add review one at a time
       // insted of having to send all of the each time.
       data.reviews = itemBody.reviews || data.reviews;
-
-      console.log("product ", request.params.id, "was updated");
       return data.save();
     })
     .then(data => {
