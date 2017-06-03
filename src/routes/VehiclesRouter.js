@@ -1,40 +1,12 @@
 import express from "express";
-import Vehicle from "../models/Vehicle";
+import VehicleController from "../controllers/VehicleController";
 
 const router = express.Router();
 
-router.get("/vehicles", (request, response) => {
-  Vehicle.find().exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(() => {
-      return response.json("Error");
-    });
-});
+router.get("/vehicles", VehicleController.list);
 
-router.get("/vehicles/:id", (request, response, next) => {
-  Vehicle.findById(request.params.id).exec()
-    .then((vehicle) => {
-      return response.json(vehicle);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+router.get("/vehicles/:id", VehicleController.show);
 
-router.post("/vehicles", (request, response) => {
-  const vehicle = new Vehicle(request.body);
-
-  vehicle.save()
-    .then(storedVehicle => {
-      console.log("Vehicle was saved");
-      return response.json(storedVehicle);
-    })
-    .catch(() => {
-      console.log("Vehicle was NOT saved");
-      return response.json("Error");
-    });
-});
+router.post("/vehicles", VehicleController.create);
 
 export default router;
