@@ -1,3 +1,6 @@
+export const CONTACT_LOADED = "CONTACT_LOADED";
+export const VEHICLE_LOADED = "VEHICLE_LOADED";
+
 export function loadContacts() {
   return function (dispatch) {
     fetch("http://localhost:3101/contacts")
@@ -6,6 +9,29 @@ export function loadContacts() {
     }).then((contacts) => {
       dispatch(contactsLoaded(contacts));
     });
+  };
+}
+
+export function getContact(contactID) {
+  return function (dispatch) {
+    fetch("/contacts/" + contactID)
+    .then( response => {
+      return response.json();
+    })
+    .then( contact => {
+      dispatch(contactLoaded(contact));
+    })
+    .catch(err => {
+      // add next for error handling
+      return console.log(err, "contact not loaded");
+    });
+  };
+}
+
+function contactLoaded(contact) {
+  return {
+    type: CONTACT_LOADED,
+    value: contact
   };
 }
 
@@ -32,6 +58,54 @@ function vehiclesLoaded(vehicles) {
     value: vehicles
   };
 }
+
+export function getVehicle(vehicleID) {
+  return function (dispatch) {
+    fetch("/vehicles/" + vehicleID)
+    .then( response => {
+      return response.json();
+    })
+    .then( vehicle => {
+      dispatch(vehicleLoaded(vehicle));
+    })
+    .catch( err => {
+      console.log(err, "vehicle not loaded");
+    });
+  };
+}
+
+function vehicleLoaded(vehicle) {
+  return {
+    type: "VEHICLE_LOADED",
+    value: vehicle
+  };
+}
+
+/*
+export function getContact(contactID) {
+  return function (dispatch) {
+    fetch("/contacts" + contactID)
+    .then( response => {
+      return response.json();
+    })
+    .then( contact => {
+      dispatch(contactLoaded(contact));
+    })
+    .catch(err => {
+      // add next for error handling
+      return console.log(err);
+    });
+  };
+}
+
+function contactLoaded(contact) {
+  return {
+    type: CONTACT_LOADED,
+    value: contact
+  };
+}
+*/
+
 export function loadComments() {
   return function (dispatch) {
     fetch("http://localhost:3101/comments")

@@ -3,4 +3,8 @@ export default {
   comments: [],
   products: [],
   vehicles: [],
+  contact: {},
+  comment: {},
+  product: {},
+  vehicle: {},
 };
