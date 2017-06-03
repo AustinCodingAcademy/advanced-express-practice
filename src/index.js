@@ -1,11 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import ContactModel from "./models/ContactModel";
-import ProductModel from "./models/ProductModel";
 import CommentsRouter from "./routers/CommentsRouter";
-// @TODO fix bug with VehicleModel
-// import VehicleModel from "./models/VehicleModel";
+import ContactsRouter from "./routers/ContactsRouter";
+import ProductsRouter from "./routers/ProductsRouter";
+// import VehicleRouter from "./routers/VehicleRouter";
 
 // this promise must be global so mongoose can use it with DB and in here
 mongoose.Promise = global.Promise;
@@ -19,13 +18,17 @@ db.once("open", () => {
 );
 });
 
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(bodyParser.json());
 app.use(CommentsRouter);
+app.use(ContactsRouter);
+app.use(ProductsRouter);
+// app.use(VehicleRouter);
+
 // error handler middleware
-app.use((err, request, response, next) => {
-  // request.specialMessage = "I am a special Error Message";
+app.use((err, request, response) => {
   console.log("error middleware is executed");
   // this must have a status to return in the response correctly
   return response.status(500).json({
@@ -33,248 +36,7 @@ app.use((err, request, response, next) => {
   });
 });
 
-const PORT = process.env.PORT || 3001;
+
 app.listen(PORT, () => {
   console.log(`Listening on port:${PORT}`);
 });
-
-const commentsPath = "/comments";
-const contactsPath = "/contacts";
-const productsPath = "/products";
-const vehiclesPath = "/vehicles";
-
-// GET INDIVIDUALS by ID  ************************************************
-
-app.get(contactsPath + "/:id", (request, response, next) => {
-  const query = request.params.id;
-
-  ContactModel.findById(query)
-    .then((data) => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-
-app.get(productsPath + "/:id", (request, response, next) => {
-  const query = request.params.id;
-
-  ProductModel.findById(query)
-    .then((data) => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-
-/*
-// @TODO fix bug with VehicleModel
-app.get(vehiclesPath + "/:id", (request, response, next) => {
-  const query = request.params.id;
-
-  VehicleModel.findById(query)
-    .then((data) => {
-      console.log("Vehicle DB individual was requested");
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-*/
-
-// GETS  ************************************************
-
-app.get(contactsPath, (request, response, next) => {
-  ContactModel.find({}).exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-
-app.get(productsPath, (request, response, next) => {
-  ProductModel.find({}).exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-
-// @TODO fix bug with VehicleModel
-// app.get(vehiclesPath, (request, response, next) => {
-//   VehicleModel.find({}).exec()
-//     .then(data => {
-//       console.log("Vehicle DB fetched");
-//       return response.data(data);
-//     })
-//     .catch(err => {
-//       return next(err);
-//     });
-// });
-
-
-// POSTS ************************************************
-
-app.post(contactsPath, (request, response, next) => {
-  const addedContact = new ContactModel(request.body);
-
-  addedContact.save()
-    .then(() => {
-      return response.json(addedContact);
-    })
-    .catch((err) => {
-      return next(err);
-    });
-});
-
-app.post(productsPath, (request, response, next) => {
-  const addedProduct = new ProductModel(request.body);
-
-  addedProduct.save()
-    .then(() => {
-      return response.json(addedProduct);
-    })
-    .catch((err) => {
-      return next(err);
-    });
-});
-
-// @TODO fix bug with VehicleModel
-// app.post(vehiclesPath, (request, response, next) => {
-//   const addedVehicle = new VModel(request.body);
-//
-//   vehicles.push(addedVehicle);
-//
-//   addedVehicle.save()
-//     .then(() => {
-//       console.log("New vehicle saved");
-//       return response.json(addedVehicle);
-//     })
-//     .catch((err) => {
-//       return next(err);
-//     });
-
-  // console.log("vehicles have a new vehicle");
-  // const newVehicle = {_id: vehicles.length + 1, ...request.body};
-  // vehicles.push(newVehicle);
-  // return response.json(newVehicle);
-// });
-
-// DELETES  ************************************************
-
-app.delete(contactsPath + "/:id", (request, response, next) => {
-  const query = request.params.id;
-
-  ContactModel.findByIdAndRemove(query).exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-
-app.delete(productsPath + "/:id", (request, response, next) => {
-  const query = request.params.id;
-
-  ProductModel.findByIdAndRemove(query).exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-
-/*
-@TODO fix bug in VehicleModel
-app.delete(vehiclesPath + "./:id", (request, response, next) => {
-  const query = request.params.id;
-
-  VehicleModel.findByIdAndRemove(query).exec()
-    .then(data => {
-      console.log("Vehicle ", query, "was deleted");
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-*/
-
-// UPDATES ************************************************
-
-app.put(contactsPath + "/:id", (request, response, next) => {
-  ContactModel.findById(request.params.id).exec()
-    .then(data => {
-      data.name = request.body.name || data.name;
-      data.occupation = request.body.occupation || data.occupation;
-      data.avatar = request.body.avatar || data.avatar;
-      return data.save();
-    })
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-
-app.put(productsPath + "/:id", (request, response, next) => {
-  const itemBody = request.body;
-  ProductModel.findById(request.params.id).exec()
-    .then(data => {
-      data.name = itemBody.name || data.name;
-      data.description = itemBody.description || data.description;
-      data.reviewNum = itemBody.reviewNum || data.reviewNum;
-      data.rating = itemBody.rating || data.rating;
-      data.imgUrl = itemBody.imgUrl || data.imgUrl;
-      data.price = itemBody.price || data.price;
-      data.category = itemBody.category || data.category;
-      // @TODO Would change the logic here so we can add review one at a time
-      // insted of having to send all of the each time.
-      data.reviews = itemBody.reviews || data.reviews;
-      return data.save();
-    })
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(err => {
-      return next(err);
-    });
-});
-/*
-@TODO fix bug in vehicle model
-app.put(vehiclesPath + "/:id", (request, response, next) => {
-  const itemBody = request.body;
-
-  VehicleModel.findById(request.params.id).exec()
-    .then(data => {
-      data.imgUrl = itemBody.imgUrl || data.imgUrl;
-      data.year = itemBody.year || data.year;
-      data.make = itemBody.make || data.make;
-      data.model = itemBody.model || data.model;
-      data.price = itemBody.price || data.price;
-      data.km = itemBody.km || data.km;
-      data.miles = itemBody.miles || data.miles;
-      data.fuel = itemBody.fuel || data.fuel;
-      data.city = itemBody.city || data.city;
-
-      console.log("Vehicle ", request.params.id, " was updated");
-      return data.save();
-    })
-      .then(data => {
-        return response.json(data);
-      })
-      .catch(err => {
-        return next(err);
-      });
-});
-*/
