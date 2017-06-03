@@ -1,10 +1,9 @@
 import express from "express";
-import comments from "./comments";
 import products from "./products";
 import vehicles from "./vehicles";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import Comment from "./models/Comment";
+import CommentsRouter from "./routes/CommentsRouter";
 import Product from "./models/Product";
 import Vehicle from "./models/Vehicle";
 import ContactsRouter from "./routes/ContactsRouter";
@@ -22,21 +21,12 @@ db.once("open", () => {
 const app = express();
 app.use(bodyParser.json());
 app.use(ContactsRouter);
+app.use(CommentsRouter);
 
 // GET REQUESTS FOR BASE ROUTES
 
 app.get("/vehicles", (request, response) => {
   Vehicle.find().exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(() => {
-      return response.json("Error");
-    });
-});
-
-app.get("/comments", (request, response) => {
-  Comment.find().exec()
     .then(data => {
       return response.json(data);
     })
@@ -64,13 +54,6 @@ app.get("/vehicles/:id", (request, response) => {
   return response.json(foundVehicle || null);
 });
 
-app.get("/comments/:id", (request, response) => {
-  const foundComment = comments.find((comment) => {
-    return String(comment.id) === request.params.id;
-  });
-  return response.json(foundComment || null);
-});
-
 app.get("/products/:id", (request, response) => {
   const foundProduct = products.find((product) => {
     return String(product.id) === request.params.id;
@@ -90,20 +73,6 @@ app.post("/vehicles", (request, response) => {
     })
     .catch(() => {
       console.log("Vehicle was NOT saved");
-      return response.json("Error");
-    });
-});
-
-app.post("/comments", (request, response) => {
-  const comment = new Comment(request.body);
-
-  comment.save()
-    .then(storedComment => {
-      console.log("Comment was saved");
-      return response.json(storedComment);
-    })
-    .catch(() => {
-      console.log("Comment was NOT saved");
       return response.json("Error");
     });
 });
