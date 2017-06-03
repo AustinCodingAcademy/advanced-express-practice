@@ -2,13 +2,12 @@ import express from "express";
 import comments from "./comments";
 import products from "./products";
 import vehicles from "./vehicles";
-import contacts from "./contacts";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import Comment from "./models/Comment";
-import Contact from "./models/Contact";
 import Product from "./models/Product";
 import Vehicle from "./models/Vehicle";
+import ContactsRouter from "./routes/ContactsRouter";
 
 // create DB connection
 
@@ -22,18 +21,9 @@ db.once("open", () => {
 
 const app = express();
 app.use(bodyParser.json());
+app.use(ContactsRouter);
 
 // GET REQUESTS FOR BASE ROUTES
-
-app.get("/contacts", (request, response) => {
-  Contact.find().exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(() => {
-      return response.json("Error");
-    });
-});
 
 app.get("/vehicles", (request, response) => {
   Vehicle.find().exec()
@@ -66,50 +56,29 @@ app.get("/products", (request, response) => {
 });
 
 // GET REQUESTS FOR SPECIFIC ITEM ROUTES
-//
-// app.get("/contacts/:id", (request, response) => {
-//   const foundContact = contacts.find((contact) => {
-//     return String(contact.id) === request.params.id;
-//   });
-//   return response.json(foundContact || null);
-// });
-//
-// app.get("/vehicles/:id", (request, response) => {
-//   const foundVehicle = vehicles.find((vehicle) => {
-//     return String(vehicle.id) === request.params.id;
-//   });
-//   return response.json(foundVehicle || null);
-// });
-//
-// app.get("/comments/:id", (request, response) => {
-//   const foundComment = comments.find((comment) => {
-//     return String(comment.id) === request.params.id;
-//   });
-//   return response.json(foundComment || null);
-// });
-//
-// app.get("/products/:id", (request, response) => {
-//   const foundProduct = products.find((product) => {
-//     return String(product.id) === request.params.id;
-//   });
-//   return response.json(foundProduct || null);
-// });
+
+app.get("/vehicles/:id", (request, response) => {
+  const foundVehicle = vehicles.find((vehicle) => {
+    return String(vehicle.id) === request.params.id;
+  });
+  return response.json(foundVehicle || null);
+});
+
+app.get("/comments/:id", (request, response) => {
+  const foundComment = comments.find((comment) => {
+    return String(comment.id) === request.params.id;
+  });
+  return response.json(foundComment || null);
+});
+
+app.get("/products/:id", (request, response) => {
+  const foundProduct = products.find((product) => {
+    return String(product.id) === request.params.id;
+  });
+  return response.json(foundProduct || null);
+});
 
 // POST REQUESTS FOR NEW ITEMS
-
-app.post("/contacts", (request, response) => {
-  const contact = new Contact(request.body);
-
-  contact.save()
-    .then(storedContact => {
-      console.log("Contact was saved");
-      return response.json(storedContact);
-    })
-    .catch(() => {
-      console.log("Contact was NOT saved");
-      return response.json("Error");
-    });
-});
 
 app.post("/vehicles", (request, response) => {
   const vehicle = new Vehicle(request.body);
