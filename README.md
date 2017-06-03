@@ -47,12 +47,12 @@ At this point, the web page should operate in the same manner as the redux fetch
 
 ### Reducers
 * create 4 more reducers for the state: vehicle, product, comment, contact
-* vehicle
+<!-- * vehicle
     * look for “GET_VEHICLE_DONE”
 * product
     * look for “GET_PRODUCT_DONE”
 * comment
-    * look for “GET_COMMENT_DONE”
+    * look for “GET_COMMENT_DONE” -->
 <!-- * contact
     * look for “GET_CONTACT_DONE” -->
 

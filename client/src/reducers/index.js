@@ -6,8 +6,22 @@ function comments(state = [], action) {
   }
   return state;
 }
+function comment(state = {}, action) {
+  if (action.type === "GET_COMMENT_DONE") {
+    console.log(action.value);
+    return action.value;
+  }
+  return state;
+}
 function products(state = [], action) {
   if (action.type === "PRODUCTS_LOADED") {
+    return action.value;
+  }
+  return state;
+}
+function product(state = {}, action) {
+  if (action.type === "GET_PRODUCT_DONE") {
+    console.log(action.value);
     return action.value;
   }
   return state;
@@ -18,15 +32,22 @@ function vehicles(state = [], action) {
   }
   return state;
 }
+function vehicle(state = {}, action) {
+  if (action.type === "GET_VEHICLE_DONE") {
+    console.log(action.value);
+    return action.value;
+  }
+  return state;
+}
 function contacts(state = [], action) {
   if (action.type === "CONTACTS_LOADED") {
     return action.value;
   }
   return state;
 }
-
 function contact(state = {}, action) {
   if (action.type === "GET_CONTACT_DONE") {
+    console.log(action.value);
     return action.value;
   }
   return state;
@@ -34,8 +55,11 @@ function contact(state = {}, action) {
 
 const rootReducer = combineReducers({
   comments,
+  comment,
   products,
+  product,
   vehicles,
+  vehicle,
   contacts,
   contact
 });
