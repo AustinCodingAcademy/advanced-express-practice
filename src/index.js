@@ -18,9 +18,7 @@ db.once("open", () => {
 );
 });
 
-const PORT = process.env.PORT || 3001;
 const app = express();
-
 app.use(bodyParser.json());
 app.use(CommentsRouter);
 app.use(ContactsRouter);
@@ -36,7 +34,7 @@ app.use((err, request, response) => {
   });
 });
 
-
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Listening on port:${PORT}`);
 });
