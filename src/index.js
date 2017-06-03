@@ -1,12 +1,10 @@
 import express from "express";
-import products from "./products";
-import vehicles from "./vehicles";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import CommentsRouter from "./routes/CommentsRouter";
-import Product from "./models/Product";
-import Vehicle from "./models/Vehicle";
 import ContactsRouter from "./routes/ContactsRouter";
+import CommentsRouter from "./routes/CommentsRouter";
+import VehiclesRouter from "./routes/VehiclesRouter";
+import ProductsRouter from "./routes/ProductsRouter";
 
 // create DB connection
 
@@ -19,77 +17,12 @@ db.once("open", () => {
 });
 
 const app = express();
+
 app.use(bodyParser.json());
 app.use(ContactsRouter);
 app.use(CommentsRouter);
-
-// GET REQUESTS FOR BASE ROUTES
-
-app.get("/vehicles", (request, response) => {
-  Vehicle.find().exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(() => {
-      return response.json("Error");
-    });
-});
-
-app.get("/products", (request, response) => {
-  Product.find().exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(() => {
-      return response.json("Error");
-    });
-});
-
-// GET REQUESTS FOR SPECIFIC ITEM ROUTES
-
-app.get("/vehicles/:id", (request, response) => {
-  const foundVehicle = vehicles.find((vehicle) => {
-    return String(vehicle.id) === request.params.id;
-  });
-  return response.json(foundVehicle || null);
-});
-
-app.get("/products/:id", (request, response) => {
-  const foundProduct = products.find((product) => {
-    return String(product.id) === request.params.id;
-  });
-  return response.json(foundProduct || null);
-});
-
-// POST REQUESTS FOR NEW ITEMS
-
-app.post("/vehicles", (request, response) => {
-  const vehicle = new Vehicle(request.body);
-
-  vehicle.save()
-    .then(storedVehicle => {
-      console.log("Vehicle was saved");
-      return response.json(storedVehicle);
-    })
-    .catch(() => {
-      console.log("Vehicle was NOT saved");
-      return response.json("Error");
-    });
-});
-
-app.post("/products", (request, response) => {
-  const product = new Product(request.body);
-
-  product.save()
-    .then(storedProduct => {
-      console.log("Product was saved");
-      return response.json(storedProduct);
-    })
-    .catch(() => {
-      console.log("Product was NOT saved");
-      return response.json("Error");
-    });
-});
+app.use(VehiclesRouter);
+app.use(ProductsRouter);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
