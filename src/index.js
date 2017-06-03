@@ -28,15 +28,16 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use((request, response, next) => {
-  request.specialMessage = "I am a special Error Message";
+app.use((err, request, response, next) => {
+  // request.specialMessage = "I am a special Error Message";
+  console.log("middleware is executed");
   next();
 });
 
-app.get("/", (request, response, next) => {
-  const message = request.specialMessage;
-  response.send(message);
-});
+// app.get("/", (request, response, next) => {
+//   const message = request.specialMessage;
+//   response.send(message);
+// });
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
