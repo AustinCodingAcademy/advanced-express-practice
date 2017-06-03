@@ -4,9 +4,9 @@ import AppContainer from "./AppContainer";
 import "./index.css";
 import store from "./store";
 import {Provider} from "react-redux";
-// import {getComment} from "./actions";
+// import {getProduct} from "./actions";
 //
-// store.dispatch(getComment("592e317adb8c981af00b427b"));
+// store.dispatch(getProduct("592e32e2e8136d1c301ac479"));
 
 ReactDOM.render(
   <Provider store={store}><AppContainer /></Provider>,

@@ -129,6 +129,28 @@ function productsLoaded(products) {
     value: products
   };
 }
+
+export function getProduct(id) {
+  return function (dispatch) {
+    fetch("/products/" + id)
+      .then((response) => {
+        return response.json();
+      })
+      .then((product) => {
+        dispatch(getProductDone(product));
+      })
+      .catch((err) => {
+        return console.log(err);
+      });
+  };
+}
+function getProductDone(product) {
+  return {
+    type: "GET_PRODUCT_DONE",
+    value: product
+  };
+}
+
 export function createProduct(product) {
   return function (dispatch) {
     fetch("/products", {
