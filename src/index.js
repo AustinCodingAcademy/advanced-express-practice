@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import CommentsRouter from "./routers/CommentsRouter";
 import ContactsRouter from "./routers/ContactsRouter";
 import ProductsRouter from "./routers/ProductsRouter";
-// import VehicleRouter from "./routers/VehicleRouter";
+import VehicleRouter from "./routers/VehicleRouter";
 
 // this promise must be global so mongoose can use it with DB and in here
 mongoose.Promise = global.Promise;
@@ -23,11 +23,12 @@ app.use(bodyParser.json());
 app.use(CommentsRouter);
 app.use(ContactsRouter);
 app.use(ProductsRouter);
-// app.use(VehicleRouter);
+app.use(VehicleRouter);
 
 // error handler middleware
 // need to ask Zac/Ivo about error handling, import next for errors??
-app.use((err, request, response) => {
+// eslint-disable-next-line
+app.use((err, request, response, next) => {
   console.log("error middleware is executed");
   // this must have a status to return in the response correctly
   return response.status(500).json({

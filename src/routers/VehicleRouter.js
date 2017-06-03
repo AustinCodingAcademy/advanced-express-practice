@@ -1,4 +1,4 @@
-/*  import express from "express";
+import express from "express";
 // @TODO fix bug with VehicleModel
 import VehicleController from "../controllers/VehiclesController";
 
@@ -21,5 +21,3 @@ router.put(vehiclesPath + "/:id", VehicleController.update);
 router.delete(vehiclesPath + "./:id", VehicleController.delete);
 
 export default router;
-
-*/

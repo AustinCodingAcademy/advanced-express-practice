@@ -1,4 +1,3 @@
-/*
 import VehicleModel from "../models/VehicleModel";
 
 const VehicleController = {
@@ -19,13 +18,13 @@ const VehicleController = {
     VehicleModel.find({}).exec()
       .then(data => {
         console.log("Vehicle DB fetched");
-        return response.data(data);
+        return response.json(data);
       })
       .catch(err => {
         return next(err);
       });
   },
-
+  
   listOne: (request, response, next) => {
     const query = request.params.id;
 
@@ -80,4 +79,3 @@ const VehicleController = {
 };
 
 export default VehicleController;
-*/

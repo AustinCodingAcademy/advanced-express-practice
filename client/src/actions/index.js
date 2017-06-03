@@ -1,6 +1,6 @@
 export function loadContacts() {
   return function (dispatch) {
-    fetch("..../src/localapi/contacts")
+    fetch("http://localhost:3101/contacts")
     .then( (response) => {
       return response.json();
     }).then((contacts) => {
@@ -18,7 +18,7 @@ function contactsLoaded(contacts) {
 
 export function loadVehicles() {
   return function (dispatch) {
-    fetch("/localapi/vehicles")
+    fetch("http://localhost:3101/vehicles")
     .then( (response) => {
       return response.json();
     }).then((vehicles) => {
@@ -34,7 +34,7 @@ function vehiclesLoaded(vehicles) {
 }
 export function loadComments() {
   return function (dispatch) {
-    fetch("/localapi/comments")
+    fetch("http://localhost:3101/comments")
     .then( (response) => {
       return response.json();
     }).then((comments) => {
@@ -50,7 +50,7 @@ function commentsLoaded(comments) {
 }
 export function loadProducts() {
   return function (dispatch) {
-    fetch("/localapi/products")
+    fetch("http://localhost:3101/products")
     .then( (response) => {
       return response.json();
     }).then((products) => {
@@ -66,7 +66,7 @@ function productsLoaded(products) {
 }
 export function createProduct(product) {
   return function (dispatch) {
-    fetch("/localapi/products", {
+    fetch("http://localhost:3101/product", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(product)
@@ -75,7 +75,7 @@ export function createProduct(product) {
 }
 export function createContact(c) {
   return function (dispatch) {
-    fetch("/localapi/contacts", {
+    fetch("http://localhost:3101/contacts", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(c)
@@ -84,7 +84,7 @@ export function createContact(c) {
 }
 export function createVehicle(v) {
   return function (dispatch) {
-    fetch("/localapi/vehicles", {
+    fetch("http://localhost:3101/vehicles", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(v)
@@ -93,7 +93,7 @@ export function createVehicle(v) {
 }
 export function createComment(v) {
   return function (dispatch) {
-    fetch("/localapi/comments", {
+    fetch("http://localhost:3101/comments", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(v)
