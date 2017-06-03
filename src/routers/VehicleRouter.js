@@ -2,7 +2,6 @@
 // @TODO fix bug with VehicleModel
 import VehicleController from "../controllers/VehiclesController";
 
-
 const router = express.Router();
 const vehiclesPath = "/vehicles";
 

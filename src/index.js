@@ -26,6 +26,7 @@ app.use(ProductsRouter);
 // app.use(VehicleRouter);
 
 // error handler middleware
+// need to ask Zac/Ivo about error handling, import next for errors??
 app.use((err, request, response) => {
   console.log("error middleware is executed");
   // this must have a status to return in the response correctly
