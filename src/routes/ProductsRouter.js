@@ -1,40 +1,12 @@
 import express from "express";
-import Product from "../models/Product";
+import ProductController from "../controllers/ProductController";
 
 const router = express.Router();
 
-router.get("/products", (request, response) => {
-  Product.find().exec()
-    .then(data => {
-      return response.json(data);
-    })
-    .catch(() => {
-      return response.json("Error");
-    });
-});
+router.get("/products", ProductController.list);
 
-router.get("/products/:id", (request, response, next) => {
-  Product.findById(request.params.id).exec()
-    .then((product) => {
-      return response.json(product);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+router.get("/products/:id", ProductController.show);
 
-router.post("/products", (request, response) => {
-  const product = new Product(request.body);
-
-  product.save()
-    .then(storedProduct => {
-      console.log("Product was saved");
-      return response.json(storedProduct);
-    })
-    .catch(() => {
-      console.log("Product was NOT saved");
-      return response.json("Error");
-    });
-});
+router.post("/products", ProductController.create);
 
 export default router;
