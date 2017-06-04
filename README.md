@@ -106,8 +106,8 @@ At this point, the web page should operate in the same manner as the redux fetch
     * / -> show the Main component -->
 
 #### Link
-* Look at CollapsableMapper.js
-* Change the <a> tag to <Link>
+<!-- * Look at CollapsableMapper.js
+* Change the <a> tag to <Link> -->
 
 
 ### Points
