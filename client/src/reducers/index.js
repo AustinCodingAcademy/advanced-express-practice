@@ -1,5 +1,9 @@
 import {combineReducers} from "redux";
 
+
+// REDUCER HAVE TO BE THE SAME AS STATE.JS
+
+
 function comments(state = [], action) {
   if (action.type === "COMMENTS_LOADED") {
     return action.value;

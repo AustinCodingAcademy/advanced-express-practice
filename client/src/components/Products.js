@@ -1,9 +1,27 @@
-import React from "react";
+import React, {Component, PropTypes} from "react";
 import CollapsableMapper from "./CollapsableMapper";
 
-function Products(props) {
-  return (
-    <CollapsableMapper data={props.products} path="product" field="name" />
-  );
+class Products extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.props.loadProducts();
+  }
+  render() {
+    return (
+      <CollapsableMapper
+        data={this.props.products}
+        path="product"
+        field="name"
+      />
+    );
+  }
 }
+
+Products.propTypes = {
+  products: PropTypes.array,
+  loadProducts: PropTypes.func
+};
 export default Products;
