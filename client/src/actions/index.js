@@ -15,8 +15,28 @@ function contactsLoaded(contacts) {
   };
 }
 
+export function getContact(id){
+  return function (dispatch){
+    fetch("/contacts/" + id)
+    .then((response)=>{
+       return response.json();
+    }).then((contact)=>{
+      dispatch(getContactDone(contact));
+    });
+  };
+}
+function getContactDone(contact){
+  return{
+    type:"GET_CONTACT_DONE",
+    value: contact
+  };
+}
+
 export function loadVehicles() {
   return function (dispatch) {
+  dispatch({
+     type: "GET_VEHICLE"
+    });
     fetch("/vehicles")
     .then( (response) => {
       return response.json();
@@ -31,6 +51,27 @@ function vehiclesLoaded(vehicles) {
     value: vehicles
   };
 }
+
+export function getVehicle(id){
+  return function (dispatch){
+    fetch("/vehicles/"+id)
+    .then((response)=>{
+      console.log(id);
+      return response.json()
+    }).then((vehicle)=>{
+      dispatch(getVehicleDone(vehicle));
+    });
+  };
+}
+function getVehicleDone(vehicle){
+  console.log("vehicle");
+  return{
+
+    type:"GET_VEHICLE_DONE",
+    value: vehicle
+  };
+}
+
 export function loadComments() {
   return function (dispatch) {
     fetch("/comments")
@@ -47,6 +88,24 @@ function commentsLoaded(comments) {
     value: comments
   };
 }
+
+export function getComment(id){
+  return function (dispatch){
+    fetch("/comments/" + id)
+    .then((response)=>{
+      return response.json();
+    }).then((comment)=>{
+      dispatch(getCommentDone(comment));
+    });
+  };
+}
+function getCommentDone(comment){
+  return{
+    type:"GET_COMMENT_DONE",
+    value: comment
+  };
+}
+
 export function loadProducts() {
   return function (dispatch) {
     fetch("/products")
@@ -63,6 +122,24 @@ function productsLoaded(products) {
     value: products
   };
 }
+
+export function getProduct(id){
+  return function (dispatch){
+    fetch("/products/" + id)
+    .then((response)=>{
+      return response.json();
+    }).then((product)=>{
+      dispatch(getProductDone(product));
+    });
+  };
+}
+function getProductDone(product){
+  return{
+    type:"GET_PRODUCT_DONE",
+    value: product
+  };
+}
+
 export function createProduct(product) {
   return function (dispatch) {
     fetch("/products", {
