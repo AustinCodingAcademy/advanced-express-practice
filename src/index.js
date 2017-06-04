@@ -4,13 +4,25 @@ import products from "./products";
 import vehicles from "./vehicles";
 import contacts from "./contacts";
 import bodyParser from "body-parser";
+import mongoose from "mongoose";
+
+// Mongoose Databse Connection Added
+
+mongoose.connect("mongodb://localhost/advanced-express-practice");
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("MongoDB connected");
+});
+
 
 const app = express();
+app.use(bodyParser.json());
+
 
 // * Add .get() routes for /contacts, /vehicles, /comments, /products
 // * response.json() the appropriate array
-
-app.use(bodyParser.json());
 
 app.get("/contacts", (request, response) => {
   return response.json(contacts);
