@@ -7,6 +7,7 @@ class Vehicle extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    console.log(this.props)
     this.props.getVehicle(id);
   }
 
