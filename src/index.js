@@ -1,13 +1,26 @@
 import express from "express";
 import comments from "./comments";
 import products from "./products";
-import vehicle from "./vehicles";
 import contacts from "./contacts";
 import bodyParser from "body-parser";
+import vehicleRouter from "./routes/vehiclesRoute";
+import mongoose from "mongoose";
+
 
 const app = express();
 
+mongoose.connect("mongodb://localhost/ExpressPracticeDB");
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  console.log("We are Connected");
+});
+
+
 app.use(bodyParser.json());
+
+app.use(vehicleRouter);
 
 
 // Comments section
@@ -54,18 +67,20 @@ app.post("/products", (request, response) => {
 });
 
 // Vehicle section
-app.get("/vehicles", (request, response) => {
-  response.json(vehicle);
-});
-
-app.post("/vehicles", (request, response) => {
-  const addUserVehicle = {
-    id: vehicle.length + 1,
-    ...request.body
-  };
-  vehicle.push(request.body);
-  return response.json(addUserVehicle);
-});
+// app.get("/vehicles", (request, response) => {
+//   response.json(vehicle);
+// });
+//
+//
+//
+// app.post("/vehicles", (request, response) => {
+//   const addUserVehicle = {
+//     id: vehicle.length + 1,
+//     ...request.body
+//   };
+//   vehicle.push(request.body);
+//   return response.json(addUserVehicle);
+// });
 
 // Contacts section
 app.get("/contacts", (request, response) => {
@@ -93,7 +108,7 @@ app.get("/*", (request, response) => {
 const port = process.env.PORT || 3001;
 app.listen(port, (err) => {
   if (err) {
-    console.log("There was an error loading")
+    console.log("There was an error loading");
   }
   console.log(`Listening on port:${port}`);
 });
