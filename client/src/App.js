@@ -4,6 +4,7 @@ import Main from "./components/Main";
 import VehicleContainer from "./containers/VehicleContainer";
 import ProductContainer from "./containers/ProductContainer";
 import CommentContainer from "./containers/CommentContainer";
+import ContactContainer from "./containers/ContactContainer";
 import {
   BrowserRouter as Router,
   Route
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/vehicle/:id" component={VehicleContainer} />
           <Route path="/product/:id" component={ProductContainer} />
           <Route path="/comment/:id" component={CommentContainer} />
+          <Route path="/contact/:id" component={ContactContainer} />
         </div>
       </Router>
     );

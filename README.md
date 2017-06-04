@@ -79,31 +79,31 @@ At this point, the web page should operate in the same manner as the redux fetch
 
 
 ### Components
-* Create class components to show the details of each Type in our system
+<!-- * Create class components to show the details of each Type in our system
 * Vehicle.js, Product.js, Contact.js, Comment.js
 * Use the instructions from Containers to decide what props to use
 * You decide what to show in the detail (HTML wise)
 * In componentDidMount
     * Extract the path parameter id
     * call the appropriate get action to get one thing
-    * for Vehicle.js you would call getVehicle(id)
+    * for Vehicle.js you would call getVehicle(id) -->
 
 ### Containers
-* Create containers for Vehicle, Product, Contact, Comment
+<!-- * Create containers for Vehicle, Product, Contact, Comment
 * Implement mapStateToProps
     * For Vehicle.js, map a prop called vehicle to the state.vehicle
     * What should the state be for Product.js, Contact.js and Comment.js
 * Implement mapDispatchToProps
     * For Vehicle.js map a prop called getVehicle to the action getVehicle
-    * What should you do for Product.js, Contact.js and Comment.js
+    * What should you do for Product.js, Contact.js and Comment.js -->
 
 ### React Router
-* Use react-router-dom
+<!-- * Use react-router-dom
 * Import BrowserRouter, Switch and Route into App.js
 * Create routes for each detail component
     * /vehicle/:id -> Vehicle
     * …etc
-    * / -> show the Main component
+    * / -> show the Main component -->
 
 #### Link
 * Look at CollapsableMapper.js
