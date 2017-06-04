@@ -10,7 +10,7 @@ const vehicleSchema = mongoose.Schema({
   miles: Number,
   fuel: String,
   city: String,
-  isNew: Boolean
+  newVehicle: Boolean
 });
 
 export default mongoose.model("Vehicle", vehicleSchema);
