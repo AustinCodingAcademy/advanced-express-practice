@@ -1,11 +1,24 @@
 import React from "react";
 
 function Vehicle(props) {
-  const content = props.match.params.text;
-  console.log("from Vehicle Component", content);
+  const vehicle = props.resultData;
+  console.log("from Vehicle Component", props.resultData);
+  if (!vehicle) {
+    return (
+      <div>
+        <h4>Vehicle not found</h4>
+      </div>
+    );
+  }
   return (
     <div>
-      {content}
+      <h4>{vehicle.make}</h4>
+      <ul>
+        <li>{vehicle.model}</li>
+        <li>{vehicle.year}</li>
+        <li>{vehicle.miles}</li>
+        <li>{vehicle.price}</li>
+      </ul>
     </div>
   );
 }
