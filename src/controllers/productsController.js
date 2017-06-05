@@ -32,7 +32,7 @@ productController.create = (request, response, next) => {
   .catch((err) => {
     return next(err);
   });
-  return response.json(product);
+  //return response.json(product);
 };
 
 productController.show = (request, response, next) =>

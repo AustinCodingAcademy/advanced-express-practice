@@ -12,6 +12,7 @@ class App extends Component {
     this.props.loadContacts();
     this.props.loadVehicles();
     this.props.loadProducts();
+    
   }
   render() {
     return (
@@ -22,5 +23,3 @@ class App extends Component {
   }
 }
 export default (App);
-
-

@@ -32,7 +32,7 @@ commentController.create = (request, response, next) => {
   .catch((err) => {
     return next(err);
   });
-  return response.json(comment);
+  //return response.json(comment);
 };
 
 commentController.show = (request, response, next) => {

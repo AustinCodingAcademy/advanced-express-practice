@@ -32,7 +32,7 @@ vehicleController.create = (request, response, next) => {
   .catch((err) => {
     return next(err);
   });
-  return response.json(vehicle);
+  //return response.json(vehicle);
 };
 
 vehicleController.show = (request, response, next) => {

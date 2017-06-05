@@ -32,7 +32,7 @@ contactsController.create = (request, response, next) => {
   .catch((err) => {
     return next(err);
   });
-  return response.json(contacts);
+  //return response.json(contacts);
 };
 
 contactsController.show = (request, response, next) => {
