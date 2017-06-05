@@ -31,11 +31,11 @@ At this point, the web page should operate in the same manner as the redux fetch
 * Import and use the Routers in index.js
 
 # Part 3 - Controllers
-* Create controller files 
+* Create controller files
 * Import the arrays into the controller
 * Take the code from the routes and put it into the controller
 * create functions for list, show and create
-* Import and use the controller functions in the appropiate Router
+* Import and use the controller functions in the appropriate Router
 
 # Part 4 - Database
 * In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
@@ -60,7 +60,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * look for “GET_COMMENT_DONE”
 * contact
     * look for “GET_CONTACT_DONE”
-* 
+*
 
 ### Actions
 * Create actions in actions/index.js
@@ -73,7 +73,7 @@ At this point, the web page should operate in the same manner as the redux fetch
         * fetch(“/comments/“ + id)
     * getContact(id)
         * fetch(“/contacts/“ + id)
-* Create actions to handle the data 
+* Create actions to handle the data
     * getProductDone(product)
         * GET_PRODUCT_DONE
     * getVehicleDone(vehicle)
@@ -104,7 +104,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * What should you do for Product.js, Contact.js and Comment.js
 
 ### React Router
-* Use react-router-dom 
+* Use react-router-dom
 * Import BrowserRouter, Switch and Route into App.js
 * Create routes for each detail container component
     * /vehicle/:id -> Vehicle
