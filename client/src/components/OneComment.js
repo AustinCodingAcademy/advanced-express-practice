@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function OneComment(props) {
   const comment = props.resultData;
@@ -16,5 +17,9 @@ function OneComment(props) {
     </div>
   );
 }
+
+OneComment.propTypes = {
+  resultData: PropTypes.object
+};
 
 export default OneComment;

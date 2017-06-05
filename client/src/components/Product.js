@@ -2,7 +2,6 @@ import React from "react";
 
 function Product(props) {
   const product = props.resultData;
-  console.log("this is the PRODUCT found", product);
   if (!product) {
     return (
       <div>

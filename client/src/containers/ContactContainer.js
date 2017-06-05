@@ -2,8 +2,6 @@ import {connect} from "react-redux";
 import Contact from "../components/Contact";
 
 function mapStateToProps(state, ownProps) {
-  console.log("State from Contact Container", state);
-
   const idOfData = ownProps.match.params._id;
   const foundData = state.contacts.filter((data) => {
     return String(data._id) === idOfData;

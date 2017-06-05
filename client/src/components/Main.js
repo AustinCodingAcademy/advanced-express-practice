@@ -12,7 +12,6 @@ import ProductContainer from "../containers/ProductContainer";
 import {
   BrowserRouter as Router,
   Route,
-  /* Switch*/
 } from "react-router-dom";
 
 function Main() {

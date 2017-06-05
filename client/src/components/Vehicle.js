@@ -2,7 +2,6 @@ import React from "react";
 
 function Vehicle(props) {
   const vehicle = props.resultData;
-  console.log("from Vehicle Component", props.resultData);
   if (!vehicle) {
     return (
       <div>

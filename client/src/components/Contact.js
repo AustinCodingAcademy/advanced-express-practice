@@ -1,9 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Contact(props) {
-  const content = props.match.params.text;
   const contact = props.resultData;
-  console.log("from Contact Component", content);
   if (!contact) {
     return (
       <div>
@@ -18,5 +17,9 @@ function Contact(props) {
     </div>
   );
 }
+
+Contact.propTypes = {
+  resultData: PropTypes.object
+};
 
 export default Contact;
