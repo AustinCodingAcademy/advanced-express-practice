@@ -3,6 +3,13 @@ import React from "react";
 function Product(props) {
   const product = props.resultData;
   console.log("this is the PRODUCT found", product);
+  if (!product) {
+    return (
+      <div>
+        <h4>Product is not found</h4>
+      </div>
+    );
+  }
   return (
     <div>
       <h3>{product.name}</h3>

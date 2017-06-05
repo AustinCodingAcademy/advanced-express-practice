@@ -4,7 +4,6 @@ import Product from "../components/Product";
 function mapStateToProps(state, ownProps) {
   console.log("ownProps from PRODUCT Container", ownProps);
   console.log("state", state);
-
   const idOfData = ownProps.match.params._id;
   const foundData = state.products.filter((data) => {
     return String(data._id) === idOfData;

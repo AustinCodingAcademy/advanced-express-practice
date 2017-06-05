@@ -2,7 +2,6 @@ import React from "react";
 
 function OneComment(props) {
   const comment = props.resultData;
-  console.log("this is the comment found", comment);
   if (!comment) {
     return (
       <div>

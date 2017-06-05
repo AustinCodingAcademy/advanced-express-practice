@@ -5,7 +5,7 @@ import VehiclesContainer from "../containers/VehiclesContainer";
 import CommentsContainer from "../containers/CommentsContainer";
 import CreateThingsContainer from "../containers/CreateThingsContainer";
 import OneCommentContainer from "../containers/OneCommentContainer";
-import Contact from "./Contact";
+import ContactContainer from "../containers/ContactContainer";
 import Vehicle from "./Vehicle";
 import ProductContainer from "../containers/ProductContainer";
 
@@ -24,7 +24,7 @@ function Main() {
           <Route path="/comment/:_id" component={OneCommentContainer} />
           <CommentsContainer />
           <h1>Contacts</h1>
-          <Route path="/contact/:_id" component={Contact} />
+          <Route path="/contact/:_id" component={ContactContainer} />
           <ContactsContainer />
           <h1>Vehicles</h1>
           <Route path="/vehicle/:_id" component={Vehicle} />
