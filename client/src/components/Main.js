@@ -4,7 +4,7 @@ import ProductsContainer from "../containers/ProductsContainer";
 import VehiclesContainer from "../containers/VehiclesContainer";
 import CommentsContainer from "../containers/CommentsContainer";
 import CreateThingsContainer from "../containers/CreateThingsContainer";
-import OneComment from "./OneComment";
+import OneCommentContainer from "../containers/OneCommentContainer";
 import Contact from "./Contact";
 import Vehicle from "./Vehicle";
 import Product from "./Product";
@@ -21,16 +21,16 @@ function Main() {
       <div>
         <div style={{float: "left", width: "49%"}}>
           <h1>Comments</h1>
-          <Route path="/comments/:text" component={OneComment} />
+          <Route path="/comment/:_id" component={OneCommentContainer} />
           <CommentsContainer />
           <h1>Contacts</h1>
-          <Route path="/contacts/:text" component={Contact} />
+          <Route path="/contact/:_id" component={Contact} />
           <ContactsContainer />
           <h1>Vehicles</h1>
-          <Route path="/vehicles/:text" component={Vehicle} />
+          <Route path="/vehicle/:_id" component={Vehicle} />
           <VehiclesContainer />
           <h1>Products</h1>
-          <Route path="/products/:text" component={Product} />
+          <Route path="/product/:_id" component={Product} />
           <ProductsContainer />
         </div>
         <div style={{float: "left", width: "49%"}}>
