@@ -99,3 +99,23 @@ export function createComment(v) {
     }).then(() => dispatch(loadComments()));
   };
 }
+
+// Plugging in ids Product
+
+export function getProduct(id) {
+  console.log("is this thing on?");
+  return function (dispatch) {
+    fetch(`/products/${id}`)
+    .then( (response) => {
+      return response.json();
+    }).then((product) => {
+      dispatch(getProductsDone(product));
+    });
+  };
+}
+function getProductsDone(products) {
+  return {
+    type: "GET_PRODUCT_DONE",
+    value: products
+  };
+}

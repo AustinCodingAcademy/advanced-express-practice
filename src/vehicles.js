@@ -239,4 +239,3 @@ export default [{
     "city": "Santa Rosa",
     "isNew": true
   }];
-  
