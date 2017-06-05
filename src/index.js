@@ -1,7 +1,7 @@
 import express from "express";
 import products from "./products";
-import contacts from "./contacts";
 import bodyParser from "body-parser";
+import contactsRouter from "./routes/contactsRoute";
 import commentRouter from "./routes/commentsRoute";
 import vehicleRouter from "./routes/vehiclesRoute";
 import mongoose from "mongoose";
@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 
 app.use(vehicleRouter);
 app.use(commentRouter);
+app.use(contactsRouter);
 
 
 // Comments section
@@ -84,18 +85,18 @@ app.post("/products", (request, response) => {
 // });
 
 // Contacts section
-app.get("/contacts", (request, response) => {
-  response.json(contacts);
-});
-
-app.post("/contacts", (request, response) => {
-  const addUserContacts = {
-    id: contacts.length + 1,
-    ...request.body
-  };
-  contacts.push(request.body);
-  return response.json(addUserContacts);
-});
+// app.get("/contacts", (request, response) => {
+//   response.json(contacts);
+// });
+//
+// app.post("/contacts", (request, response) => {
+//   const addUserContacts = {
+//     id: contacts.length + 1,
+//     ...request.body
+//   };
+//   contacts.push(request.body);
+//   return response.json(addUserContacts);
+// });
 
 
 
