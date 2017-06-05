@@ -1,6 +1,7 @@
 import express from "express";
 import products from "./products";
 import bodyParser from "body-parser";
+import productsRouter from "./routes/productsRoute"
 import contactsRouter from "./routes/contactsRoute";
 import commentRouter from "./routes/commentsRoute";
 import vehicleRouter from "./routes/vehiclesRoute";
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 app.use(vehicleRouter);
 app.use(commentRouter);
 app.use(contactsRouter);
+app.use(productsRouter)
 
 
 // Comments section
@@ -55,18 +57,18 @@ app.use(contactsRouter);
 // });
 
 // Products section
-app.get("/products", (request, response) => {
-  response.json(products);
-});
-
-app.post("/products", (request, response) => {
-  const addUserProduct = {
-    id: products.length + 1,
-    ...request.body
-  };
-  products.push(request.body);
-  return response.json(addUserProduct);
-});
+// app.get("/products", (request, response) => {
+//   response.json(products);
+// });
+//
+// app.post("/products", (request, response) => {
+//   const addUserProduct = {
+//     id: products.length + 1,
+//     ...request.body
+//   };
+//   products.push(request.body);
+//   return response.json(addUserProduct);
+// });
 
 // Vehicle section
 // app.get("/vehicles", (request, response) => {
