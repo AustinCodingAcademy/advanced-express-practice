@@ -7,7 +7,7 @@ import CreateThingsContainer from "../containers/CreateThingsContainer";
 import OneCommentContainer from "../containers/OneCommentContainer";
 import Contact from "./Contact";
 import Vehicle from "./Vehicle";
-import Product from "./Product";
+import ProductContainer from "../containers/ProductContainer";
 
 import {
   BrowserRouter as Router,
@@ -30,7 +30,7 @@ function Main() {
           <Route path="/vehicle/:_id" component={Vehicle} />
           <VehiclesContainer />
           <h1>Products</h1>
-          <Route path="/product/:_id" component={Product} />
+          <Route path="/product/:_id" component={ProductContainer} />
           <ProductsContainer />
         </div>
         <div style={{float: "left", width: "49%"}}>
