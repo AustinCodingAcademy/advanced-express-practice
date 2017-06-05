@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
+
+// importComment from "./Comment";
+//  <Comment />
 
 class CollapsableMapper extends Component {
   constructor() {
     super();
-    this.state = {visible: true};
+    this.state = {
+      visible: true};
   }
   render() {
     let buttonText = "Hide";
@@ -13,11 +18,12 @@ class CollapsableMapper extends Component {
       userDivs = this.props.data.map((d,i) => {
         return (
           <div key={i}>
+            {d[this.props.path]}
             {d[this.props.field]}
             {d[this.props.field1]}
             {d[this.props.field2]}
             {d[this.props.field3]}
-            <a href={"/" + this.props.path + "/" + d._id}> View </a>
+            <Link to={"/" + this.props.path + "/" + d._id}> View </Link>
           </div>
         );
       });

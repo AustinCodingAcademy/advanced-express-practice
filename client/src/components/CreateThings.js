@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class CreateThings extends React.Component {
   constructor() {
@@ -141,10 +142,17 @@ class CreateThings extends React.Component {
             </div>
             <button>Create</button>
           </form>
-        </div>        
+        </div>
       </div>
-      
+
     );
   }
 }
+
+CreateThings.propTypes = {
+  createComment: PropTypes.func,
+  createContact: PropTypes.func,
+  createProduct: PropTypes.func,
+  createVehicle: PropTypes.func
+};
 export default CreateThings;

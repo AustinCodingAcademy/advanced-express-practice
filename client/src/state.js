@@ -3,8 +3,8 @@ export default {
   comments: [],
   products: [],
   vehicles: [],
-  vehicle: {},
+  contact: {},
   comment: {},
   product: {},
-  contact: {}
+  vehicle: {},
 };
