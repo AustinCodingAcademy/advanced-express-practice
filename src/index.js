@@ -1,8 +1,8 @@
 import express from "express";
-import comments from "./comments";
 import products from "./products";
 import contacts from "./contacts";
 import bodyParser from "body-parser";
+import commentRouter from "./routes/commentsRoute";
 import vehicleRouter from "./routes/vehiclesRoute";
 import mongoose from "mongoose";
 
@@ -21,28 +21,29 @@ db.once("open", function () {
 app.use(bodyParser.json());
 
 app.use(vehicleRouter);
+app.use(commentRouter);
 
 
 // Comments section
-app.get("/comments", (request, response) => {
-  response.json(comments);
-});
-
-app.get("/comments/:id", (request, response) => {
-  const userComments = comments.find((comment) => {
-    return String(comment.id === request.params.id);
-  });
-  return response.json(userComments);
-});
-
-app.post("/comments", (request, response) => {
-  const addUserComment = {
-    id: comments.length + 1,
-    ...request.body
-  };
-  comments.push(request.body);
-  return response.json(addUserComment);
-});
+// app.get("/comments", (request, response) => {
+//   response.json(comments);
+// });
+//
+// app.get("/comments/:id", (request, response) => {
+//   const userComments = comments.find((comment) => {
+//     return String(comment.id === request.params.id);
+//   });
+//   return response.json(userComments);
+// });
+//
+// app.post("/comments", (request, response) => {
+//   const addUserComment = {
+//     id: comments.length + 1,
+//     ...request.body
+//   };
+//   comments.push(request.body);
+//   return response.json(addUserComment);
+// });
 
 // app.delete("/comments", (request, response) => {
 //   const deleteUserComment = {
