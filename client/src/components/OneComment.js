@@ -23,7 +23,7 @@ import React from "react";
 //
 // }
 
-function Comment(props) {
+function OneComment(props) {
   const content = props.match.params.text;
   console.log("from One Comment", content);
   return (
@@ -33,7 +33,7 @@ function Comment(props) {
   );
 }
 
-export default Comment;
+export default OneComment;
 
 /*
 create this class component and pass to it props from a container or from props
