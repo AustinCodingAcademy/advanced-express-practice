@@ -3,6 +3,13 @@ export const VEHICLE_LOADED_DONE = "VEHICLE_LOADED_DONE";
 export const COMMENT_LOAD_DONE = "COMMENT_LOAD_DONE";
 export const PRODUCT_LOAD_DONE = "PRODUCT_LOAD_DONE";
 
+/*
+export const GET_COMMENT_DONE = "GET_COMMENT_DONE";
+export const GET_CONTACT_DONE = "GET_CONTACT_DONE";
+export const GET_PRODUCT_DONE = "GET_PRODUCT_DONE";
+export const GET_VEHICLE_DONE = "GET_VEHICLE_DONE";
+*/
+
 export function loadContacts() {
   return function (dispatch) {
     fetch("http://localhost:3101/contacts")
