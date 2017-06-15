@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
 import Main from "./components/Main";
+import { BrowserRouter as Router,Route,Switch } from "react-router-dom";
+
+import CommentContainer from "./containers/CommentContainer";
+import ContactContainer from "./containers/ContactContainer";
+import ProductContainer from "./containers/ProductContainer";
+import VehicleContainer from "./containers/VehicleContainer";
 
 class App extends Component {
   constructor() {
@@ -15,9 +21,17 @@ class App extends Component {
   }
   render() {
     return (
+      <Router>
       <div>
-        <Main />
+        <Switch>
+          <Route exact path="/" component={Main} />
+            <Route path="/comment/:id" component={CommentContainer} />
+            <Route path="/contact/:id" component={ContactContainer} />
+            <Route path="/product/:id" component={ProductContainer} />
+            <Route path="/vehicle/:id" component={VehicleContainer} />
+        </Switch>
       </div>
+      </Router>
     );
   }
 }
