@@ -1,22 +1,12 @@
 import express from "express";
-import products from "../products";
+import { list, show, create } from "../controller/ProductsController";
 
 const router = express.Router();
 
-router.get("/products", (request, response) => {
-  return response.json(products);
-});
+router.get("/products", list);
 
-router.get("/products/:id", (request, response) => {
-  const oneProduct = products.find(product => {
-    return product.id === request.params.id;
-  });
-  return response.json(oneProduct);
-});
+router.get("/products/:id", show);
 
-router.post("/products", (request, response) => {
-  products.push(request.body);
-  return response.json(products);
-});
+router.post("/products", create);
 
 export default router;

@@ -1,22 +1,12 @@
 import express from "express";
-import vehicles from "../vehicles";
+import { list, show, create } from "../controller/VehiclesController";
 
 const router = express.Router();
 
-router.get("/vehicles", (request, response) => {
-  return response.json(vehicles);
-});
+router.get("/vehicles", list);
 
-router.get("/vehicles/:id", (request, response) => {
-  const oneVehicle = vehicles.find(vehicle => {
-    return vehicle.id === request.params.id;
-  });
-  return response.json(oneVehicle);
-});
+router.get("/vehicles/:id", show);
 
-router.post("/vehicles", (request, response) => {
-  vehicles.push(request.body);
-  return response.json(vehicles);
-});
+router.post("/vehicles", create);
 
 export default router;

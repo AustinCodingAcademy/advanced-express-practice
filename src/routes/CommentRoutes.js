@@ -1,22 +1,12 @@
 import express from "express";
-import comments from "../comments";
+import { list, show, create } from "../controller/CommentsController";
 
 const router = express.Router();
 
-router.get("/comments", (request, response) => {
-  return response.json(comments);
-});
+router.get("/comments", list);
 
-router.get("/comments/:id", (request, response) => {
-  const oneComment = comments.find(comment => {
-    return comment.id === request.params.id;
-  });
-  return response.json(oneComment);
-});
+router.get("/comments/:id", show)
 
-router.post("/comments", (request, response) => {
-  comments.push(request.body);
-  return response.json(comments);
-});
+router.post("/comments", create)
 
 export default router;

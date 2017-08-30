@@ -1,22 +1,12 @@
 import express from "express";
-import contacts from "../contacts";
+import { list, show, create } from "../controller/ContactsController";
 
 const router = express.Router();
 
-router.get("/contacts", (request, response) => {
-  return response.json(contacts);
-});
+router.get("/contacts", list);
 
-router.get("/contacts/:id", (request, response) => {
-  const oneContact = contacts.find(contact => {
-    return contact.id === request.params.id;
-  });
-  return response.json(oneContact);
-});
+router.get("/contacts/:id", show);
 
-router.post("/contacts", (request, response) => {
-  contacts.push(request.body);
-  return response.json(contacts);
-});
+router.post("/contacts", create);
 
 export default router;
