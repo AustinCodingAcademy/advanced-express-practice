@@ -1,7 +1,7 @@
 import express from "express";
 import vehicles from "../vehicles";
 
-const router = express.Route();
+const router = express.Router();
 
 router.get("/vehicles", (request, response) => {
   return response.json(vehicles);
