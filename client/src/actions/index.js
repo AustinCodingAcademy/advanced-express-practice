@@ -82,6 +82,7 @@ export function createContact(c) {
   };
 }
 export function createVehicle(v) {
+  console.log(v);
   return function (dispatch) {
     fetch("/vehicles", {
       method: "POST",
