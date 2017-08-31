@@ -9,6 +9,10 @@ import ContactsRoutes from "./routes/ContactsRoutes";
 import contacts from "./contacts";
 import bodyParser from 'body-parser';
 
+import mongoose from 'mongoose';
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/express-practice");
+
 const app = express();
 
 app.use(bodyParser.json());
