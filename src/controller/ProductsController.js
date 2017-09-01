@@ -1,17 +1,29 @@
 import products from "../products";
+import ProductModel from "../models/ProductModel";
 
 export function list(request, response) {
-  return response.json(products);
+  ProductModel.find({}).exec()
+  .then(products => {
+    return response.json(products);
+  });
 }
 
 export function show(request, response) {
-  const oneProduct = products.find(product => {
-    return product.id === request.params.id;
+  ProductModel.findById(request.params.id).exec()
+  .then(oneProduct => {
+    return response.json(oneProduct);
   });
-  return response.json(oneProduct);
 }
 
 export function create(request, response) {
-  products.push(request.body);
-  return response.json(products);
+
+  const product = new ProductModel({
+    name: request.body.name,
+    description: request.body.description
+  });
+
+  product.save()
+  .then(product => {
+    return response.json(product);
+  });
 }

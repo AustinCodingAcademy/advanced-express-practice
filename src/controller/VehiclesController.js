@@ -1,17 +1,31 @@
 import vehicles from "../vehicles";
+import VehicleModel from "../models/VehicleModel";
 
 export function list(request, response) {
-  return response.json(vehicles);
+  VehicleModel.find({}).exec()
+  .then(vehicles => {
+    return response.json(vehicles);
+  });
 }
 
 export function show(request, response) {
-  const oneVehicle = vehicles.find(vehicle => {
-    return vehicle.id === request.params.id;
+  VehicleModel.findById(request.params.id).exec()
+  .then(oneVehicle => {
+    return response.json(oneVehicle);
   });
-  return response.json(oneVehicle);
 }
 
 export function create(request, response) {
-  vehicles.push(request.body);
-  return response.json(vehicles);
+
+  const vehicle = new VehicleModel({
+    year: request.body.year,
+    make: request.body.make,
+    model: request.body.model
+  });
+
+  vehicle.save()
+  .then(vehicle => {
+    return response.json(vehicle);
+  });
+
 }
