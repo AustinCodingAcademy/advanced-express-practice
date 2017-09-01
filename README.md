@@ -6,7 +6,7 @@
 
 ### Body
 * Add body parser middleware to express
-
+^^^done^^^^
 ### Create express routes to get all things
 * Add .get() routes for /contacts, /vehicles, /comments, /products
 * response.json() the appropriate array
@@ -15,7 +15,15 @@
 * Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id
 * add a path variable for id
 * use the params.id to .find() the item from the appropriate array
+
+
+^^^^^^^^^
+
+
 * response.json() the item found
+
+
+
 
 ### Create express routes to create one thing
 * Add .post() routes for /contacts, /vehicles, /comments, /products
@@ -29,22 +37,30 @@ At this point, the web page should operate in the same manner as the redux fetch
 * Import the arrays into the route
 * Organize the routes for /contacts, /vehicles, /comments, /products using express Router
 * Import and use the Routers in index.js
+^^^^^done^^^^
+
 
 # Part 3 - Controllers
-* Create controller files 
+* Create controller files
 * Import the arrays into the controller
 * Take the code from the routes and put it into the controller
 * create functions for list, show and create
 * Import and use the controller functions in the appropiate Router
+^^^^more or less done to here^^^^^
 
+
+|||||start here watch class video and check the checklist bookmark saved||||||||
 # Part 4 - Database
-* In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
+* In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice"
 * Create the mongoose models for Contact, Vehicle, Comment Product
 * CommentModel - body
 * ContactModel - name, occupation, avatar
 * VehicleModel - year, make, model
 * ProductModel - name, description
 * Change the code in the controllers to use the Models instead of hard coded arrays
+
+^^^^^^^say wha?????^^^^^^^
+
 
 # Part 5 - Client
 
@@ -60,7 +76,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * look for “GET_COMMENT_DONE”
 * contact
     * look for “GET_CONTACT_DONE”
-* 
+*
 
 ### Actions
 * Create actions in actions/index.js
@@ -73,7 +89,7 @@ At this point, the web page should operate in the same manner as the redux fetch
         * fetch(“/comments/“ + id)
     * getContact(id)
         * fetch(“/contacts/“ + id)
-* Create actions to handle the data 
+* Create actions to handle the data
     * getProductDone(product)
         * GET_PRODUCT_DONE
     * getVehicleDone(vehicle)
@@ -104,7 +120,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * What should you do for Product.js, Contact.js and Comment.js
 
 ### React Router
-* Use react-router-dom 
+* Use react-router-dom
 * Import BrowserRouter, Switch and Route into App.js
 * Create routes for each detail container component
     * /vehicle/:id -> Vehicle
