@@ -9,7 +9,7 @@ import vehicleRoutes from "./routes/VehicleRoutes";
 //mongoose stuff
 import mongoose from "mongoose";
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/test");
+mongoose.connect("mongodb://localhost/express-practice");
 
 //make express app
 const app = express();
