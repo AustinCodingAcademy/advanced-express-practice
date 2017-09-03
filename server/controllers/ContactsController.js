@@ -1,6 +1,9 @@
 // import contacts from "../contacts";
 import ContactModel from "../models/ContactModel";
 
+// mongoose.Promise = global.Promise;
+
+
 
 export function list(request, response) {
   let promise = ContactModel.find({}).exec();
@@ -9,8 +12,13 @@ export function list(request, response) {
   })
 }
 export function show(request, response) {
- return response.json({theId: request.params.id});
+ // return response.json({theId: request.params.id});
+ Contact.findOne({id: request.params.id}).exec()
+ .then(foundUser => {
+   return response.json(foundUser);
+ })
 }
+
 export function create(request, response) {
  //  contacts.push(request.body);
  // return response.json({

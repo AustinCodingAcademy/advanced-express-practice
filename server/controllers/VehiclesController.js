@@ -1,19 +1,40 @@
-import vehicles from "../vehicles";
+// import vehicles from "../vehicles";
+import VehicleModel from "../models/VehicleModel";
+
 
 export function list(request, response) {
- return response.json(vehicles);
+ // return response.json(vehicles);
+ let promise = VehicleModel.find({}).exec();
+ promise.then(vehicles => {
+   return response.json(vehicles)
+ })
 }
+
 export function show(request, response) {
- return response.json({theId: request.params.id});
+ // return response.json({theId: request.params.id});
+ Vehicle.findOne({id: request.params.id}).exec()
+ .then(foundVehicle => {
+   return response.json(foundVehicle);
+ })
 }
 export function create(request, response) {
-  vehicles.push(request.body);
- return response.json({
-   name: request.body.name,
+ //  vehicles.push(request.body);
+ // return response.json({
+ //   name: request.body.name,
+ //   year: request.body.year,
+ //   make: request.body.make
+ // });
+ const vehicle = new VehicleModel({
    year: request.body.year,
-   make: request.body.make
+   make: request.body.make,
+   model: request.body.model
+ });
+ vehicle.save()
+ .then(vehicle => {
+   response.json(vehicle);
  });
 }
+
 export function update(request, response) {
  return response.json({theId: request.params.id});
 }

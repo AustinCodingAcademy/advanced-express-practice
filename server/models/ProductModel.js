@@ -7,14 +7,10 @@ const schema = new mongoose.Schema({
    required: true,
    type: String
  },
- occupation: {
+ description: {
    required: true,
    type: String
- },
- avatar: {
-   required: true,
-   type: String
- },
+ }
 });
 
-export default mongoose.model("Contact", schema);
+export default mongoose.model("Product", schema);

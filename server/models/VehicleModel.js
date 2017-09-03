@@ -3,18 +3,18 @@ mongoose.Promise = global.Promise;
 
 
 const schema = new mongoose.Schema({
- name: {
+ year: {
+   required: true,
+   type: Number
+ },
+ make: {
    required: true,
    type: String
  },
- occupation: {
-   required: true,
-   type: String
- },
- avatar: {
+ model: {
    required: true,
    type: String
  },
 });
 
-export default mongoose.model("Contact", schema);
+export default mongoose.model("Vehicle", schema);
