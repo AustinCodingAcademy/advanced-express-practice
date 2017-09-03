@@ -1,12 +1,8 @@
 import express from "express";
 import CommentsRoutes from "./routes/CommentsRoutes";
-import comments from "./comments";
 import ProductsRoutes from "./routes/ProductsRoutes";
-import products from "./products";
 import VehiclesRoutes from "./routes/VehiclesRoutes";
-import vehicles from "./vehicles";
 import ContactsRoutes from "./routes/ContactsRoutes";
-import contacts from "./contacts";
 import bodyParser from 'body-parser';
 
 import mongoose from 'mongoose';

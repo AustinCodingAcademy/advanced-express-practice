@@ -15,6 +15,23 @@ function contactsLoaded(contacts) {
   };
 }
 
+export function loadContact(id) {
+  return function (dispatch) {
+    fetch("/contacts/:id")
+    .then( (response) => {
+      return response.json();
+    }).then((contact) => {
+      dispatch(contactLoaded(contact));
+    });
+  };
+}
+function contactLoaded(contact) {
+  return {
+    type: "CONTACT_LOADED",
+    value: contact
+  };
+}
+
 export function loadVehicles() {
   return function (dispatch) {
     fetch("/vehicles")
@@ -31,6 +48,24 @@ function vehiclesLoaded(vehicles) {
     value: vehicles
   };
 }
+
+export function loadVehicle() {
+  return function (dispatch) {
+    fetch("/vehicles/:id")
+    .then( (response) => {
+      return response.json();
+    }).then((vehicle) => {
+      dispatch(vehicleLoaded(vehicle));
+    });
+  };
+}
+function vehicleLoaded(vehicle) {
+  return {
+    type: "VEHICLE_LOADED",
+    value: vehicle
+  };
+}
+
 export function loadComments() {
   return function (dispatch) {
     fetch("/comments")
@@ -47,6 +82,24 @@ function commentsLoaded(comments) {
     value: comments
   };
 }
+
+export function loadComment() {
+  return function (dispatch) {
+    fetch("/comments/:id")
+    .then( (response) => {
+      return response.json();
+    }).then((comment) => {
+      dispatch(commentLoaded(comment));
+    });
+  };
+}
+function commentLoaded(comment) {
+  return {
+    type: "COMMENTS_LOADED",
+    value: comment
+  };
+}
+
 export function loadProducts() {
   return function (dispatch) {
     fetch("/products")
@@ -63,6 +116,24 @@ function productsLoaded(products) {
     value: products
   };
 }
+
+export function loadProduct() {
+  return function (dispatch) {
+    fetch("/products/:id")
+    .then( (response) => {
+      return response.json();
+    }).then((product) => {
+      dispatch(productLoaded(product));
+    });
+  };
+}
+function productLoaded(product) {
+  return {
+    type: "PRODUCT_LOADED",
+    value: product
+  };
+}
+
 export function createProduct(product) {
   return function (dispatch) {
     fetch("/products", {
