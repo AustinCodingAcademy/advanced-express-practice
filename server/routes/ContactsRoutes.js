@@ -4,9 +4,9 @@ import {list,show,create,update,remove} from "../controllers/ContactsController"
 
 
 router.get("/contacts", list);
-router.get("/contacts/:id", show);
+router.get("/contact/:id", show);
 router.post("/contacts", create);
-router.put("/contacts/:id", update);
+router.put("/contact/:id", update);
 router.delete("/contacts/:id", remove);
 
 export default router;
