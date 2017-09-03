@@ -17,13 +17,10 @@ export function show(request, response) {
    return response.json(foundComment);
  })
 }
+
 export function create(request, response) {
-  //  comments.push(request.body);
-  // return response.json({
-  //   body: request.body.body
-  // });
   const comment = new CommentModel({
-   comment: request.body.body
+   body: request.body.body
  });
   comment.save()
   .then(comment => {
@@ -34,6 +31,7 @@ export function create(request, response) {
 export function update(request, response) {
  return response.json({theId: request.params.id});
 }
+
 export function remove(request, response) {
  return response.json({});
 }

@@ -73,6 +73,7 @@ export function createProduct(product) {
   };
 }
 export function createContact(c) {
+  console.log(c);
   return function (dispatch) {
     fetch("/contacts", {
       method: "POST",

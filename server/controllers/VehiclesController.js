@@ -17,13 +17,8 @@ export function show(request, response) {
    return response.json(foundVehicle);
  })
 }
+
 export function create(request, response) {
- //  vehicles.push(request.body);
- // return response.json({
- //   name: request.body.name,
- //   year: request.body.year,
- //   make: request.body.make
- // });
  const vehicle = new VehicleModel({
    year: request.body.year,
    make: request.body.make,
