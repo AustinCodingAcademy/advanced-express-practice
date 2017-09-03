@@ -1,10 +1,24 @@
-export function list(req, res) { return res.json([]) };
+import ContactModel from "../mobels/ContactModel";
 
-export function show(req, res) { return res.json({id: req.params.id}) };
+export function list(req, res) {
+  ContactModel.find({}).exec()
+  .then(contacts => res.json(contacts)
+  .catch(err => console.log(err));
+};
 
-export function  create(req, res) { return res.json({}) };
+export function show(req, res) {return res.json({id: req.params.id})};
 
-export function  update(req, res) { return res.json({id: req.params.id}) };
+export function  create(req, res) {
+  const contact = new ContactModel({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
+  });
+  contact.save()
+  .then(user => res.json(user)
+  .catch(err => console.log(err));
+};
 
-export function  remove(req, res) { return res.json({}) };
+export function  update(req, res) {return res.json({id: req.params.id})};
+
+export function  remove(req, res) {return res.json({})};
 
