@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const schema = new mongoose.Schema({
  year: {
    required: true,
-   type: String
+   type: Number
  },
  make: {
    required: true,

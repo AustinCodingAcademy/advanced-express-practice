@@ -120,7 +120,7 @@ export function getVehicle(id) {
     });
   }
 }
-export function getComment(id) {
+export function getComments(id) {
   return function (dispatch) {
     fetch("/comments/" + id)
     .then( (response) => {
@@ -130,7 +130,7 @@ export function getComment(id) {
     });
   }
 }
-export function getContact(id) {
+export function getContacts(id) {
   return function (dispatch) {
     fetch("/contacts/" + id)
     .then( (response) => {
@@ -140,25 +140,25 @@ export function getContact(id) {
     });
   }
 }
-function getProductDone(product) {
+export function getProductDone(product) {
   return {
     type: "GET_PRODUCT_DONE",
     value: product
   };
 }
-function getVehicleDone(vehicle) {
+export function getVehicleDone(vehicle) {
   return {
     type: "GET_VEHICLE_DONE",
     value: vehicle
   };
 }
-function getComment(comment) {
+export function getComment(comment) {
   return {
     type: "GET_COMMENT_DONE",
     value: comment
   };
 }
-function getContact(contact) {
+export function getContact(contact) {
   return {
     type: "GET_CONTACT_DONE",
     value: contact

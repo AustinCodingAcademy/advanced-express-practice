@@ -50,6 +50,6 @@ function contact(state = {}, action) {
 }
 
 const rootReducer = combineReducers({
-  comments,products,vehicles,contacts
+  comments,products,vehicles,contacts,comment,product,vehicle,contact
 });
 export default rootReducer;

@@ -77,6 +77,7 @@ At this point, the web page should operate in the same manner as the redux fetch
 * contact
     * look for “GET_CONTACT_DONE”
 *
+^^^^done^^^^^
 
 ### Actions
 * Create actions in actions/index.js
@@ -98,7 +99,7 @@ At this point, the web page should operate in the same manner as the redux fetch
         * GET_COMMENT_DONE
     * getContact(contact)
         * GET_CONTACT_DONE
-
+^^^^^done not sure if correct^^^^^^
 
 ### Components
 * Create class components to show the details of each Type in our system
@@ -130,6 +131,17 @@ At this point, the web page should operate in the same manner as the redux fetch
 #### Link
 * Look at client/components/CollapsableMapper.js
 * Change the `<a>` tag to `<Link>`
+
+
+
+9/3 5:30pm
+**comments,contacts,vehicles,and products all update when new items are created.
+**viewing a single item doesn't work on any of the categories.
+
+
+
+
+
 
 
 ### Points
