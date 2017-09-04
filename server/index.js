@@ -6,6 +6,10 @@ import contactsRoutes from "./routes/ContactsRoutes";
 import productsRoutes from "./routes/ProductsRoutes";
 import vehiclesRoutes from "./routes/VehiclesRoutes";
 
+import mongoose from "mongoose";
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/advanced-express-practice");
+
 
 const app = express();
 app.use(bodyParser.json());
