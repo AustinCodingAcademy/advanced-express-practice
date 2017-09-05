@@ -1,4 +1,3 @@
-import contacts from "./contacts";
 import ContactModel from "../models/ContactModel";
 
 
@@ -18,7 +17,7 @@ export function show(request, response) {
 }
 
 export function create(request, response) {
-    const contact = new contactModel({
+    const contact = new ContactModel({
         name: request.body.name,
         occupation: request.body.occupation,
         avatar: request.body.avatar,

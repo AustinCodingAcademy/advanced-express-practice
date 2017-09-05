@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
-import contactRoutes from "./routes/ContactsRoutes";
-import commentRoutes from "./routes/CommentsRoutes";
-import productRoutes from "./routes/ProductsRoutes";
-import vehicleRoutes from "./routes/VehicleRoutes";
+import contactsRoutes from "./routes/ContactsRoutes";
+import commentsRoutes from "./routes/CommentsRoutes";
+import productsRoutes from "./routes/ProductsRoutes";
+import vehiclesRoutes from "./routes/VehiclesRoutes";
 import mongoose from "mongoose";
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/advanced-express-practice");
@@ -12,11 +12,10 @@ mongoose.connect("mongodb://localhost/advanced-express-practice");
 const app = express();
 
 app.use(bodyParser.json());
-
-app.use(contactRoutes);
-app.use(vehicleRoutes);
-app.use(commentRoutes);
-app.use(productRoutes);
+app.use(contactsRoutes);
+app.use(vehiclesRoutes);
+app.use(commentsRoutes);
+app.use(productsRoutes);
 
 
 const port = process.env.PORT || 3001;

@@ -1,4 +1,3 @@
-import vehicles from "./vehicles";
 import VehicleModel from "../models/VehicleModel";
 
 
@@ -18,7 +17,7 @@ export function show(request, response) {
 }
 
 export function create(request, response) {
-    const vehicle = new vehicleModel({
+    const vehicle = new VehicleModel({
         year: request.body.year,
         make: request.body.make,
         model: request.body.model

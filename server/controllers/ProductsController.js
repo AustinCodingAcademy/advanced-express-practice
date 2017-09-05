@@ -1,4 +1,3 @@
-import products from "./products";
 import ProductModel from "../models/ProductModel";
 
 
@@ -18,7 +17,7 @@ export function show(request, response) {
 }
 
 export function create(request, response) {
-    const product = new productModel({
+    const product = new ProductModel({
         name: request.body.name,
         description: request.body.description
     });
