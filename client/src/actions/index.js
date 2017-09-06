@@ -1,12 +1,11 @@
+//contacts
 export function loadContacts() {
   return function (dispatch) {
     fetch("/contacts")
-    .then( (response) => {
-      return response.json();
-    }).then((contacts) => {
-      dispatch(contactsLoaded(contacts));
-    });
-  };
+    .then(res => res.json())
+    .then(json => dispatch(contactsLoaded(json)))
+    .catch(err => console.log(err));
+  }
 }
 function contactsLoaded(contacts) {
   return {
@@ -15,6 +14,31 @@ function contactsLoaded(contacts) {
   };
 }
 
+export function getContact(id) {
+  return (dispatch) => {
+    fetch(`/contacts/${id}`)
+    .then(res => res.json())
+    .then(json => dispatch(getContactDone(json)))
+    .catch(err => console.log(err));
+  }
+}
+function getContactDone(contact) {
+  return {
+    type: "GET_CONTACT_DONE",
+    value: contact
+  }
+}
+export function createContact(c) {
+  return function (dispatch) {
+    fetch("/contacts", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(c)
+    }).then(() => dispatch(loadContacts()));
+  };
+}
+
+//vehicles
 export function loadVehicles() {
   return function (dispatch) {
     fetch("/vehicles")
@@ -31,6 +55,32 @@ function vehiclesLoaded(vehicles) {
     value: vehicles
   };
 }
+
+export function getVehicle(id) {
+  return (dispatch) => {
+    fetch(`/vehicles/${id}`)
+    .then(res => res.json())
+    .then(json => dispatch(getVehicleDone(json)))
+    .catch(err => console.log(err));
+  }
+}
+function getVehicleDone(vehicle) {
+  return {
+    type: "GET_VEHICLE_DONE",
+    value: vehicle
+  }
+}
+export function createVehicle(v) {
+  return function (dispatch) {
+    fetch("/vehicles", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(v)
+    }).then(() => dispatch(loadVehicles()));
+  };
+}
+
+//comments
 export function loadComments() {
   return function (dispatch) {
     fetch("/comments")
@@ -47,6 +97,32 @@ function commentsLoaded(comments) {
     value: comments
   };
 }
+
+export function getComment(id) {
+  return (dispatch) => {
+    fetch(`/comments/${id}`)
+    .then(res => res.json())
+    .then(json => dispatch(getCommentDone(json)))
+    .catch(err => console.log(err));
+  }
+}
+function getCommentDone(comment) {
+  return {
+    type: "GET_COMMENT_DONE",
+    value: comment
+  }
+}
+export function createComment(v) {
+  return function (dispatch) {
+    fetch("/comments", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(v)
+    }).then(() => dispatch(loadComments()));
+  };
+}
+
+//products
 export function loadProducts() {
   return function (dispatch) {
     fetch("/products")
@@ -63,6 +139,21 @@ function productsLoaded(products) {
     value: products
   };
 }
+
+export function getProduct(id) {
+  return (dispatch) => {
+    fetch(`/products/${id}`)
+    .then(res => res.json())
+    .then(json => dispatch(getProductDone(json)))
+    .catch(err => console.log(err));
+  }
+}
+function getProductDone(product) {
+  return {
+    type: "GET_PRODUCT_DONE",
+    value: product
+  }
+}
 export function createProduct(product) {
   return function (dispatch) {
     fetch("/products", {
@@ -70,32 +161,5 @@ export function createProduct(product) {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(product)
     }).then(() => dispatch(loadProducts()));
-  };
-}
-export function createContact(c) {
-  return function (dispatch) {
-    fetch("/contacts", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(c)
-    }).then(() => dispatch(loadContacts()));
-  };
-}
-export function createVehicle(v) {
-  return function (dispatch) {
-    fetch("/vehicles", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(v)
-    }).then(() => dispatch(loadVehicles()));
-  };
-}
-export function createComment(v) {
-  return function (dispatch) {
-    fetch("/comments", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(v)
-    }).then(() => dispatch(loadComments()));
   };
 }

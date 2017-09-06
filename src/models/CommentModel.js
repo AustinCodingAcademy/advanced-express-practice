@@ -4,10 +4,6 @@ const schema = new mongoose.Schema({
   body: {
     required: true,
     type: String 
-  },
-  postId : {
-    required: true,
-    type: Number
   }
 });
 

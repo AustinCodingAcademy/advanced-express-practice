@@ -1,22 +1,19 @@
 import express from "express";
-import comments from "./comments";
-import products from "./products";
-import vehicle from "./vehicles";
-import contacts from "./contacts";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
 import contactRoutes from "./routes/ContactRoutes";
 import vehicleRoutes from "./routes/VehicleRoutes";
 
 //mongoose stuff
-import mongoose from "mongoose";
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/express-practice");
 
-//make express app
 const app = express();
 
 //routes
-app.use(contactRoutes);
-app.use(vehicleRoutes);
+app.use(bodyParser.json())
+  .use(contactRoutes)
+  .use(vehicleRoutes);
 
 //make express listen
 const port = process.env.PORT || 3001;

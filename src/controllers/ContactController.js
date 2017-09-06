@@ -6,12 +6,18 @@ export function list(req, res) {
   .catch(err => console.log(err));
 }
 
-export function show(req, res) {return res.json({id: req.params.id})};
+export function show(req, res) {
+  ContactModel.findById(req.params.id).exec()
+  .then(contact => res.json({id: req.params.id}))
+  .catch(err => console.log(err));
+}
 
 export function  create(req, res) {
+  const {name, occupation, avatar} = req.body;
   const contact = new ContactModel({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName
+    name,
+    occupation,
+    avatar
   });
   contact.save()
   .then(user => res.json(user))
