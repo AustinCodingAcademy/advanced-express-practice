@@ -29,8 +29,18 @@ export function create(request, response) {
 }
 
 export function update(request, response) {
-    return response.json({ theId: request.params.id });
+    ContactModel.findById(request.params.id).exec()
+        .then(vehicle => {
+            contact.name = request.body.name || contact.name;
+            contact.occupation = request.body.occupation || contact.occupation;
+            contact.avatar = request.body.avatar || contact.avatar;
+            return contact.save();
+        })
+        .then(contact => {
+            return response.json(contact);
+        })
 }
+
 export function remove(request, response) {
     return response.json({});
 }

@@ -28,8 +28,17 @@ export function create(request, response) {
 }
 
 export function update(request, response) {
-    return response.json({ theId: request.params.id });
+    ProductModel.findById(request.params.id).exec()
+        .then(product => {
+            product.name = request.body.name || product.name;
+            product.description = request.body.description || product.description;
+            return product.save();
+        })
+        .then(product => {
+            return response.json(product);
+        })
 }
+
 export function remove(request, response) {
     return response.json({});
 }

@@ -27,8 +27,16 @@ export function create(request, response) {
 }
 
 export function update(request, response) {
-    return response.json({ theId: request.params.id });
+    CommentModel.findById(request.params.id).exec()
+        .then(comment => {
+            comment.body = request.body.body || comment.body;
+            return comment.save();
+        })
+        .then(comment => {
+            return response.json(comment);
+        })
 }
+
 export function remove(request, response) {
     return response.json({});
 }

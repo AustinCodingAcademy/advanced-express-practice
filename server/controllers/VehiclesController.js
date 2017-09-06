@@ -29,8 +29,18 @@ export function create(request, response) {
 }
 
 export function update(request, response) {
-    return response.json({ theId: request.params.id });
+    VehicleModel.findById(request.params.id).exec()
+        .then(vehicle => {
+            vehicle.year = request.body.year || vehicle.year;
+            vehicle.make = request.body.make || vehicle.make;
+            vehicle.model = request.body.model || vehicle.model;
+            return vehicle.save();
+        })
+        .then(vehicle => {
+            return response.json(vehicle);
+        })
 }
+
 export function remove(request, response) {
     return response.json({});
 }
