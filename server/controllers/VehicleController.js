@@ -2,7 +2,7 @@ import VehicleModel from "../models/VehicleModel";
 
 export function list(req,res) {
   VehicleModel.find({}).exec()
-  .then(vehicles => res.json(vehicles)
+  .then(vehicles => res.json(vehicles))
   .catch(err => console.log(err));
 }
 

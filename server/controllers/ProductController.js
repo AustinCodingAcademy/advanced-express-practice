@@ -16,7 +16,6 @@ export function create(req,res) {
   const {
     name,
     description,
-    reviews,
     rating,
     imgUrl,
     price,
@@ -26,7 +25,6 @@ export function create(req,res) {
   const product = new ProductModel({
     name,
     description,
-    reviews,
     rating,
     imgUrl,
     price,
