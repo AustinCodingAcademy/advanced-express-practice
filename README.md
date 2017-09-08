@@ -57,9 +57,9 @@ At this point, the web page should operate in the same manner as the redux fetch
 * ContactModel - name, occupation, avatar
 * VehicleModel - year, make, model
 * ProductModel - name, description
-* Change the code in the controllers to use the Models instead of hard coded arrays
+* Change the code in the controllers to use the Models instead of hard coded arrays****//need to figure this out somehow
 
-^^^^^^^say wha?????^^^^^^^
+^^^^^^^missing piece^^^^^^
 
 
 # Part 5 - Client
@@ -137,7 +137,7 @@ At this point, the web page should operate in the same manner as the redux fetch
 9/3 5:30pm
 **comments,contacts,vehicles,and products all update when new items are created.
 **viewing a single item doesn't work on any of the categories.
-
+**need to figure out how to get robo 3t connected
 
 
 
