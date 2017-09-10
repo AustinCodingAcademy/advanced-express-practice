@@ -14,6 +14,22 @@ function contactsLoaded(contacts) {
     value: contacts
   };
 }
+export function getContact(id) {
+  return function (dispatch) {
+    fetch("/contacts" + id)
+    .then( (response) => {
+      return response.json();
+    }).then((contacts) => {
+      dispatch(getContactDone(contacts));
+    });
+  };
+}
+function getContactDone(contacts) {
+  return {
+    type: "GET_CONTACT_DONE",
+    value: contacts
+  };
+}
 
 export function loadVehicles() {
   return function (dispatch) {

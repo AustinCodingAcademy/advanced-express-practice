@@ -1,25 +1,25 @@
 # Express Practice
 # Part 1 - Server
 
-### src/index.js
-* This is the starting point of the server, put all code here
+### server/index.js
+*x This is the starting point of the server, put all code here
 
 ### Body
-* Add body parser middleware to express
+*x Add body parser middleware to express
 
 ### Create express routes to get all things
-* Add .get() routes for /contacts, /vehicles, /comments, /products
-* response.json() the appropriate array
+*x Add .get() routes for /contacts, /vehicles, /comments, /products
+*x response.json() the appropriate array
 
 ### Create express routes to get one thing
-* Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id
-* add a path variable for id
-* use the params.id to .find() the item from the appropriate array
-* response.json() the item found
+*x Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id
+*x add a path variable for id
+*x use the params.id to .find() the item from the appropriate array
+*x response.json() the item found
 
 ### Create express routes to create one thing
-* Add .post() routes for /contacts, /vehicles, /comments, /products
-* Add the information from the body to the appropriate array
+* Add .post() routes for x/contacts, x/vehicles, x/comments, x/products
+*x Add the information from the body to the appropriate array
 
 At this point, the web page should operate in the same manner as the redux fetch practice
 
@@ -27,15 +27,15 @@ At this point, the web page should operate in the same manner as the redux fetch
 # Part 2 - Routes
 * Create route files
 * Import the arrays into the route
-* Organize the routes for /contacts, /vehicles, /comments, /products using express Router
-* Import and use the Routers in index.js
+* Organize the routes for x/contacts, /vehicles, /comments, /products using express Router
+*x Import and use the Routers in index.js
 
 # Part 3 - Controllers
-* Create controller files 
-* Import the arrays into the controller
-* Take the code from the routes and put it into the controller
-* create functions for list, show and create
-* Import and use the controller functions in the appropiate Router
+*x Create controller files 
+*x Import the arrays into the controller
+*x Take the code from the routes and put it into the controller
+*x create functions for list, show and create
+*x Import and use the controller functions in the appropiate Router
 
 # Part 4 - Database
 * In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
@@ -49,7 +49,7 @@ At this point, the web page should operate in the same manner as the redux fetch
 # Part 5 - Client
 
 ## Redux
-
+xxx
 ### Reducers
 * create 4 more reducers for the state: vehicle, product, comment, contact
 * vehicle
