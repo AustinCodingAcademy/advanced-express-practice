@@ -1,8 +1,8 @@
-import products from "../products";
 import ProductModel from "../models/ProductModel";
 
 export function list(request, response) {
-  return response.json(products);
+  ProductModel.find({}).exec()
+  .then(products => response.json(products))
 }
 export function show(request, response) {
   let someProduct = request.params.id;
@@ -12,10 +12,13 @@ export function show(request, response) {
 });
 }
 export function create(request, response) {
-  products.push(request.body)
-  return response.json({
-    name:request.name.description,
-    description:request.body.description
+  const product = new ProductModel({
+    name: request.body.name,
+    description: request.body.description
+  });
+  product.save()
+  .then(product => {
+    return response.json(product);
   });
 }
 export function update(request, response) {
