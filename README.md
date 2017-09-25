@@ -1,11 +1,11 @@
-# Express Practice - Ericka 
+# Express Practice - Ericka Barnes-Emery
 # Part 1 - Server
 
 ### server/index.js
 * This is the starting point of the server, put all code here
 
 ### Body
-* Add body parser middleware to express
+* DONE * Add body parser middleware to express
 
 ### Create express routes to get all things
 * Add .get() routes for /contacts, /vehicles, /comments, /products
