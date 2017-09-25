@@ -1,4 +1,4 @@
-# Express Practice
+# Express Practice - Ericka 
 # Part 1 - Server
 
 ### server/index.js
