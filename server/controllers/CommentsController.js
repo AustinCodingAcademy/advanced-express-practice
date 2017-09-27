@@ -1,6 +1,6 @@
 import CommentModel from "../models/CommentModel";
 
-export function list(request,response) {
+export function list(request, response) {
   CommentModel.find({}).exec()
   .then(comments => {
     return response.json(comments);
@@ -15,7 +15,9 @@ export function show(request, response) {
 }
 
 export function create(request, response) {
-  const comment = new CommentModel(request.body);
+  const comment = new CommentModel({
+    body: request.body.body
+  });
   comment.save()
   .then(comment => {
     return response.json(comment);
@@ -35,8 +37,8 @@ export function update(request, response) {
 }
 
 export function remove(request, response) {
-  CommentModel.remove({_id: request.params.name}).exec()
-  .then(comment => {
-    return response.send('delete successful');
+  CommentModel.remove({_id: request.params.id}).exec()
+  .then(res => {
+    return response.send('delete comment successful');
   });
 }
