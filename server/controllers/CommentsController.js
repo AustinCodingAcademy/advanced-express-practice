@@ -1,21 +1,42 @@
-import comments from "../comments";
+import CommentModel from "../models/CommentModel";
 
-export function list(request, response) {
-  return response.json(comments);
+export function list(request,response) {
+  CommentModel.find({}).exec()
+  .then(comments => {
+    return response.json(comments);
+  });
 }
 
 export function show(request, response) {
-  return response.json({theId:request.params.id});
+  CommentModel.findById(request.params.id).exec()
+  .then(comment => {
+    return response.json(comment);
+  });
 }
 
 export function create(request, response) {
-  return response.json({});
+  const comment = new CommentModel(request.body);
+  comment.save()
+  .then(comment => {
+    return response.json(comment);
+  });
 }
 
+
 export function update(request, response) {
-  return response.json({theId: request.params.id});
+  CommentModel.findById(request.params.id).exec()
+  .then(comment => {
+    comment.body = request.body.body || comment.body;
+    return comment.save();
+  })
+  .then(comment => {
+    return response.json(comment);
+  });
 }
 
 export function remove(request, response) {
-  return response.json({});
+  CommentModel.remove({_id: request.params.name}).exec()
+  .then(comment => {
+    return response.send('delete successful');
+  });
 }

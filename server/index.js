@@ -4,6 +4,10 @@ import ContactRoutes from "./routes/ContactRoutes";
 import VehicleRoutes from "./routes/VehicleRoutes";
 import ProductRoutes from "./routes/ProductRoutes";
 import CommentRoutes from "./routes/CommentRoutes";
+import mongoose from "mongoose";
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/advanced-express-practice");
 
 
 const app = express();
