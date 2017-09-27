@@ -37,8 +37,8 @@ export function update(request, response) {
 }
 
 export function remove(request, response) {
-  CommentModel.remove({_id: request.params.id}).exec()
+  CommentModel.findByIdAndRemove(req.params.id)
   .then(res => {
-    return response.send('delete comment successful');
+    return response.json();
   });
 }

@@ -37,7 +37,7 @@ At this point, the web page should operate in the same manner as the redux fetch
 * create functions for list, show and create
 * Import and use the controller functions in the appropiate Router
 
-# Part 4 - Database
+# Part 4 - Database * DONE 
 * In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
 * Create the mongoose models for Contact, Vehicle, Comment Product
 * CommentModel - body
