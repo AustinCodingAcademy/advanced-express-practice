@@ -80,3 +80,17 @@ app.get("/contacts/:id/", (request, response) => {
   })
   response.json(contactID);
 });
+
+// *** CREATE A POST IN COMMENTS ***
+
+app.post("/comments", (request, response) => {
+  console.log("comments array: ", comments);
+  comments.push(request.body);
+  response.send("posted a comment", request.body)
+
+})
+//  *** CREATE A POST IN PRODUCTS ***
+
+//  *** CREATE A POST IN VEHICLES ***
+
+//  *** CREATE A POST IN CONTACTS ***
