@@ -1,4 +1,4 @@
-export default [
+module.exports  =  [
   {
     "_id": 1,
     "body": "ACA is great!",
