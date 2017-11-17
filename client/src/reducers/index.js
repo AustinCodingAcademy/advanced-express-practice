@@ -25,7 +25,36 @@ function contacts(state = [], action) {
   return state;
 }
 
+// new stuff
+function comment(state = [], action) {
+  if (action.type === "GET_COMMENT_DONE") {
+    return action.value;
+  }
+  return state;
+}
+
+function product(state = [], action) {
+  if (action.type === "GET_PRODUCT_DONE") {
+    return action.value;
+  }
+  return state;
+}
+
+function vehicle(state = [], action) {
+  if (action.type === "GET_VEHICLE_DONE") {
+    return action.value;
+  }
+  return state;
+}
+
+function contact(state = [], action) {
+  if (action.type === "GET_CONTACT_DONE") {
+    return action.value;
+  }
+  return state;
+}
+
 const rootReducer = combineReducers({
-  comments,products,vehicles,contacts
+  comments,products,vehicles,contacts, contact, vehicle, product, comment
 });
 export default rootReducer;

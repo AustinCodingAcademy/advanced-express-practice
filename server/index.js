@@ -1,8 +1,9 @@
 import express from "express";
 import comments from "./comments";
-import products from "./products";
-import vehicle from "./vehicles";
-import contacts from "./contacts";
+import vehicleRoutes from "./routes/VehicleRoutes";
+import productRoutes from "./routes/ProductRoutes";
+import commentRoutes from "./routes/CommentRoutes";
+import contactRoutes from "./routes/ContactRoutes";
 import bodyParser from "body-parser";
 
 const app = express();
@@ -13,6 +14,7 @@ app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
 
-app.get("/contacts", (request, response) => {
-  return response.json(contacts);
- });
+app.use(contactRoutes);
+app.use(commentRoutes);
+app.use(productRoutes);
+app.use(vehicleRoutes);
