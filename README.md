@@ -21,24 +21,28 @@ X add a path variable for id
 * response.json() the item found
 
 ### Create express routes to create one thing
-* Add .post() routes for /contacts, /vehicles, /comments, /products
-* Add the information from the body to the appropriate array
+X Add .post() routes for /contacts, /vehicles, /comments, /products
+X Add the information from the body to the appropriate array
 
 At this point, the web page should operate in the same manner as the redux fetch practice
 
-
 # Part 2 - Routes
-* Create route files
-* Import the arrays into the route
-* Organize the routes for /contacts, /vehicles, /comments, /products using express Router
-* Import and use the Routers in index.js
+X Create route files
+X Import the arrays into the route
+
+X Organize the routes for /contacts, /vehicles, /comments, /products using express Router
+
+X Import and use the Routers in index.js
 
 # Part 3 - Controllers
-* Create controller files
-* Import the arrays into the controller
-* Take the code from the routes and put it into the controller
-* create functions for list, show and create
-* Import and use the controller functions in the appropiate Router
+X Create controller files
+X Import the arrays into the controller
+
+X Take the code from the routes and put it into the controller
+
+X create functions for list, show and create
+
+X Import and use the controller functions in the appropriate Router
 
 # Part 4 - Client
 
