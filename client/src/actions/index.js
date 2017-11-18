@@ -90,12 +90,81 @@ export function createVehicle(v) {
     }).then(() => dispatch(loadVehicles()));
   };
 }
-export function createComment(v) {
+export function createComment(com) {
   return function (dispatch) {
     fetch("/comments", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(v)
+      body: JSON.stringify(com)
     }).then(() => dispatch(loadComments()));
+  };
+}
+
+// Adding the calls to fetch 1 entity.
+export function getContact(id) {
+  return function (dispatch) {
+    fetch(`/contacts/${id}`)
+    .then( (response) => {
+      return response.json();
+    }).then((contact) => {
+      dispatch(getContactDone(contact));
+    });
+  };
+}
+function getContactDone(contact) {
+  return {
+    type: "GET_CONTACT_DONE",
+    value: contact
+  };
+}
+
+export function getVehicle(id) {
+  return function (dispatch) {
+    fetch(`/vehicles/${id}`)
+    .then( (response) => {
+      return response.json();
+    }).then((vehicle) => {
+      dispatch(getVehicleDone(vehicle));
+    });
+  };
+}
+function getVehicleDone(vehicle) {
+  return {
+    type: "GET_VEHICLE_DONE",
+    value: vehicle
+  };
+}
+
+export function getComment(id) {
+  return function (dispatch) {
+    fetch(`/comments/${id}`)
+    .then( (response) => {
+      return response.json();
+    }).then((comment) => {
+      dispatch(getCommentDone(comment));
+    });
+  };
+}
+function getCommentDone(comment) {
+  return {
+    type: "GET_COMMENT_DONE",
+    value: comment
+  };
+}
+
+export function getProduct(id) {
+  return function (dispatch) {
+    fetch(`/products/${id}`)
+    .then( (response) => {
+      return response.json();
+    }).then((product) => {
+      dispatch(getProductDone(product));
+    });
+  };
+}
+function getProductDone(product) {
+  return {
+    type: "GET_PRODUCT_DONE",
+    value: product
   };
 }
