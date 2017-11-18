@@ -1,4 +1,7 @@
 # Express Practice
+
+# Windows users - Make sure you remove single quotes from the package.json
+
 # Part 1 - Server
 
 ### server/index.js
@@ -37,16 +40,7 @@ At this point, the web page should operate in the same manner as the redux fetch
 * create functions for list, show and create
 * Import and use the controller functions in the appropiate Router
 
-# Part 4 - Database
-* In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
-* Create the mongoose models for Contact, Vehicle, Comment Product
-* CommentModel - body
-* ContactModel - name, occupation, avatar
-* VehicleModel - year, make, model
-* ProductModel - name, description
-* Change the code in the controllers to use the Models instead of hard coded arrays
-
-# Part 5 - Client
+# Part 4 - Client
 
 ## Redux
 
@@ -115,6 +109,15 @@ At this point, the web page should operate in the same manner as the redux fetch
 * Look at client/components/CollapsableMapper.js
 * Change the `<a>` tag to `<Link>`
 
+
+# Part 5 - Database
+* In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
+* Create the mongoose models for Contact, Vehicle, Comment Product
+* CommentModel - body
+* ContactModel - name, occupation, avatar
+* VehicleModel - year, make, model
+* ProductModel - name, description
+* Change the code in the controllers to use the Models instead of hard coded arrays
 
 ### Points
 * Base - 10pts
