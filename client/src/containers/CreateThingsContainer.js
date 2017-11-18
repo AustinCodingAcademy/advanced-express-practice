@@ -4,8 +4,17 @@ import {
   createProduct,
   createVehicle,
   createContact,
-  createComment
+  createComment,
 } from "../actions";
+
+function mapStateToProps(state) {
+  return {
+    comments: state.comments,
+    contacts: state.contacts,
+    vehicles: state.vehicles,
+    products: state.products,
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -24,4 +33,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null,mapDispatchToProps)(CreateThings);
+export default connect(mapStateToProps,mapDispatchToProps)(CreateThings);

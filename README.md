@@ -1,3 +1,7 @@
+# Notes
+1. Could not get babel to work so using old syntax for import/export statements on server side.
+2. Added logic to increment the ID and set it to any newly created object. This way we will be able to view the newly created 
+object's individual page since it won't be set to undefined (all pages use the ID in the URL).
 # Express Practice
 # Part 1 - Server
 
