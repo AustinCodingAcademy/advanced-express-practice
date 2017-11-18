@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 
 
-class Comment extends Component (props) {
-
+class Comment extends Component {
+  
   componentDidMount() {
-    /*
-    let myId = props.params.id;
-    console.log(myId);
-    props.getComment(myId);
-    */
+    let myId = this.props.match.params.id;
+    this.props.getComment(myId);
+
   }
   render() {
     return (
-      <div> hello Comment</div>
+      <div> 
+        <div>{this.props.comment.body}</div>
+      </div>
     );
   }
   

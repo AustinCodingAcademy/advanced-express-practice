@@ -1,6 +1,6 @@
-/*
 import { connect } from "react-redux";
 import Comment from "../components/Comment";
+import {getComment} from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -18,4 +18,3 @@ function mapDispatchToProps (dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comment);
-*/

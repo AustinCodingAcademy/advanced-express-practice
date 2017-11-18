@@ -32,7 +32,7 @@ class App extends Component {
           <Route path="/product/:id" component={ProductContainer}/>
           <Route path="/comment/:id" component={CommentContainer}/>
           <Route path="/vehicle/:id" component={VehicleContainer}/>
-          <Route path="/" component={VehicleContainer}/>
+          <Route path="/" component={Main}/>
         </Switch>
         </BrowserRouter>
       </div>

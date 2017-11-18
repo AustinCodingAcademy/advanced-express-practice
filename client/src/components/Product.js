@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 
 
-class Product extends Component (props) {
+class Product extends Component {
 
   componentDidMount() {
-    /*
-    let myId = props.params.id;
-    console.log(myId);
-    props.getProduct(myId);
-    */
+    let myId = this.props.match.params.id;
+    this.props.getProduct(myId);
   }
   render() {
     return (
-      <div> hello Product</div>
+      <div> 
+        <div>{this.props.product.name}</div>
+        <div>{this.props.product.description}</div>
+      </div>
     );
   }
   
