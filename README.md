@@ -7,30 +7,30 @@
 ### Body
 * Add body parser middleware to express
 
-### Create express routes to get all things
+### Create express routes to get all things - DONE
 * Add .get() routes for /contacts, /vehicles, /comments, /products
 * response.json() the appropriate array
 
-### Create express routes to get one thing
+### Create express routes to get one thing - DONE
 * Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id
 * add a path variable for id
 * use the params.id to .find() the item from the appropriate array
 * response.json() the item found
 
-### Create express routes to create one thing
+### Create express routes to create one thing - DONE
 * Add .post() routes for /contacts, /vehicles, /comments, /products
 * Add the information from the body to the appropriate array
 
 At this point, the web page should operate in the same manner as the redux fetch practice
 
 
-# Part 2 - Routes
+# Part 2 - Routes - DONE
 * Create route files
 * Import the arrays into the route
 * Organize the routes for /contacts, /vehicles, /comments, /products using express Router
 * Import and use the Routers in index.js
 
-# Part 3 - Controllers
+# Part 3 - Controllers - DONE
 * Create controller files 
 * Import the arrays into the controller
 * Take the code from the routes and put it into the controller
@@ -50,7 +50,7 @@ At this point, the web page should operate in the same manner as the redux fetch
 
 ## Redux
 
-### Reducers
+### Reducers - DONE
 * create 4 more reducers for the state: vehicle, product, comment, contact
 * vehicle
     * look for “GET_VEHICLE_DONE”
@@ -62,7 +62,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * look for “GET_CONTACT_DONE”
 * 
 
-### Actions
+### Actions - DONE
 * Create actions in actions/index.js
 * Create actions to do to a fetch call to one item. When complete, dispatch to the done action.
     * getProduct(id)
