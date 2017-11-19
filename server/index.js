@@ -15,8 +15,7 @@ app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
 
-
-
+// useless comment
 
 
 
@@ -84,13 +83,20 @@ app.get("/contacts/:id/", (request, response) => {
 // *** CREATE A POST IN COMMENTS ***
 
 app.post("/comments", (request, response) => {
-  console.log("comments array: ", comments);
   comments.push(request.body);
-  response.send("posted a comment", request.body)
 
 })
 //  *** CREATE A POST IN PRODUCTS ***
+app.post("/products", (request, response) => {
+  products.push(request.body);
+})
 
 //  *** CREATE A POST IN VEHICLES ***
+app.post("/vehicles", (request, response) => {
+  vehicles.push(request.body);
+})
 
 //  *** CREATE A POST IN CONTACTS ***
+app.post("/contacts", (request, response) => {
+  contacts.push(request.body);
+})
