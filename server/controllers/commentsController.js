@@ -1,4 +1,4 @@
-import comments from "./comments";
+import comments from "../comments";
 
 
 export function list(request, response) {
@@ -7,7 +7,7 @@ export function list(request, response) {
 
 
 export function show(request, response) {
-    let id = request.params.id;
+    let id = request.params.id; 
     let commentID = comments.find((comment) => {
       if(comment._id == id){
        return comment

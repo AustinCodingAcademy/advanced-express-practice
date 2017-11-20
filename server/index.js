@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
-import commentRoutes from './routes/CommentsRoutes';
-import contactRoutes from './routes/ContactsRoutes';
-import productRoutes from './routes/ProductsRoutes';
-import vehicleRoutes from './routes/VehicleRoutes;';
+import commentRouter from './routes/CommentRoutes';
+import contactRouter from './routes/ContactRoutes';
+import productRouter from './routes/ProductRoutes';
+import vehicleRouter from './routes/VehicleRoutes';
 import products from './products'
 
 const app = express();
@@ -18,10 +18,10 @@ app.listen(port, () => {
 
 
 
-app.use(commentRoutes);
-app.use(contactRoutes);
-app.use(productRoutes);
-app.use(vehicleRoutes);
+app.use(commentRouter);
+app.use(contactRouter);
+app.use(productRouter);
+app.use(vehicleRouter);
 
 
 

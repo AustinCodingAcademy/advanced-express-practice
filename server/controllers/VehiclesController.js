@@ -1,31 +1,31 @@
-import products from "./products";
+import vehicles from "../vehicles";
+
 
 export function list(request, response) {
-    return response.json([products]);
+    return response.json([vehicles]);
    }
 
 
 export function show(request, response) {
-    let productID = products.find((product) => {
-      if(product._id == id){
-       return product
+    let id = request.params.id;
+    let vehicleID = vehicles.find((vehicle) => {
+      if(vehicle._id == id){
+       return vehicle
       }
-      else response.send("There is no such product")
+      else response.send("There is no such vehicle")
     })
-    return response.json(productID);
+    return response.json(vehicleID);
    }
 
 
 export function create(request, response) {
-    return products.push(request.body);
+    return vehicles.push(request.body);
    }
 
 
 export function update(request, response) {
     return response.json({theId: request.params.id});
    }
-
-
 export function remove(request, response) {
     return response.json({});
    }

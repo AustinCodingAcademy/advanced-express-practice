@@ -1,5 +1,5 @@
 import express from 'express';
-import {list,show,remove,update,create} from '../controllers/VehiclesControllers';
+import {list,show,remove,update,create} from '../controllers/VehiclesController';
 
 
 const router = express.Router();

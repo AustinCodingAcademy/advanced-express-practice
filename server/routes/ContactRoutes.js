@@ -1,5 +1,5 @@
 import express from 'express';
-import {list,show,remove,update,create} from '../controllers/ContactsControllers';
+import {list,show,remove,update,create} from '../controllers/ContactsController';
 
 
 const router = express.Router();

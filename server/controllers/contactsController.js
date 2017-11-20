@@ -1,4 +1,4 @@
-import contacts from "./contacts";
+import contacts from "../contacts";
 
 
 export function list(request, response) {

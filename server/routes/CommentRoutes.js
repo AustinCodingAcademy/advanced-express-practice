@@ -1,5 +1,5 @@
 import express from 'express';
-import {list,show,remove,update,create} from '../controllers/CommentsControllers';
+import {list,show,remove,update,create} from '../controllers/CommentsController';
 
 console.log(list);
 
