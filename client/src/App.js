@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import Main from "./components/Main";
-import VehicleContainer from "./containers/VehicleContainer";
-import CommentContainer from "./containers/CommentContainer";
 import ContactContainer from "./containers/ContactContainer";
 import ProductContainer from "./containers/ProductContainer";
+import CommentContainer from "./containers/CommentContainer";
+import VehicleContainer from "./containers/VehicleContainer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -12,7 +12,6 @@ class App extends Component {
     super();
     this.state = { users: [] };
   }
-
   componentDidMount() {
     this.props.loadComments();
     this.props.loadContacts();
@@ -21,17 +20,17 @@ class App extends Component {
   }
   render() {
     return (
-      <BrowserRouter>
-        <div>
+      <div>
+        <BrowserRouter>
           <Switch>
-            <Route path="/vehicle/:id" component={VehicleContainer} />
-            <Route path="/comment/:id" component={CommentContainer} />
             <Route path="/contact/:id" component={ContactContainer} />
             <Route path="/product/:id" component={ProductContainer} />
+            <Route path="/comment/:id" component={CommentContainer} />
+            <Route path="/vehicle/:id" component={VehicleContainer} />
             <Route path="/" component={Main} />
           </Switch>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </div>
     );
   }
 }

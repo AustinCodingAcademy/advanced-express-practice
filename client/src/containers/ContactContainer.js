@@ -10,9 +10,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getContact(contact) {
-      const action = getContact(contact);
-      dispatch(action);
+    getContact(id) {
+      dispatch(getContact(id));
     }
   };
 }

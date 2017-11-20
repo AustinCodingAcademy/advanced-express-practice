@@ -6,8 +6,12 @@ class Contact extends Component {
     this.props.getContact(contactId);
   }
   render() {
-    return <div>{this.props.contact.name}</div>;
+    return (
+      <div>
+        <div>{this.props.contact.name}</div>
+        <div>{this.props.contact.occupation}</div>
+      </div>
+    );
   }
 }
-
 export default Contact;

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Product from "../components/Comment";
+import Product from "../components/Product";
 import { getProduct } from "../actions";
 
 function mapStateToProps(state) {
@@ -10,8 +10,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getProduct(product) {
-      const action = getProduct(product);
+    getProduct(id) {
+      const action = getProduct(id);
       dispatch(action);
     }
   };

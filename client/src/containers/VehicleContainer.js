@@ -10,8 +10,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getVehicle(vehicle) {
-      const action = getVehicle(vehicle);
+    getVehicle(id) {
+      const action = getVehicle(id);
       dispatch(action);
     }
   };

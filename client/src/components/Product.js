@@ -6,8 +6,12 @@ class Product extends Component {
     this.props.getProduct(productId);
   }
   render() {
-    return <div>{this.props.product.body}</div>;
+    return (
+      <div>
+        <div>{this.props.product.name}</div>
+        <div>{this.props.product.description}</div>
+      </div>
+    );
   }
 }
-
 export default Product;

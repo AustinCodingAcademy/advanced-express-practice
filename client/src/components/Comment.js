@@ -6,8 +6,11 @@ class Comment extends Component {
     this.props.getComment(commentId);
   }
   render() {
-    return <div>{this.props.comment.body}</div>;
+    return (
+      <div>
+        <div>{this.props.comment.body}</div>
+      </div>
+    );
   }
 }
-
 export default Comment;

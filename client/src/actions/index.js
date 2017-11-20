@@ -50,6 +50,7 @@ function commentsLoaded(comments) {
     value: comments
   };
 }
+
 export function loadProducts() {
   return function (dispatch) {
     fetch("/products")
@@ -76,7 +77,6 @@ export function createProduct(product) {
     }).then(() => dispatch(loadProducts()));
   };
 }
-
 export function createContact(c) {
   return function (dispatch) {
     fetch("/contacts", {
@@ -105,6 +105,8 @@ export function createComment(v) {
   };
 }
 
+// id actions
+
 export function getProduct(id) {
   return function (dispatch) {
     fetch("/products/" + id)
@@ -126,7 +128,7 @@ function getProductDone(product) {
 
 export function getVehicle(id) {
   return function (dispatch) {
-    fetch("vehicles/" + id)
+    fetch("/vehicles/" + id)
       .then(response => {
         return response.json();
       })
@@ -135,6 +137,7 @@ export function getVehicle(id) {
       });
   };
 }
+
 function getVehicleDone(vehicle) {
   return {
     type: "GET_VEHICLE_DONE",
@@ -153,6 +156,7 @@ export function getComment(id) {
       });
   };
 }
+
 function getCommentDone(comment) {
   return {
     type: "GET_COMMENT_DONE",
