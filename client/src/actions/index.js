@@ -1,3 +1,9 @@
+export function getContact(id){
+  return function(dispatch){
+    fetch('contacts/${id}')
+  }
+}
+
 export function loadContacts() {
   return function (dispatch) {
     fetch("/contacts")
