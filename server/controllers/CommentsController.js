@@ -7,11 +7,7 @@ export function list(request, response) {
 export function show(request, response) {
   let commentId = request.params.id;
 
-  function findComment(comment) {
-    return comment.id === commentId;
-  }
-
-  return response.json(comments.find(findComment));
+  return response.json(comments.find(c => c._id == commentId) || {});
 }
 
 export function create(request, response) {

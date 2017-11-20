@@ -7,11 +7,7 @@ export function list(request, response) {
 export function show(request, response) {
   let productId = request.params.id;
 
-  function findProduct(product) {
-    return product.id === productId;
-  }
-
-  return response.json(products.find(findProduct));
+  return response.json(products.find(p => p._id == productId) || {});
 }
 
 export function create(request, response) {

@@ -8,7 +8,7 @@ export function show(request, response) {
   let vehicleId = request.params.id;
 
   function findVehicle(vehicle) {
-    return vehicle.id === vehicleId;
+    return vehicle.id == vehicleId || {};
   }
 
   return response.json(vehicles.find(findVehicle));

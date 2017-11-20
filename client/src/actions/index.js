@@ -121,7 +121,7 @@ function getProductDone(product) {
 
 export function getVehicle(id) {
   return function (dispatch) {
-    fetch(`/vehicles/${id}`)
+    fetch("/vehicles/" + id)
     .then( (response) => {
       return response.json();
     }).then((vehicle) => {
@@ -142,11 +142,11 @@ export function getComment(id) {
     .then( (response) => {
       return response.json();
     }).then((comment) => {
-      dispatch(getComment(comment));
+      dispatch(getCommentDone(comment));
     });
   };
 }
-function getComment(comment) {
+function getCommentDone(comment) {
   return {
     type: "GET_COMMENT_DONE",
     value: comment
@@ -159,11 +159,11 @@ export function getContact(id) {
     .then( (response) => {
       return response.json();
     }).then((contact) => {
-      dispatch(getContact(contact));
+      dispatch(getContactDone(contact));
     });
   };
 }
-function getContact(contact) {
+function getContactDone(contact) {
   return {
     type: "GET_CONTACT_DONE",
     value: contact

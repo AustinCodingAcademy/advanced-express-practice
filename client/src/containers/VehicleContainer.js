@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import Vehicle from "../components/Vehicle";
-import {getVehicle} from "./actions";
+import {getVehicle} from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -8,12 +8,13 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
-    getVehicle() {
-      dispatch(getVehicle());
+    getVehicle: function (id) {
+      let action = getVehicle(id);
+      dispatch(action);
     }
   };
 }
 
-export default connect(mapStateToProps)(Vehicle);
+export default connect(mapStateToProps, mapDispatchToProps)(Vehicle);

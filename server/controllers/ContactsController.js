@@ -7,11 +7,7 @@ export function list(request, response) {
 export function show(request, response) {
   let contactId = request.params.id;
 
-  function findContact(contact) {
-    return contact.id === contactId;
-  }
-
-  return response.json(contacts.find(findContact));
+  return response.json(contacts.find(c => c._id == contactId) || {});
 }
 
 export function create(request, response) {
