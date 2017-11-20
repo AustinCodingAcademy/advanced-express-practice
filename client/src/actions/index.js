@@ -99,3 +99,73 @@ export function createComment(v) {
     }).then(() => dispatch(loadComments()));
   };
 }
+
+// single items
+
+export function getProduct(id) {
+  return function (dispatch) {
+    fetch(`/products/${id}`)
+    .then( (response) => {
+      return response.json();
+    }).then((product) => {
+      dispatch(getProductDone(product));
+    });
+  };
+}
+function getProductDone(product) {
+  return {
+    type: "GET_PRODUCT_DONE",
+    value: product
+  };
+}
+
+export function getVehicle(id) {
+  return function (dispatch) {
+    fetch(`/vehicles/${id}`)
+    .then( (response) => {
+      return response.json();
+    }).then((vehicle) => {
+      dispatch(getVehicleDone(vehicle));
+    });
+  };
+}
+function getVehicleDone(vehicle) {
+  return {
+    type: "GET_VEHICLE_DONE",
+    value: vehicle
+  };
+}
+
+export function getComment(id) {
+  return function (dispatch) {
+    fetch(`/comments/${id}`)
+    .then( (response) => {
+      return response.json();
+    }).then((comment) => {
+      dispatch(getComment(comment));
+    });
+  };
+}
+function getComment(comment) {
+  return {
+    type: "GET_COMMENT_DONE",
+    value: comment
+  };
+}
+
+export function getContact(id) {
+  return function (dispatch) {
+    fetch(`/contacts/${id}`)
+    .then( (response) => {
+      return response.json();
+    }).then((contact) => {
+      dispatch(getContact(contact));
+    });
+  };
+}
+function getContact(contact) {
+  return {
+    type: "GET_CONTACT_DONE",
+    value: contact
+  };
+}

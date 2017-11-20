@@ -52,35 +52,35 @@ At this point, the web page should operate in the same manner as the redux fetch
 
 ### Reducers
 * create 4 more reducers for the state: vehicle, product, comment, contact
-* vehicle
+* vehicle (/)
     * look for “GET_VEHICLE_DONE”
-* product
+* product (/)
     * look for “GET_PRODUCT_DONE”
-* comment
+* comment (/)
     * look for “GET_COMMENT_DONE”
-* contact
+* contact (/)
     * look for “GET_CONTACT_DONE”
 *
 
 ### Actions
 * Create actions in actions/index.js
 * Create actions to do to a fetch call to one item. When complete, dispatch to the done action.
-    * getProduct(id)
+    * getProduct(id) (/)
         * fetch(“/products/“ + id)
-    * getVehicle(id)
+    * getVehicle(id) (/)
         * fetch(“/vehicles/“ + id)
-    * getComment(id)
+    * getComment(id) (/)
         * fetch(“/comments/“ + id)
-    * getContact(id)
+    * getContact(id) (/)
         * fetch(“/contacts/“ + id)
 * Create actions to handle the data
-    * getProductDone(product)
+    * getProductDone(product) (/0)
         * GET_PRODUCT_DONE
-    * getVehicleDone(vehicle)
+    * getVehicleDone(vehicle) (/)
         * GET_VEHICLE_DONE
-    * getComment(comment)
+    * getComment(comment (/)
         * GET_COMMENT_DONE
-    * getContact(contact)
+    * getContact(contact) (/)
         * GET_CONTACT_DONE
 
 
