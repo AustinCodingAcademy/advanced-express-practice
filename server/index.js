@@ -1,10 +1,10 @@
 import express from "express";
-import comments from "./comments";
-import products from "./products";
-import vehicles from "./vehicles";
-import contacts from "./contacts";
 import bodyParser from "body-parser";
-
+import commentRoutes from './routes/CommentsRoutes';
+import contactRoutes from './routes/ContactsRoutes';
+import productRoutes from './routes/ProductsRoutes';
+import vehicleRoutes from './routes/VehicleRoutes;';
+import products from './products'
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,88 +15,128 @@ app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
 
-// useless comment
 
 
 
-// *** GETS COMMENTS ***
-app.get("/comments", (request, response) => {
-  response.json(comments);
-});
-// *** GETS PRODUCTS ***
-app.get("/products/", (request, response) => {
-  response.json(products);
-});
-// *** GETS VEHICLES ***
-app.get("/vehicles", (request, response) => {
-  response.json(vehicles);
-})
-// *** GETS CONTACTS ***
-app.get("/contacts", (request, response) => {
-  response.json(contacts);
-});
-// *** GETS SPECIFIC COMMENT BASED ON ID ***
-app.get("/comments/:id", (request, response) => {
-  let id = request.params.id;
-  let commentID = comments.find((comment) => {
-    if(comment._id == id){
-     return comment
-    }
-    else response.send("There is no such comment")
-  })
-  response.json(commentID);
-});
-// *** GETS SPECIFIC PRODUCT BASED ON ID ***
-app.get("/products/:id/", (request, response) => {
-  let id = request.params.id;
-  let productID = products.find((product) => {
-    if(product._id == id){
-     return product
-    }
-    else response.send("There is no such product")
-  })
-  response.json(productID);
-});
-// *** GETS SPECIFIC VEHICLE BASED ON ID ***
-app.get("/vehicles/:id/", (request, response) => {
-  let id = request.params.id;
-  let vehicleID = vehicles.find((vehicle) => {
-    if(vehicle._id == id){
-     return vehicle
-    }
-    else response.send("There is no such vehicle")
-  })
-  response.json(vehicleID);
-});
-// *** GETS SPECIFIC CONTACT BASED ON ID *** 
-app.get("/contacts/:id/", (request, response) => {
-  let id = request.params.id;
-  let contactID = contacts.find((contact) => {
-    if(contact._id == id){
-     return contact
-    }
-    else response.send("There is no such contact")
-  })
-  response.json(contactID);
-});
+app.use(commentRoutes);
+app.use(contactRoutes);
+app.use(productRoutes);
+app.use(vehicleRoutes);
 
-// *** CREATE A POST IN COMMENTS ***
 
-app.post("/comments", (request, response) => {
-  comments.push(request.body);
 
-})
-//  *** CREATE A POST IN PRODUCTS ***
-app.post("/products", (request, response) => {
-  products.push(request.body);
-})
 
-//  *** CREATE A POST IN VEHICLES ***
-app.post("/vehicles", (request, response) => {
-  vehicles.push(request.body);
-})
 
-//  *** CREATE A POST IN CONTACTS ***
-app.post("/contacts", (request, response) => {
-  contacts.push(request.body);
-})
+
+
+
+
+
+//        ------ COMMENTS ------
+
+//        *** GETS COMMENTS ***
+
+// app.get("/comments", (request, response) => {
+//   return response.json(comments);
+// });
+
+//       *** GETS SPECIFIC COMMENT BASED ON ID ***
+
+// app.get("/comments/:id", (request, response) => {
+//   let id = request.params.id;
+//   let commentID = comments.find((comment) => {
+//     if(comment._id == id){
+//      return comment
+//     }
+//     else response.send("There is no such comment")
+//   })
+//   return response.json(commentID);
+// });
+
+//      *** CREATE A POST IN COMMENTS ***
+
+// app.post("/comments", (request, response) => {
+//   comments.push(request.body);
+
+
+//        ------ CONTACTS ------
+
+//        *** GETS CONTACTS ***
+
+// app.get("/contacts", (request, response) => {
+//   return response.json(contacts);
+// });
+
+//        *** GETS SPECIFIC CONTACT BASED ON ID *** 
+
+// app.get("/contacts/:id/", (request, response) => {
+//   let id = request.params.id;
+//   let contactID = contacts.find((contact) => {
+//     if(contact._id == id){
+//      return contact
+//     }
+//     else response.send("There is no such contact")
+//   })
+//   return response.json(contactID);
+// });
+
+//      *** CREATE A POST IN CONTACTS ***
+
+// app.post("/contacts", (request, response) => {
+//   contacts.push(request.body);
+// })
+
+//        ------ PRODUCTS ------
+
+//        *** GETS PRODUCTS ***
+
+// app.get("/products/", (request, response) => {
+//   return response.json(products);
+// });
+
+//     *** GETS SPECIFIC PRODUCT BASED ON ID ***
+
+// app.get("/products/:id/", (request, response) => {
+//   let id = request.params.id;
+//   let productID = products.find((product) => {
+//     if(product._id == id){
+//      return product
+//     }
+//     else response.send("There is no such product")
+//   })
+//   return response.json(productID);
+// });
+
+//       *** CREATE A POST IN PRODUCTS ***
+
+// app.post("/products", (request, response) => {
+//   products.push(request.body);
+// })
+
+//      ------ VEHICLES ------
+
+//      *** GETS VEHICLES ***
+
+// app.get("/vehicles", (request, response) => {
+//   return response.json(vehicles);
+// })
+
+//     *** GETS SPECIFIC VEHICLE BASED ON ID ***
+
+// app.get("/vehicles/:id/", (request, response) => {
+//   let id = request.params.id;
+//   let vehicleID = vehicles.find((vehicle) => {
+//     if(vehicle._id == id){
+//      return vehicle
+//     }
+//     else response.send("There is no such vehicle")
+//   })
+//   return response.json(vehicleID);
+// });
+
+//      *** CREATE A POST IN VEHICLES ***
+
+// app.post("/vehicles", (request, response) => {
+//   vehicles.push(request.body);
+// })
+
