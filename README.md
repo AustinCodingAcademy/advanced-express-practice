@@ -1,5 +1,5 @@
 # Express Practice
-# Part 1 - Server
+# Part 1 - Server --
 
 ### server/index.js
 * This is the starting point of the server, put all code here
@@ -24,13 +24,13 @@
 At this point, the web page should operate in the same manner as the redux fetch practice
 
 
-# Part 2 - Routes
-* Create route files
+# Part 2 - Routes --
+* Create route
 * Import the arrays into the route
 * Organize the routes for /contacts, /vehicles, /comments, /products using express Router
 * Import and use the Routers in index.js
 
-# Part 3 - Controllers
+# Part 3 - Controllers --
 * Create controller files 
 * Import the arrays into the controller
 * Take the code from the routes and put it into the controller
@@ -50,7 +50,7 @@ At this point, the web page should operate in the same manner as the redux fetch
 
 ## Redux
 
-### Reducers
+### Reducers --
 * create 4 more reducers for the state: vehicle, product, comment, contact
 * vehicle
     * look for “GET_VEHICLE_DONE”
@@ -62,29 +62,29 @@ At this point, the web page should operate in the same manner as the redux fetch
     * look for “GET_CONTACT_DONE”
 * 
 
-### Actions
+### Actions --
 * Create actions in actions/index.js
 * Create actions to do to a fetch call to one item. When complete, dispatch to the done action.
-    * getProduct(id)
+    * getProduct(id) --
         * fetch(“/products/“ + id)
-    * getVehicle(id)
+    * getVehicle(id) --
         * fetch(“/vehicles/“ + id)
-    * getComment(id)
+    * getComment(id) --
         * fetch(“/comments/“ + id)
-    * getContact(id)
+    * getContact(id) --
         * fetch(“/contacts/“ + id)
 * Create actions to handle the data 
-    * getProductDone(product)
+    * getProductDone(product) --
         * GET_PRODUCT_DONE
-    * getVehicleDone(vehicle)
+    * getVehicleDone(vehicle) --
         * GET_VEHICLE_DONE
-    * getComment(comment)
+    * getComment(comment) --
         * GET_COMMENT_DONE
-    * getContact(contact)
+    * getContact(contact) --
         * GET_CONTACT_DONE
 
 
-### Components
+### Components --
 * Create class components to show the details of each Type in our system
 * Vehicle.js, Product.js, Contact.js, Comment.js
 * Use the instructions from Containers to decide what props to use
@@ -94,7 +94,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * call the appropriate get action to get one thing
     * for Vehicle.js you would call getVehicle(id)
 
-### Containers
+### Containers --
 * Create containers for Vehicle, Product, Contact, Comment
 * Implement mapStateToProps
     * For Vehicle.js, map a prop called vehicle to the state.vehicle
@@ -103,7 +103,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * For Vehicle.js map a prop called getVehicle to the action getVehicle
     * What should you do for Product.js, Contact.js and Comment.js
 
-### React Router
+### React Router --
 * Use react-router-dom 
 * Import BrowserRouter, Switch and Route into App.js
 * Create routes for each detail container component
@@ -111,7 +111,7 @@ At this point, the web page should operate in the same manner as the redux fetch
     * …etc
     * / -> show the Main component
 
-#### Link
+#### Link --
 * Look at client/components/CollapsableMapper.js
 * Change the `<a>` tag to `<Link>`
 
