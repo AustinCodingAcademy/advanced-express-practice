@@ -6,7 +6,6 @@ import productRoutes from "./routes/productRoutes";
 import bodyParser from "body-parser";
 // import { list, show, create } from "./controllers/ContactController";
 
-
 const app = express();
 app.use(bodyParser.json());
 
@@ -64,7 +63,6 @@ app.use(productRoutes);
 //   response.json(products.push(request.body));
 //   return 'contact added';
 // });
-
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
