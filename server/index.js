@@ -1,7 +1,4 @@
 import express from "express";
-import comments from "./comments";
-import products from "./products";
-import vehicles from "./vehicles";
 import contactRoutes from "./routes/contactRoutes";
 import commentRoutes from "./routes/commentRoutes";
 import vehicleRoutes from "./routes/vehicleRoutes";
