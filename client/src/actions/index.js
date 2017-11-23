@@ -1,6 +1,9 @@
 export function getContact(id){
   return function(dispatch){
     fetch('contacts/${id}')
+    .then(response => response.json())
+    .then(json => dispatch(getContactDone(json)))
+    .catch(err => console.log(err))
   }
 }
 
