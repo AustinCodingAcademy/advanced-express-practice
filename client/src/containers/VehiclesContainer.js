@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Vehicles from "../components/Vehicles";
+import { getVehicles } from "../actions";
 
 function mapStateToProps(state) {
   return {

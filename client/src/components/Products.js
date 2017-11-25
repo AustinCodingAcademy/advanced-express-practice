@@ -1,10 +1,10 @@
 import React from "react";
 
 
-class Contact extends React.Component {
+class Products extends React.Component {
   componentDidMount() {
     var productid = this.props.match.params.id
-    this.props.getContac(productid);
+    this.props.getContact(productid);
   }
   render() {
     return (

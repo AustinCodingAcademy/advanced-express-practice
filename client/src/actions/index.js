@@ -161,7 +161,7 @@ export function getContact(id) {
            .then( (response) => {
              return response.json();
           }).then((contact) => {
-            dispatch(getcontactDone(contact));
+            dispatch(getContactDone(contact));
             });
           };
          }

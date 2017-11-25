@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Products from "../components/Products";
+import { getProducts } from "../actions";
 
 function mapStateToProps(state) {
   return {

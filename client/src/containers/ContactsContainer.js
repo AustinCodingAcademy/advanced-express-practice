@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Contacts from "../components/Contacts";
+import { getContacts } from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -9,8 +10,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getContact(id) {
-      var action = getContact(id)
+    getContacts(id) {
+      var action = getContacts(id)
       dispatch(action);
     }
   }
