@@ -10,7 +10,10 @@ class Comments extends React {
 
   render() {
     return (
-      <CollapsableMapper data={this.props.comments} path="comment" field="body" />
+      <div>
+        <div>{this.props.comments.id}</div>
+        <CollapsableMapper data={this.props.comments} path="comment" field="body" />
+      </div>
     );
   }
  
