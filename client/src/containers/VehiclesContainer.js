@@ -7,4 +7,14 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Vehicles);
+function mapDispatchToProps(dispatch) {
+  return {
+    getVehicles(id) {
+      var action = getVehicles(id)
+      dispatch(action);
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Vehicles);
+

@@ -1,10 +1,10 @@
 import React from "react";
-import CollapsableMapper from "./CollapsableMapper";
+
 
 class Contact extends React.Component {
   componentDidMount() {
     var contactid = this.props.match.params.id
-    this.props.getContac(contactid);
+    this.props.getContact(contactid);
   }
   render() {
     return (

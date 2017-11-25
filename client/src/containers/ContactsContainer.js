@@ -7,4 +7,13 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Contacts);
+function mapDispatchToProps(dispatch) {
+  return {
+    getContact(id) {
+      var action = getContact(id)
+      dispatch(action);
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);

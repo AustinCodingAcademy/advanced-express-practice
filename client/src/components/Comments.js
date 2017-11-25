@@ -1,9 +1,18 @@
 import React from "react";
-import CollapsableMapper from "./CollapsableMapper";
 
-function Comments(props) {
-  return (
-    <CollapsableMapper data={props.comments} path="comment" field="body" />
-  );
+
+class Comments extends React.Component {
+  componentDidMount() {
+    var commentid = this.props.match.params.id
+    this.props.getContac(commentid);
+  }
+  render() {
+    return (
+      <div>
+        <div>{this.props.comment.body}</div>
+      </div>
+    );
+  }
 }
+
 export default Comments;

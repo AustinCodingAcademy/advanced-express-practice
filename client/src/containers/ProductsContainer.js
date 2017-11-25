@@ -7,4 +7,14 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Products);
+function mapDispatchToProps(dispatch) {
+  return {
+    getProducts(id) {
+      var action = getProducts(id)
+      dispatch(action);
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
+
