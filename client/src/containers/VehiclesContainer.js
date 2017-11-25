@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Vehicles from "../components/Vehicles";
-import { getVehicles } from "../actions";
+import { getVehicle } from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -10,8 +10,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getVehicles(id) {
-      var action = getVehicles(id)
+    getVehicle(id) {
+      var action = getVehicle(id)
       dispatch(action);
     }
   }

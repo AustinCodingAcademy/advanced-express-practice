@@ -2,11 +2,11 @@ import express from "express";
 const router = express.Router();
 import {list,show,create,update,remove} from "../controllers/VehicleController"
 
-router.get("/vehicle", list);
-router.get("/vehicle/:id", show);
-router.post("/vehicle", create)
-router.put("/vehicle/:id", update);
-router.delete("/vehicle/:id", remove);
+router.get("/vehicles", list);
+router.get("/vehicles/:id", show);
+router.post("/vehicles", create)
+router.put("/vehicles/:id", update);
+router.delete("/vehicles/:id", remove);
 
 export default router;
 

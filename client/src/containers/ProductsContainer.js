@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Products from "../components/Products";
-import { getProducts } from "../actions";
+import { getProduct } from "../actions";
 
 function mapStateToProps(state) {
   return {
@@ -10,8 +10,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getProducts(id) {
-      var action = getProducts(id)
+    getProduct(id) {
+      var action = getProduct(id)
       dispatch(action);
     }
   }

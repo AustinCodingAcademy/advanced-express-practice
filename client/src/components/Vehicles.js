@@ -3,7 +3,7 @@ import React from "react";
 
 class Vehicles extends React.Component {
   componentDidMount() {
-    var vehicleid = this.props.match.params.id
+    let vehicleid = this.props.match.params.id;
     this.props.getContact(vehicleid);
   }
   render() {

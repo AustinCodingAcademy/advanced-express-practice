@@ -3,7 +3,7 @@ import React from "react";
 
 class Contacts extends React.Component {
   componentDidMount() {
-    var contactid = this.props.match.params.id
+    let contactid = this.props.match.params.id;
     this.props.getContacts(contactid);
   }
   render() {

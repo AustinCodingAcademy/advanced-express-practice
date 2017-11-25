@@ -3,7 +3,7 @@ import React from "react";
 
 class Products extends React.Component {
   componentDidMount() {
-    var productid = this.props.match.params.id
+    let productid = this.props.match.params.id;
     this.props.getContact(productid);
   }
   render() {

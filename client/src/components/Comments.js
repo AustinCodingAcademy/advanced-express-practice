@@ -3,7 +3,7 @@ import React from "react";
 
 class Comments extends React.Component {
   componentDidMount() {
-    var commentid = this.props.match.params.id
+    let commentid = this.props.match.params.id;
     this.props.getContact(commentid);
   }
   render() {
