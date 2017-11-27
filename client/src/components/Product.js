@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 class Product extends Component {
   componentDidMount() {
-    const productId = this.props.match.params.id;
-    this.props.getProduct(productId);
+    const myId = this.props.match.params.id;
+    this.props.getProduct(myId);
   }
   render() {
     return (

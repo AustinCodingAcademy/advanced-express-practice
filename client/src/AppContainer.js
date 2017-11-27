@@ -1,24 +1,23 @@
 import App from "./App";
 import "./App.css";
 import { connect } from "react-redux";
-import {loadContacts,loadProducts,loadVehicles,loadComments} from "./actions";
-
+import { loadContacts, loadProducts, loadVehicles, loadComments } from "./actions";
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadContacts: function () {
+    loadContacts() {
       dispatch(loadContacts());
     },
-    loadProducts: function () {
+    loadProducts() {
       dispatch(loadProducts());
     },
-    loadVehicles: function () {
+    loadVehicles() {
       dispatch(loadVehicles());
     },
-    loadComments: function () {
+    loadComments() {
       dispatch(loadComments());
-    },
+    }
   };
 }
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

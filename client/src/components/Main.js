@@ -8,7 +8,7 @@ import CreateThingsContainer from "../containers/CreateThingsContainer";
 function Contacts() {
   return (
     <div>
-      <div style={{float: "left", width: "49%"}}>
+      <div style={{ float: "left", width: "49%" }}>
         <h1>Comments </h1>
         <CommentsContainer />
         <h1>Contacts</h1>
@@ -18,7 +18,7 @@ function Contacts() {
         <h1>Products</h1>
         <ProductsContainer />
       </div>
-      <div style={{float: "left", width: "49%"}}>
+      <div style={{ float: "left", width: "49%" }}>
         <CreateThingsContainer />
       </div>
     </div>
