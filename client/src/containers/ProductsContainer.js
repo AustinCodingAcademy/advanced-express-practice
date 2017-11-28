@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import {getProduct} from "../actions";
 import Products from "../components/Products";
 
 function mapStateToProps(state) {
@@ -7,4 +8,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Products);
+function mapDispatchToProps(dispatch) {
+  return {
+    getProduct: function () {
+      dispatch(getProduct());
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

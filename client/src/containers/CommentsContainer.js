@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import {getComment} from "../actions";
 import Comments from "../components/Comments";
 
 function mapStateToProps(state) {
@@ -7,4 +8,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Comments);
+function mapDispatchToProps(dispatch) {
+  return {
+    getComment: function () {
+      dispatch(getComment());
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);

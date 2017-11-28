@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import {getVehicle} from "../actions";
 import Vehicles from "../components/Vehicles";
 
 function mapStateToProps(state) {
@@ -7,4 +8,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Vehicles);
+function mapDispatchToProps(dispatch) {
+  return {
+    getVehicle: function () {
+      dispatch(getVehicle());
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Vehicles);

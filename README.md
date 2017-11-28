@@ -97,11 +97,13 @@ At this point, the web page should operate in the same manner as the redux fetch
 ### Containers
 * Create containers for Vehicle, Product, Contact, Comment
 * Implement mapStateToProps
-    * For Vehicle.js, map a prop called vehicle to the state.vehicle
-    * What should the state be for Product.js, Contact.js and Comment.js
+    * For Vehicle.js, map a prop called vehicles to the state.vehicles
+    * What should the state be for Product.js = products, state.products
+    Contact.js = contacts, state.contacts
+    Comment.js = comments, state.comments
 * Implement mapDispatchToProps
     * For Vehicle.js map a prop called getVehicle to the action getVehicle
-    * What should you do for Product.js, Contact.js and Comment.js
+    * What should you do for Product.js = getProduct, Contact.js = getContact, Comment.js = getComment
 
 ### React Router
 * Use react-router-dom

@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import {getContact} from "../actions";
 import Contacts from "../components/Contacts";
 
 function mapStateToProps(state) {
@@ -7,4 +8,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Contacts);
+function mapDispatchToProps(dispatch) {
+  return {
+    getContact: function () {
+      dispatch(getContact());
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
