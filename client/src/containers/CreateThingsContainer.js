@@ -9,19 +9,19 @@ import {
 
 function mapDispatchToProps(dispatch) {
   return {
-    createProduct: function (product) {
+    createProduct: function(product) {
       dispatch(createProduct(product));
     },
-    createVehicle: function (v) {
+    createVehicle: function(v) {
       dispatch(createVehicle(v));
     },
-    createContact: function (contact) {
+    createContact: function(contact) {
       dispatch(createContact(contact));
     },
-    createComment: function (c) {
+    createComment: function(c) {
       dispatch(createComment(c));
-    },
+    }
   };
 }
 
-export default connect(null,mapDispatchToProps)(CreateThings);
+export default connect(null, mapDispatchToProps)(CreateThings);

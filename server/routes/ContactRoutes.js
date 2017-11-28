@@ -10,4 +10,4 @@ router.post("/contacts", create);
 router.put("/contacts/:id", update);
 router.delete("/contacts/:id", remove);
 
-export default router;
+export default ContactRoutes;

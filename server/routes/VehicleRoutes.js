@@ -10,4 +10,4 @@ router.post("/vehicles", create);
 router.put("/vehicles/:id", update);
 router.delete("/vehicles/:id", remove);
 
-export default router;
+export default VehicleRoutes;

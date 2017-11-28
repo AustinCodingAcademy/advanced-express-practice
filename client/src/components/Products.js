@@ -1,11 +1,8 @@
 import React from "react";
 import CollapsableMapper from "./CollapsableMapper";
 
-class Products extends React {
-
-  componentDidMount(){
-
-  }
+class Products extends React.Component {
+  
 
   render(){
     return (
