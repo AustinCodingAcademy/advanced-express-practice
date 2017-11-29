@@ -5,6 +5,9 @@ import contactRoutes from "./routes/ContactRoutes";
 import vehicleRoutes from "./routes/VehicleRoutes";
 import commentRoutes from "./routes/CommentRoutes";
 import productRoutes from "./routes/ProductRoutes";
+import mongoose from "mongoose";
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/express-practice");
 
 const app = express();
 app.use(bodyParser.json());
