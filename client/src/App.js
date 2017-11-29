@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import Main from "./components/Main";
 import CommentContainer from "./containers/CommentContainer"
@@ -7,7 +7,7 @@ import VehicleContainer from "./containers/VehicleContainer"
 import ProductContainer from "./containers/ProductContainer"
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {users: []};
