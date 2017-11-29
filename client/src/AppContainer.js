@@ -3,7 +3,11 @@ import "./App.css";
 import { connect } from "react-redux";
 import {loadContacts,loadProducts,loadVehicles,loadComments} from "./actions";
 
-
+function mapStateToProps(state){
+  return {
+    comments: state.comments
+  }
+}
 function mapDispatchToProps(dispatch) {
   return {
     loadContacts: function () {

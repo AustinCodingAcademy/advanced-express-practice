@@ -3,6 +3,12 @@ import React from 'react'
 
 class ProductDetail extends React.Component {
 
+    componentDidMount(){
+        console.log("product props: ", this.props)
+        const productId = this.props.match.params.id;
+        this.props.getProduct(productId);
+    }
+
 
 
     render(){

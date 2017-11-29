@@ -1,16 +1,20 @@
-import React from 'react'
-
+import React from "react";
 
 class ContactDetail extends React.Component {
+  
+  componentDidMount() {
+    const contactId = this.props.match.params.id;
+    this.props.getContact(contactId);
+  }
 
-
-
-    render(){
-        <div>
-            <div>{this.props.contact.body}</div>
-            <div>{this.props.contact.postId}</div>
-        </div>
-    }
+  render() {
+    return (
+      <div>
+        <div>{this.props.contact}</div>
+        <div>{this.props.contact}</div>
+      </div>
+    );
+  }
 }
 
 export default ContactDetail;

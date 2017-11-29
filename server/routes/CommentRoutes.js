@@ -11,4 +11,4 @@ router.post("/comments", create);
 router.put("/comments/:id", update);
 router.delete("/comments/:id", remove);
 
-export default CommentRoutes;
+export default router;

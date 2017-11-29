@@ -1,22 +1,20 @@
-import React from 'react'
-
+import React from "react";
 
 class CommentDetail extends React.Component {
-    constructor(props){
-        super(props)
-    }
+  componentDidMount() {
+    const commentId = this.props.match.params.id;
+    this.props.getComment(commentId);
+    console.log("comment ID: ", commentId);
+  }
 
-componentDidMount(){
-    const id = 
-}
-
-
-    render(){
-        <div>
-            <div>{this.props.comment.body}</div>
-            <div>{this.props.comment.postId}</div>
-        </div>
-    }
+  render() {
+    return (
+      <div>
+        <div>{this.props.comments}</div>
+        <div>{this.props.comments}</div>
+      </div>
+    );
+  }
 }
 
 export default CommentDetail;
