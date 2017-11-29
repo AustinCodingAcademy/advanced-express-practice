@@ -1,24 +1,18 @@
 import comments from "../comments";
 
 export function list(request, response) {
-  response.json([comments]);
+  response.json(comments);
 }
 export function show(request, response) {
-  let id = request.params.id;
-  let commentID = comments.find(comment => {
-    if (comment._id == id) {
-      return comment;
-    } else response.send("There is no such comment");
-  });
-  response.json(commentID);
+  return response.json(comments.find(u => u._id == request.params.id) || {});
 }
-export function create(request, response) {
-  comments.push(request.body);
+  export function create(request, response) {
+    comments.push(request.body);
 }
 
 export function update(request, response) {
-  return response.json({ theId: request.params.id });
+  return response.json(comments[0].name = request.params.id);
 }
 export function remove(request, response) {
-  return response.json({});
+  return response.json(comments.pop());
 }

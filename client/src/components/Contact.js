@@ -1,6 +1,6 @@
 import React from "react";
 
-class ContactDetail extends React.Component {
+class Contact extends React.Component {
   
   componentDidMount() {
     const contactId = this.props.match.params.id;
@@ -17,4 +17,4 @@ class ContactDetail extends React.Component {
   }
 }
 
-export default ContactDetail;
+export default Contact;

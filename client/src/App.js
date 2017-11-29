@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import Main from "./components/Main";
-import CommentDetailContainer from "./containers/CommentDetailContainer"
+import CommentContainer from "./containers/CommentContainer"
+import ContactContainer from "./containers/ContactContainer"
+import VehicleContainer from "./containers/VehicleContainer"
+import ProductContainer from "./containers/ProductContainer"
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 class App extends Component {
@@ -14,14 +17,20 @@ class App extends Component {
     this.props.loadContacts();
     this.props.loadVehicles();
     this.props.loadProducts();
-    console.log("hello")
   }
   render() {
     return (
      
         <div>
           <Main />
-          <CommentDetailContainer />
+          <BrowserRouter>
+            <Switch>
+              <Route path='/comment/:id' component={CommentContainer}/>
+              <Route path='/contact/:id' component={ContactContainer}/>
+              <Route path='/vehicle/:id' component={VehicleContainer}/>
+              <Route path='/product/:id' component={ProductContainer}/>
+            </Switch>
+          </BrowserRouter>
         </div>
     
     );

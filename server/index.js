@@ -18,10 +18,10 @@ app.listen(port, () => {
 
 
 
-app.use(commentRouter);
-app.use(contactRouter);
-app.use(productRouter);
-app.use(vehicleRouter);
+app.use(CommentRoutes);
+app.use(ContactRoutes);
+app.use(ProductRoutes);
+app.use(VehicleRoutes);
 
 
 

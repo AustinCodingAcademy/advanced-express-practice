@@ -1,4 +1,4 @@
-import VehicleDetail from "../components/VehicleDetail";
+import Vehicle from "../components/Vehicle";
 import { connect } from "react-redux";
 import { getVehicle } from "../actions";
 
@@ -17,4 +17,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(VehicleDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(Vehicle);

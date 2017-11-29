@@ -1,4 +1,4 @@
-import ProductDetail from '../components/ProductDetail';
+import Product from '../components/Product';
 import { connect } from 'react-redux';
 import { getProduct } from '../actions'
 
@@ -19,4 +19,4 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

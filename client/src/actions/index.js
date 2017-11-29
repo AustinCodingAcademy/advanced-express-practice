@@ -15,14 +15,13 @@ export function getContactDone(contact){
 }
 
 export function loadContacts() {
+  console.log("called loadContacts")
   return function (dispatch) {
     fetch("/contacts")
-    .then( (response) => {
-      return response.json();
-    }).then((contacts) => {
-      dispatch(contactsLoaded(contacts));
-    });
-  };
+    .then(response => response.json())
+    .then(contacts => dispatch(contactsLoaded(contacts)))
+    .catch(error => console.log(error))
+  }
 }
 
 export function contactsLoaded(contacts) {
@@ -51,12 +50,10 @@ export function getVehicleDone(vehicle){
 export function loadVehicles() {
   return function (dispatch) {
     fetch("/vehicles")
-    .then( (response) => {
-      return response.json();
-    }).then((vehicles) => {
-      dispatch(vehiclesLoaded(vehicles));
-    });
-  };
+    .then(response => response.json())
+    .then(vehicles => dispatch(vehiclesLoaded(vehicles)))
+    .catch(error => console.log(error))
+  }
 }
 
 export function vehiclesLoaded(vehicles) {
@@ -85,12 +82,10 @@ export function getCommentDone(comment){
 export function loadComments() {
   return function (dispatch) {
     fetch("/comments")
-    .then( (response) => {
-      return response.json();
-    }).then((comments) => {
-      dispatch(commentsLoaded(comments));
-    });
-  };
+    .then(response => response.json())
+    .then(comments => dispatch(commentsLoaded(comments)))
+    .catch(error => console.log(error))
+  }
 }
 
 export function commentsLoaded(comments) {
@@ -118,13 +113,12 @@ export function getProductDone(product){
 export function loadProducts() {
   return function (dispatch) {
     fetch("/products")
-    .then( (response) => {
-      return response.json();
-    }).then((products) => {
-      dispatch(productsLoaded(products));
-    });
-  };
+    .then(response => response.json())
+    .then(products => dispatch(productsLoaded(products)))
+    .catch(error => console.log(error)) 
+  }
 }
+
 export function productsLoaded(products) {
   return {
     type: "PRODUCTS_LOADED",

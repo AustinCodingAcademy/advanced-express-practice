@@ -1,4 +1,4 @@
-import CommentDetail from '../components/CommentDetail';
+import Comment from '../components/Comment';
 import { connect } from 'react-redux'
 import { getComment } from '../actions'
 
@@ -20,4 +20,4 @@ function mapDispatchToProps(dispatch){
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(Comment);
