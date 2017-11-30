@@ -1,20 +1,30 @@
-const vehicles = require("../vehicles");
+//const vehicles = require("../vehicles");
+const Vehicle = require("../models/Vehicle");
 
 function list(request, response) {
-    return response.json(vehicles);
+    Vehicle.find({}).exec()
+    .then(vehicles => {
+        return response.json(vehicles); 
+    });
 }
 
 function show(request, response) {
-    let getVehicle = vehicles.find(v => {
-            return String(v._id) === request.params.id;
-        });
-      
-    return response.json(getVehicle);
+    Vehicle.findById(request.params.id).exec()
+    .then(vehicle => {
+      return response.json(vehicle);
+    });
 }
 
 function create(request, response) {
-    vehicles.push(request.body);
-    return response.json(vehicles);
+    const vehicle= new Vehicle({
+        year: request.body.year,
+        make: request.body.make,
+        model: request.body.model,
+    });
+    vehicle.save()
+    .then(vehicles => {
+      return response.json(vehicles);
+    });
 }
 
 module.exports = {

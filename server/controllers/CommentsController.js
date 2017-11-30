@@ -1,20 +1,28 @@
-const comments = require("../comments");
+//const comments = require("../comments");
+const Comment = require("../models/Comment");
 
 function list(request, response) {
-    return response.json(comments);
+    Comment.find({}).exec()
+    .then(comments => {
+        return response.json(comments); 
+    });
 }
 
 function show(request, response) {
-    let getContact = comments.find(c => {
-            return String(c._id) === request.params.id;
-        });
-      
-    return response.json(getContact);
+    Comment.findById(request.params.id).exec()
+    .then(comment => {
+      return response.json(comment);
+    });
 }
 
 function create(request, response) {
-    comments.push(request.body);
-    return response.json(comments);
+    const comment = new Comment({
+        body: request.body.body
+    });
+    comment.save()
+    .then(comments => {
+      return response.json(comments);
+    });
 }
 
 module.exports = {

@@ -5,6 +5,10 @@ const commentRoutes = require("./routes/CommentRoutes");
 const productRoutes = require("./routes/ProductRoutes");
 const vehicleRoutes = require("./routes/VehicleRoutes");
 
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/express-practice");
+
 const app = express();
 app.use(bodyParser.json());
 app.use(contactRoutes);
