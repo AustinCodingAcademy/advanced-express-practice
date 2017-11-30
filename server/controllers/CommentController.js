@@ -1,21 +1,30 @@
 import comments from "../comments";
+import CommentModel from "../models/CommentModel";
 
 export function list(request, response) {
-  return response.json(comments);
+  CommentModel.find({})
+    .exec()
+    .then(comments => {
+      return response.json(comments);
+    });
 }
 
 export function show(request, response) {
-  return response.json(comments.find(u => u._id == request.params.id) || {});
+  CommentModel.findById(request.params.id)
+    .exec()
+    .then(comment => {
+      return response.json(comment);
+    });
 }
 
 export function create(request, response) {
-  comments.push(request.body);
-  return response.send("comment saved");
+  const comment = new CommentModel(request.body);
+  comment.save().then(comment => response.json(comment));
 }
 
 export function update(request, response) {
-  return response.json((comments[0].name = request.params.id));
+  return response.json((CommentModel[0].name = request.params.id));
 }
 export function remove(request, response) {
-  return response.json(comments.pop());
+  return response.json(CommentModel.pop());
 }

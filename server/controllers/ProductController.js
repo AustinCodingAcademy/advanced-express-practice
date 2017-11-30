@@ -1,16 +1,25 @@
 import products from "../products";
+import ProductModel from "../models/ProductModel";
 
 export function list(request, response) {
-  return response.json(products);
+  ProductModel.find({})
+    .exec()
+    .then(products => {
+      return response.json(products);
+    });
 }
 
 export function show(request, response) {
-  return response.json(products.find(u => u._id == request.params.id) || {});
+  ProductModel.findById(request.params.id)
+    .exec()
+    .then(product => {
+      return response.json(product);
+    });
 }
 
 export function create(request, response) {
-  products.push(request.body);
-  return response.send("product saved");
+  const product = new ProductModel(request.body);
+  product.save().then(product => response.json(product));
 }
 
 export function update(request, response) {
