@@ -1,4 +1,4 @@
-import comments from "./comments";
+import comments from "../comments";
 
 export function list(request, response) {
     return response.json(comments);

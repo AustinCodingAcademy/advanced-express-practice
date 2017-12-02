@@ -1,8 +1,8 @@
 import express from "express";
-import commentRoutes from ".routes/CommentRoutes";
-import productRoutes from ".routes/ProductRoutes";
-import vehicleRoutes from ".routes/VehicleRoutes";
-import contactRoutes from ".routes/ContactRoutes";
+import commentRoutes from "./routes/CommentRoutes";
+import productRoutes from "./routes/ProductRoutes";
+import vehicleRoutes from "./routes/VehicleRoutes";
+import contactRoutes from "./routes/ContactRoutes";
 import bodyParser from "body-parser";
 
 
