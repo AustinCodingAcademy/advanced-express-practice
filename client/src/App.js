@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Main from "./components/Main";
-// import VehicleSingleContainer from "./containers/VehicleSingleContainer";
-// import CommentSingleContainer from "./containers/CommentSingleContainer";
-// import ContactSingleContainer from "./containers/ContactSingleContainer";
-// import ProductSingleContainer from "./containers/ProductSingleContainer";
 import VehicleSingleContainer from "./containers/VehicleSingleContainer";
 import CommentSingleContainer from "./containers/CommentSingleContainer";
 import ContactSingleContainer from "./containers/ContactSingleContainer";
