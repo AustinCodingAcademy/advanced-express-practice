@@ -49,70 +49,80 @@ X Import and use the controller functions in the appropriate Router
 ## Redux
 
 ### Reducers
-* create 4 more reducers for the state: vehicle, product, comment, contact
-* vehicle
+X create 4 more reducers for the state: vehicle, product, comment, contact
+X vehicle
     * look for “GET_VEHICLE_DONE”
-* product
+X product
     * look for “GET_PRODUCT_DONE”
-* comment
+X comment
     * look for “GET_COMMENT_DONE”
-* contact
+X contact
     * look for “GET_CONTACT_DONE”
 *
 
 ### Actions
-* Create actions in actions/index.js
-* Create actions to do to a fetch call to one item. When complete, dispatch to the done action.
-    * getProduct(id)
+X Create actions in actions/index.js
+X Create actions to do to a fetch call to one item. When complete, dispatch to the done action.
+    X getProduct(id)
         * fetch(“/products/“ + id)
-    * getVehicle(id)
+    X getVehicle(id)
         * fetch(“/vehicles/“ + id)
-    * getComment(id)
+    X getComment(id)
         * fetch(“/comments/“ + id)
-    * getContact(id)
+    X getContact(id)
         * fetch(“/contacts/“ + id)
-* Create actions to handle the data
-    * getProductDone(product)
+X Create actions to handle the data
+    X getProductDone(product)
         * GET_PRODUCT_DONE
-    * getVehicleDone(vehicle)
+    X getVehicleDone(vehicle)
         * GET_VEHICLE_DONE
-    * getComment(comment)
+    X getComment(comment)
         * GET_COMMENT_DONE
-    * getContact(contact)
+    X getContact(contact)
         * GET_CONTACT_DONE
 
 
 ### Components
-* Create class components to show the details of each Type in our system
+X Create class components to show the details of each Type in our system
+JK NOTES:
+For full listing on landing page, components below with corresponding controllers:
 * Vehicle.js, Product.js, Contact.js, Comment.js
-* Use the instructions from Containers to decide what props to use
-* You decide what to show in the detail (HTML wise)
-* In componentDidMount
-    * Extract the path parameter id
-    * call the appropriate get action to get one thing
-    * for Vehicle.js you would call getVehicle(id)
+
+For single item listing on item specific landing page, components below with corresponding controllers:
+* VehicleSingle.js, ProductSingle.js, ContactSingle.js, CommentSingle.js
+
+X Use the instructions from Containers to decide what props to use
+X You decide what to show in the detail (HTML wise)
+X In componentDidMount
+    X Extract the path parameter id
+    X call the appropriate get action to get one thing
+    X for Vehicle.js you would call getVehicle(id)
 
 ### Containers
-* Create containers for Vehicle, Product, Contact, Comment
-* Implement mapStateToProps
-    * For Vehicle.js, map a prop called vehicle to the state.vehicle
-    * What should the state be for Product.js, Contact.js and Comment.js
-* Implement mapDispatchToProps
-    * For Vehicle.js map a prop called getVehicle to the action getVehicle
-    * What should you do for Product.js, Contact.js and Comment.js
+X Create containers for Vehicle, Product, Contact, Comment
+
+X Also created for VehicleSingle, ProductSingle, ContactSingle, CommentSingle
+
+X Implement mapStateToProps
+    X For Vehicle.js, map a prop called vehicle to the state.vehicle
+    X What should the state be for Product.js, Contact.js and Comment.js
+X Implement mapDispatchToProps
+    X For Vehicle.js map a prop called getVehicle to the action getVehicle
+    X What should you do for Product.js, Contact.js and Comment.js
 
 ### React Router
-* Use react-router-dom
-* Import BrowserRouter, Switch and Route into App.js
-* Create routes for each detail container component
-    * /vehicle/:id -> Vehicle
-    * …etc
-    * / -> show the Main component
+X Use react-router-dom
+X Import BrowserRouter, Switch and Route into App.js
+X Create routes for each detail container component
+    X /vehicle/:id -> Vehicle
+    X …etc
+    X / -> show the Main component
 
 #### Link
-* Look at client/components/CollapsableMapper.js
-* Change the `<a>` tag to `<Link>`
+X Look at client/components/CollapsableMapper.js
+X Change the `<a>` tag to `<Link>`
 
+XXXXXXXX
 
 # Part 5 - Database
 * In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice"
