@@ -6,28 +6,39 @@ POST -> create
 PUT /:id -> update
 DELETE /:id -> remove
 */
-export function list(request, response) {
- return response.json(comments);
+export function listComment(request, response) {
+  return response.json(comments);
 }
 
-export function show(request, response) {
+/*
+export function showComment(request, response) {
   const commentId = request.params.id;
   const thisComment = comments.find(comm => comm.id == commentId) || {};
   response.json(thisComment);
 }
+*/
 
-export function create(request, response) {
+export function showComment(request, response) {
+  const commentId = comments.find(comm => {
+    return String(comm._id) === request.params.id;
+  });
+
+  return response.json(commentId);
+}
+
+export function createComment(request, response) {
   comments.push(request.body);
- return response.json(comments);
+  // alert("Success! Your new comment was saved.")
+  return response.json(comments);
 }
 
 // FUNCTIONS BELOW NOT UPDATED
-export function update(request, response) {
- return response.json({theId: request.params.id});
+export function updateComment(request, response) {
+  return response.json({theId: request.params.id});
 }
 
-export function remove(request, response) {
- return response.json(comments);
+export function removeComment(request, response) {
+  return response.json(comments);
 }
 
 // Alternate 'show' functions

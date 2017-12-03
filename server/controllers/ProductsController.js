@@ -6,27 +6,38 @@ POST -> create
 PUT /:id -> update
 DELETE /:id -> remove
 */
-export function list(request, response) {
+export function listProduct(request, response) {
   return response.json(products);
 }
 
-export function show(request, response) {
+/*
+export function showProduct(request, response) {
   const productId = request.params.id;
   const thisProduct = products.find(prod => prod.id == productId) || {};
   return response.json(thisProduct);
 }
+*/
 
-export function create(request, response) {
+export function showProduct(request, response) {
+  const productId = products.find(product => {
+    return String(product._id) === request.params.id;
+  });
+
+  return response.json(productId);
+}
+
+export function createProduct(request, response) {
   products.push(request.body);
+  // alert("Success! Your new product was saved.")
   return response.json(products);
 }
 
 // FUNCTIONS BELOW NOT UPDATED
-export function update(request, response) {
+export function updateProduct(request, response) {
   return response.json({theId: request.params.id});
 }
 
-export function remove(request, response) {
+export function removeProduct(request, response) {
   return response.json(products);
 }
 

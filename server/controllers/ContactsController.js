@@ -6,27 +6,38 @@ POST -> create
 PUT /:id -> update
 DELETE /:id -> remove
 */
-export function list(request, response) {
+export function listContact(request, response) {
   return response.json(contacts);
 }
 
-export function show(request, response) {
+/*
+export function showContact(request, response) {
   const contactId = request.params.id;
   const thisContact = contacts.find(con => con.id == contactId) || {};
   return response.json(thisContact);
 }
+*/
 
-export function create(request, response) {
+export function showContact(request, response) {
+  const contactId = contacts.find(c => {
+    return String(c._id) === request.params.id;
+  });
+
+  return response.json(contactId);
+}
+
+export function createContact(request, response) {
   contacts.push(request.body);
+  // alert("Success! Your new contact was saved.")
   return response.json(contacts);
 }
 
 // FUNCTIONS BELOW NOT UPDATED
-export function update(request, response) {
+export function updateContact(request, response) {
   return response.json({theId: request.params.id});
 }
 
-export function remove(request, response) {
+export function removeContact(request, response) {
   return response.json({});
 }
 

@@ -6,27 +6,38 @@ POST -> create
 PUT /:id -> update
 DELETE /:id -> remove
 */
-export function list(request, response) {
+export function listVehicle(request, response) {
   return response.json(vehicles);
 }
 
-export function show(request, response) {
+/*
+export function showVehicle(request, response) {
   const vehicleId = request.params.id;
   const thisVehicle = vehicles.find(veh => veh.id == vehicleId) || {};
   return response.json(thisVehicle);
 }
+*/
 
-export function create(request, response) {
+export function showVehicle(request, response) {
+  const vehicleId = vehicles.find(v => {
+    return String(v._id) === request.params.id;
+  });
+
+  return response.json(vehicleId);
+}
+
+export function createVehicle(request, response) {
   vehicles.push(request.body);
+  // alert("Success! Your new vehicle was saved.")
   return response.json(vehicles);
 }
 
 // FUNCTIONS BELOW NOT UPDATED
-export function update(request, response) {
+export function updateVehicle(request, response) {
   return response.json({theId: request.params.id});
 }
 
-export function remove(request, response) {
+export function removeVehicle(request, response) {
   return response.json(vehicles);
 }
 
