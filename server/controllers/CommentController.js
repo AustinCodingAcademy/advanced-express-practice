@@ -1,4 +1,12 @@
 import comments from "./comments";
+import Comment from "./models/Comment";
+
+app.get("/comments", (request, response) => {
+Comment.find({}).exec()
+.then(comments => {
+  return response.json(comments);
+});
+});
 
 export function list(request, response) {
  return response.json(comments);

@@ -1,4 +1,12 @@
 import contacts from "./contacts";
+import Contact from "./models/Contact";
+
+app.get("/contacts", (request, response) => {
+Contact.find({}).exec()
+.then(contacts => {
+  return response.json(contacts);
+});
+});
 
 export function list(request, response) {
  return response.json(contacts);

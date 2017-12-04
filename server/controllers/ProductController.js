@@ -1,4 +1,12 @@
 import products from "./products";
+import Product from "./models/Product";
+
+app.get("/products", (request, response) => {
+Product.find({}).exec()
+.then(products => {
+  return response.json(products);
+});
+});
 
 export function list(request, response) {
  return response.json(products);

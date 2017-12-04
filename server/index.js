@@ -8,6 +8,12 @@ import ContactRoutes from "./routes/ContactRoutes";
 import VehicleRoutes from "./routes/VehicleRoutes";
 import CommentRoutes from "./routes/CommentRoutes";
 import ProductRoutes from "./routes/ProductRoutes";
+import mongoose from "mongoose";
+
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/test");
+
 
 const app = express();
 app.use(bodyParser.json());
