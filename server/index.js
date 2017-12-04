@@ -4,7 +4,11 @@ import CommentRoutes from './routes/CommentRoutes';
 import ContactRoutes from './routes/ContactRoutes';
 import ProductRoutes from './routes/ProductRoutes';
 import VehicleRoutes from './routes/VehicleRoutes';
-import products from './products'
+import mongoose from 'mongoose'
+
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/express-practice");
 
 const app = express();
 app.use(bodyParser.json());
