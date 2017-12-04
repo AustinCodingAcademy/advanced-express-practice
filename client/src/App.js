@@ -21,17 +21,20 @@ class App extends React.Component {
   render() {
     return (
      
-        <div>
-          <Main />
+       
+         
           <BrowserRouter>
-            <Switch>
-              <Route path='/comment/:id' component={CommentContainer}/>
-              <Route path='/contact/:id' component={ContactContainer}/>
-              <Route path='/vehicle/:id' component={VehicleContainer}/>
-              <Route path='/product/:id' component={ProductContainer}/>
-            </Switch>
+            <div>
+              <Switch>
+                <Route path='/comment/:id' component={CommentContainer}/>
+                <Route path='/contact/:id' component={ContactContainer}/>
+                <Route path='/vehicle/:id' component={VehicleContainer}/>
+                <Route path='/product/:id' component={ProductContainer}/>
+                <Route path='/' component={Main}/>
+              </Switch>
+            </div>
           </BrowserRouter>
-        </div>
+       
     
     );
   }

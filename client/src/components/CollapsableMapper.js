@@ -18,6 +18,7 @@ class CollapsableMapper extends Component {
             {d[this.props.field1]}
             {d[this.props.field2]}
             {d[this.props.field3]}
+            {/* this Link element changes the URL which then talks to the server, the URL then determines what the server does */}
             <Link to={"/" + this.props.path + "/" + d._id}>View</Link>
           </div>
         );

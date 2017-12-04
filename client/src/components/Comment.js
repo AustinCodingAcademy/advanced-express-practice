@@ -4,14 +4,13 @@ class Comment extends React.Component {
   componentDidMount() {
     const commentId = this.props.match.params.id;
     this.props.getComment(commentId);
-    console.log("comment ID: ", commentId);
+    console.log("comment props: ", this.props);
   }
 
   render() {
     return (
       <div>
-        <div>{this.props.comments}</div>
-        <div>{this.props.comments}</div> 
+        <h1>{this.props.comment.body}</h1> 
       </div>
     );
   }

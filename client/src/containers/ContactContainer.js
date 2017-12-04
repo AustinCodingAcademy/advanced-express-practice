@@ -6,7 +6,7 @@ import { getContact } from '../actions'
 
 function mapStateToProps(state){
     return {
-        contact: state.contacts
+        contact: state.contact
     }
 }
 

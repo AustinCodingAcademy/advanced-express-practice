@@ -5,7 +5,7 @@ class Comments extends React.Component {
  
 
   render() {
-    console.log('collapsabel mapper props: ', this.props)
+  11
     return (
       <div>
         <div>{this.props.comments.id}</div>

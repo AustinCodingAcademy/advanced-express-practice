@@ -1,8 +1,8 @@
 export function getContact(id){
   return function(dispatch){
-    fetch("contacts/" + id)
+    fetch("/contacts/" + id)
     .then(response => response.json())
-    .then(json => dispatch(getContactDone(json)))
+    .then(contact => dispatch(getContactDone(contact)))
     .catch(err => console.log(err))
   }
 }
@@ -33,9 +33,9 @@ export function contactsLoaded(contacts) {
 
 export function getVehicle(id){
   return function(dispatch){
-    fetch("/vehicles" + id)
+    fetch("/vehicles/" + id)
     .then(response => response.json())
-    .then(json => dispatch(getVehicleDone(json)))
+    .then(vehicle => dispatch(getVehicleDone(vehicle)))
     .catch(err => console.log(err))
   }
 }
@@ -65,9 +65,9 @@ export function vehiclesLoaded(vehicles) {
 
 export function getComment(id){
   return function(dispatch){
-    fetch("/comments" + id)
+    fetch("/comments/" + id)
     .then(response => response.json())
-    .then(json => dispatch(getCommentDone(json)))
+    .then(comment => dispatch(getCommentDone(comment)))
     .catch(err => console.log(err))
   };
 }
@@ -96,14 +96,15 @@ export function commentsLoaded(comments) {
 }
 export function getProduct(id){
   return function(dispatch){
-    fetch("/products" + id)
+    fetch("/products/" + id)
     .then(response => response.json())
-    .then(json => dispatch(getProductDone(json)))
+    .then(product => dispatch(getProductDone(product)))
     .catch(err => console.log(err))
-  }
+  };
 }
 
 export function getProductDone(product){
+  console.log("getProductDone product: ", product)
   return {
     type: "GET_PRODUCT_DONE",
     value: product

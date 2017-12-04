@@ -10,8 +10,9 @@ class Contact extends React.Component {
   render() {
     return (
       <div>
-        <div>{this.props.contact}</div>
-        <div>{this.props.contact}</div>
+        <div>{this.props.contact.name}</div>
+        <div>{this.props.contact.occupation}</div>
+        <div>{this.props.contact.avatar}</div>
       </div>
     );
   }

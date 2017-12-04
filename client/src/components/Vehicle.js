@@ -10,8 +10,10 @@ class Vehicle extends React.Component {
   render() {
     return (
       <div>
-        <div>{this.props.vehicle.body}</div>
-        <div>{this.props.vehicle.postId}</div>
+        <div>year: {this.props.vehicle.year}</div>
+        <div>make: {this.props.vehicle.make}</div>
+        <div>model: {this.props.vehicle.model}</div>
+        <div>price: {this.props.vehicle.price}</div>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import { getVehicle } from "../actions";
 
 function mapStateToProps(state) {
   return {
-    vehicle: state.vehicles
+    vehicle: state.vehicle
   };
 }
 
