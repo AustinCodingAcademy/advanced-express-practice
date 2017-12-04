@@ -70,7 +70,7 @@ class CreateThings extends React.Component {
               }} />
             </div>
             <div>
-              Avatar: <input onChange={(e) => {
+              Avatar (please enter a URL or leave empty, not required): <input onChange={(e) => {
                 const contact = {avatar: e.target.value};
                 this.setState({
                   contact: Object.assign(this.state.contact,contact)
@@ -141,9 +141,9 @@ class CreateThings extends React.Component {
             </div>
             <button>Create</button>
           </form>
-        </div>        
+        </div>
       </div>
-      
+
     );
   }
 }

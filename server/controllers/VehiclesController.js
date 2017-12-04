@@ -11,7 +11,7 @@ DELETE /:id -> remove
 */
 
 // get everything from the db
-// nothing in braces, so means find everything
+// nothing in braces, means find everything
 // ref 900 - Database, pg 22
 export function listVehicle(request, response) {
   Vehicle.find({}).exec()

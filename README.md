@@ -122,8 +122,6 @@ X Create routes for each detail container component
 X Look at client/components/CollapsableMapper.js
 X Change the `<a>` tag to `<Link>`
 
-XXXXXXXX
-
 # Part 5 - Database
 X In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice"
 X Create the mongoose models for Contact, Vehicle, Comment Product

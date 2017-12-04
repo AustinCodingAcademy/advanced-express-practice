@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
     type: String
   },
   avatar: {
-    required: true,
+    required: false,
     type: String
   },
 });

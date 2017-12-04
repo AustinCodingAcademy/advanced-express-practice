@@ -1,31 +1,15 @@
 import {combineReducers} from "redux";
 
+// COMMENTS
+
 function comments(state = [], action) {
   if (action.type === "COMMENTS_LOADED") {
     return action.value;
   }
   return state;
 }
-function products(state = [], action) {
-  if (action.type === "PRODUCTS_LOADED") {
-    return action.value;
-  }
-  return state;
-}
-function vehicles(state = [], action) {
-  if (action.type === "VEHICLES_LOADED") {
-    return action.value;
-  }
-  return state;
-}
-function contacts(state = [], action) {
-  if (action.type === "CONTACTS_LOADED") {
-    return action.value;
-  }
-  return state;
-}
 
-// single items reducers
+// SINGLE COMMENT
 
 function comment(state = [], action) {
   if (action.type === "GET_COMMENT_DONE") {
@@ -34,6 +18,35 @@ function comment(state = [], action) {
   return state;
 }
 
+// CONTACTS
+
+function contacts(state = [], action) {
+  if (action.type === "CONTACTS_LOADED") {
+    return action.value;
+  }
+  return state;
+}
+
+// SINGLE CONTACT
+
+function contact(state = [], action) {
+  if (action.type === "GET_CONTACT_DONE") {
+    return action.value;
+  }
+  return state;
+}
+
+// PRODUCTS
+
+function products(state = [], action) {
+  if (action.type === "PRODUCTS_LOADED") {
+    return action.value;
+  }
+  return state;
+}
+
+// SINGLE PRODUCT
+
 function product(state = [], action) {
   if (action.type === "GET_PRODUCT_DONE") {
     return action.value;
@@ -41,15 +54,19 @@ function product(state = [], action) {
   return state;
 }
 
-function vehicle(state = [], action) {
-  if (action.type === "GET_VEHICLE_DONE") {
+// VEHICLES
+
+function vehicles(state = [], action) {
+  if (action.type === "VEHICLES_LOADED") {
     return action.value;
   }
   return state;
 }
 
-function contact(state = [], action) {
-  if (action.type === "GET_CONTACT_DONE") {
+// SINGLE VEHICLE
+
+function vehicle(state = [], action) {
+  if (action.type === "GET_VEHICLE_DONE") {
     return action.value;
   }
   return state;

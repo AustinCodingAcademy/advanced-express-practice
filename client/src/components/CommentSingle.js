@@ -10,7 +10,7 @@ class CommentSingle extends Component {
   render(){
     return (
       <div>
-        <h3>Comment ID: {this.props.comment._id || "n/a"}</h3>
+        <h3>Comment Id: {this.props.comment._id || "n/a"}</h3>
         <h3>Comment: {this.props.comment.body}</h3>
       </div>
     );
