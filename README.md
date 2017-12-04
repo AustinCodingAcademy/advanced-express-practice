@@ -125,13 +125,13 @@ X Change the `<a>` tag to `<Link>`
 XXXXXXXX
 
 # Part 5 - Database
-* In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice"
-* Create the mongoose models for Contact, Vehicle, Comment Product
-* CommentModel - body
-* ContactModel - name, occupation, avatar
-* VehicleModel - year, make, model
-* ProductModel - name, description
-* Change the code in the controllers to use the Models instead of hard coded arrays
+X In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice"
+X Create the mongoose models for Contact, Vehicle, Comment Product
+X CommentModel - body
+X ContactModel - name, occupation, avatar
+X VehicleModel - year, make, model
+X ProductModel - name, description
+X Change the code in the controllers to use the Models instead of hard coded arrays
 
 ### Points
 * Base - 10pts

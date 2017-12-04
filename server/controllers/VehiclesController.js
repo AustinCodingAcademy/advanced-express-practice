@@ -1,4 +1,7 @@
-import vehicles from "../vehicles";
+// import vehicles from "../vehicles";
+
+import Vehicle from "../models/Vehicle";
+
 /*
 GET -> list
 GET /:id -> show
@@ -6,33 +9,42 @@ POST -> create
 PUT /:id -> update
 DELETE /:id -> remove
 */
+
+// get everything from the db
+// nothing in braces, so means find everything
+// ref 900 - Database, pg 22
 export function listVehicle(request, response) {
-  return response.json(vehicles);
-}
-
-/*
-export function showVehicle(request, response) {
-  const vehicleId = request.params.id;
-  const thisVehicle = vehicles.find(veh => veh.id == vehicleId) || {};
-  return response.json(thisVehicle);
-}
-*/
-
-export function showVehicle(request, response) {
-  const vehicleId = vehicles.find(v => {
-    return String(v._id) === request.params.id;
+  Vehicle.find({}).exec()
+  .then(vehicles => {
+    return response.json(vehicles);
   });
-
-  return response.json(vehicleId);
 }
 
+// ref Mongoose Checklist, pg 11, How do we get one user/whatever?
+export function showVehicle(request, response) {
+  // mongodb knows to look for _id, standard
+  Vehicle.findById(request.params.id).exec()
+  .then(veh => {
+    return response.json(veh);
+  });
+}
+
+// ref Mongoose Checklist, pg 10, Save something to the database (insert, save)
 export function createVehicle(request, response) {
-  vehicles.push(request.body);
-  // alert("Success! Your new vehicle was saved.")
-  return response.json(vehicles);
+  // we need to give Comment() an object will all the information
+  // {body: "my comment"} = request.body
+  const vehicle = new Vehicle(request.body);
+  vehicle.save()
+    .then(veh => {
+      // returning the thing we just saved
+      // a little redundant, but it now has it's db auto-created id
+      // you don't need to return after saving, but standard/common practice
+      return response.json(veh);
+    });
 }
 
 // FUNCTIONS BELOW NOT UPDATED
+/*
 export function updateVehicle(request, response) {
   return response.json({theId: request.params.id});
 }
@@ -40,6 +52,7 @@ export function updateVehicle(request, response) {
 export function removeVehicle(request, response) {
   return response.json(vehicles);
 }
+*/
 
 // Alternate 'show' functions
 

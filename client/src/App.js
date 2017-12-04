@@ -15,7 +15,7 @@ import {
 class App extends Component {
   constructor() {
     super();
-  //  this.state = {users: []};
+    this.state = {users: []};
   }
 
   componentDidMount() {
@@ -24,7 +24,7 @@ class App extends Component {
     this.props.loadVehicles();
     this.props.loadProducts();
   }
-  
+
   render() {
     return (
       <div>

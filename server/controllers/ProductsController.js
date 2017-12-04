@@ -1,4 +1,7 @@
-import products from "../products";
+// import products from "../products";
+
+import Product from "../models/Product";
+
 /*
 GET -> list
 GET /:id -> show
@@ -6,33 +9,42 @@ POST -> create
 PUT /:id -> update
 DELETE /:id -> remove
 */
+
+// get everything from the db
+// nothing in braces, so means find everything
+// ref 900 - Database, pg 22
 export function listProduct(request, response) {
-  return response.json(products);
-}
-
-/*
-export function showProduct(request, response) {
-  const productId = request.params.id;
-  const thisProduct = products.find(prod => prod.id == productId) || {};
-  return response.json(thisProduct);
-}
-*/
-
-export function showProduct(request, response) {
-  const productId = products.find(product => {
-    return String(product._id) === request.params.id;
+  Product.find({}).exec()
+  .then(products => {
+    return response.json(products);
   });
-
-  return response.json(productId);
 }
 
+// ref Mongoose Checklist, pg 11, How do we get one user/whatever?
+export function showProduct(request, response) {
+  // mongodb knows to look for _id, standard
+  Product.findById(request.params.id).exec()
+  .then(prod => {
+    return response.json(prod);
+  });
+}
+
+// ref Mongoose Checklist, pg 10, Save something to the database (insert, save)
 export function createProduct(request, response) {
-  products.push(request.body);
-  // alert("Success! Your new product was saved.")
-  return response.json(products);
+  // we need to give Comment() an object will all the information
+  // {body: "my product"} = request.body
+  const product = new Product(request.body);
+  product.save()
+    .then(prod => {
+      // returning the thing we just saved
+      // a little redundant, but it now has it's db auto-created id
+      // you don't need to return after saving, but standard/common practice
+      return response.json(prod);
+    });
 }
 
 // FUNCTIONS BELOW NOT UPDATED
+/*
 export function updateProduct(request, response) {
   return response.json({theId: request.params.id});
 }
@@ -40,6 +52,7 @@ export function updateProduct(request, response) {
 export function removeProduct(request, response) {
   return response.json(products);
 }
+*/
 
 // Alternate 'show' functions
 /*
