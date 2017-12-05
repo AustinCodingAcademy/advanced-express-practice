@@ -1,22 +1,34 @@
-import comments from "../comments";
+import Comment from "../models/Comment";
 
 
 export function list(request, response) {
-    return response.json(comments);
+    Comment.find({}).exec()
+    .then(comments => {
+      return response.json(comments);
+    });
 }
 
 export function show(request, response) {
-    return response.json(comments.find(u => u._id == request.params.id) || {});
+    Comment.findById(request.params.id).exec()
+    .then(comments => {
+      return response.json(comments);
+    });
+   
 }
 
 export function create(request, response) {
-    comments.push(request.body);
-    return response.send("comment saved");
+    const comment = new Comment({
+        body: request.body.body
+      });
+      comment.save()
+      .then(comments => {
+        return response.json(comments);
+      });
 }
 
 export function update(request, response) {
-    return response.json(comments[0].name = request.params.id);
+    return response.json(Comment[0].name = request.params.id);
 }
 export function remove(request, response) {
-    return response.json(comments.pop());
+    return response.json(Comment.pop());
 }

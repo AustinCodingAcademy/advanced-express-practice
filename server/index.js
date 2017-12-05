@@ -6,6 +6,10 @@ import commentRoutes from "./routes/CommentRoutes";
 import contactRoutes from "./routes/ContactRoutes";
 import bodyParser from "body-parser";
 
+import mongoose from "mongoose";
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/advanced-express-practice");
+
 const app = express();
 app.use(bodyParser.json());
 
