@@ -1,14 +1,40 @@
-import products from "../products";
+//import products from "../products";
+import ProductModel from "../models/Product";
 
 export function list(request, response) {
-    return response.json(products);
-   }
+    //For Array
+    //return response.json(comments);
+
+    //For DB
+    ProductModel.find({}).exec()
+    .then(products => {
+        return response.json(products);
+    });
+}
 export function show(request, response) {
-    return response.json(products.find(product => product._id == request.params.id) || {});
+    //For Array
+    //return response.json(comments.find(comment => comment._id == request.params.id) || {});
+    
+    //For DB
+    ProductModel.findById(request.params.id).exec()
+    .then(product => {
+      return response.json(product);
+    });
 }
 export function create(request, response) {
-        products.push(request.body);
-    return response.json({});
+    //For Array
+    //    comments.push(request.body);
+    //return response.json({});
+    
+    //For DB
+    const newProduct = new ProductModel({
+        name: request.body.name,
+        description: request.body.description
+    });
+    newProduct.save()
+    .then(product => {
+        return response.json(product);
+    });
 }
 export function update(request, response) {
     return response.json({theId: request.params.id});
