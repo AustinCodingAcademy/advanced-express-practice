@@ -1,18 +1,24 @@
-import products from "../products";
+import ProductsModel from "../models/ProductsModel"
 
 export function list(request, response) {
-    response.json(products);
-  }
+    ProductsModel.find({}).exec()
+    .then(products => response.json(products))
+};
+
 export function show(request, response) {
   let id = request.params.id;
-  console.log(id);
-  let product = products.find(product => product._id == id) || {};
-  return response.json(product);
-}
-  
+  ProductsModel.findById(id)
+  .then(product => response.json(product))
+};
+
 export function create(request, response) {
-    products.push(request.body);
-}  
+  const product = new ProductsModel(request.body)
+  product.save()
+  .then(product => {
+    return response.json(product)
+  });
+}
+
 
 export function update(request, response) {
   return response.json(products[0].name = request.params.id);

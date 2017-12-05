@@ -1,19 +1,7 @@
 import mongoose from "mongoose";
 
 const schema = new mongoose.Schema({
- firstName: {
-   required: true,
-   type: String
- },
- lastName: {
-   required: true,
-   type: String
- },
- address: {
-   required: true,
-   type: String
- },
- phone: {
+ name: {
    required: true,
    type: String
  },
@@ -22,9 +10,9 @@ const schema = new mongoose.Schema({
    type: String
  },
  avatar: {
-   required: true,
+   required: false,
    type: String
  },
 });
 
-export default mongoose.model("User", schema);
+export default mongoose.model("Contact", schema);

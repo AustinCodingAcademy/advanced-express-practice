@@ -1,30 +1,18 @@
 import mongoose from "mongoose";
 
 const schema = new mongoose.Schema({
- firstName: {
+ year: {
+   required: true,
+   type: Number
+ },
+ make: {
    required: true,
    type: String
  },
- lastName: {
+ model: {
    required: true,
    type: String
- },
- address: {
-   required: true,
-   type: String
- },
- phone: {
-   required: true,
-   type: String
- },
- occupation: {
-   required: true,
-   type: String
- },
- avatar: {
-   required: true,
-   type: String
- },
+ }
 });
 
-export default mongoose.model("User", schema);
+export default mongoose.model("Vehicle", schema);

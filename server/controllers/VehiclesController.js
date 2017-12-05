@@ -1,19 +1,24 @@
-import vehicles from "../vehicles";
+import VehiclesModel from "../models/VehiclesModel";
+
 
 
 export function list(request, response) {
-    response.json(vehicles);
+    VehiclesModel.find({}).exec()
+    .then(vehicles => response.json(vehicles))
   }
 export function show(request, response) {
   let id = request.params.id;
-  console.log(id);
-  let vehicle = vehicles.find(vehicle => vehicle._id == id) || {};
-  return response.json(vehicle);
+  VehiclesModel.findById(id).exec()
+  .then(vehicle => response.json(vehicle))
 }
 
   export function create(request, response) {
-    comments.push(request.body);
+    const vehicle = new VehiclesModel(request.body);
+    vehicle.save()
+    .then(vehicle => response.json(vehicle));
 }
+
+
 
 export function update(request, response) {
   return response.json(vehicles[0].name = request.params.id);

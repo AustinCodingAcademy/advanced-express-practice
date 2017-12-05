@@ -139,6 +139,14 @@ class CreateThings extends React.Component {
                 });
               }} />
             </div>
+            <div>
+              Price: <input onChange={(e) => {
+                const product = {description: e.target.value};
+                this.setState({
+                  product: Object.assign(this.state.product,product)
+                });
+              }} />
+            </div>
             <button>Create</button>
           </form>
         </div>        
