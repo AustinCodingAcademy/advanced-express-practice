@@ -19,9 +19,7 @@ export function show(request, response) {
 }
 
 export function create(request, response) {
-  const comment = new CommentModel({
-    body: request.body.body
-  });
+  const comment = new CommentsModel(request.body)
   comment.save()
   .then(comment => {
     return response.json(comment)
