@@ -1,22 +1,36 @@
-import contacts from "../contacts";
+import Contact from "../models/Contact";
 
 
 export function list(request, response) {
-    return response.json(contacts);
+   Contact.find({}).exec()
+   .then(contacts => {
+     return response.json(contacts);
+   });
 }
 
 export function show(request, response) {
-    return response.json(contacts.find(u => u._id == request.params.id) || {});
+   Contact.findById(request.params.id).exec()
+   .then(contacts => {
+     return response.json(contacts);
+   }); 
 }
 
 export function create(request, response) {
-    contacts.push(request.body);
-    return response.send("contact saved");
+   const contact = new Contact({
+       name: request.body.name,
+       occupation: request.body.occupation,
+       avatar: request.body.avatar
+   });
+   contact.save()
+   .then(contacts => {
+       return response.json(contacts);
+   });
 }
 
 export function update(request, response) {
-    return response.json(contacts[0].name = request.params.id);
+   return response.json(Contact[0].name = request.params.id);
 }
+
 export function remove(request, response) {
-    return response.json(contacts.pop());
+   return response.json(Contact.pop());
 }

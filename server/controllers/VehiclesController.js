@@ -1,22 +1,36 @@
-import vehicles from "../vehicles";
+import Vehicle from "../models/Vehicle";
 
 
 export function list(request, response) {
-    return response.json(vehicles);
+   Vehicle.find({}).exec()
+   .then(vehicles => {
+     return response.json(vehicles);
+   });
 }
 
 export function show(request, response) {
-    return response.json(vehicles.find(u => u._id == request.params.id) || {});
+   Vehicle.findById(request.params.id).exec()
+   .then(vehicles => {
+     return response.json(vehicles);
+   }); 
 }
 
 export function create(request, response) {
-    vehicles.push(request.body);
-    return response.send("vehicle saved");
+   const vehicle = new Vehicle({
+       year: request.body.year,
+       make: request.body.make,
+       model: request.body.model
+   });
+   vehicle.save()
+   .then(vehicles => {
+       return response.json(vehicles);
+   });
 }
 
 export function update(request, response) {
-    return response.json(vehicles[0].name = request.params.id);
+   return response.json(Vehicle[0].name = request.params.id);
 }
+
 export function remove(request, response) {
-    return response.json(vehicles.pop());
+   return response.json(Vehicle.pop());
 }
