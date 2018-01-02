@@ -15,4 +15,4 @@ const schema = new mongoose.Schema({
     }
 });
 
-export default mongoose.model("Contacts", schema);
+export default mongoose.model("Contact", schema);
