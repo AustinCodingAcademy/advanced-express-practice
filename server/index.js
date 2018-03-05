@@ -27,22 +27,22 @@ app.get('/products', (request, response, next) => {
 //routes to get one thing
 app.get('/contacts/:id', (request, response, next) => {
   const contactId = request.params.id;
-  response.json(contacts.find(contactId));
+  response.json(contacts[contactId]);
 });
 
 app.get('/vehicles/:id', (request, response, next) => {
   const vehicleId = request.params.id;
-  response.json(vehicles.find(vehicleId));
+  response.json(vehicles[vehicleId]);
 });
 
 app.get('/comments/:id', (request, response, next) => {
   const commentId = request.params.id;
-  response.json(comments.find(commentId));
+  response.json(comments[commentId]);
 });
 
 app.get('/products/:id', (request, response, next) => {
   const productId = request.params.id;
-  response.json(products.find(productId));
+  response.json(products[productId]);
 });
 
 app.post('/contacts', (request, response, next) => {
