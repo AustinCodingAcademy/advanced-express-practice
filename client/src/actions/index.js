@@ -99,3 +99,80 @@ export function createComment(v) {
     }).then(() => dispatch(loadComments()));
   };
 }
+
+// My Actions
+// comment
+export function getComment(id) {
+  return function (dispatch) {
+    fetch(`/comments/${id}`)
+    .then( (res) => {
+      return res.json();
+    })
+    .then( (comment) => {
+      dispatch(getCommentDone(comment));
+    });
+  };
+}
+function getCommentDone(comment) {
+  return {
+    type: "GET_COMMENT_DONE",
+    value: comment
+  };
+}
+
+// contact
+export function getContact(id) {
+  return function (dispatch) {
+    fetch(`/contacts/${id}`)
+    .then( (res) => {
+      return res.json();
+    })
+    .then( (contact) => {
+      dispatch(getContactDone(contact));
+    });
+  };
+}
+function getContactDone(contact) {
+  return {
+    type: "GET_CONTACT_DONE",
+    value: contact
+  };
+}
+
+// product
+export function getProduct(id) {
+  return function (dispatch) {
+    fetch(`/products/${id}`)
+    .then( (res) => {
+      return res.json();
+    })
+    .then( (product) => {
+      dispatch(getProductDone(product));
+    });
+  };
+}
+function getProductDone(product) {
+  return {
+    type: "GET_PRODUCT_DONE",
+    value: product
+  };
+}
+
+// vehicle
+export function getVehicle(id) {
+  return function (dispatch) {
+    fetch(`/vehicles/${id}`)
+    .then( (res) => {
+      return res.json();
+    })
+    .then( (vehicle) => {
+      dispatch(getVehicleDone(vehicle));
+    });
+  };
+}
+function getVehicleDone(vehicle) {
+  return {
+    type: "GET_VEHICLE_DONE",
+    value: vehicle
+  };
+}
