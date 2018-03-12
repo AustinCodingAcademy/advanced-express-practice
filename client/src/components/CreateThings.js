@@ -35,6 +35,14 @@ class CreateThings extends React.Component {
             }
           }}>
             <div>
+              ID: <input onChange={(e) => {
+                const comment = {_id: e.target.value};
+                this.setState({
+                  comment: Object.assign(this.state.comment,comment)
+                });
+              }} />
+            </div>
+            <div>
               Body: <input onChange={(e) => {
                 const comment = {body: e.target.value};
                 this.setState({
@@ -53,6 +61,14 @@ class CreateThings extends React.Component {
               this.props.createContact(this.state.contact);
             }
           }}>
+            <div>
+              ID: <input onChange={(e) => {
+                const contact = {_id: e.target.value};
+                this.setState({
+                  contact: Object.assign(this.state.contact,contact)
+                });
+              }} />
+            </div>
             <div>
               Name: <input onChange={(e) => {
                 const contact = {name: e.target.value};
@@ -89,6 +105,14 @@ class CreateThings extends React.Component {
             }
           }}>
             <div>
+              ID: <input onChange={(e) => {
+                const vehicle = {_id: e.target.value};
+                this.setState({
+                  vehicle: Object.assign(this.state.vehicle,vehicle)
+                });
+              }} />
+            </div>
+            <div>
               Year: <input onChange={(e) => {
                 const vehicle = {year: e.target.value};
                 this.setState({
@@ -124,6 +148,14 @@ class CreateThings extends React.Component {
             }
           }}>
             <div>
+              ID: <input onChange={(e) => {
+                const product = {_id: e.target.value};
+                this.setState({
+                  product: Object.assign(this.state.product,product)
+                });
+              }} />
+            </div>
+            <div>
               Name: <input onChange={(e) => {
                 const product = {name: e.target.value};
                 this.setState({
@@ -141,9 +173,9 @@ class CreateThings extends React.Component {
             </div>
             <button>Create</button>
           </form>
-        </div>        
+        </div>
       </div>
-      
+
     );
   }
 }
