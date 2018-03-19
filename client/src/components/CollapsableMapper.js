@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class CollapsableMapper extends Component {
   constructor() {
@@ -17,7 +18,7 @@ class CollapsableMapper extends Component {
             {d[this.props.field1]}
             {d[this.props.field2]}
             {d[this.props.field3]}
-            <a href={"/" + this.props.path + "/" + d._id}> View </a>
+            <Link to={"/" +this.props.path + "/" + d._id}> View </Link>
           </div>
         );
       });

@@ -42,7 +42,7 @@ class CreateThings extends React.Component {
                 });
               }} />
             </div>
-            <button>Create</button>
+            <button>Create</button> 
           </form>
         </div>
         <div>
