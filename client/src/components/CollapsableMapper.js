@@ -10,6 +10,7 @@ class CollapsableMapper extends Component {
     let userDivs = "";
     if (this.state.visible) {
       buttonText = "Hide";
+      //console.log("CollapsableMapper this.props.field1:",this.props.field1);
       userDivs = this.props.data.map((d,i) => {
         return (
           <div key={i}>
