@@ -1,25 +1,32 @@
-import comments from "../models/comments";
+import commentModel from "../models/comments";
 
 export const list = (req, res) => {
-    return res.json(comments);
+    commentModel.find({}).exec()
+    .then( list => res.json(list) );
 }; 
 
 export const show = (req, res) => {
-    let comment = comments.find(e => e._id == req.params.id);
-    return res.json(comment);
+    commentModel.findById(req.params.id).exec()
+    .then( comment => res.json(comment) );
 };
 
 export const create = (req, res) => {
-    let id = (comments.length + 1);
-    let comment = {_id: id, body: req.body.body, postId: 1};
-    comments.push(comment);
-    return res.json(comments);
+    commentModel.find({}).exec()
+    .then( list => {
+        const id = ( list.length + 1 );
+        const comment = new commentModel({
+            _id: id,
+            body: req.body.body
+        });
+        comment.save()
+    .then( comm => res.json(comm) );
+    })
 };
 
 export const update = (req, res) => {
-    return res.json({theid: req.params.id});
+    res.send('nope');
 };
 
 export const remove = (req, res) => {
-    return res.json({});
+    res.send('nope');
 };

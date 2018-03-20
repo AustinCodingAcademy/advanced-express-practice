@@ -1,30 +1,34 @@
-import vehicles from "../models/vehicles";
+import vehicleModel from "../models/vehicles";
 
 export const list = (req, res) => {
-    return res.json(vehicles);
+    vehicleModel.find({}).exec()
+    .then( list => res.json(list) );
 }; 
 
 export const show = (req, res) => {
-    let vehicle = vehicles.find(e => e._id == req.params.id);
-    return res.json(vehicle);
+    vehicleModel.findById(req.params.id).exec()
+    .then( vehicle => res.json(vehicle) );
 };
 
 export const create = (req, res) => {
-    let id = (vehicles.length + 1);
-    let vehicle = {
-        _id: id,
-        year: req.body.year,
-        make: req.body.make,
-        model: req.body.model
-    }
-    vehicles.push(vehicle);
-    return res.json({});
+    vehicleModel.find({}).exec()
+    .then( list => {
+        const id = (list.length + 1);
+        const vehicle = new vehicleModel({
+            _id: id,
+            year: req.body.year,
+            make: req.body.make,
+            model: req.body.model
+        });
+        vehicle.save()
+        .then( veh => res.json(veh) );
+    })
 };
 
 export const update = (req, res) => {
-    return res.json({theid: req.params.id});
+    return res.send('nah');
 };
 
 export const remove = (req, res) => {
-    return res.json({});
+    return res.send('nah');
 };
