@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router(); 
-import {list, show, create, update, remove} from "../controllers/ProductsController";
+import {listAll, show, create, update, remove} from "../controllers/ProductsController";
 
-router.get("/products", list);
+router.get("/products", listAll);
 router.get("/products/:id", show);
 router.post("/products", create);
 router.post("/products/:id", update);

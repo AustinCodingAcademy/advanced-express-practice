@@ -3,7 +3,7 @@ import comments from "./comments";
 import products from "./products";
 import vehicles from "./vehicles";
 import contacts from "./contacts";
-import bodyParser from "body-parser";
+// import bodyParser from "body-parser";
 import ContactRoutes from "./routes/ContactRoutes";
 let bodyParser = require("body-parser");
 
