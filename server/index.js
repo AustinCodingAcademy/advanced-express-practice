@@ -4,6 +4,7 @@ import products from "./products";
 import vehicles from "./vehicles";
 import contacts from "./contacts";
 import bodyParser from "body-parser";
+import ContactRoutes from "./routes/ContactRoutes";
 let bodyParser = require("body-parser");
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 
 
 app.get("/contacts",function (request,response,next){
-  response.json(contacts[0])
+  response.json(contacts)
  });
 
  app.get("/vehicles",function (request,response,next){
@@ -37,6 +38,11 @@ app.get("/contacts/:id",function (request,response,next){
  app.get("/products/:id",function (request,response,next){
   response.json(products[request.params._id]);
  });
+//get code
+// app.get("/commments/:id", (request,response,next) =>{
+//   let id 
+//   response.json(comments[request.params._id]);
+//  });
 
  // post
  app.post('/contacts', (request,response,next) => {
