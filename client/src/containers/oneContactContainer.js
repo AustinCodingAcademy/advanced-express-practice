@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Contact from "../components/Contact";
+import oneContact from "../components/oneContact";
 import { getContact } from "../actions"
 
 function mapStateToProps(state) {
@@ -16,4 +16,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Contact);
+export default connect(mapStateToProps,mapDispatchToProps)(oneContact);

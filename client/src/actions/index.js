@@ -29,6 +29,7 @@ export function loadVehicles() {
        }
     })
     .then( (response) => {
+      //console.log("hello loadvehicles");
       return response.json();
     }).then((vehicles) => {
       dispatch(vehiclesLoaded(vehicles));
@@ -50,6 +51,7 @@ export function loadComments() {
        }
     })
     .then( (response) => {
+      //console.log("hello loadcomments");
       return response.json();
     }).then((comments) => {
       dispatch(commentsLoaded(comments));
@@ -142,7 +144,7 @@ export function getProduct(id) {
     })
     .then( (response) => {
       return response.json();
-    }).then(() => dispatch(getProductDone()));
+    }).then((p) => dispatch(getProductDone(p)));
   };
 }
 function getProductDone(product) {
@@ -160,8 +162,9 @@ export function getVehicle(id) {
         "Accept": "application/json"}
     })
     .then( (response) => {
+      console.log("getVehicle (singular)");
       return response.json();
-    }).then(() => dispatch(getVehicleDone()));
+    }).then((v) => dispatch(getVehicleDone(v)));
   };
 }
 function getVehicleDone(vehicle) {
@@ -173,14 +176,17 @@ function getVehicleDone(vehicle) {
 
 export function getContact(id) {
   return function (dispatch) {
+    console.log("getContact working");
     fetch("/contacts/"+id, {
       headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"}
+        "Content-Type": "application/json"}
     })
     .then( (response) => {
       return response.json();
-    }).then(() => dispatch(getContactDone()));
+    }).then(function(c){
+      console.log("getContact get c:",c);
+      dispatch(getContactDone(c));
+    });
   };
 }
 function getContactDone(contact) {
@@ -192,14 +198,17 @@ function getContactDone(contact) {
 
 export function getComment(id) {
   return function (dispatch) {
+    console.log("getComment working");
     fetch("/comments/"+id, {
       headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"}
+        "Content-Type": "application/json"}
     })
     .then( (response) => {
       return response.json();
-    }).then(() => dispatch(getCommentDone()));
+    }).then(function(c){
+      console.log("getComment get c:",c);
+      dispatch(getCommentDone(c));
+    });
   };
 }
 function getCommentDone(comment) {
