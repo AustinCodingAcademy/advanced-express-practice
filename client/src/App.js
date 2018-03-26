@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "./App.css";
 import Main from "./components/Main";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Vehicle from './components/Vehicle';
-import Product from './components/Product';
-import Comment from './components/Comment';
-import Contact from './components/Contact';
+import VehicleContainer from './containers/VehicleContainer';
+import ProductContainer from './containers/ProductContainer';
+import CommentContainer from './containers/CommentContainer';
+import ContactContainer from './containers/ContactContainer';
 
 class App extends Component {
   constructor() {
@@ -24,10 +24,10 @@ class App extends Component {
         <div className="app">
           <Switch>
             <Route exact path="/" component={Main} />
-            <Route path="/vehicle/:id" component={Vehicle} />
-            <Route path="/product/:id" component={Product} />
-            <Route path="/comment/:id" component={Comment} />
-            <Route path="/contact/:id" component={Contact} />
+            <Route path="/vehicle/:id" component={VehicleContainer} />
+            <Route path="/product/:id" component={ProductContainer} />
+            <Route path="/comment/:id" component={CommentContainer} />
+            <Route path="/contact/:id" component={ContactContainer} />
           </Switch>
         </div>
       </Router>

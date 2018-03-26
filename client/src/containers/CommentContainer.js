@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import Comment from '../components/Comment';
 import { getComment } from '../actions';
 
@@ -9,8 +9,11 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    getComment
-  }, dispatch);
+  return {
+    getComment: (id) => {
+      const action = getComment(id);
+      dispatch(action);
+    }
+  };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Comment);
