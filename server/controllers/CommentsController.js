@@ -1,8 +1,8 @@
-import vehicles from "../vehicles";
+import comments from "../comments";
 
 
 export function listAll(request, response) {
-    return response.json(vehicles);
+    return response.json(comments);
 }
 export function show(request, response) {
     return response.json({theId: request.params.id});

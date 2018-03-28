@@ -3,8 +3,9 @@ import comments from "./comments";
 import products from "./products";
 import vehicles from "./vehicles";
 import contacts from "./contacts";
-// import bodyParser from "body-parser";
 import ContactRoutes from "./routes/ContactRoutes";
+import VehicleRoutes from "./routes/VehicleRoutes";
+import CommentsRoutes from "./routes/CommentsRoutes";
 let bodyParser = require("body-parser");
 
 const app = express();
@@ -16,13 +17,13 @@ app.get("/contacts",function (request,response,next){
  });
 
  app.get("/vehicles",function (request,response,next){
-  response.json(vehicles[0])
+  response.json(vehicles)
  });
  app.get("/commments",function (request,response,next){
-  response.json(comments[0])
+  response.json(comments)
  });
  app.get("/products",function (request,response,next){
-  response.json(products[0])
+  response.json(products)
  });
 // get
 app.get("/contacts/:id",function (request,response,next){
