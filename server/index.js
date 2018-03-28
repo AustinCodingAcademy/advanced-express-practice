@@ -8,6 +8,10 @@ import ContactsRoutes from "./routes/ContactsRoutes"
 import CommentsRoutes from "./routes/CommentsRoutes"
 import ProductsRoutes from "./routes/ProductsRoutes"
 import VehiclesRoutes from "./routes/VehiclesRoutes"
+import mongoose from "mongoose";
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://psc478:psc478@ds047652.mlab.com:47652/express-practice-5");
 
 const app = express();
 app.use(bodyParser.json());

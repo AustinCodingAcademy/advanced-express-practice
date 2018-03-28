@@ -182,6 +182,7 @@ export function getContact(id) {
         "Content-Type": "application/json"}
     })
     .then( (response) => {
+      console.log("getContact response", response);
       return response.json();
     }).then(function(c){
       console.log("getContact get c:",c);
