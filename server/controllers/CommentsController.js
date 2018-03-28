@@ -1,8 +1,10 @@
 import CommentModel from "../models/CommentModel";
 
 export function list(request, response) {
+  //console.log("CommentsController list");
   CommentModel.find({}).exec()
  .then(comments => {
+   //console.log("CommentsController list2");
    return response.json(comments);
  });
 }
@@ -18,6 +20,7 @@ export function create(request, response) {
 }
 
 export function show(request, response) {
+  //console.log("CommentsController request params",request.params);
   CommentModel.findById(request.params.id).exec()
   .then(comment => {
     return response.json(comment);

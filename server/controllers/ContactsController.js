@@ -1,13 +1,17 @@
 import ContactModel from "../models/ContactModel";
 
 export function list(request, response) {
+  console.log("ContactsController list");
   ContactModel.find({}).exec()
+  //console.log("ContactsController list2");
  .then(contacts => {
+   //console.log("ContactsController list3");
    return response.json(contacts);
  });
 }
 
 export function create(request, response) {
+  console.log("ContactsController create");
   const contact = new ContactModel({
     name: request.body.name,
     occupation: request.body.occupation,
@@ -15,11 +19,13 @@ export function create(request, response) {
   });
   contact.save()
   .then(con => {
+    console.log("ContactsController create2");
     return response.json(con);
   });
 }
 
 export function show(request, response) {
+  console.log("ContactsController request params",request.params);
   ContactModel.findById(request.params.id).exec()
   .then(contact => {
     return response.json(contact);
