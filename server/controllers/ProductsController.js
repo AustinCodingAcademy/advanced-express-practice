@@ -19,7 +19,7 @@ export function create(request, response) {
 }
 
 export function show(request, response) {
-  ProductModel.findById(request.params.id).exec()
+  ProductModel.findById(request.params.productID).exec()
   .then(product => {
     return response.json(product);
   });

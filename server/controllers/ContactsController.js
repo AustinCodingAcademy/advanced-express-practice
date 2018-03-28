@@ -3,9 +3,7 @@ import ContactModel from "../models/ContactModel";
 export function list(request, response) {
   console.log("ContactsController list");
   ContactModel.find({}).exec()
-  //console.log("ContactsController list2");
  .then(contacts => {
-   //console.log("ContactsController list3");
    return response.json(contacts);
  });
 }
@@ -26,7 +24,9 @@ export function create(request, response) {
 
 export function show(request, response) {
   console.log("ContactsController request params",request.params);
-  ContactModel.findById(request.params.id).exec()
+  console.log("ContactsController request.params.id",request.params.id);
+  console.log("ContactsController request.params.contactID",request.params.contactID);
+  ContactModel.findById(request.params.contactID).exec()
   .then(contact => {
     return response.json(contact);
   });

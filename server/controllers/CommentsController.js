@@ -21,7 +21,7 @@ export function create(request, response) {
 
 export function show(request, response) {
   //console.log("CommentsController request params",request.params);
-  CommentModel.findById(request.params.id).exec()
+  CommentModel.findById(request.params.commentID).exec()
   .then(comment => {
     return response.json(comment);
   });

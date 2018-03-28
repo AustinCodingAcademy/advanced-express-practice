@@ -27,7 +27,7 @@ export function show(request, response) {
 }
 
 export function update(request, response) {
-  VehicleModel.findById(request.params.id).exec()
+  VehicleModel.findById(request.params.vehicleID).exec()
     .then(vehicle => {
       vehicle.year = request.body.year || vehicle.year;
       vehicle.make = request.body.make || vehicle.make;
