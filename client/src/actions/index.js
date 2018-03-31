@@ -1,5 +1,8 @@
 export function loadContacts() {
   return function (dispatch) {
+    dispatch({
+      type: "LOAD_CONTACTS"
+    });
     fetch("/contacts")
     .then( (response) => {
       return response.json();
@@ -17,6 +20,9 @@ function contactsLoaded(contacts) {
 
 export function loadVehicles() {
   return function (dispatch) {
+    dispatch({
+      type: "LOAD_VEHICLES"
+    });
     fetch("/vehicles")
     .then( (response) => {
       return response.json();
@@ -49,6 +55,9 @@ function commentsLoaded(comments) {
 }
 export function loadProducts() {
   return function (dispatch) {
+    dispatch({
+      type: "LOAD_PRODUCTS"
+    });
     fetch("/products")
     .then( (response) => {
       return response.json();
@@ -97,5 +106,75 @@ export function createComment(v) {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(v)
     }).then(() => dispatch(loadComments()));
+  };
+}
+
+
+export function getProduct(id) {
+  return function (dispatch) {
+    fetch("/products/" + id)
+    .then( (response) => {
+      return response.json();
+    }).then((product) => {
+      dispatch(getProductDone(product));
+    });
+  };
+}
+export function getVehicle(id) {
+  console.log('I am the getVehicle() function and I have received the id: ' + id);
+  return function (dispatch) {
+    fetch("/vehicles/" + id)
+    .then( (response) => {
+      return response.json();
+    }).then((vehicle) => {
+      dispatch(getVehicleDone(vehicle));
+    });
+  };
+}
+export function getComment(id) {
+  return function (dispatch) {
+    fetch("/comments/" + id)
+    .then( (response) => {
+      return response.json();
+    }).then((comment) => {
+      dispatch(getCommentDone(comment));
+    });
+  };
+}
+export function getContact(id) {
+  return function (dispatch) {
+    fetch("/contacts/" + id)
+    .then( (response) => {
+      return response.json();
+    }).then((contact) => {
+      dispatch(getContactDone(contact));
+    });
+  };
+}
+
+
+function getProductDone(product) {
+  return {
+    type: "GET_PRODUCT_DONE",
+    value: product
+  };
+}
+function getVehicleDone(vehicle) {
+  console.log('I am getVehicleDone()');
+  return {
+    type: "GET_VEHICLE_DONE",
+    value: vehicle
+  };
+}
+function getCommentDone(comment) {
+  return {
+    type: "GET_COMMENT_DONE",
+    value: comment
+  };
+}
+function getContactDone(contact) {
+  return {
+    type: "GET_CONTACT_DONE",
+    value: contact
   };
 }
