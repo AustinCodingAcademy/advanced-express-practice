@@ -1,20 +1,34 @@
-import comments from "../comments.js"
+// import comments from "../comments.js";
+import CommentModel from "../models/CommentModel.js";
 
-export function list(request, response) {
-    console.log("test");
- return response.json(comments);
-}
-export function show(request, response) {
- return response.json(comments.find((c)=>c._id==request.params.id));
-}
-export function create(request, response) {
-  let newComment = request.body;
-  comments.push(newComment);
-  response.json(newComment);
-}
-// export function update(request, response) {
-//  return response.json({theId: request.params.id});
-// }
-// export function remove(request, response) {
-//  return response.json({});
-// }
+
+export const list = (req, res) => {
+  CommentModel.find({}).exec()
+  .then( list => res.json(list) );
+};
+
+export const show = (req, res) => {
+  CommentModel.findById(req.params.id).exec()
+  .then( comment => res.json(comment) );
+};
+
+export const create = (req, res) => {
+    CommentModel.find({}).exec()
+    .then( list => {
+        const id = ( list.length + 1 );
+        const comment = new CommentModel({
+            _id: id,
+            body: req.body.body
+        });
+        comment.save()
+    .then( comm => res.json(comm) );
+    })
+};
+
+export const update = (req, res) => {
+    res.send('WAT');
+};
+
+export const remove = (req, res) => {
+    res.send('WAT');
+};

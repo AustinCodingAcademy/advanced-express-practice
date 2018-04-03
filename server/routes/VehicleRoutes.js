@@ -1,8 +1,9 @@
 import express from "express";
-const router = express.Router();
+import VehicleModel from "../models/VehicleModel";
 // import {list,show,create,update,remove} from "../controllers/VehicleController";
 import {list,show,create} from "../controllers/VehicleController";
 
+const router = express.Router();
 
 router.get("/vehicles", list);
 router.get("/vehicles/:id", show);

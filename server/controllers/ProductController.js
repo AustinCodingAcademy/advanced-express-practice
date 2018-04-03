@@ -1,19 +1,33 @@
-import products from "../products.js"
+import ProductModel from "../models/ProductModel";
 
-export function list(request, response) {
- return response.json(products);
-}
-export function show(request, response) {
- return response.json(products.find((c)=>c._id==request.params.id));
-}
-export function create(request, response) {
-  let newProduct = request.body;
-  products.push(newProduct);
-  return response.json(newProduct);
-}
-// export function update(request, response) {
-//  return response.json({theId: request.params.id});
-// }
-// export function remove(request, response) {
-//  return response.json({});
-// }
+export const list = (req, res) => {
+    ProductModel.find({}).exec()
+    .then( list => res.json(list) );
+};
+
+export const show = (req, res) => {
+    ProductModel.findById(req.params.id).exec()
+    .then( prod => res.json(prod) );
+};
+
+export const create = (req, res) => {
+    ProductModel.find({}).exec()
+    .then( list => {
+        const id = (list.length + 1);
+        const product = new ProductModel({
+            _id: id,
+            name: req.body.name,
+            description: req.body.description
+        });
+        product.save()
+        .then( prod => res.json(prod) );
+    });
+};
+
+export const update = (req, res) => {
+    return res.send('WAT');
+};
+
+export const remove = (req, res) => {
+    return res.send('WAT');
+};

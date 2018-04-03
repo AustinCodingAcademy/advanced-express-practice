@@ -1,7 +1,9 @@
 import express from "express";
-const router = express.Router();
+import ProductModel from "../models/ProductModel";
 // import {list,show,create,update,remove} from "../controllers/ProductController";
 import {list,show,create} from "../controllers/ProductController";
+
+const router = express.Router();
 
 router.get("/products", list);
 router.get("/products/:id", show);
