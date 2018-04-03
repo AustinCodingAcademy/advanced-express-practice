@@ -11,7 +11,6 @@ class Product extends Component {
     return (
       <div>
         <h1>Product</h1>
-        <img src={this.props.product.imgUrl} alt={this.props.product.name} />
         <table>
           <tbody>
             <tr>
@@ -21,14 +20,6 @@ class Product extends Component {
             <tr>
               <td><b>Description</b></td>
               <td>{this.props.product.description}</td>
-            </tr>
-            <tr>
-              <td><b>Rating</b></td>
-              <td>{this.props.product.rating}</td>
-            </tr>
-            <tr>
-              <td><b>Price</b></td>
-              <td>{this.props.product.price}</td>
             </tr>
           </tbody>
         </table>

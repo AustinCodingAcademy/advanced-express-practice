@@ -15,24 +15,16 @@ class Vehicle extends Component {
         <table>
           <tbody>
             <tr>
+              <td><b>Year</b></td>
+              <td>{this.props.vehicle.year}</td>
+            </tr>
+            <tr>
               <td><b>Make</b></td>
               <td>{this.props.vehicle.make}</td>
             </tr>
             <tr>
               <td><b>Model</b></td>
               <td>{this.props.vehicle.model}</td>
-            </tr>
-            <tr>
-              <td><b>Year</b></td>
-              <td>{this.props.vehicle.year}</td>
-            </tr>
-            <tr>
-              <td><b>Miles</b></td>
-              <td>{this.props.vehicle.miles}</td>
-            </tr>
-            <tr>
-              <td><b>Price</b></td>
-              <td>{this.props.vehicle.price}</td>
             </tr>
           </tbody>
         </table>

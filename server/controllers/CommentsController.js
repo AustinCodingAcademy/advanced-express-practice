@@ -1,15 +1,23 @@
-import comments from "../comments";
+import CommentModel from "../models/Comment";
 
 export function list(request, response) {
-  return response.json(comments);
+  CommentModel.find({}).exec()
+  .then(comments => {
+    return response.json(comments);
+  });
 }
 export function show(request, response) {
-  let comment = comments.find(function(item){
-    return (item._id == request.params.id);
-  });
-  return response.json(comment);
+  CommentModel.findById(request.params.id).exec()
+  .then(comment => {
+    return response.json(comment);
+  })
 }
 export function create(request, response) {
-  comments.push(request.body);
-  return response.send("contact saved");
+  const comment = new CommentModel({
+    body: request.body.body
+  });
+  comment.save()
+  .then(comment => {
+    return response.json(comment);
+  });
 }

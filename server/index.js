@@ -7,6 +7,11 @@ import productRoutes from "./routes/ProductRoutes";
 import vehicleRoutes from "./routes/VehicleRoutes";
 
 
+import mongoose from "mongoose";
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://App:2jlCFI9Mw1sIP@ds231229.mlab.com:31229/advanced-express-practice");
+
+
 const app = express();
 app.use(bodyParser.json());
 

@@ -12,7 +12,6 @@ class Comment extends Component {
     return (
       <div>
         <h1>Comment</h1>
-        <p><b>Comment ID:</b> {this.props.comment._id}</p>
         <p><b>Text:</b> {this.props.comment.body}</p>
       </div>
     )
