@@ -8,7 +8,7 @@ import ProductRoutes from "./routes/ProductRoutes";
 import mongoose from "mongoose";
 mongoose.Promise = global.Promise;
 // mongoose.connect('mongodb://jwoo:jwoo@ds147668.mlab.com:47668/aca-test');
-mongoose.connect('mongodb://geohalbert:4ghhuFff@ds153978.mlab.com:53978/tonyromo');
+mongoose.connect("mongodb://geohalbert:4ghhuFff@ds153978.mlab.com:53978/tonyromo");
 
 const app = express();
 app.use(bodyParser.json());
