@@ -29,22 +29,22 @@ app.get("/products",function (req,res,next) {
 
 
 // Get one thing - id
-app.get("/contacts/:id",function (req,res,next) {
-  const contactId = contacts.find(user => user._id == req.params.id);
+app.get("/contact/:id",function (req,res,next) {
+  const contactId = contacts.find(user => user._id == inputId);
   return res.json(contactId);
 });
   
-app.get("/vehicles/:id",function (req,res,next) {
+app.get("/vehicle/:id",function (req,res,next) {
   const vehicleId = vehicles.find(user => user._id == req.params.id);
   return res.json(vehicleId);
 });
   
-app.get("/comments/:id",function (req,res,next) {
+app.get("/comment/:id",function (req,res,next) {
   const commentId = comments.find(user => user._id == req.params.id);
   return res.json(commentId);
 });
   
-app.get("/products/:id",function (req,res,next) {
+app.get("/product/:id",function (req,res,next) {
   const productId = products.find(user => user._id == req.params.id);
   return res.json(productId);
 });
