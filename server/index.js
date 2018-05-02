@@ -16,15 +16,15 @@ app.get("/contacts",function (req,res,next) {
 });
 
 app.get("/vehicles",function (req,res,next) {
-  return res.json(vehiclesArr);
+  return res.json(vehicles);
 });
 
 app.get("/comments",function (req,res,next) {
-  return res.json(commentsArr);
+  return res.json(comments);
 });
 
 app.get("/products",function (req,res,next) {
-  return res.json(productsArr);
+  return res.json(products);
 });
 
 
