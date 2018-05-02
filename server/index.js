@@ -28,3 +28,19 @@ app.get("/comments",function(req,res,next){
 app.get("/products",function(req,res,next){
     return res.send(products);
 });
+
+app.get("/contacts/:id",function(req,res,next){
+    return res.send(contacts});
+});
+
+app.get("/vehicles/:id",function(req,res,next){
+    return res.send(vehicles);
+});
+
+app.get("/comments/:id",function(req,res,next){
+    return res.send(comments);
+});
+
+app.get("/products/:id",function(req,res,next){
+    return res.send(products);
+});
