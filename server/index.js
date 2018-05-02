@@ -30,7 +30,7 @@ app.get("/products",function (req,res,next) {
 
 // Get one thing - id
 app.get("/contact/:id",function (req,res,next) {
-  const contactId = contacts.find(user => user._id == inputId);
+  const contactId = contacts.find(user => user._id == req.params.id);
   return res.json(contactId);
 });
   
