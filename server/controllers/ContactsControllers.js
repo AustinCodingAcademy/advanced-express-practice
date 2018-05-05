@@ -1,4 +1,4 @@
-const contacts = require("../server/contacts.js");
+const contacts = require("./server/contacts");
 
 module.exports.list =  function list(request, response) {
     return response.json([contacts]);

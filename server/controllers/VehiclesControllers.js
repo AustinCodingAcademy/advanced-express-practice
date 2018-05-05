@@ -1,4 +1,4 @@
-const vehicles = require("../server/vehicles.js");
+const vehicles = require("./server/vehicles");
 
 module.exports.list =  function list(req, res) {
     return response.json([vehilces]);

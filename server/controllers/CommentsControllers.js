@@ -1,17 +1,17 @@
-const products = require("../server/products.js");
+const comments = require("./server/comments");
 
 module.exports.list =  function list(request, response) {
-    return response.json([products]);
+    return response.json([comments]);
 }
 
 module.exports.show =  function show(request, response) {
-    return response.json(products.find(user => user._id == request.params.id));
+    return response.json(comments.find(user => user._id == request.params.id));
 }
 
 module.exports.create =  function create(request, response) {
-    const newProduct = request.body;
-    comments.push(newProduct);
-    return response.json(newProduct);
+    const newComment = request.body;
+    comments.push(newComment);
+    return response.json(newComment);
 }
 
 module.exports.update =  function update(request, response) {
@@ -19,5 +19,5 @@ module.exports.update =  function update(request, response) {
 }
 
 module.exports.remove =  function remove(request, response) {
-    return response.json(products.pop(user => user._id == request.params.id))
-}   
+    return response.json(comments.pop(user => user._id == request.params.id))
+}
