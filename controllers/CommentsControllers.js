@@ -1,19 +1,21 @@
-module.exports.list =  function list(request, response) {
-    return response.json([]);
+module.exports.list =  function list(req, res) {
+    return res.json([comments]);
 }
 
-module.exports.show =  function show(request, response) {
-    return response.json({theId: request.params.id});
+module.exports.show =  function show(req, res) {
+    return res.json(comments.find(user => user._id == request.params.id));
 }
 
-module.exports.create =  function create(request, response) {
-    return response.json({});
+module.exports.create =  function create(req, res) {
+    const newComment = request.body;
+    comments.push(newComment);
+    return res.json(newComment);
 }
 
-module.exports.update =  function update(request, response) {
-    return response.json({theId: request.params.id});
+module.exports.update =  function update(req, res) {
+    return res.json({theId: request.params.id});
 }
 
-module.exports.remove =  function remove(request, response) {
-    return response.json({});
+module.exports.remove =  function remove(req, res) {
+    return res.json({});
 }   
