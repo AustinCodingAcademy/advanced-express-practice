@@ -11,14 +11,14 @@ if (err) {
 console.log("Web server is now living in apartment 3001");
 });
 
-const ContactRoutes = require("./routes/ContactRoutes");
+const ContactRoutes = require("../routes/ContactRoutes");
 app.use(ContactRoutes);
 
-const CommentRoutes = require("./routes/CommentRoutes");
+const CommentRoutes = require("../routes/CommentRoutes");
 app.use(CommentRoutes);
 
-const ProductRoutes = require("./routes/ProductRoutes");
+const ProductRoutes = require("../routes/ProductRoutes");
 app.use(ProductRoutes);
 
-const VehicleRoutes = require("./routes/VehicleRoutes");
+const VehicleRoutes = require("../routes/VehicleRoutes");
 app.use(VehicleRoutes);

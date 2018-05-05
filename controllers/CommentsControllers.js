@@ -1,21 +1,23 @@
-module.exports.list =  function list(req, res) {
-    return res.json([comments]);
+const comments = require("../server/comments");
+
+module.exports.list =  function list(request, response) {
+    return response.json([comments]);
 }
 
-module.exports.show =  function show(req, res) {
-    return res.json(comments.find(user => user._id == req.params.id));
+module.exports.show =  function show(request, response) {
+    return response.json(comments.find(user => user._id == req.params.id));
 }
 
-module.exports.create =  function create(req, res) {
+module.exports.create =  function create(request, response) {
     const newComment = request.body;
     comments.push(newComment);
-    return res.json(newComment);
+    return response.json(newComment);
 }
 
-module.exports.update =  function update(req, res) {
-    return res.json({theId: request.params.id});
+module.exports.update =  function update(request, response) {
+    return response.json({theId: request.params.id});
 }
 
-module.exports.remove =  function remove(req, res) {
-    return res.josn(comments.pop(user => user._id == req.params.id))
+module.exports.remove =  function remove(request, response) {
+    return response.josn(comments.pop(user => user._id == req.params.id))
 }   

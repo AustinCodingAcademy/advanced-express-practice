@@ -1,17 +1,17 @@
-const products = require("../server/products");
+const vehicles = require("../server/vehicles");
 
 module.exports.list =  function list(request, response) {
-    return response.json([products]);
+    return response.json([vehilces]);
 }
 
 module.exports.show =  function show(request, response) {
-    return response.json(products.find(user => user._id == req.params.id));
+    return response.json(vehicles.find(user => user._id == req.params.id));
 }
 
 module.exports.create =  function create(request, response) {
-    const newProduct = request.body;
-    comments.push(newProduct);
-    return response.json(newProduct);
+    const newVehicle = request.body;
+    comments.push(newVehicle);
+    return response.json(newVehicle);
 }
 
 module.exports.update =  function update(request, response) {
@@ -19,5 +19,5 @@ module.exports.update =  function update(request, response) {
 }
 
 module.exports.remove =  function remove(request, response) {
-    return response.josn(products.pop(user => user._id == req.params.id))
+    return response.josn(vehicles.pop(user => user._id == req.params.id))
 }   
