@@ -19,5 +19,5 @@ module.exports.update =  function update(request, response) {
 }
 
 module.exports.remove =  function remove(request, response) {
-    return response.josn(comments.pop(user => user._id == request.params.id))
-}   
+    return response.json(comments.pop(user => user._id == request.params.id))
+}

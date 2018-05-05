@@ -19,5 +19,5 @@ module.exports.update =  function update(request, response) {
 }
 
 module.exports.remove =  function remove(request, response) {
-    return response.josn(products.pop(user => user._id == request.params.id))
+    return response.json(products.pop(user => user._id == request.params.id))
 }   

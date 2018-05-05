@@ -19,5 +19,5 @@ module.exports.update =  function update(req, res) {
 }
 
 module.exports.remove =  function remove(req, res) {
-    return res.josn(vehicles.pop(user => user._id == request.params.id))
+    return res.json(vehicles.pop(user => user._id == request.params.id))
 }   

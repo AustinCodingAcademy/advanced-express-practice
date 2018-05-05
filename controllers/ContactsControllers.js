@@ -20,5 +20,5 @@ module.exports.update =  function update(request, response) {
 }
 
 module.exports.remove =  function remove(request, response) {
-    return response.josn(contacts.pop(user => user._id == request.params.id))
+    return response.json(contacts.pop(user => user._id == request.params.id))
 }   
