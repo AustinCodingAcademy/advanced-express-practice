@@ -1,11 +1,11 @@
-const contacts = require("../server/contacts");
+const contacts = require("../server/contacts.js");
 
 module.exports.list =  function list(request, response) {
     return response.json([contacts]);
 }
 
 module.exports.show =  function show(request, response) {
-    return response.json(contacts.find(user => user._id == req.params.id));
+    return response.json(contacts.find(user => user._id == request.params.id));
 }
 
 module.exports.create =  function create(request, response) {
@@ -20,5 +20,5 @@ module.exports.update =  function update(request, response) {
 }
 
 module.exports.remove =  function remove(request, response) {
-    return response.josn(contacts.pop(user => user._id == req.params.id))
+    return response.josn(contacts.pop(user => user._id == request.params.id))
 }   

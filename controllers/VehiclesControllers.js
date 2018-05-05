@@ -1,23 +1,23 @@
-const vehicles = require("../server/vehicles");
+const vehicles = require("../server/vehicles.js");
 
-module.exports.list =  function list(request, response) {
+module.exports.list =  function list(req, res) {
     return response.json([vehilces]);
 }
 
-module.exports.show =  function show(request, response) {
-    return response.json(vehicles.find(user => user._id == req.params.id));
+module.exports.show =  function show(req, res) {
+    return res.json(vehicles.find(user => user._id == request.params.id));
 }
 
-module.exports.create =  function create(request, response) {
+module.exports.create =  function create(req, res) {
     const newVehicle = request.body;
     comments.push(newVehicle);
-    return response.json(newVehicle);
+    return res.json(newVehicle);
 }
 
-module.exports.update =  function update(request, response) {
-    return response.json({theId: request.params.id});
+module.exports.update =  function update(req, res) {
+    return res.json({theId: request.params.id});
 }
 
-module.exports.remove =  function remove(request, response) {
-    return response.josn(vehicles.pop(user => user._id == req.params.id))
+module.exports.remove =  function remove(req, res) {
+    return res.josn(vehicles.pop(user => user._id == request.params.id))
 }   
