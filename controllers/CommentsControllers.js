@@ -3,7 +3,7 @@ module.exports.list =  function list(req, res) {
 }
 
 module.exports.show =  function show(req, res) {
-    return res.json(comments.find(user => user._id == request.params.id));
+    return res.json(comments.find(user => user._id == req.params.id));
 }
 
 module.exports.create =  function create(req, res) {
@@ -17,5 +17,5 @@ module.exports.update =  function update(req, res) {
 }
 
 module.exports.remove =  function remove(req, res) {
-    return res.json({});
+    return res.josn(comments.pop(user => user._id == req.params.id))
 }   
