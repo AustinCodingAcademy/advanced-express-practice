@@ -1,4 +1,4 @@
-const contacts = require("./server/contacts");
+const contacts = require("../contacts");
 
 module.exports.list =  function list(request, response) {
     return response.json([contacts]);
@@ -10,13 +10,13 @@ module.exports.show =  function show(request, response) {
 
 module.exports.create =  function create(request, response) {
     const newContact = request.body;
-    comments.push(newContact);
+    contacts.push(newContact);
     return response.json(newContact);
 }
 
 module.exports.update =  function update(request, response) {
     const editContact = request.body
-    return response.json(contact);
+    return response.json(editContact);
 }
 
 module.exports.remove =  function remove(request, response) {

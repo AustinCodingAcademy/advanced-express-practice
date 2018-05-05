@@ -1,4 +1,4 @@
-const comments = require("./server/comments");
+const comments = require("../comments");
 
 module.exports.list =  function list(request, response) {
     return response.json([comments]);

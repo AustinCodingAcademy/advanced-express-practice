@@ -1,4 +1,4 @@
-const products = require("../server/products");
+const products = require("../products");
 
 module.exports.list =  function list(request, response) {
     return response.json([products]);
