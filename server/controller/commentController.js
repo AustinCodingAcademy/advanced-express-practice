@@ -1,4 +1,3 @@
-
 const comments = require("../comments")
 
 module.exports.list = ((req,res)=>res.json(comments))
