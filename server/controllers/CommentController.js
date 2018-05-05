@@ -1,17 +1,12 @@
-let comments = require("../comments.js");
+const comments = require("../comments.js");
 
-
-
-
-
-
-module.exports.list =  function list(req, res) {
+module.exports.list = function list(req, res) {
   return res.json(comments);
 };
-module.exports.show =  function show(req, res) {
+module.exports.show = function show(req, res) {
   return res.json(comments.find(comment => comment._id == req.params.id));
 };
-module.exports.create =  function create(req, res) {
+module.exports.create = function create(req, res) {
   const newComment = req.body;
   newComment._id = (comments.length + 1);
   comments.push(newComment);
