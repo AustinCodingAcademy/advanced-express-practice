@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 
 
 app.use(bodyParser.json());
+mongoose.connect('mongodb://localhost/test');
+
 
 app.listen(3001, (err) => {
 if (err) {
