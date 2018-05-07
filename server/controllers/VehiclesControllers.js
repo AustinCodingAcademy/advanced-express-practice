@@ -1,5 +1,6 @@
 const vehicles = require("../vehicles");
 
+//defined what each http command will do
 module.exports.list =  function list(request, response) {
     return response.json(vehicles);
 }

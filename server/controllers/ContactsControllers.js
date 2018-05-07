@@ -1,5 +1,6 @@
 const contacts = require("../contacts");
 
+//defined what each http command will do
 module.exports.list =  function list(request, response) {
     return response.json(contacts);
 }
