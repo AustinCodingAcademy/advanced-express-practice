@@ -1,7 +1,7 @@
 const comments = require("../comments");
 
 module.exports.list =  function list(request, response) {
-    return response.json([comments]);
+    return response.json(comments);
 }
 
 module.exports.show =  function show(request, response) {

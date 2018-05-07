@@ -1,7 +1,7 @@
 const vehicles = require("../vehicles");
 
 module.exports.list =  function list(request, response) {
-    return response.json([vehicles]);
+    return response.json(vehicles);
 }
 
 module.exports.show =  function show(request, response) {

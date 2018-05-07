@@ -1,11 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
 
 
 app.use(bodyParser.json());
-// mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds115350.mlab.com:15350/advanced-express-practice');
 
 // var db = mongoose.connection;
 // db.on('error', console.error.bind(console, 'connection error:'));
@@ -15,21 +17,19 @@ app.use(bodyParser.json());
 
 
 
-app.listen(3001, (err) => {
+app.listen(3010, (err) => {
 if (err) {
     return console.log("Error", err);
 }
-console.log("Web server is now living in apartment 3001");
+console.log("Web server is now living in apartment 3010");
 });
 
 const ContactRoutes = require("./routes/ContactRoutes");
-app.use(ContactRoutes);
-
 const CommentRoutes = require("./routes/CommentRoutes");
-app.use(CommentRoutes);
-
 const ProductRoutes = require("./routes/ProductRoutes");
-app.use(ProductRoutes);
-
 const VehicleRoutes = require("./routes/VehicleRoutes");
+
+app.use(ContactRoutes);
+app.use(CommentRoutes);
+app.use(ProductRoutes);
 app.use(VehicleRoutes);

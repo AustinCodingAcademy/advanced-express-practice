@@ -1,7 +1,7 @@
 const products = require("../products");
 
 module.exports.list =  function list(request, response) {
-    return response.json([products]);
+    return response.json(products);
 }
 
 module.exports.show =  function show(request, response) {
