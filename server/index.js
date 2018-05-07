@@ -7,7 +7,7 @@ mongoose.Promise = global.Promise;
 
 
 app.use(bodyParser.json());
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds115350.mlab.com:15350/advanced-express-practice');
+mongoose.connect('mongodb://eric.walz:@thedr1vein@ds115350.mlab.com:15350/advanced-express-practice');
 
 // var db = mongoose.connection;
 // db.on('error', console.error.bind(console, 'connection error:'));
