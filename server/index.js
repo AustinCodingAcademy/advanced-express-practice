@@ -7,13 +7,8 @@ const app = express();
 
 
 app.use(bodyParser.json());
-// mongoose.connect('mongodb://eric.walz:@thedr1vein@ds115350.mlab.com:15350/advanced-express-practice');
+// mongoose.connect('mongodb://walzer85:gr33n3ggs@ds115350.mlab.com:15350/advanced-express-practice');
 
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function() {
-//   console.log("we're connected!");
-// });
 
 
 
