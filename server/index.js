@@ -1,9 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const comments = require("./comments");
-// const products = require("./products");
-// const vehicles = require("./vehicles");
-// const contacts = require("./contacts");
+const mongoose = require("mongoose");
+
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://nhbs:Nhbs7178@ds119930.mlab.com:19930/aca-express-practice", {
+  useMongoClient: true
+});
+
 
 const app = express();
 
@@ -27,3 +31,12 @@ app.listen(3001, (err) => {
   }
   console.log("Web server is now living in apartment 3001");
 });
+
+
+// In src/index.js, import and use mongoose. Connect to a database "advanced-express-practice"
+// Create the mongoose models for Contact, Vehicle, Comment Product
+// CommentModel - body
+// ContactModel - name, occupation, avatar
+// VehicleModel - year, make, model
+// ProductModel - name, description
+// Change the code in the controllers to use the Models instead of hard coded arrays
