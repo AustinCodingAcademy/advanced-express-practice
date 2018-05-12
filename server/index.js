@@ -1,13 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 
 
 app.use(bodyParser.json());
-// mongoose.connect('mongodb://walzer85:gr33n3ggs@ds115350.mlab.com:15350/advanced-express-practice');
+mongoose.connect('mongodb://walzer85:gr33n3ggs@ds115350.mlab.com:15350/advanced-express-practice');
 
 
 
