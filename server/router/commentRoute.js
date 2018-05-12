@@ -1,4 +1,5 @@
 const express = require("express")
+const mon = require('mongoose')
 const router = express.Router()
 // Router variables that should match the controller
 const { list,show,create } = require (
@@ -6,7 +7,7 @@ const { list,show,create } = require (
 
 // Use whatever method you need (get, post, etc)
 router.get('/comments', list)
-router.get('/comments/:id',show)
+router.get('/comment/:id',show)
 router.post('/comments',create)
 
 module.exports = router

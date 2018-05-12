@@ -6,7 +6,7 @@ const { list,show,create } = require (
 
 // Use whatever method you need (get, post, etc)
 router.get('/vehicles', list)
-router.get('/vehicles/:id',show)
+router.get('/vehicle/:id',show)
 router.post('/vehicles',create)
 
 module.exports = router

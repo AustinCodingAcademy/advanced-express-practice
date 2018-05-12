@@ -1,12 +1,28 @@
-const comments = require("../comments")
+const Comment = require('../Models/commentModel')
 
-module.exports.list = ((req,res)=>res.json(comments))
+module.exports.list = ((req,res)=>{
+    Comment.find({}).exec()
+    .then(comments=>{
+      res.json(comments)
+    })
+})
 
-module.exports.show = ((req, res)=>res.json(comments.find((item)=>item._id==req.params.id)))
+module.exports.show = ((req, res)=>{
+  Comment.findById({"_id":req.params.id}).exec()
+  .then(comment=>{
+    res.json(
+      comment
+    )
+  })
+})
 
 module.exports.create = ((req, res)=>{
-  const body = req.body
-  comments.push(body)
-  res.json(body)
+  const newComment = new Comment({
+    body:req.body.body
+  })
+  newComment.save()
+    .then(savedComment=>{
+      res.json(savedComment)
+    })
 })
 

@@ -6,7 +6,7 @@ const { list,show,create,update,remove } = require (
 
 // Use whatever method you need (get, post, etc)
 router.get('/products', list)
-router.get('/products/:id',show)
+router.get('/product/:id',show)
 router.post('/products',create)
 
 module.exports = router

@@ -1,11 +1,27 @@
-const contacts = require("../contacts")
+const Contact = require("../Models/contactModel")
 
-module.exports.list = ((req,res)=>res.json(contacts))
+module.exports.list = ((req,res)=>{
+  Contact.find({}).exec()
+  .then(contact=>{
+    res.json(contact)
+  })
+})
 
-module.exports.show = ((req, res)=>res.json(contacts.find((item)=>item._id==req.params.id)))
+module.exports.show = ((req, res)=>{
+  Contact.findById({"_id":req.params.id}).exec()
+  .then(contact=>{
+    res.json(contact)
+  })
+})
 
 module.exports.create = ((req, res)=>{
-  const body = req.body
-  contacts.push(body)
-  res.json(body)
+  const newContact = new Contact({
+    name: req.body.name,
+    occupation: req.body.occupation,
+    avatar: req.body.avatar
+  })
+  newContact.save()
+  .then(savedContact=>{
+    res.json(savedContact)
+  })
 })

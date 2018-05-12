@@ -6,7 +6,7 @@ const { list,show,create,update,remove } = require (
 
 // Use whatever method you need (get, post, etc)
 router.get('/contacts', list)
-router.get('/contacts/:id',show)
+router.get('/contact/:id',show)
 router.post('/contacts',create)
 
 module.exports = router
