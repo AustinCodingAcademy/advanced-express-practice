@@ -1,21 +1,23 @@
-const comments = require("../comments");
-const UserModel = require("./models/CommentModel");
-
-UserModel.find({}).exec()
-.then(comment => {
-  console.log(comment);
-});
+const CommentModel = require("../models/CommentModel");
 
 module.exports.list = function list(req, res) {
-  return res.json(comments);
+  CommentModel.find({}).exec()
+  .then(comment => {
+    res.json(comment);
+  });
 };
 
 module.exports.show = function show(req, res) {
-  res.json(comments.find(user => user._id == req.params.id));
+  CommentModel.findById(req.params.id).exec()
+  .then(comment => {
+    res.json(comment);
+  });
 };
 
 module.exports.create = function create(req, res) {
-  const newComment = req.body;
-  comments.push(newComment);
-  return res.json(newComment);
+  const newComment = new CommentModel(req.body);
+  newComment.save()
+  .then(savedComment => {
+    res.json(savedComment);
+  });
 };

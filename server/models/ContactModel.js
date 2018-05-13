@@ -14,4 +14,4 @@ const schema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Contact", schema);
+module.exports = mongoose.model("contact", schema);

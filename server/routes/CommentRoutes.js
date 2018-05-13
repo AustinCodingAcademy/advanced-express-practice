@@ -1,9 +1,9 @@
-let express = require("express");
+const express = require("express");
 const router = express.Router();
-let {list,show,create,update,remove} = require("../controllers/CommentController");
+const {list,show,create} = require("../controllers/CommentController");
 
 router.get("/comments", list);
-router.get("/comments/:id", show);
+router.get("/comment/:id", show);
 router.post("/comments", create);
 
 module.exports = router;
