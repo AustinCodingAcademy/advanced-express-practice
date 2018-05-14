@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 let commentsSchema = new Schema({
     body: {
         required: true,
-        type: string
+        type: String
     }
 });
 
-modules.export = mongoose.model('Comment', schema)
+module.exports = mongoose.model('Comment', commentsSchema);

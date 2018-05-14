@@ -4,14 +4,16 @@ const Schema = mongoose.Schema;
 let vehiclesSchema = new Schema({
     year: {
         required: true,
-        type: number
+        type: Number
     },
     make: {
         required: true,
-        type: string
+        type: String
     },
     model: {
         required: true,
-        type: string
+        type: String
     }
 });
+
+module.exports = mongoose.model('Vehicle', vehiclesSchema);
