@@ -7,11 +7,8 @@ mongoose.Promise = global.Promise;
 
 
 app.use(bodyParser.json());
-mongoose.createConnection('mongodb://walzer85:gr33n3ggs@ds115350.mlab.com:15350/advanced-express-practice');
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('connected to MongoDB')
-});
+mongoose.connect('mongodb://walzer85:gr33n3ggs@ds115350.mlab.com:15350/advanced-express-practice');
+
 
 //set up the server to listen to port 3010
 app.listen(3010, (err) => {

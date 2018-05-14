@@ -4,7 +4,7 @@ let {list,show,create} = require( "../controllers/VehiclesControllers");
 
 //created the routes for various http commands
 router.get("/vehicles", list);
-router.get("/vehicles/:id", show);
+router.get("/vehicle/:id", show);
 router.post("/vehicles", create);
 
 

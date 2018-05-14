@@ -15,4 +15,4 @@ const schema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('contact', Schema);
+module.exports = mongoose.model('contact', schema);
