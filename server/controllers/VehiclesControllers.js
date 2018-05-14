@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const vehicles = require("../vehicles");
-let VehicleModel = requre('../models/VehiclesModels.js')
+let VehicleModel = require('../models/VehiclesModels.js')
 
 
 //defined what each http command will do

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const comments = require("../comments");
-let CommentModels = requre('../models/CommentsModels.js')
+let CommentModels = require('../models/CommentsModels.js')
 
 
 //defined what each http command will do
