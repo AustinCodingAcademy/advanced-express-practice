@@ -1,6 +1,6 @@
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'); 
 
-let vehiclesSchema = new Schema({
+const schema = new mongoose.Schema({
     year: {
         required: true,
         type: Number

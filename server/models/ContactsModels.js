@@ -1,6 +1,6 @@
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'); 
 
-let contactsSchema = new Schema({
+const schema = new mongoose.Schema({
     Name: {
         required: true,
         type: String
