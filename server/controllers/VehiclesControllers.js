@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const vehicles = require("../vehicles");
-let VehicleModel = require('../models/VehiclesModels.js')
+let VehicleModel = require('../models/VehiclesModels')
 
 
 //defined what each http command will do
@@ -55,13 +55,13 @@ let VehicleModel = require('../models/VehiclesModels.js')
 
 module.exports.list = function list(request, response) {
     VehicleModels.find({}).exec()
-    .then(vehicleModel => {
-        response.json(vehicleModel);
+    .then(vehicle => {
+        response.json(vehicle);
     })
 };
 
 module.exports.show = function list(request, response) {
-    vehicleModels.findbyID(request.params.id).exec()
+    vehicleModel.findbyID(request.params._id).exec()
     .then(vehicle => {
         response.json(vehicle);
     })

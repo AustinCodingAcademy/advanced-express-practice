@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const comments = require("../comments");
-let CommentModels = require('../models/CommentsModels.js')
+let CommentModel = require('../models/CommentsModels')
 
 
 //defined what each http command will do
@@ -28,9 +28,9 @@ let CommentModels = require('../models/CommentsModels.js')
 
 
 module.exports.list = function list(request, response) {
-    CommentModels.find({}).exec()
-    .then(commentModel => {
-        response.json(commentModel);
+    CommentModel.find({}).exec()
+    .then(comment => {
+        response.json(comment);
     })
 };
 
@@ -43,7 +43,7 @@ module.exports.show = function list(request, response) {
 };
 
 module.exports.create =  function create(request, response){
-    const newComment = new commentModel(request.body);
+    const newComment = new CommentModels(request.body);
     newComment.save()
     .then(savedComment => {
         response.json(savedComment);

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const contacts = require("../contacts");
-let ContactModel = require('../models/ContactsModels.js')
+let ContactModel = require('../models/ContactsModels')
 
 
 //defined what each http command will do
@@ -55,9 +55,9 @@ let ContactModel = require('../models/ContactsModels.js')
 // });
 
 module.exports.list = function list(request, response) {
-    ContactModels.find({}).exec()
-    .then(contactModel => {
-        response.json(contactModel);
+    ContactModel.find({}).exec()
+    .then(contact => {
+        response.json(contact);
     })
 };
 
@@ -69,7 +69,7 @@ module.exports.show = function list(request, response) {
 };
 
 module.exports.create =  function create(request, response){
-    const newContact = new contactModel(request.body);
+    const newContact = new ContactModel(request.body);
     newContact.save()
     .then(savedContact => {
         response.json(savedContact);
