@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-const contacts = require("../contacts");
 let ContactModel = require('../models/ContactsModels')
 
 

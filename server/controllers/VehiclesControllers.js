@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-const vehicles = require("../vehicles");
 let VehicleModel = require('../models/VehiclesModels')
 
 

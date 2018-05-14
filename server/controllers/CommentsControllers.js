@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-const comments = require("../comments");
 let CommentModel = require('../models/CommentsModels')
 
 

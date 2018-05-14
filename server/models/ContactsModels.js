@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let contactsSchema = new Schema({
@@ -16,4 +15,4 @@ let contactsSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Contact', contactsSchema);
+module.exports = mongoose.model('contact', Schema);

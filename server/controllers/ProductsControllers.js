@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-const products = require("../products");
 let ProductModel = require('../models/ProductsModels')
 
 
