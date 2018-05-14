@@ -26,29 +26,51 @@ let VehicleModel = requre('../models/VehiclesModels.js')
 //     return response.json(vehicles.pop(user => user._id == request.params.id))
 // }   
 
-VehicleModel.find({}).exec()
-.then(vehicles => {
-  console.log(vehicles);
-});
+// VehicleModel.find({}).exec()
+// .then(vehicles => {
+//   console.log(vehicles);
+// });
 
-VehicleModel.findById(request.params.id).exec()
-.then(vehicle => {
- console.log(vehicle);
-});
+// VehicleModel.findById(request.params.id).exec()
+// .then(vehicle => {
+//  console.log(vehicle);
+// });
 
-const newVehicle= new VehicleModel(request.body);
-newVehicle.save()
-.then(savedVehicle => {
-  response.json(savedVehicle);
-});
+// const newVehicle= new VehicleModel(request.body);
+// newVehicle.save()
+// .then(savedVehicle => {
+//   response.json(savedVehicle);
+// });
 
-VehicleModel.findById(request.params.id).exec()
-.then(vehicle => {
-  vehicle.year = request.body.year || vehicle.year;
-  vehicle.make = request.body.make || vehicle.make;
-  contact.avatar = request.body.avatar ||contact.avatar;
-  return contact.save();
-})
-.then(contact => {
-  response.json(contact);
-});
+// VehicleModel.findById(request.params.id).exec()
+// .then(vehicle => {
+//   vehicle.year = request.body.year || vehicle.year;
+//   vehicle.make = request.body.make || vehicle.make;
+//   vehicle.avatar = request.body.avatar ||vehicle.avatar;
+//   return vehicle.save();
+// })
+// .then(vehicle => {
+//   response.json(vehicle);
+// });
+
+module.exports.list = function list(request, response) {
+    VehicleModels.find({}).exec()
+    .then(vehicleModel => {
+        response.json(vehicleModel);
+    })
+};
+
+module.exports.show = function list(request, response) {
+    vehicleModels.findbyID(request.params.id).exec()
+    .then(vehicle => {
+        response.json(vehicle);
+    })
+};
+
+module.exports.create =  function create(request, response){
+    const newVehicle= new vehicleModel(request.body);
+    newVehicle.save()
+    .then(savedVehicle => {
+        response.json(savedVehicle);
+    })
+};

@@ -26,28 +26,50 @@ let ProductModel = requre('../models/ProductsModels.js')
 //     return response.json(products.pop(user => user._id == request.params.id))
 // }   
 
-ProductModel.find({}).exec()
-.then(products => {
-  console.log(products);
-});
+// ProductModel.find({}).exec()
+// .then(products => {
+//   console.log(products);
+// });
 
-ProductModel.findById(request.params.id).exec()
-.then(product => {
- console.log(product);
-});
+// ProductModel.findById(request.params.id).exec()
+// .then(product => {
+//  console.log(product);
+// });
 
-const newProduct= new ProductModel(request.body);
-newProduct.save()
-.then(savedProduct => {
-  response.json(savedProduct);
-});
+// const newProduct= new ProductModel(request.body);
+// newProduct.save()
+// .then(savedProduct => {
+//   response.json(savedProduct);
+// });
 
-ProductModel.findById(request.params.id).exec()
-.then(product => {
-  product.name = request.body.name || product.name;
-  product.description = request.body.description || product.description;
-  return product.save();
-})
-.then(product => {
-  response.json(product);
-});
+// ProductModel.findById(request.params.id).exec()
+// .then(product => {
+//   product.name = request.body.name || product.name;
+//   product.description = request.body.description || product.description;
+//   return product.save();
+// })
+// .then(product => {
+//   response.json(product);
+// });
+
+module.exports.list = function list(request, response) {
+    ProductModels.find({}).exec()
+    .then(productModel => {
+        response.json(productModel);
+    })
+};
+
+module.exports.show = function list(request, response) {
+    productModels.findbyID(request.params.id).exec()
+    .then(product => {
+        response.json(product);
+    })
+};
+
+module.exports.create =  function create(request, response){
+    const newProduct = new productModel(request.body);
+    newProduct.save()
+    .then(savedProductt => {
+        response.json(savedProduct);
+    })
+};

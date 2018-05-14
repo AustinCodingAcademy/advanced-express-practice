@@ -27,29 +27,51 @@ let ContactModel = require('../models/ContactsModels.js')
 //     return response.json(contacts.pop(user => user._id == request.params.id))
 // }   
 
-ContactModel.find({}).exec()
-.then(contacts => {
-  console.log(contacts);
-});
+// ContactModel.find({}).exec()
+// .then(contacts => {
+//   console.log(contacts);
+// });
 
-ContactModel.findById(request.params.id).exec()
-.then(conact => {
- console.log(contact);
-});
+// ContactModel.findById(request.params.id).exec()
+// .then(conact => {
+//  console.log(contact);
+// });
 
-const newContact= new ContactModel(request.body);
-newContact.save()
-.then(savedContact => {
-  response.json(savedContact);
-});
+// const newContact= new ContactModel(request.body);
+// newContact.save()
+// .then(savedContact => {
+//   response.json(savedContact);
+// });
 
-ContactModel.findById(request.params.id).exec()
-.then(contact => {
-  contact.name = request.body.name || contact.name;
-  contact.occupation = request.body.occupation || contact.occupation;
-  contact.avatar = request.body.avatar ||contact.avatar;
-  return contact.save();
-})
-.then(contact => {
-  response.json(contact);
-});
+// ContactModel.findById(request.params.id).exec()
+// .then(contact => {
+//   contact.name = request.body.name || contact.name;
+//   contact.occupation = request.body.occupation || contact.occupation;
+//   contact.avatar = request.body.avatar ||contact.avatar;
+//   return contact.save();
+// })
+// .then(contact => {
+//   response.json(contact);
+// });
+
+module.exports.list = function list(request, response) {
+    ContactModels.find({}).exec()
+    .then(contactModel => {
+        response.json(contactModel);
+    })
+};
+
+module.exports.show = function list(request, response) {
+    ContactModels.findbyID(request.params.id).exec()
+    .then(contact => {
+        response.json(contact);
+    })
+};
+
+module.exports.create =  function create(request, response){
+    const newContact = new contactModel(request.body);
+    newContact.save()
+    .then(savedContact => {
+        response.json(savedContact);
+    })
+};
