@@ -1,32 +1,34 @@
-const vehicles = require("../vehicles");
+const Vehicle = require("../model/Vehicle");
 
 module.exports.list = function (request, response) {
-  return response.json(vehicles);
+  Vehicle.find({})
+    .exec()
+    .then((vehicles) => {
+      return response.json(vehicles);
+    });
 };
 module.exports.show = function (request, response) {
-  const vehicle = findVehicle(request.params.id);
-  return response.json(vehicle);
+  Vehicle.findById({
+    _id: request.params.id,
+  })
+    .exec()
+    .then((vehicle) => {
+      return response.json(vehicle);
+    });
 };
 module.exports.create = function (request, response) {
-  const newVehicle = request.body;
-  vehicles.push(newVehicle);
-  return response.json(vehicles[vehicles.length - 1]);
+  const newContact = new Vehicle(request.body);
+  newContact.save().then((vehicle) => {
+    return response.json(vehicle);
+  });
 };
 module.exports.update = function (request, response) {
-  const vehicle = findVehicle(request.params.id);
-  vehicle.name += " TEST"; // testing PUT
-  return response.json(vehicle);
+  const vehicle = new Vehicle(request.body);
+  vehicle.save().then((saved) => {
+    return response.json(saved);
+  });
 };
 module.exports.remove = function (request, response) {
-  const vehicle = findVehicle(request.params.id);
-  const i = vehicles.indexOf(vehicle);
-  vehicles.splice(i, 1);
+  Vehicle.findByIdAndRemove(request.params.id);
   return response.send("deleted");
 };
-
-function findVehicle(id) {
-  const vehicle = vehicles.find((u) => {
-    return u._id === Number(id);
-  });
-  return vehicle;
-}

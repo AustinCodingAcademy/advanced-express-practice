@@ -10,7 +10,7 @@ const {
 } = require("../controllers/ProductController");
 
 router.get(path, list);
-router.get(path + "/:id", show);
+router.get("/product/:id", show);
 router.post(path, create);
 router.put(path + "/:id", update);
 router.delete(path + "/:id", remove);

@@ -1,3 +1,6 @@
+# Ignore .env because it contains MLAB credentials
+.env 
+
 # Logs
 logs
 *.log

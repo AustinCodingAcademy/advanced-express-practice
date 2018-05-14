@@ -1,32 +1,34 @@
-const products = require("../products");
+const Product = require("../model/Product");
 
 module.exports.list = function (request, response) {
-  return response.json(products);
+  Product.find({})
+    .exec()
+    .then((products) => {
+      return response.json(products);
+    });
 };
 module.exports.show = function (request, response) {
-  const product = findProduct(request.params.id);
-  return response.json(product);
+  Product.findById({
+    _id: request.params.id,
+  })
+    .exec()
+    .then((product) => {
+      return response.json(product);
+    });
 };
 module.exports.create = function (request, response) {
-  const newproduct = request.body;
-  products.push(newproduct);
-  return response.json(products[products.length - 1]);
+  const newContact = new Product(request.body);
+  newContact.save().then((product) => {
+    return response.json(product);
+  });
 };
 module.exports.update = function (request, response) {
-  const product = findProduct(request.params.id);
-  product.name += " TEST";
-  return response.json(product);
+  const product = new Product(request.body);
+  product.save().then((saved) => {
+    return response.json(saved);
+  });
 };
 module.exports.remove = function (request, response) {
-  const product = findProduct(request.params.id);
-  const i = products.indexOf(product);
-  products.splice(i, 1);
+  Product.findByIdAndRemove(request.params.id);
   return response.send("deleted");
 };
-
-function findProduct(id) {
-  const product = products.find((u) => {
-    return u._id === Number(id);
-  });
-  return product;
-}

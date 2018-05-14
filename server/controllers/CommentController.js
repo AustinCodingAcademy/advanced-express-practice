@@ -1,32 +1,34 @@
-const comments = require("../comments");
+const Comment = require("../model/Comment");
 
 module.exports.list = function (request, response) {
-  return response.json(comments);
+  Comment.find({})
+    .exec()
+    .then((comments) => {
+      return response.json(comments);
+    });
 };
 module.exports.show = function (request, response) {
-  const comment = findComment(request.params.id);
-  return response.json(comment);
+  Comment.findById({
+    _id: request.params.id,
+  })
+    .exec()
+    .then((comment) => {
+      return response.json(comment);
+    });
 };
 module.exports.create = function (request, response) {
-  const newComment = request.body;
-  comments.push(newComment);
-  return response.json(comments[comments.length - 1]);
+  const newComment = new Comment(request.body);
+  newComment.save().then((comment) => {
+    return response.json(comment);
+  });
 };
 module.exports.update = function (request, response) {
-  const comment = findComment(request.params.id);
-  comment.name += " TEST"; // testing PUT
-  return response.json(comment);
+  const comment = new Comment(request.body);
+  comment.save().then((saved) => {
+    return response.json(saved);
+  });
 };
 module.exports.remove = function (request, response) {
-  const comment = findComment(request.params.id);
-  const i = comments.indexOf(comment);
-  comments.splice(i, 1);
+  Comment.findByIdAndRemove(request.params.id);
   return response.send("deleted");
 };
-
-function findComment(id) {
-  const comment = comments.find((u) => {
-    return u._id === Number(id);
-  });
-  return comment;
-}

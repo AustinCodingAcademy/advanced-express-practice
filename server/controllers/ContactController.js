@@ -1,32 +1,34 @@
-const contacts = require("../contacts");
+const Contact = require("../model/Contact");
 
 module.exports.list = function (request, response) {
-  return response.json(contacts);
+  Contact.find({})
+    .exec()
+    .then((contacts) => {
+      return response.json(contacts);
+    });
 };
 module.exports.show = function (request, response) {
-  const contact = findContact(request.params.id);
-  return response.json(contact);
+  Contact.findById({
+    _id: request.params.id,
+  })
+    .exec()
+    .then((contact) => {
+      return response.json(contact);
+    });
 };
 module.exports.create = function (request, response) {
-  const newContact = request.body;
-  contacts.push(newContact);
-  return response.json(contacts[contacts.length - 1]);
+  const newContact = new Contact(request.body);
+  newContact.save().then((contact) => {
+    return response.json(contact);
+  });
 };
 module.exports.update = function (request, response) {
-  const contact = findContact(request.params.id);
-  contact.name += " TEST";
-  return response.json(contact);
+  const contact = new Contact(request.body);
+  contact.save().then((saved) => {
+    return response.json(saved);
+  });
 };
 module.exports.remove = function (request, response) {
-  const contact = findContact(request.params.id);
-  const i = contacts.indexOf(contact);
-  contacts.splice(i, 1);
+  Contact.findByIdAndRemove(request.params.id);
   return response.send("deleted");
 };
-
-function findContact(id) {
-  const contact = contacts.find((u) => {
-    return u._id === Number(id);
-  });
-  return contact;
-}
