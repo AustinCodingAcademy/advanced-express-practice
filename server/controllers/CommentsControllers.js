@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const comments = require("../comments");
-let CommentModel = requre('../models/CommentsModels.js')
+let CommentModels = requre('../models/CommentsModels.js')
 
 
 //defined what each http command will do
@@ -26,36 +26,26 @@ let CommentModel = requre('../models/CommentsModels.js')
 //     return response.json(comments.pop(user => user._id == request.params.id))
 // }
 
-//incorrect
-CommentModel.find({}).exec()
-.then(comments => {
-  console.log(comments);
-});
 
-//correct??
 module.exports.list = function list(request, response) {
-    Comments.find({}).exec()
-    .then(comments => {
-        response.json(comments);
+    CommentModels.find({}).exec()
+    .then(commentModel => {
+        response.json(commentModel);
     })
 };
 
-UserModel.findById(request.params.id).exec()
-.then(comment => {
- console.log(comment);
-});
 
-const newComment= new CommentModel(request.body);
-newComment.save()
-.then(savedComment => {
-  response.json(savedComment);
-});
+module.exports.show = function list(request, response) {
+    CommentModels.findbyID(request.params.id).exec()
+    .then(comment => {
+        response.json(comment);
+    })
+};
 
-CommentModel.findById(request.params.id).exec()
-.then(comment => {
-  comment.body = request.body.body || comment.body;
-  return comment.save();
-})
-.then(comment => {
-  response.json(comment);
-});
+module.exports.create =  function create(request, response){
+    const newComment = new commentModel(request.body);
+    newComment.save()
+    .then(savedComment => {
+        response.json(savedComment);
+    })
+};
