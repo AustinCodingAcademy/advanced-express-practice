@@ -3,7 +3,7 @@ const router = express.Router();
 let {list, show, create, remove} = require( '../controllers/contactController');
 
 router.get('/contacts', list);
-router.get('/contacts/:id', show);
+router.get('/contact/:id', show);
 router.post('/contacts', create);
 router.delete('/contacts/:id', remove);
 
