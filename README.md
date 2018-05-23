@@ -2,21 +2,21 @@
 
 # Windows users - Make sure you remove single quotes from the package.json
 # Setup
-* fork, clone, npm install, npm start
-* a web page has been created for you so don't worry about that
-* your job is to build the server 
-* the only code you need to change is in the `/server` folder
+* Xfork, clone, npm install, npm start
+* Xa web page has been created for you so don't worry about that
+* Xyour job is to build the server 
+* Xthe only code you need to change is in the `/server` folder
 
 
 
 # Part 1 - Server
 
 ### server/index.js
-* This is the starting point of the server, put all code here
-* Make your app listen to port 3001
+* XThis is the starting point of the server, put all code here
+* XMake your app listen to port 3001
 
 ### Body
-* Add body parser middleware to express
+* XAdd body parser middleware to express
 
 ### Create express routes to get all things
 * Add .get() routes for /contacts, /vehicles, /comments, /products
