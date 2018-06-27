@@ -68,7 +68,7 @@ function commentLoaded(comment) {
   return {
     type: "GET_COMMENT_DONE",
     value: comment
-  }
+  };
 }
 export function loadComment(id) {
   return function (dispatch) {
@@ -87,7 +87,7 @@ export const loadContact = (id) => (
     fetch(`/contact/${id}`)
     .then( (res) => res.json())
     .then( (contact) => {
-      dispatch(contactLoaded(contact))
+      dispatch(contactLoaded(contact));
     });
   }
 );
@@ -96,7 +96,7 @@ function productLoaded(product) {
   return {
     type: "GET_PRODUCT_DONE",
     value: product
-  }
+  };
 }
 export function loadProduct(id) {
   return function (dispatch) {
@@ -113,7 +113,7 @@ function vehicleLoaded(vehicle) {
   return {
     type: "GET_VEHICLE_DONE",
     value: vehicle
-  }
+  };
 }
 export function loadVehicle(id) {
   return function (dispatch) {
