@@ -70,7 +70,7 @@ app.post('/products', (request, response, next) => {
     if (err) {
         return console.log("Error", err);
         }
-    console.log("Web server is now living in apartment 2345")
+    console.log("Web server is now living in apartment 3001")
 
 });
 
