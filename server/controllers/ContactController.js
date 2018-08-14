@@ -1,14 +1,14 @@
-let contacts = require("./contacts");
+let contacts = require("../contacts");
 let idCount = 5;
 
-export function list(request, response) {
+module.exports.list = function list(req, res, next) {
     return res.json(contacts)
 }
-export function show(request, response) {
+module.exports.show = function show(req, res, next) {
     let conID = contacts.find((item) => { return item._id == req.params.id })
     return res.json(conID)
 }
-export function create(request, response) {
+module.exports.create = function create(req, res, next) {
     idCount++;
     let newContact = {
         _id: idCount,
@@ -19,10 +19,10 @@ export function create(request, response) {
     contacts.push(newContact);
     return res.json(contacts);
 }
-export function update(request, response) {
+module.exports.update = function update(request, response, next) {
     return response.json({theId: request.params.id});
 }
-export function remove(request, response) {
+module.exports.remove = function remove(request, response, next) {
     return response.json({});
 }
    

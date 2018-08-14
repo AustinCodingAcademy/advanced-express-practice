@@ -1,16 +1,17 @@
-let vehicles = require("./vehicles");
+let vehicles = require("../vehicles");
+let idCount = 15;
 
-export function list(request, response) {
+module.exports.list = function list(req, res, next) {
     return res.json(vehicles)
 }
-export function show(request, response) {
+module.exports.show = function show(req, res, next) {
     let vehID = vehicles.find((item) => { return item._id == req.params.id })
     return res.json(vehID)
 }
-export function create(request, response) {
-    ids.veh++;
+module.exports.create = function create(req, res, next) {
+    idCount++;
     let newV = {
-        _id: ids.veh,
+        _id: idCount,
         year: req.body.year,
         make: req.body.make,
         model: req.body.model,
@@ -18,10 +19,10 @@ export function create(request, response) {
     vehicles.push(newV);
     return res.json(vehicles);
 }
-export function update(request, response) {
+module.exports.update = function update(request, response, next) {
     return response.json({theId: request.params.id});
 }
-export function remove(request, response) {
+module.exports.remove = function remove(request, response, next) {
     return response.json({});
 }
    
