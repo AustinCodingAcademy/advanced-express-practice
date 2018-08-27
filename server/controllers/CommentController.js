@@ -1,27 +1,24 @@
-let comments = require("../comments.js");
-let idCount = 4;
+const CommentModel = require("../models/Comment");
 
 module.exports.list = function list(req, res, next) {
-    return res.json(comments)
+    CommentModel.find({}).exec()
+    .then(c => {
+      return res.json(c);
+    });
 }
 module.exports.show = function show(req, res, next) {
-    let comID = comments.find((item) => { return item._id == req.params.id })
-    return res.json(comID)
+    CommentModel.find({ _id:{ $eq: req.params.id }}).exec()
+    .then(c => {
+        return res.json(c);
+      });
 }
+
 module.exports.create = function create(req, res, next) {
-    idCount++;
-    let newComment = {
-        _id: idCount,
-        body: req.body.body,
-        postID: 1,
-    }
-    comments.push(newComment);
-    return res.json(comments);
+    const newComment = new CommentModel(req.body);
+    newComment.save()
+    .then(message => {
+      res.json(message);
+    });
 }
-module.exports.update = function update(request, response, next) {
-    return response.json({theId: request.params.id});
-}
-module.exports.remove = function remove(request, response, next) {
-    return response.json({});
-}
+
    

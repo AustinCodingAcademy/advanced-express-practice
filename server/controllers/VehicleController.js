@@ -1,28 +1,24 @@
-let vehicles = require("../vehicles");
-let idCount = 15;
+const VehicleModel = require("../models/Vehicle");
+
 
 module.exports.list = function list(req, res, next) {
-    return res.json(vehicles)
+    VehicleModel.find({}).exec()
+    .then(c => {
+      return res.json(c);
+    });
 }
 module.exports.show = function show(req, res, next) {
-    let vehID = vehicles.find((item) => { return item._id == req.params.id })
-    return res.json(vehID)
+    VehicleModel.find({ _id:{ $eq: req.params.id }}).exec()
+    .then(c => {
+        return res.json(c);
+      });
 }
+
+
 module.exports.create = function create(req, res, next) {
-    idCount++;
-    let newV = {
-        _id: idCount,
-        year: req.body.year,
-        make: req.body.make,
-        model: req.body.model,
-    }
-    vehicles.push(newV);
-    return res.json(vehicles);
+    const newV = new VehicleModel(req.body);
+    newV.save()
+    .then(message => {
+      res.json(message);
+    });
 }
-module.exports.update = function update(request, response, next) {
-    return response.json({theId: request.params.id});
-}
-module.exports.remove = function remove(request, response, next) {
-    return response.json({});
-}
-   

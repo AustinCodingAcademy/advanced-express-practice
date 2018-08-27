@@ -1,27 +1,21 @@
-let products = require("../products");
-let idCount = 10;
+const ProductModel = require("../models/Product");
 
 module.exports.list = function list(req, res, next) {
-    return res.json(products)
+    ProductModel.find({}).exec()
+    .then(c => {
+      return res.json(c);
+    });
 }
 module.exports.show = function show(req, res, next) {
-    let prodID = products.find((item) => { return item._id == req.params.id })
-    return res.json(prodID)
+    ProductModel.find({ _id:{ $eq: req.params.id }}).exec()
+    .then(c => {
+        return res.json(c);
+      });
 }
 module.exports.create = function create(req, res, next) {
-    idCount++;
-    let newProd = {
-        _id: idCount,
-        name: req.body.name,
-        description: req.body.description,
-    }
-    products.push(newProd);
-    return res.json(products);
+    const newP = new ProductModel(req.body);
+    newP.save()
+    .then(message => {
+      res.json(message);
+    });
 }
-module.exports.update = function update(request, response, next) {
-    return response.json({theId: request.params.id});
-}
-module.exports.remove = function remove(request, response, next) {
-    return response.json({});
-}
-   

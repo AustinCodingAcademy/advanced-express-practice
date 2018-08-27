@@ -1,28 +1,22 @@
-let contacts = require("../contacts");
-let idCount = 5;
+const ContactModel = require("../models/Contact");
 
 module.exports.list = function list(req, res, next) {
-    return res.json(contacts)
+    ContactModel.find({}).exec()
+    .then(c => {
+        // do whatever you want here
+      return res.json(c);
+    });
 }
 module.exports.show = function show(req, res, next) {
-    let conID = contacts.find((item) => { return item._id == req.params.id })
-    return res.json(conID)
+    ContactModel.find({ _id:{ $eq: req.params.id }}).exec()
+    .then(c => {
+        return res.json(c);
+      });
 }
 module.exports.create = function create(req, res, next) {
-    idCount++;
-    let newContact = {
-        _id: idCount,
-        name: req.body.name,
-        occupation: req.body.occupation,
-        avatar: req.body.avatar
-    }
-    contacts.push(newContact);
-    return res.json(contacts);
+    const newContact = new ContactModel(req.body);
+    newContact.save()
+    .then(message => {
+      res.json(message);
+    });
 }
-module.exports.update = function update(request, response, next) {
-    return response.json({theId: request.params.id});
-}
-module.exports.remove = function remove(request, response, next) {
-    return response.json({});
-}
-   

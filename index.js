@@ -6,9 +6,7 @@ let productRoutes = require("./routes/ProductRoutes");
 let vehicleRoutes = require("./routes/VehicleRoutes");
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-const promise = mongoose.connect("mongodb://charcole:Th3odora@ds151558.mlab.com:51558/aca-test", {
-    useMongoClient: true,
-});
+mongoose.connect("mongodb://charcole:Th3odora@ds151558.mlab.com:51558/aca-test")
 
 const app = express();
 
