@@ -7,13 +7,13 @@ module.exports.list = function list(req, res, next) {
       return res.json(c);
     });
 }
+
 module.exports.show = function show(req, res, next) {
-    VehicleModel.find({ _id:{ $eq: req.params.id }}).exec()
+    VehicleModel.findById(req.params.id).exec()
     .then(c => {
         return res.json(c);
       });
 }
-
 
 module.exports.create = function create(req, res, next) {
     const newV = new VehicleModel(req.body);

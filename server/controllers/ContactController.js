@@ -7,12 +7,14 @@ module.exports.list = function list(req, res, next) {
       return res.json(c);
     });
 }
+
 module.exports.show = function show(req, res, next) {
-    ContactModel.find({ _id:{ $eq: req.params.id }}).exec()
+    ContactModel.findById(req.params.id).exec()
     .then(c => {
         return res.json(c);
       });
 }
+
 module.exports.create = function create(req, res, next) {
     const newContact = new ContactModel(req.body);
     newContact.save()

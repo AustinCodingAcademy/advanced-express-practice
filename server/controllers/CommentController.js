@@ -6,8 +6,9 @@ module.exports.list = function list(req, res, next) {
       return res.json(c);
     });
 }
+
 module.exports.show = function show(req, res, next) {
-    CommentModel.find({ _id:{ $eq: req.params.id }}).exec()
+    CommentModel.findById(req.params.id).exec()
     .then(c => {
         return res.json(c);
       });
