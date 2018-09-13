@@ -1,0 +1,28 @@
+//PART 3 import the arrays in here//
+// Take the code from the routes and put it into the controller//
+// create functions for list, show and create//
+let id= request.params.id
+let list id= list.find(list) =>{
+    if (list._id == id){
+        return list
+    }
+    else Response.send ("There is no such list")
+})
+return Response.json (list id);
+}
+
+let show id= show.find(show) =>{
+    if(show._id == id){
+        return show
+    }
+    else Response.send ("there is no show")
+})
+return Response.json(show id);
+}
+let create id= create.find(create) =>{
+    if(create._id == id){
+        return create
+    }
+    else Response.send("there is nothing to create")
+
+})
