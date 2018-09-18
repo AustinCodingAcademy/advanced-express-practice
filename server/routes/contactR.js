@@ -1,3 +1,6 @@
+import express from "express";
+const router = express.router();
+import {list,show,create,update,remove} from "../controllers/contactController";
 
 let express =  require("express");
 const router = express.Router();

@@ -1,3 +1,11 @@
+import express from "express";
+const router = express.router();
+import {list,show,create,update,remove} from "../controllers/VehicleController";
+
+
+
+
+
 let express =  require("express");
 const router = express.Router();
 let {list,show,create,update,remove} = require( "../controllers/VehicleController");

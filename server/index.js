@@ -3,6 +3,16 @@ let comments = require("./comments");
 let products = require("./products");
 let vehicles = require("./vehicles");
 let contacts = require("./contacts");
+//Part 2-Routes...import and use the routers in index.js//
+import commentRoutes from "./routes/commentR.js";
+app.use(commentRoutes);
+import contactRoutes from "./routes/contactR.js";
+app.use(contactRoutes);
+import productRoutes from "./routes/productR.js";
+app.use(productRoutes);
+import vehicleRoutes from "./routes/vehicleR.js";
+app.use (vehicleRoutes);
+
 
 const app = express();
 //PART 2 Import and use the Routers in index.js//
@@ -24,8 +34,8 @@ app.listen(3001 ,(req,res) => {
 app.use (bodyParser.json())
 
 //Part 1 add .get routes for comments,products.vehicles.contacts//
-app.get("/comments",function(req,res){
-    return res.send(comments)
+app.get("/comment",function(req,res){
+    return res.send(comment)
 }) 
 
  app.get ("/products",function (req,res)  {
@@ -41,14 +51,33 @@ app.get("/comments",function(req,res){
  app.get ("/contacts", function(request,response,next){
      response.json(contacts[1]);
  })
+ /* ### Create express routes to get one thing. Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id
+ -Add a path variable for id, use the params.id to .find() the item from the appropriate array, * response.json () the item found*/
+ app.get ("/contacts/:contactsId", function (req,res,next) {
+     response.json(contacts[request.params.contactsId]);
+ });
+ app.get ("/vehicles/:vehiclesId", function (req,res,next) {
+     response.json(vehicles[request.params.vehiclesId]);
+ });
+ app.get ("/comment/:commentId", function (req,res,next) {
+     response.json(comment[request.params.commentId]);
+ });
+ app.get ("/products/:productsId", function (req,res,next) {
+     response.json(comment[request.params.productsId]);
+ });
+
+
+
+
+
  //users plus post means get the entire array of users and add another user to it//
  /*### PART 1 Create express routes to create one thing
 * Add .post() routes for /contacts, /vehicles, /comments, /products
 * Add the information from the body to the appropriate array*/
 
- app.post ("/comments",function (req,res){
-     req.body._id = comments.length+1 
-     console.log (comments) 
+ app.post ("/comment",function (req,res){
+     req.body._id = comment.length+1 
+     console.log (comment) 
      console.log (req.body)
      comments.push(req.body)
      return res.send(req.body)

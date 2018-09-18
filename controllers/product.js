@@ -1,12 +1,3 @@
-import express from "express";
-const router = express.router();
-import {list,show,create,update,remove} from "../controllers/productController";
-
-
-
-
-
-
 let express =  require("express");
 const router = express.Router();
 let {list,show,create,update,remove} = require( "../controllers/ProductController");
@@ -20,3 +11,11 @@ router.delete("/product/:id", remove);
 
 module.exports =  router;
 
+
+//Part 4 Database//
+let productModel = require ("./models/product");
+
+productModel.find({}).exec()
+.then(products => {
+    console.log(products);
+});
