@@ -6,6 +6,7 @@ const products = require("./products");
 const vehicles = require("./vehicles");
 const contacts = require("./contacts");
 const bodyParser = require("body-parser");
+const contactRouter = require("./routes/ContactRoutes");
 
 const app = express();
 // Set static path
