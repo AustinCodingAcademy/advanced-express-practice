@@ -32,7 +32,9 @@ app.post("/contacts", (req, res, next) => {
       name: req.body.name,
       occupation: req.body.occupation
    }
+   // add new contact to contacts array
    contacts.push(newContact);
+   // return array with added contact
    return res.json(contacts);
 })
 
