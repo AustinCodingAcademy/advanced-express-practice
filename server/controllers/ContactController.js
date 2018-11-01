@@ -1,20 +1,16 @@
-app.use(express.static('public'));
-// Body Parser Middleware
-app.use(bodyParser.json());
-
-const contacts = require("./contacts");
+const contacts = require("../contacts");
 let contactIdCount = contacts.length; 
 // .get contacts
-export function list(req, res) {
+module.exports.list = function list(req, res) {
    return res.json(contacts);
 }
 // .get contact by ID
-export function show(req, res) {
+module.exports.show = function show(req, res) {
    let contact = contacts.find((contact) => contact._id == req.params.id);
    return res.json(contact);
 }
 // .post new contact
-export function create(req, res) {
+module.exports.create = function create(req, res) {
    contactIdCount++
    const newContact = {
       _id: contactIdCount,
@@ -27,11 +23,11 @@ export function create(req, res) {
    return res.json(contacts);
 }
 // .put contact by ID
-export function update(req, res) {
+module.exports.update = function update(req, res) {
    return res.json({theId: req.params.id});
 }
 // .delete contact by ID
-export function remove(req, res) {
+module.exports.remove = function remove(req, res) {
    return res.json({});
 }
   

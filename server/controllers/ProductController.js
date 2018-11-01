@@ -1,20 +1,16 @@
-app.use(express.static('public'));
-// Body Parser Middleware
-app.use(bodyParser.json());
-
-const products = require("./products");
+const products = require("../products");
 let productIdCount = products.length; 
 // .get products
-export function list(req, res) {
+module.exports.list = function list(req, res) {
    return res.json(products);
 }
 // .get product by ID
-export function show(req, res) {
+module.exports.show = function show(req, res) {
    let product = products.find((product) => product._id == req.params.id);
    return res.json(product);
 }
 // .post new product
-export function create(req, res) {
+module.exports.create = function create(req, res) {
    productIdCount++
    const newProduct = {
       _id: productIdCount,
@@ -23,14 +19,15 @@ export function create(req, res) {
    }
    // add new product to products array
    products.push(newProduct);
-   // return array with added contact
+   // return array with added product
    return res.json(products);
 }
 // .put product by ID
-export function update(req, res) {
+module.exports.update = function update(req, res) {
    return res.json({theId: req.params.id});
 }
 // .delete product by ID
-export function remove(req, res) {
+module.exports.remove = function remove(req, res) {
    return res.json({});
 }
+  
