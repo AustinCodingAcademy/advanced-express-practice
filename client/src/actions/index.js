@@ -64,10 +64,10 @@ function productsLoaded(products) {
   };
 }
 
-function commentLoaded(comment) {
+function commentLoaded(comments) {
   return {
     type: "GET_COMMENT_DONE",
-    value: comment
+    value: comments
   }
 }
 export function loadComment(id) {
@@ -75,44 +75,44 @@ export function loadComment(id) {
     fetch(`/comment/${id}`)
     .then( (res) => {
       return res.json();
-    }).then( (comment) => {
-      dispatch(commentLoaded(comment));
+    }).then( (comments) => {
+      dispatch(commentLoaded(comments));
     });
   };
 }
 
-const contactLoaded = (contact) => ({type: "GET_CONTACT_DONE", value: contact});
+const contactLoaded = (contacts) => ({type: "GET_CONTACT_DONE", value: contacts});
 export const loadContact = (id) => (
   (dispatch) => {
-    fetch(`/contact/${id}`)
+    fetch(`/contacts/${id}`)
     .then( (res) => res.json())
-    .then( (contact) => {
-      dispatch(contactLoaded(contact))
+    .then( (contacts) => {
+      dispatch(contactLoaded(contacts))
     });
   }
 );
 
-function productLoaded(product) {
+function productLoaded(products) {
   return {
     type: "GET_PRODUCT_DONE",
-    value: product
+    value: products
   }
 }
 export function loadProduct(id) {
   return function (dispatch) {
-    fetch(`/product/${id}`)
+    fetch(`/products/${id}`)
     .then( (res) => {
       return res.json();
-    }).then( (product) => {
-      dispatch(productLoaded(product));
+    }).then( (products) => {
+      dispatch(productLoaded(products));
     });
   };
 }
 
-function vehicleLoaded(vehicle) {
+function vehicleLoaded(vehicles) {
   return {
     type: "GET_VEHICLE_DONE",
-    value: vehicle
+    value: vehicles
   }
 }
 export function loadVehicle(id) {
@@ -120,18 +120,18 @@ export function loadVehicle(id) {
     fetch(`/vehicle/${id}`)
     .then( (res) => {
       return res.json();
-    }).then( (vehicle) => {
-      dispatch(vehicleLoaded(vehicle));
+    }).then( (vehicles) => {
+      dispatch(vehicleLoaded(vehicles));
     });
   };
 }
 
-export function createProduct(product) {
+export function createProduct(products) {
   return function (dispatch) {
     fetch("/products", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(product)
+      body: JSON.stringify(products)
     }).then(() => dispatch(loadProducts()));
   };
 }
