@@ -1,13 +1,19 @@
+const Vehcile = require("../models/VechicleModel");
 const vechicles = require("../vehicles");
 
 let vechiclesIdCount = vechicles.length;
 
 function list(req, res) {
-  res.json(vechicles);
+  Vehcile.find()
+    .exec()
+    .then((result) => {
+      console.log(result);
+      return res.json(result);
+    });
 }
 
 function show(req, res) {
-  const vechicle = vechicles.find(c => {
+  const vechicle = vechicles.find((c) => {
     return c._id === Number(req.params.id);
   });
   res.json(vechicle);
@@ -20,7 +26,7 @@ function create(req, res) {
 }
 
 function update(req, res) {
-  const id = vechicles.findIndex(c => {
+  const id = vechicles.findIndex((c) => {
     return c._id === Number(req.params.id);
   });
 
@@ -31,7 +37,7 @@ function update(req, res) {
 }
 
 function remove(req, res) {
-  const id = vechicles.findIndex(c => {
+  const id = vechicles.findIndex((c) => {
     return c._id === Number(req.params.id);
   });
 
@@ -44,5 +50,5 @@ module.exports = {
   show,
   create,
   update,
-  remove
+  remove,
 };
