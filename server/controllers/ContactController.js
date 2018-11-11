@@ -1,48 +1,30 @@
-const contacts = require("../contacts");
-
-let contactsIdCount = contacts.length;
+const Contact = require("../models/ContactModel");
 
 function list(req, res) {
-  res.json(contacts);
+  Contact.find()
+    .exec()
+    .then(result => {
+      return res.json(result);
+    });
 }
 
 function show(req, res) {
-  const contact = contacts.find(c => {
-    return c._id === Number(req.params.id);
-  });
-  res.json(contact);
+  Contact.findById(req.params.id)
+    .exec()
+    .then(result => {
+      return res.json(result);
+    });
 }
 
 function create(req, res) {
-  contactsIdCount++;
-  contacts.push({ ...req.body, _id: contactsIdCount });
-  res.json(contacts[contacts.length - 1]);
-}
-
-function update(req, res) {
-  const id = contacts.findIndex(c => {
-    return c._id === Number(req.params.id);
+  const newContact = new Contact(req.body);
+  newContact.save().then(savedContact => {
+    res.json(savedContact);
   });
-
-  const current = contacts[id];
-
-  contacts[id] = { current, ...req.body };
-  res.json(contacts[id]);
-}
-
-function remove(req, res) {
-  const id = contacts.findIndex(c => {
-    return c._id === Number(req.params.id);
-  });
-
-  contacts.slice(id, 1);
-  res.send("deleted");
 }
 
 module.exports = {
   list,
   show,
-  create,
-  update,
-  remove
+  create
 };

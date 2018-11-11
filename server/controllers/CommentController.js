@@ -1,48 +1,30 @@
-const comments = require("../comments");
-
-let commentsIdCount = comments.length;
+const Comment = require("../models/CommentModel");
 
 function list(req, res) {
-  res.json(comments);
+  Comment.find()
+    .exec()
+    .then(result => {
+      return res.json(result);
+    });
 }
 
 function show(req, res) {
-  const comment = comments.find(c => {
-    return c._id === Number(req.params.id);
-  });
-  res.json(comment);
+  Comment.findById(req.params.id)
+    .exec()
+    .then(result => {
+      return res.json(result);
+    });
 }
 
 function create(req, res) {
-  commentsIdCount++;
-  comments.push({ ...req.body, _id: commentsIdCount });
-  res.json(comments[comments.length - 1]);
-}
-
-function update(req, res) {
-  const id = comments.findIndex(c => {
-    return c._id === Number(req.params.id);
+  const newComment = new Comment(req.body);
+  newComment.save().then(savedComment => {
+    res.json(savedComment);
   });
-
-  const current = comments[id];
-
-  comments[id] = { current, ...req.body };
-  res.json(comments[id]);
-}
-
-function remove(req, res) {
-  const id = comments.findIndex(c => {
-    return c._id === Number(req.params.id);
-  });
-
-  comments.slice(id, 1);
-  res.send("deleted");
 }
 
 module.exports = {
   list,
   show,
-  create,
-  update,
-  remove
+  create
 };
