@@ -1,5 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://kesto:password1@ds155587.mlab.com:55587/express-practice")
 
 const contactRouter = require("./routes/ContactRoutes");
 const commentRouter = require("./routes/CommentRoutes");
