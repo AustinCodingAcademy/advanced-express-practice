@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://kesto:password1@ds155587.mlab.com:55587/express-practice")
 
 const contactRouter = require("./routes/ContactRoutes");

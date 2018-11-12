@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 
 const contactSchema = new mongoose.Schema({
-  name: { type: String },
+  name: { 
+     required: true,
+     type: String
+   },
   occupation: { type: String },
   avatar: { type: String }
 });
