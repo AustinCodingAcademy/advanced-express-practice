@@ -1,8 +1,20 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+// import mongoose to connect to mongoDB
 const mongoose = require("mongoose");
+// setup mongoDB connection
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://kesto:password1@ds155587.mlab.com:55587/express-practice")
+// connect to personal mongoDB database on mlab
+mongoose.connect("mongodb://kesto:password1@ds155587.mlab.com:55587/express-practice");
+const db = mongoose.connection;
+// Check connection
+db.once('open', function() {
+   console.log('Connected to MongoDB');
+})
+// Check for database errors
+db.on('error', function(err) {
+   console.log(err);
+})
 
 const contactRouter = require("./routes/ContactRoutes");
 const commentRouter = require("./routes/CommentRoutes");

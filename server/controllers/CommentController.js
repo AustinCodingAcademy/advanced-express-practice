@@ -1,15 +1,22 @@
 const CommentModel = require("../models/CommentModel");
 // .get comments
 module.exports.list = (req, res) => {
+   // comments represents data that is found with find() method
    CommentModel.find({}).exec().then(comments => {
       return res.json(comments);
-   }) 
+   })
+   .catch(err => {
+      console.log("Error listing comments", err);
+      return res.json(err);
+   })
 }
 
 // .get comment by ID
 module.exports.show = (req, res) => {
-   let comment = comments.find((comment) => comment._id == req.params.id);
-   return res.json(comment);
+   let comment = CommentModel.findById(req.params.id).exec()
+   .then(comment => {
+      return res.json(comment);
+   });
 }
 
 // .post new comment
@@ -20,12 +27,12 @@ module.exports.create = (req, res) => {
    // add new comment to comments array
    comment.save();
    // return array with added comment
-   return res.json(comments);
+   return res.json(comment);
 }
 
 // .put comment by ID
 module.exports.update = (req, res) => {
-   CommentModel.findById(request.params.id).then((err, comment) => {
+   CommentModel.findById(request.params.id).exec().then((err, comment) => {
       if (err) return handleError(err);
 
       comment.body = "blah blah blah";
