@@ -1,30 +1,41 @@
-let comments = require("../comments");
+let CommentModel = require("../models/CommentModel");
 
 module.exports.list =  function list(request, response) {
-    return response.send(comments);
+    CommentModel.find({}).exec().then(comments => {
+        return response.send(comments);
+    }); 
 }
 
 module.exports.show =  function show(request, response) {
-    const comment = comments.find(comments => comments._id == request.params.id);
-    response.json(comment);
-    return response.json({id: request.params.id});
+    CommentModel.findById(request.params.id).exec().then(comment => {
+        return response.json(comment);
+    });
 }
    
 module.exports.create =  function create(req,res,next){
-    comments.push(req.body);
-    comments[comments.length-1]._id = comments[comments.length-2]._id + 1;
-    return res.json(comments[comments.length-1]);
+    const newcomment= new CommentModel(req.body);
+    newcomment.save();
+    return response.send(comments);
 }
    
 module.exports.update =  function update(req,res,next){
-    const index = comments.findIndex(comments => comments._id == req.params.id);
-    comments[index].name = "Zack"
-    res.json(comments);
-    return res.json(comments[index]);
+    CommentModel.findById(request.params.id).exec().then(comment => {
+        comment.make = "Tom" ;
+        comment.model = "Sawyer";
+        comment.year = "Painter";
+        return comment.save();
+    })
+    .then(comment => {
+        return res.json(comment[index]);
+    });
 }
    
 module.exports.remove =  function remove(req,res,next){
-    const index = comments.findIndex(comments => comments._id == req.params.id);
-    comments[index].active = false;
-    return res.json("deleted");
+    CommentModel.findById(request.params.id).exec().then(comment => {
+        comment[index].active = false;
+        return comment.save();
+    })
+    .then(comment => {
+        return res.json(comment[index]);
+    });
 }

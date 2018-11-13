@@ -1,30 +1,41 @@
-let contacts = require("../contacts");
+let ContactModel = require("../models/ContactModel");
 
 module.exports.list =  function list(request, response) {
-    return response.send(contacts);
+    ContactModel.find({}).exec().then(contacts => {
+        return response.send(contacts);
+    }); 
 }
 
 module.exports.show =  function show(request, response) {
-    const contact = contacts.find(contacts => contacts._id == request.params.id);
-    response.json(contact);
-    return response.json({id: request.params.id});
+    ContactModel.findById(request.params.id).exec().then(contact => {
+        return response.json(contact);
+    });
 }
    
 module.exports.create =  function create(req,res,next){
-    contacts.push(req.body);
-    contacts[contacts.length-1]._id = contacts[contacts.length-2]._id + 1;
-    return res.json(contacts[contacts.length-1]);
+    const newcontact= new ContactModel(req.body);
+    newcontact.save();
+    return response.send(contacts);
 }
    
 module.exports.update =  function update(req,res,next){
-    const index = contacts.findIndex(contacts => contacts._id == req.params.id);
-    contacts[index].name = "Zack"
-    res.json(contacts);
-    return res.json(contacts[index]);
+    ContactModel.findById(request.params.id).exec().then(contact => {
+        contact.make = "Tom" ;
+        contact.model = "Sawyer";
+        contact.year = "Painter";
+        return contact.save();
+    })
+    .then(contact => {
+        return res.json(contact[index]);
+    });
 }
    
 module.exports.remove =  function remove(req,res,next){
-    const index = contacts.findIndex(contacts => contacts._id == req.params.id);
-    contacts[index].active = false;
-    return res.json("deleted");
+    ContactModel.findById(request.params.id).exec().then(contact => {
+        contact[index].active = false;
+        return contact.save();
+    })
+    .then(contact => {
+        return res.json(contact[index]);
+    });
 }

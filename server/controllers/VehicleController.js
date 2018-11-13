@@ -1,30 +1,42 @@
-let vehicles = require("../vehicles");
+let VehicleModel = require("../models/VehicleModel");
 
-module.exports.list =  function list(request, response) {
-    return response.send(vehicles);
+module.exports.list =  function list(req, res) {
+    VehicleModel.find({active: {$ne:false}}).exec().then(vehicles => {
+        return res.send(vehicles);
+    }); 
 }
 
-module.exports.show =  function show(request, response) {
-    const vehicle = vehicles.find(vehicles => vehicles._id == request.params.id);
-    response.json(vehicle);
-    return response.json({id: request.params.id});
+module.exports.show =  function show(req, res) {
+    VehicleModel.findById(req.params.id).exec().then(vehicle => {
+        return res.json(vehicle);
+    });
 }
    
 module.exports.create =  function create(req,res,next){
-    vehicles.push(req.body);
-    vehicles[vehicles.length-1]._id = vehicles[vehicles.length-2]._id + 1;
-    return res.json(vehicles[vehicles.length-1]);
+    const newVehicle= new VehicleModel(req.body);
+    newVehicle.save();
+    return res.json(vehicles);
 }
    
 module.exports.update =  function update(req,res,next){
-    const index = vehicles.findIndex(vehicles => vehicles._id == req.params.id);
-    vehicles[index].name = "Zack"
-    res.json(vehicles);
-    return res.json(vehicles[index]);
+    VehicleModel.findById(req.params.id).exec().then(vehicle => {
+        vehicle.make = req.body.make;
+        vehicle.model = req.body.model;
+        vehicle.year = req.body.year;
+        vehicle.active = true;
+        return vehicle.save();
+    })
+    .then(vehicle => {
+        return res.json(vehicle);
+    });
 }
    
 module.exports.remove =  function remove(req,res,next){
-    const index = vehicles.findIndex(vehicles => vehicles._id == req.params.id);
-    vehicles[index].active = false;
-    return res.json("deleted");
+    VehicleModel.findById(req.params.id).exec().then(vehicle => {
+        vehicle.active = false;
+        return vehicle.save();
+    })
+    .then(vehicle => {
+        return res.json(vehicle);
+    });
 }
