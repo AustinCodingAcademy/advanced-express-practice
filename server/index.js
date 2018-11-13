@@ -1,4 +1,7 @@
 let express = require("express");
+let mongoose=require("mongoose");
+mongoose.Promise=global.Promise;
+mongoose.connect("mongodb://Miriam:plum22@ds157853.mlab.com:57853/advanced-express-practice");
 
 const contacts = require("./contacts");
 const comments = require("./comments");
