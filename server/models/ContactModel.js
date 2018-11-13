@@ -9,4 +9,4 @@ const contactSchema = new mongoose.Schema({
   avatar: { type: String }
 });
 
-module.exports = mongoose.model("Contact", contactSchema);
+module.exports = mongoose.model("contacts", contactSchema);

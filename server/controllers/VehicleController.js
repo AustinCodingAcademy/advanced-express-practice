@@ -4,12 +4,18 @@ module.exports.list = (req, res) => {
    VehicleModel.find({}).exec().then(vehicles => {
       return res.json(vehicles);
    }) 
+   .catch(err => {
+      console.log("Error listing vehicles", err);
+      return res.json(err);
+   })
 }
 
 // .get vehicle by ID
 module.exports.show = (req, res) => {
-   let vehicle = vehicles.find((vehicle) => vehicle._id == req.params.id);
-   return res.json(vehicle);
+   let vehicle = VehicleModel.findById(req.params.id).exec()
+   .then(vehicle => {
+      return res.json(vehicle);
+   });
 }
 
 // .post new vehicle
@@ -20,12 +26,12 @@ module.exports.create = (req, res) => {
    // add new vehicle to vehicles array
    vehicle.save();
    // return array with added vehicle
-   return res.json(vehicles);
+   return res.json(vehicle);
 }
 
 // .put vehicle by ID
 module.exports.update = (req, res) => {
-   VehicleModel.findById(request.params.id).then((err, vehicle) => {
+   VehicleModel.findById(request.params.id).exec().then((err, vehicle) => {
       if (err) return handleError(err);
 
       vehicle.year = "2006",

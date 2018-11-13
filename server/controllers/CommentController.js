@@ -35,7 +35,7 @@ module.exports.update = (req, res) => {
    CommentModel.findById(request.params.id).exec().then((err, comment) => {
       if (err) return handleError(err);
 
-      comment.body = "blah blah blah";
+      comment.body = "This comment has been modified";
       comment.save((err, updComment) => {
          if (err) return handleError(err);
          res.send(updComment);

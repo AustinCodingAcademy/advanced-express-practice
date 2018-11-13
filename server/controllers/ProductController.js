@@ -3,13 +3,19 @@ const ProductModel = require("../models/ProductModel");
 module.exports.list = (req, res) => {
    ProductModel.find({}).exec().then(products => {
       return res.json(products);
-   }) 
+   })
+   .catch(err => {
+      console.log("Error listing products", err);
+      return res.json(err);
+   })
 }
 
 // .get product by ID
 module.exports.show = (req, res) => {
-   let product = products.find((product) => product._id == req.params.id);
-   return res.json(product);
+   let product = ProductModel.findById(req.params.id).exec()
+   .then(product => {
+      return res.json(product);
+   });
 }
 
 // .post new product
@@ -20,12 +26,12 @@ module.exports.create = (req, res) => {
    // add new product to products array
    product.save();
    // return array with added product
-   return res.json(products);
+   return res.json(product);
 }
 
 // .put product by ID
 module.exports.update = (req, res) => {
-   ProductModel.findById(request.params.id).then((err, product) => {
+   ProductModel.findById(request.params.id).exec().then((err, product) => {
       if (err) return handleError(err);
 
       product.name = "rubber duck",

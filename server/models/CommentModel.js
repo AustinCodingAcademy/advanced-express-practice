@@ -6,5 +6,5 @@ const commentSchema = new mongoose.Schema({
      type: String 
    }
 });
-// export model with name "CommentModel" and commentSchema
-module.exports = mongoose.model("CommentModel", commentSchema);
+// export model with name "comments" from mlab collection name and commentSchema
+module.exports = mongoose.model("comments", commentSchema);

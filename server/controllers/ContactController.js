@@ -1,15 +1,21 @@
 const ContactModel = require("../models/ContactModel");
 // .get contacts
 module.exports.list = (req, res) => {
-   contactModel.find({}).exec().then(contacts => {
+   ContactModel.find({}).exec().then(contacts => {
       return res.json(contacts);
+   })
+   .catch(err => {
+      console.log("Error listing contacts", err);
+      return res.json(err);
    }) 
 }
 
 // .get contact by ID
 module.exports.show = (req, res) => {
-   let contact = contacts.find((contact) => contact._id == req.params.id);
-   return res.json(contact);
+   let contact = ContactModel.findById(req.params.id).exec()
+   .then(contact => {
+      return res.json(contact);
+   });
 }
 
 // .post new contact
@@ -20,12 +26,12 @@ module.exports.create = (req, res) => {
    // add new contact to contacts array
    contact.save();
    // return array with added contact
-   return res.json(contacts);
+   return res.json(contact);
 }
 
 // .put contact by ID
 module.exports.update = (req, res) => {
-   ContactModel.findById(request.params.id).then((err, contact) => {
+   ContactModel.findById(request.params.id).exec().then((err, contact) => {
       if (err) return handleError(err);
 
       contact.name = "Jeff",
