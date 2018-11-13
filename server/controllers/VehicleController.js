@@ -1,4 +1,4 @@
-const vehicles = require("../models/VehicleModel");
+const VehicleModel = require("../models/VehicleModel");
 // .get vehicles
 module.exports.list = (req, res) => {
    VehicleModel.find({}).exec().then(vehicles => {
@@ -38,7 +38,8 @@ module.exports.update = (req, res) => {
    })
 }
 // .delete contact by ID
-module.exports.remove = function remove(req, res) {
+module.exports.remove = (req, res) => {
+   VehicleModel.findOneAndRemove({})
    return res.json({});
 }
   

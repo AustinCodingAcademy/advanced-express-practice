@@ -1,4 +1,4 @@
-const comments = require("../models/CommentModel");
+const CommentModel = require("../models/CommentModel");
 // .get comments
 module.exports.list = (req, res) => {
    CommentModel.find({}).exec().then(comments => {

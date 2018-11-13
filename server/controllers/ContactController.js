@@ -1,4 +1,4 @@
-const contacts = require("../models/ContactModel");
+const ContactModel = require("../models/ContactModel");
 // .get contacts
 module.exports.list = (req, res) => {
    contactModel.find({}).exec().then(contacts => {
