@@ -6,7 +6,12 @@ const contactSchema = new mongoose.Schema({
      type: String
    },
   occupation: { type: String },
-  avatar: { type: String }
+  avatar: { type: String },
+  active: {
+    required: true,
+    type: Boolean,
+    default: true
+  }
 });
 
 module.exports = mongoose.model("contacts", contactSchema);

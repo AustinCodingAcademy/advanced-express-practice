@@ -12,6 +12,11 @@ const vehicleSchema = new mongoose.Schema({
    model: { 
       required: true,
       type: String
+   },
+   active: {
+     required: true,
+     type: Boolean,
+     default: true
    }
 });
 

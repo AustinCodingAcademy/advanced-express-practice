@@ -8,6 +8,11 @@ const productSchema = new mongoose.Schema({
    description: { 
       required: true,
       type: String 
+   },
+   active: {
+     required: true,
+     type: Boolean,
+     default: true
    }
 });
 

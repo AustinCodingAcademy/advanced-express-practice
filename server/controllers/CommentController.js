@@ -39,6 +39,10 @@ module.exports.update = (req, res) => {
    })
 }
 // .delete contact by ID
-module.exports.remove = function remove(req, res) {
-   return res.json({});
+module.exports.remove = (req, res) => {
+   CommentModel.findById(req.params.id).exec().then(comment => {
+       comment.active = false;
+       comment.save();
+       return res.json(comment);
+   });
 }

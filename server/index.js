@@ -6,15 +6,6 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 // connect to personal mongoDB database on mlab
 mongoose.connect("mongodb://kesto:avalynSD91@ds155587.mlab.com:55587/express-practice");
-// const db = mongoose.connect();
-// Check connection
-// db.openUri(function() {
-//    console.log('Connected to MongoDB');
-// })
-// Check for database errors
-// db.on('error', function(err) {
-//    console.log(err);
-// })
 
 const contactRouter = require("./routes/ContactRoutes");
 const commentRouter = require("./routes/CommentRoutes");

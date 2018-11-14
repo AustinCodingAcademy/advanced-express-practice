@@ -39,6 +39,10 @@ module.exports.update = (req, res) => {
    })
 }
 // .delete contact by ID
-module.exports.remove = function remove(req, res) {
-   return res.json({});
+module.exports.remove = (req, res) => {
+   ProductModel.findById(req.params.id).exec().then(product => {
+       product.active = false;
+       product.save();
+       return res.json(product);
+   });
 }

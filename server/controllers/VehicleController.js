@@ -41,7 +41,10 @@ module.exports.update = (req, res) => {
 }
 // .delete contact by ID
 module.exports.remove = (req, res) => {
-   VehicleModel.findOneAndRemove({})
-   return res.json({});
+   VehicleModel.findById(req.params.id).exec().then(vehicle => {
+       vehicle.active = false;
+       vehicle.save();
+       return res.json(vehicle);
+   });
 }
   
