@@ -31,16 +31,12 @@ module.exports.create = (req, res) => {
 
 // .put vehicle by ID
 module.exports.update = (req, res) => {
-   VehicleModel.findById(request.params.id).exec().then((err, vehicle) => {
-      if (err) return handleError(err);
-
+   VehicleModel.findById(req.params.id).exec().then(vehicle => {
       vehicle.year = "2006",
       vehicle.make = "Toyota",
       vehicle.model = "Camry";
-      vehicle.save((err, updVehicle) => {
-         if (err) return handleError(err);
-         res.send(updVehicle);
-      })
+      vehicle.save();
+      return res.json(vehicle);
    })
 }
 // .delete contact by ID

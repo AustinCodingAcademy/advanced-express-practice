@@ -31,15 +31,11 @@ module.exports.create = (req, res) => {
 
 // .put product by ID
 module.exports.update = (req, res) => {
-   ProductModel.findById(request.params.id).exec().then((err, product) => {
-      if (err) return handleError(err);
-
+   ProductModel.findById(req.params.id).exec().then(product => {
       product.name = "rubber duck",
       product.description = "bath/pool toy that squeeks";
-      product.save((err, updProduct) => {
-         if (err) return handleError(err);
-         res.send(updProduct);
-      })
+      product.save();
+      return res.json(product);
    })
 }
 // .delete contact by ID

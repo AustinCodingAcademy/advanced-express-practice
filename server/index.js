@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 // connect to personal mongoDB database on mlab
 mongoose.connect("mongodb://kesto:avalynSD91@ds155587.mlab.com:55587/express-practice");
-const db = mongoose.connect();
+// const db = mongoose.connect();
 // Check connection
 // db.openUri(function() {
 //    console.log('Connected to MongoDB');
@@ -32,7 +32,7 @@ app.use(commentRouter);
 app.use(productRouter);
 app.use(vehicleRouter);
 
-// app is listening to port 3002
+// app is listening to port 3001
 app.listen(3001, (err) => {
    if (err) {
       return console.log("Error", err);

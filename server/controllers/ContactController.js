@@ -31,16 +31,12 @@ module.exports.create = (req, res) => {
 
 // .put contact by ID
 module.exports.update = (req, res) => {
-   ContactModel.findById(request.params.id).exec().then((err, contact) => {
-      if (err) return handleError(err);
-
+   ContactModel.findById(req.params.id).exec().then(contact => {
       contact.name = "Jeff",
       contact.occupation = "trucker",
       contact.avatar = "duck";
-      contact.save((err, updContact) => {
-         if (err) return handleError(err);
-         res.send(updContact);
-      })
+      contact.save();
+      return res.json(contact);
    })
 }
 // .delete contact by ID
