@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 // setup mongoDB connection
 mongoose.Promise = global.Promise;
 // connect to personal mongoDB database on mlab
-mongoose.connect("mongodb://kesto:avalynSD91@ds155587.mlab.com:55587/express-practice");
+mongoose.connect("mongodb://kesto:password1@ds155587.mlab.com:55587/express-practice");
 
 const contactRouter = require("./routes/ContactRoutes");
 const commentRouter = require("./routes/CommentRoutes");
