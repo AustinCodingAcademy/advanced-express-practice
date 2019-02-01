@@ -8,7 +8,12 @@ exports.show = function show(request, response) {
     return response.json(product);
 }
 exports.create =  function create(request, response) {
-    return response.json({});
+    let newProduct = request.body
+    let idArray = [];
+    products.forEach(p => idArray.push(p._id));
+    newProduct._id = Math.max(...idArray) +1;
+    products.push(newProduct);
+    return response.json(newProduct);
 }
 exports.update =  function update(request, response) {
     return response.json({theId: request.params.id});

@@ -8,7 +8,12 @@ exports.show = function show(request, response) {
     return response.json(comment);
 }
 exports.create =  function create(request, response) {
-    return response.json({});
+    let newComment = request.body
+    let idArray = [];
+    comments.forEach(c => idArray.push(c._id));
+    newComment._id = Math.max(...idArray) +1;
+    comments.push(newComment);
+    return response.json(newComment);
 }
 exports.update =  function update(request, response) {
     return response.json({theId: request.params.id});

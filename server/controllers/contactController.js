@@ -8,7 +8,12 @@ exports.show = function show(request, response) {
     return response.json(contact);
 }
 exports.create =  function create(request, response) {
-    return response.json({});
+    let newContact = request.body
+    let idArray = [];
+    contacts.forEach(c => idArray.push(c._id));
+    newContact._id = Math.max(...idArray) +1;
+    contacts.push(newContact);
+    return response.json(newContact);
 }
 exports.update =  function update(request, response) {
     return response.json({theId: request.params.id});
