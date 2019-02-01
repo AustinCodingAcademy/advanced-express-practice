@@ -4,3 +4,24 @@ let products = require("./products");
 let vehicles = require("./vehicles");
 let contacts = require("./contacts");
 
+const bodyParser = require("body-parser");
+const app = express();
+const contactRoutes = require("./routes/ContactRoutes");
+const vehiclesRoutes = require("./routes/VehiclesRoutes");
+const productsRoutes = require("./routes/ProductsRoutes");
+const commentRoutes = require("./routes/CommentsRoutes");
+
+app.use(contactRoutes);
+app.use(vehiclesRoutes);
+app.use(productsRoutes);
+app.use(commentRoutes);
+
+app.use(bodyParser.json());
+
+app.listen(3001, (err) => {
+ if (err) {
+   return console.log("Error", err);
+ }
+ console.log("Web server is now listening for messages", err);
+});
+ 
