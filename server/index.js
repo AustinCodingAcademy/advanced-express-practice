@@ -1,16 +1,17 @@
 let express = require("express");
-let comments = require("./comments");
-let products = require("./products");
-let vehicles = require("./vehicles");
 
 const bodyParser = require("body-parser");
 const contactRoutes = require("./routes/ContactRoutes");
 const vehicleRoutes = require("./routes/VehicleRoutes");
+const commentRoutes = require("./routes/CommentRoutes");
+const productRoutes = require("./routes/ProductRoutes");
 
 const app = express();
 app.use(bodyParser.json());
 app.use(contactRoutes);
 app.use(vehicleRoutes);
+app.use(commentRoutes);
+app.use(productRoutes);
 
 app.listen(3001, (err) => {
     if (err) {
