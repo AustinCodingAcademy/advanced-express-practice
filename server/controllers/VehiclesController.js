@@ -5,9 +5,14 @@ exports.list =  function list(request, response) {
    }
    exports.show = function show(request, response) {
     const vehicle = vehicles.find(v=>v._id == request.params.id);
-    return response.json(vehicle);   }
+    return response.json(vehicle);  
+   }
    exports.create =  function create(request, response) {
-    return response.json({});
+    console.log('creating stuff')
+    const vehicle = request.body;
+    vehicles.push(vehicle);
+    return response.json(vehicle);
+    
    }
    exports.update =  function update(request, response) {
     return response.json({theId: request.params.id});
