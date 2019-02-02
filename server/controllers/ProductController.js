@@ -7,12 +7,12 @@ exports.list = function list(request, response) {
 
 // GET with an ID
 exports.show = function show(request, response) {
-    return response.json({ theId: request.params.id });
+    return response.json(products[request.params.id - 1]);
 }
 
 // POST request
 exports.create = function create(request, response) {
-    return response.json({});
+    return response.json(products);
 }
 
 // PUT request
