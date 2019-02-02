@@ -17,7 +17,7 @@ app.use(productsRoutes);
 app.use(commentRoutes);
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3001, (err) => {
  if (err) {

@@ -12,9 +12,9 @@ exports.list =  function list(request, response) {
     const vehicle = request.body;
     vehicles.push(vehicle);
     return response.json(vehicle);
-    
    }
    exports.update =  function update(request, response) {
+       
     return response.json({theId: request.params.id});
    }
    exports.remove =  function remove(request, response) {

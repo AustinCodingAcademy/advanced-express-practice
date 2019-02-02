@@ -8,7 +8,10 @@ exports.list =  function list(request, response) {
     return response.json(contact);
    }
    exports.create =  function create(request, response) {
-    return response.json({});
+    console.log('creating stuff')
+    const contact = request.body;
+    contacts.push(contact);
+    return response.json(product);
    }
    exports.update =  function update(request, response) {
     return response.json({theId: request.params.id});
