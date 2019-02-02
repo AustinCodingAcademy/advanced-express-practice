@@ -25,7 +25,7 @@
 ### Create express routes to get one thing
 * Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id
 * add a path variable for id
-* use the params.id to .find() the item from the appropriate array
+* use the params.id to find the item from the appropriate array
 * response.json() the item found
 
 ### Create express routes to create one thing

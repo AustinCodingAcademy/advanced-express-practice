@@ -7,12 +7,15 @@ exports.list = function list(request, response) {
 
 // GET with an ID
 exports.show = function show(request, response) {
-    return response.json({ theId: request.params.id });
+    return response.json(vehicles[request.params.id - 1]);
 }
 
 // POST request
 exports.create = function create(request, response) {
-    return response.json({});
+    const newVehicle = request.body
+    newVehicle["_id"] = (vehicles.length + 1);
+    vehicles.push(newVehicle)
+    return response.json(vehicles);
 }
 
 // PUT request
