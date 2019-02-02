@@ -12,6 +12,9 @@ exports.show = function show(request, response) {
 
 // POST request
 exports.create = function create(request, response) {
+    const newContact = request.body;
+    newContact["_id"] = contacts.length + 1;
+    contacts.push(newContact);
     return response.json(contacts);
 }
 

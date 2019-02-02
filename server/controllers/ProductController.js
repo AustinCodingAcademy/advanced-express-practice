@@ -12,6 +12,9 @@ exports.show = function show(request, response) {
 
 // POST request
 exports.create = function create(request, response) {
+    const newProduct = request.body;
+    newProduct["_id"] = products.length + 1;
+    products.push(newProduct);
     return response.json(products);
 }
 

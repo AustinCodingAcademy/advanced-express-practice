@@ -12,6 +12,9 @@ exports.show = function show(request, response) {
 
 // POST request
 exports.create = function create(request, response) {
+    const newComment = request.body;
+    newComment["_id"] = comments.length + 1;
+    comments.push(newComment);
     return response.json(comments);
 }
 
