@@ -12,7 +12,7 @@ exports.show = function show(request, response) {
 
 // POST request
 exports.create = function create(request, response) {
-    return response.json({});
+    return response.json(contacts);
 }
 
 // PUT request
