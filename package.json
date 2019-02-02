@@ -1,11 +1,11 @@
 {
   "name": "advanced-server-practice",
   "version": "1.0.0",
-  "description": "",
+  "description": "* fork, clone, npm install, npm start\r * a web page has been created for you so don't worry about that\r * your job is to build the server \r * the only code you need to change is in the `/server` folder",
   "main": "index.js",
   "scripts": {
     "lint": "eslint src",
-    "dev": "nodemon --exec 'babel-node server/index'",
+    "dev": "nodemon --exec babel-node server/index",
     "test": "npm run lint",
     "start": "nf start"
   },
@@ -47,5 +47,13 @@
     "redux-thunk": "^2.2.0",
     "whatwg-fetch": "^2.0.3"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellynb/advanced-express-practice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kellynb/advanced-express-practice/issues"
+  },
+  "homepage": "https://github.com/kellynb/advanced-express-practice#readme"
 }
