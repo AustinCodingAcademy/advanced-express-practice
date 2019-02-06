@@ -6,6 +6,7 @@ let contacts = require("./contacts");
 
 const bodyParser = require("body-parser");
 const app = express();
+app.use(bodyParser.json());
 const contactRoutes = require("./routes/ContactRoutes");
 const vehiclesRoutes = require("./routes/VehiclesRoutes");
 const productsRoutes = require("./routes/ProductsRoutes");
@@ -16,7 +17,6 @@ app.use(vehiclesRoutes);
 app.use(productsRoutes);
 app.use(commentRoutes);
 
-app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3001, (err) => {

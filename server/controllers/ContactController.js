@@ -10,6 +10,7 @@ exports.list =  function list(request, response) {
    exports.create =  function create(request, response) {
     console.log('creating stuff')
     const newContact = request.body;
+    newContact["_id"] = contacts.length+1;
     contacts.push(newContact);
     return response.json(newContact);
    }
