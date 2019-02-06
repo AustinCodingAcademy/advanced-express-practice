@@ -14,7 +14,7 @@ exports.create =  function create(request, response) {
  return response.json(products);
 }
 exports.update =  function update(request, response) {
- return response.json({theId: request.params.id});
+ return response.json({});
 }
 exports.remove =  function remove(request, response) {
  return response.json({});
