@@ -18,5 +18,5 @@ exports.update = function update(request, response) {
 };
 exports.remove = function remove(request, response) {
     return response.json({});
-};
+}; 
    
