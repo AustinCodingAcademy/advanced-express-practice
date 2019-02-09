@@ -1,21 +1,29 @@
-let contacts = require("../Model/contacts");
+let contactsModel = require("../Models/contacts");
 
 // GET request
 exports.list = function list(request, response) {
-    return response.json(contacts);
+    contactsModel.find().exec().then(contacts => {
+        return response.json(contacts)
+    })
 }
 
 // GET with an ID
 exports.show = function show(request, response) {
-    return response.json(contacts[request.params.id - 1]);
+    contactsModel.findById(request.params.id).exec().then(contact => {
+        return response.json(contact);
+    })
 }
 
 // POST request
 exports.create = function create(request, response) {
-    const newContact = request.body
-    newContact["_id"] = (contacts.length + 1);
-    contacts.push(newContact)
-    return response.json(contacts);
+    const newContact = new contactsModel({
+        name: request.body.name,
+        occupation: request.body.occupation,
+        avatar: request.body.avatar
+    })
+    newContact.save().then(savedContact => {
+        console.log(savedContact)
+    })
 }
 
 // PUT request

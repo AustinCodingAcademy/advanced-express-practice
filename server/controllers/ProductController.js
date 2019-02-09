@@ -1,4 +1,4 @@
-let products = require("../Model/products");
+let products = require("../products");
 
 // GET request
 exports.list = function list(request, response) {

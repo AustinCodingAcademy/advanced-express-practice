@@ -1,21 +1,27 @@
-let comments = require("../Model/comments");
+const commentModel = require("../Models/comments")
 
 // GET request
 exports.list = function list(request, response) {
-    return response.json(comments);
+    commentModel.find().exec().then((comments)=>{
+        return response.json(comments);
+    })
 }
 
 // GET with an ID
 exports.show = function show(request, response) {
-    return response.json(comments[request.params.id - 1]);
+    commentModel.findById(request.params.id).exec().then((comment)=>{
+        return response.json(comment);
+    })
 }
 
 // POST request
 exports.create = function create(request, response) {
-    const newComment = request.body
-    newComment["_id"] = (comments.length + 1);
-    comments.push(newComment)
-    return response.json(comments);
+    const newComment = new commentModel({
+        body: request.body.body
+    })
+    newComment.save().then(savedUser => {
+        console.log(savedUser)
+    })
 }
 
 // PUT request
