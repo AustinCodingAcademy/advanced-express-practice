@@ -1,5 +1,8 @@
 let express = require("express");
 
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://agottlich:abby123@ds255787.mlab.com:55787/advanced-express-practice", { useNewUrlParser: true });
+
 const bodyParser = require("body-parser");
 const contactRoutes = require("./routes/ContactRoutes");
 const vehicleRoutes = require("./routes/VehicleRoutes");
