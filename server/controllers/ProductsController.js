@@ -1,20 +1,35 @@
-const products = require('../products');
+// const products = require('../products');
+const Product = require("../models/ProductModel");
 
 // get request
-exports.list = function list(request, response) {
-  return response.json(products);
+module.exports.list = (request, response) => {
+  Product.find({}).exec().then((products) => {
+    return response.json(products);
+  });
 };
 // get by id request
-exports.show = function show(request, response) {
-  const product = products.find(p=>p._id == request.params.id);
-  return response.json(product);
+module.exports.show = (request, response) => {
+  Product.findById(request.params.id).exec().then((product) => {
+    return response.json(product);
+  });
+  // hardcoded files:
+  // const product = products.find(p=>p._id == request.params.id);
+  // return response.json(product);
 };
 
 // post request
-exports.create = function create(request, response) {
-  const product = request.body;
-  products.push(product);
-  return response.json(product);
+module.exports.create = (request, response) => {
+  const p = new Product({
+    name: request.body.name,
+    description: request.body.description
+  });
+  p.save().then(saveP => {
+    return response.json(saveP);
+  });
+  // hardcoded:
+  // const product = request.body;
+  // products.push(product);
+  // return response.json(product);
 };
 
 // put request
