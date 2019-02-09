@@ -1,4 +1,4 @@
-let comments = require("../comments");
+let comments = require("../Model/comments");
 
 // GET request
 exports.list = function list(request, response) {

@@ -1,4 +1,4 @@
-let contacts = require("../contacts");
+let contacts = require("../Model/contacts");
 
 // GET request
 exports.list = function list(request, response) {

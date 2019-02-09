@@ -1,4 +1,4 @@
-let vehicles = require("../vehicles");
+let vehicles = require("../Model/vehicles");
 
 // GET request
 exports.list = function list(request, response) {
