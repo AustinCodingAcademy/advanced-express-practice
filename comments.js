@@ -1,4 +1,4 @@
-module.exports = [
+[
   {
     "_id": 1,
     "body": "ACA is great!",
@@ -19,4 +19,4 @@ module.exports = [
     "body": "I can't wait to do the check point!",
     "postId": 1
   }
-];
+]
