@@ -1,4 +1,4 @@
-var comments = require("../../comments");
+//var comments = require("../../comments");
 
 
 exports.list = function list(request, response) {

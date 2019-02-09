@@ -1,15 +1,43 @@
-var contacts = require("../../contacts");
+var Contact = require("../models/ContactModel");
+var numberOfContacts = 0;
+
+
+function getContacts(done) {
+    Contact.find(function(err, contacts) {
+        if (err)
+            return console.log(err);
+        numberOfContacts = contacts.length;
+        done(contacts);    
+    });
+}
+
+function getContactById(id, done) {
+    Contact.findById(id, function(err, contact) {
+        if (err)
+            return err;
+        console.log("Here: " + contact);
+        done(contact);
+    });
+}
 
 
 exports.list = function list(request, response) {
-  return response.json(contacts);
+    getContacts((result) => {
+        return response.json(result);
+    });
 }
+
 exports.show = function show(request, response) {
-  return response.json( contacts.find(comment => {return request.params.id == comment["_id"]}) );
+    getContactById(parseInt(request.params.id), (result) =>  {
+        return response.json(result);
+    });
 }
+
 exports.create = function create(request, response) {  
   let tempBody = request.body;
-  tempBody["_id"] = contacts.length + 1;
-  contacts.push(tempBody);
-  return response.json(contacts);
+  tempBody["_id"] = numberOfContacts + 1;
+  let tempRecord = new Contact(tempBody);
+  tempRecord.save();
+  list();
+  return response.json(tempRecord);
 }

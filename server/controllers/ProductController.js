@@ -1,4 +1,4 @@
-var products = require("../../products");
+//var products = require("../../products");
 
 
 exports.list = function list(request, response) {
