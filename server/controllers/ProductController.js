@@ -1,21 +1,28 @@
-let products = require("../products");
+let productsModel = require("../Models/products");
 
 // GET request
 exports.list = function list(request, response) {
-    return response.json(products);
+    productsModel.find().exec().then((products)=>{
+        return response.json(products);
+    })
 }
 
 // GET with an ID
 exports.show = function show(request, response) {
-    return response.json(products[request.params.id - 1]);
+    productsModel.findById(request.params.id).exec().then((product) => {
+        return response.json(product);
+    })
 }
 
 // POST request
 exports.create = function create(request, response) {
-    const newProduct = request.body
-    newProduct["_id"] = (products.length + 1);
-    products.push(newProduct)
-    return response.json(products);
+    const newProduct = new productsModel({
+        name: request.body.name,
+        description: request.body.description
+    })
+    newProduct.save.then(savedProduct => {
+        console.log(savedProduct)
+    })
 }
 
 // PUT request

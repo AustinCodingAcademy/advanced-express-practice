@@ -2,7 +2,6 @@ let express = require("express");
 let mongoose = require('mongoose');
 mongoose.connect('mongodb://birdman:fignewton1@ds119490.mlab.com:19490/express-practice');
 
-
 const bodyParser = require("body-parser");
 const contactRoutes = require("./routes/ContactRoutes");
 const vehicleRoutes = require("./routes/VehicleRoutes");
