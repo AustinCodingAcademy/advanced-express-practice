@@ -11,7 +11,7 @@ var vehicleSchema = new mongoose.Schema({
     miles: Number,
     fuel: String,
     city: String,
-    isNew: Boolean
+    brandNew: Boolean
 });
 var Vehicle = mongoose.model("Vehicle", vehicleSchema);
 
