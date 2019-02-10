@@ -1,15 +1,27 @@
-//var vehicles = require("../../vehicles");
+var Vehicle = require("../models/VehicleModel");
+var queryHelper = require("../queryhelpers/QueryHelper");
+var vehicleCount = 0;
+
 
 
 exports.list = function list(request, response) {
-  return response.json(vehicles);
+    queryHelper.getRecords(Vehicle, (result) => {
+        vehicleCount = result.length;
+        return response.json(result);
+    });
 }
+
 exports.show = function show(request, response) {
-  return response.json( vehicles.find(comment => {return request.params.id == comment["_id"]}) );
+    queryHelper.getRecordById(Vehicle, parseInt(request.params.id), (result) =>  {
+        return response.json(result);
+    });
 }
+
 exports.create = function create(request, response) {  
   let tempBody = request.body;
-  tempBody["_id"] = vehicles.length + 1;
-  vehicles.push(tempBody);
-  return response.json(vehicles);
+  tempBody["_id"] = vehicleCount + 1;
+  let temp = new Vehicle(tempBody);
+  temp.save();
+  exports.list;
+  return response.json(temp);
 }

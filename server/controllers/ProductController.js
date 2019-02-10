@@ -1,15 +1,26 @@
-//var products = require("../../products");
+var Product = require("../models/ProductModel");
+var queryHelper = require("../queryhelpers/QueryHelper");
+var productCount = 0;
 
 
 exports.list = function list(request, response) {
-  return response.json(products);
+    queryHelper.getRecords(Product, (result) => {
+        productCount = result.length;
+        return response.json(result);
+    });
 }
+
 exports.show = function show(request, response) {
-  return response.json( products.find(comment => {return request.params.id == comment["_id"]}) );
+    queryHelper.getRecordById(Product, parseInt(request.params.id), (result) =>  {
+        return response.json(result);
+    });
 }
+
 exports.create = function create(request, response) {  
-  let tempBody = request.body;
-  tempBody["_id"] = products.length + 1;
-  products.push(tempBody);
-  return response.json(products);
+    let tempBody = request.body;
+    tempBody["_id"] = productCount + 1;
+    let temp = new Product(tempBody);
+    temp.save();
+    exports.list;
+    return response.json(temp);
 }
