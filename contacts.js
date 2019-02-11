@@ -1,4 +1,4 @@
-module.exports =[
+[
   {
     "_id": 1,
     "name": "Dale Cooper",
@@ -29,4 +29,4 @@ module.exports =[
     "occupation": "FBI Agent",
     "avatar": "https://pbs.twimg.com/profile_images/718881904834056192/WnMTb__R.jpg"
   }
-];
+]

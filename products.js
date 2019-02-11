@@ -1,4 +1,4 @@
-module.exports = [{
+[{
     "_id": 1,
     "name": "Body Luxuries Sweet Lavender Hand Sanitizer",
     "description": "Psychotropic drugs, not elsewhere classified",
@@ -218,4 +218,4 @@ module.exports = [{
       "rating": 2
     }
   ]
-  }];
+  }]
