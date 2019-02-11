@@ -1,8 +1,10 @@
-const comments = require("../comments");
+const Comment = require("../models/CommentModel");
 
-exports.list =  function list(request, response) {
-    return response.json(comments);
-   }
+exports.list = function list(request, response) {
+    Comment.find().exec().then((comments)=>{
+        return response.json(comments);
+    })
+}
    exports.show = function show(request, response) {
     const viewComment = comments.find(c=>c._id == request.params.id);
     return response.json(viewComment);

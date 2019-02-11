@@ -4,6 +4,9 @@ let products = require("./products");
 let vehicles = require("./vehicles");
 let contacts = require("./contacts");
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://drisser:DJR390@ds161764.mlab.com:61764/your-project', {useNewUrlParser: true});
+
 const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());

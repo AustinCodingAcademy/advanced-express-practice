@@ -7,8 +7,6 @@
 * your job is to build the server 
 * the only code you need to change is in the `/server` folder
 
-
-
 # Part 1 - Server
 
 ### server/index.js
@@ -48,12 +46,9 @@ Once completed, the web page should be able to list out the information, create 
 * Import and use the controller functions in the appropiate Router
 
 # Part 4 - Database
-* In server/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
-* Create the mongoose models for Contact, Vehicle, Comment Product
-* CommentModel - body
-* ContactModel - name, occupation, avatar
-* VehicleModel - year, make, model
-* ProductModel - name, description
+* DONE In server/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
+* DONE Create the mongoose models for Contact, Vehicle, Comment, and Product
+* DONEN CommentModel - body, ContactModel - name, occupation, avatar, VehicleModel - year, make, model, ProductModel - name, descrp
 * Change the code in the controllers to use the Models instead of hard coded arrays
 
 ### Points
