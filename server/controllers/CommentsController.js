@@ -7,8 +7,8 @@ exports.list = function list(request, response) {
 }
 
 exports.show = function show(request, response) {
-    Comment.findById(request.params.id).exec().then((product)=> {
-        return response.json(product);
+    Comment.findById(request.params.id).exec().then((comment)=> {
+        return response.json(comment);
     })
 }
 
@@ -27,4 +27,4 @@ exports.update =  function update(request, response) {
 
 exports.remove =  function remove(request, response) {
     return response.json({});
-   }
+}

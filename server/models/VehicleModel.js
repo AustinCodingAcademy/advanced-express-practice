@@ -6,6 +6,4 @@ var vehicleSchema = new mongoose.Schema({
     model: String
   });
 
-var Vehicle = mongoose.model('Vehicle', vehicleSchema);
-
-module.exports = Vehicle;
+module.exports = mongoose.model('Vehicle', vehicleSchema);

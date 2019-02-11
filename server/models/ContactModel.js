@@ -6,6 +6,4 @@ var contactSchema = new mongoose.Schema({
     avatar: String
   });
 
-var Contact = mongoose.model('Contact', contactSchema);
-
-module.exports = Contact;
+module.exports = mongoose.model('Contact', contactSchema);
