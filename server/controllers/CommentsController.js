@@ -13,11 +13,10 @@ exports.show = function show(request, response) {
 }
 
 exports.create =  function create(request, response) {
-    
     const newComment = new Comment({
-        body: request.body
+        body: request.body.body
     })
-    newComment.save.then(savedComment=>{
+    newComment.save().then(savedComment=>{
         console.log(savedComment)
     })    
 }
