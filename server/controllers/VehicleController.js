@@ -1,29 +1,25 @@
-let vehicles = require("../vehicles");
+const Vehicle = require("../models/VehicleModel");
 
 // GET request
 exports.list = function list(request, response) {
-    return response.json(vehicles);
-}
+    Vehicle.find().exec().then((vehicles) => {
+        return response.json(vehicles);
+    });
+};
 
 // GET with an ID
 exports.show = function show(request, response) {
-    return response.json(vehicles[request.params.id - 1]);
-}
+    Vehicle.findById(request.params.id).exec().then((vehicle) => {
+        return response.json(vehicle);
+    });
+};
 
 // POST request
 exports.create = function create(request, response) {
-    const newVehicle = request.body;
-    newVehicle["_id"] = vehicles.length + 1;
-    vehicles.push(newVehicle);
-    return response.json(vehicles);
-}
-
-// PUT request
-exports.update = function update(request, response) {
-    return response.json({ theId: request.params.id });
-}
-
-// DELETE request
-exports.remove = function remove(request, response) {
-    return response.json({});
-}
+    const newVehicle = new Vehicle(
+        request.body
+    );
+    newVehicle.save().then(savedVehicle => {
+        response.json(savedVehicle);
+    });
+};
