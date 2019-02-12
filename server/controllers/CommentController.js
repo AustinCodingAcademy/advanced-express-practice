@@ -1,36 +1,38 @@
-const Comment = require("./models/CommentModel");
+const Comment = require("../models/CommentModel");
 
 // GET request
-// exports.list = function list(request, response) {
-//     return response.json(Comment);
-// }
-function findAll(done) {
-    Comment.find(function (err, comments) {
-        return (comments);
+exports.list = function list(request, response) {
+    // Comment.find({}).exec().then((comments) => {
+    //     response.json(comments);
+    // });
+    Comment.find().exec().then((comments) => {
+        return response.json(comments);
     });
-    done();
-}
-module.exports = findAll;
+};
 
 // GET with an ID
 exports.show = function show(request, response) {
-    return response.json(Comment[request.params.id - 1]);
-}
+    Comment.findById(request.params.id).exec().then((comment) => {
+        return response.json(comment);
+    });
+};
 
 // POST request
-exports.create = function create(request, response) {
-    const newComment = request.body;
-    newComment["_id"] = Comment.length + 1;
-    Comment.push(newComment);
-    return response.json(Comment);
-}
+module.exports.create = function create(request, response) {
+    const newComment = new Comment(
+        request.body
+    );
+    newComment.save().then(savedComment => {
+        response.json(savedComment);
+    });
+};
 
 // PUT request
-exports.update = function update(request, response) {
-    return response.json({ theId: request.params.id });
-}
+// exports.update = function update(request, response) {
+//     return response.json({ theId: request.params.id });
+// }
 
 // DELETE request
-exports.remove = function remove(request, response) {
-    return response.json({});
-}
+// exports.remove = function remove(request, response) {
+//     return response.json({});
+// }
