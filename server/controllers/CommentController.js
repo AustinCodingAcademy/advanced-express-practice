@@ -1,8 +1,13 @@
 //get request
-let comments = require("../comments");
+const Comment = require(".././models/CommentModel");
+
+// let comments = require("../comments");
 exports.list = function list(request, response) {
-    return response.json(comments);
-}
+    Comment.find(function(err, comments) {
+        if (err) return response.status(500).send(err);
+        return response.json(comments);
+    })
+} 
 //get with a specific id path
 exports.show = function show(request, response) {
     let comment = comments.filter(p => p._id === Number(request.params.id));

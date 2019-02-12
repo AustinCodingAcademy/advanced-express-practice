@@ -1,4 +1,6 @@
 //get request
+const Contact = require(".././models/ContactModel");
+
 let contacts = require("../contacts");
 exports.list = function list(request, response) {
     return response.json(contacts);

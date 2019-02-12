@@ -1,4 +1,6 @@
 //get request
+const Vehicle = require(".././models/VehicleModel");
+
 let vehicles = require("../vehicles");
 exports.list = function list(request, response) {
     return response.json(contacts);
@@ -6,7 +8,7 @@ exports.list = function list(request, response) {
 //get with a specific id path
 exports.show = function show(request, response) {
     let vehicle =  vehicles.filter(p=>p._id === Number(request.params.id));
-    response.json(vehicle); 
+    response.json(vehicle);
     // return response.json({ theId: request.params.id });
 }
 //post request

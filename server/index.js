@@ -6,6 +6,9 @@ const vehicleRoutes = require("./routes/VehicleRoutes");
 const commentRoutes = require("./routes/CommentRoutes");
 const productRoutes = require("./routes/ProductRoutes");
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://lcolten:laura557@ds147003.mlab.com:47003/your-project', {useNewUrlParser: true});
+
 const app = express();
 app.use(bodyParser.json());
 app.use(contactRoutes);

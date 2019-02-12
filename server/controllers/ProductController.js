@@ -1,4 +1,7 @@
 let products = require("../products");
+const Product = require(".././models/ProductModel");
+
+
 
 exports.list = function list(request, response) {
     return response.json(products);
