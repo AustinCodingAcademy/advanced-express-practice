@@ -15,7 +15,7 @@ exports.show = function show(request, response) {
 };
 
 // POST request
-module.exports.create = function create(request, response) {
+exports.create = function create(request, response) {
     const newComment = new Comment(
         request.body
     );
