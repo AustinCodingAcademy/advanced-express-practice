@@ -1,10 +1,7 @@
-const express = require("express");
-const app = express();
+let express = require("express");
 
 const mongoose = require("mongoose");
-// mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://agottlich:abby123@ds255787.mlab.com:55787/advanced-express-practice");
-// , { useNewUrlParser: true }
+mongoose.connect("mongodb://agottlich:abby123@ds255787.mlab.com:55787/advanced-express-practice", { useNewUrlParser: true });
 
 const bodyParser = require("body-parser");
 const contactRoutes = require("./routes/ContactRoutes");
@@ -12,6 +9,7 @@ const vehicleRoutes = require("./routes/VehicleRoutes");
 const commentRoutes = require("./routes/CommentRoutes");
 const productRoutes = require("./routes/ProductRoutes");
 
+const app = express();
 app.use(bodyParser.json());
 app.use(contactRoutes);
 app.use(vehicleRoutes);

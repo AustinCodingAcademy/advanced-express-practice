@@ -2,9 +2,6 @@ const Comment = require("../models/CommentModel");
 
 // GET request
 exports.list = function list(request, response) {
-    // Comment.find({}).exec().then((comments) => {
-    //     response.json(comments);
-    // });
     Comment.find().exec().then((comments) => {
         return response.json(comments);
     });
@@ -26,13 +23,3 @@ module.exports.create = function create(request, response) {
         response.json(savedComment);
     });
 };
-
-// PUT request
-// exports.update = function update(request, response) {
-//     return response.json({ theId: request.params.id });
-// }
-
-// DELETE request
-// exports.remove = function remove(request, response) {
-//     return response.json({});
-// }
