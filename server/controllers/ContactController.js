@@ -1,17 +1,25 @@
-let contacts = require("../contacts");
+let Contact = require("../models/ContactModel");
 
 exports.list =  function list(request, response) {
- return response.json(contacts);
+    const query = Contact.find();
+    query.exec((err, contacts) => {
+        if (err) return console.error(err);
+        return response.json(contacts);
+    })  
 }
 exports.show = function show(request, response) {
- const getId = request.params.id;   
- return response.json(contacts[getId -1]);
+    const getId = request.params.id
+    Contact.findById(getId, (err, contacts) => {
+        return response.json(contacts);
+    })
 }
 exports.create =  function create(request, response) {
- const newContact = request.body;
- newContact._id = contacts.length+1;
- contacts.push(newContact);
- return response.json(contacts);
+    const newInfo = request.body;
+    const newContact = new Contact(newInfo);
+    newContact.save((err,contacts) => {
+        if (err) return console.error(err);
+        return response.json(contacts);
+    })
 }
 exports.update =  function update(request, response) {
  return response.json({theId: request.params.id});

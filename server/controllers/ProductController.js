@@ -1,17 +1,29 @@
-let products = require("../products");
+
+const Product = require("../models/ProductModel");
 
 exports.list =  function list(request, response) {
- return response.json(products);
+    const query =Product.find();
+    query.exec((err, products) => {
+        if (err) return console.error(err);
+        return response.json(products);
+    })    
 }
+
 exports.show = function show(request, response) {
- const getId = request.params.id;   
- return response.json(products[getId -1]);
+    const getId = request.params.id
+    Product.findById(getId, (err, products) => {
+        return response.json(products);
+    })
 }
+
 exports.create =  function create(request, response) {
- const newProduct = request.body;
- newProduct._id = products.length+1;
- products.push(newProduct);
- return response.json(products);
+    const newInfo = request.body;
+    const newProduct = new Product(newInfo);
+    newProduct.save((err,products) => {
+        if (err) return console.error(err);
+        return response.json(products);
+    })
+    
 }
 exports.update =  function update(request, response) {
  return response.json({});

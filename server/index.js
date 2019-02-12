@@ -1,4 +1,7 @@
 let express = require("express");
+let mongoose = require('mongoose');
+
+mongoose.connect('mongodb://theBoss:dontsteal1@ds213715.mlab.com:13715/advanced-express-practice', {useNewUrlParser: true});
 
 
 const contactRoutes = require("./routes/ContactRoutes");
