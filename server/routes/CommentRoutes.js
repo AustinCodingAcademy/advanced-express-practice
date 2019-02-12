@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {list,show,create,update,remove} =require("../controllers/commentController");
+const {list,show,create,update,remove} =require("../controllers/CommentController");
 
 router.get("/comments", list);
 router.get("/comments/:id", show);
