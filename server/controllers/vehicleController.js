@@ -21,6 +21,10 @@ exports.create =  function create(request, response) {
     // newVehicle._id = Math.max(...idArray) +1;
     // vehicles.push(newVehicle);
     // return response.json(newVehicle);
+
+    //let x = request.body
+    //etcetcetc
+
     let newVehicle = new Vehicle({
         year: request.body.year,
         make: request.body.make,
