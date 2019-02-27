@@ -1,16 +1,18 @@
-let products = require('../products');
+let comments = require('../models/CommentModel');
 //get request
 
 exports.list =  function list(request, response) {
-    return response.json(products);
+    return response.json(comments);
    }
    exports.show = function show(request, response) {
-    return response.json(products[request.params.id - 1]);
-   }
-   exports.create =  function create(request, response) {
-    const temp = request.body
-    temp["_id"] = products.length +1;
-    products.push(temp);
-    return response.json(temp);
+    let comment = comments.find(c=> c._id == request.params.id);
+    return response.json(comment);
    }
 
+   exports.create =  function create(request, response) {
+    const temp = request.body
+    temp["_id"] = comments.length +1;
+    comments.push(temp);
+    return response.json(temp);
+   }
+  
