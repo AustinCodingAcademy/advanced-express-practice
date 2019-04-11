@@ -1,8 +1,10 @@
 const express = require("express");
-const comments = require("./comments");
-const products = require("./products");
-const vehicles = require("./vehicles");
-const contacts = require("./contacts");
+// const comments = require("./comments");
+// const products = require("./products");
+// const vehicles = require("./vehicles");
+// const contacts = require("./contacts");
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://admin:password1@ds131905.mlab.com:31905/advanced-express-practice', { useMongoClient: true });
 
 const bodyParser = require("body-parser");
 const contactRoutes = require("./routes/ContactRoutes");
