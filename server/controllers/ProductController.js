@@ -1,17 +1,28 @@
-let products = require("../products");
+const Product = require("../models/ProductModel");
 
 exports.list = function list(request, response) {
-    return response.json(products);
+    Product.find(function (err, products) {
+        if (err) return console.error(err);
+        return response.json(products)
+      });
 };
 exports.show = function show(request, response) {
-    const productId = products.find(product => {return request.params.id == product["_id"] })
-    return response.json(productId);
+    Product.findById(request.params.id, function(err, products){
+        return response.json(products)
+    })
+    // const productId = products.find(product => {return request.params.id == product["_id"] })
+    // return response.json(productId);
 };
 exports.create = function create(request, response) {
     const productBody = request.body;
-    productBody["_id"] = products.length + 1;
-    products.push(productBody);
-    return response.json(products);
+    const newProduct = new Product({productBody});
+    newProduct.save(function (err, newProduct) {
+        if (err) return console.error(err);
+        return response.json(newProduct)
+      });
+    // productBody["_id"] = products.length + 1;
+    // products.push(productBody);
+    // return response.json(products);
 };
 exports.update = function update(request, response) {
     return response.json({theId: request.params.id});

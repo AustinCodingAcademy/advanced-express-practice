@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-var productSchema = new mongoose.Schema({
+var vehicleSchema = new mongoose.Schema({
     year: Number,
     make: String,
     model: String
 });
 
-var Product = mongoose.model('Product', productSchema);
+var Vehicle = mongoose.model('Vehicle', vehicleSchema);
 
-module.exports = Product;
+module.exports = Vehicle;
