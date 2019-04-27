@@ -7,4 +7,5 @@ router.get("/business", list);
 router.get("/business", show);
 router.post("/business", create);
 
+
 module.exports =  router;
