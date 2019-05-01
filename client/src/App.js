@@ -1,8 +1,9 @@
 
+// eslint-disable-next-line react/jsx-tag-spacing
 import React, { Component } from "react";
 import "./App.css";
 import Carousel from "react-img-carousel";
-require('react-img-carousel/lib/carousel.css');
+require("react-img-carousel/lib/carousel.css");
 
 
 
@@ -29,7 +30,7 @@ class App extends Component {
     if (this.state.homePage) {
       return null;
     }
-    return(
+    return (
     <Carousel  dots={false} lazyLoad arrows={false} autoplay autoplaySpeed={3000} slideWidth={450} slideHeight={450} viewportWidth="400px" cellPadding={5}>
     <img height='300px' src='https://cmea.georgetown.edu/wp-content/uploads/sites/35/2018/11/bh_group_fall.jpg'/>
     <img height='300px' src='https://i.pinimg.com/originals/d8/e8/60/d8e860daa96e9a71e5ae57dbbe771c1a.jpg'/>
@@ -41,24 +42,24 @@ class App extends Component {
     <img height='300px' src='https://www.philly.com/resizer/STp9Tg53r2XyPvq6_VEZxdeggh4=/1400x932/smart/arc-anglerfish-arc2-prod-pmn.s3.amazonaws.com/public/65WQJ5BUJ5GYHL322DFU4SH64U.jpg'/>
     <img height='300px' src='https://360.ucsf.edu/sites/360.ucsf.edu/files/styles/hero-picture__1x_desktop__1200x500_/public/Group%20of%20Black%20friends_MOCP_HERO.jpg?itok=bU1bjxFT&timestamp=1448360752'/>
     <img height='300px' src='https://static1.squarespace.com/static/56de24bb4c2f8575df8c9d8e/t/58b61e289de4bb01364460b3/1488330395089/Group+of+Black+Women.jpg'/>
-  </Carousel>
+    </Carousel>
   );}
   
   
  // Handles Change For City/Category Dropdown 
   handleCity(event){
-    const city = event.target.value
+    const city = event.target.value;
     this.setState({
-      city: city
-    })
+      city
+    });
     console.log(this.state);
   }
 
   handleCategory(event){
-    const category = event.target.value
+    const category = event.target.value;
     this.setState({
-      category: category
-    })
+      category
+    });
   }
 
 
@@ -111,6 +112,7 @@ class App extends Component {
           <option>Health / Wellness</option>
           <option>Kid Friendly</option>
           <option>Community</option>
+          <option>Beauty / Hair</option>
           <option>Jewelry / Accessories</option>
         </select>
         <button onClick={this.fetchBusinesses}>Enter</button>

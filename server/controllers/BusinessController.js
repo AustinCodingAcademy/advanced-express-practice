@@ -2,7 +2,9 @@ let business = require('../models/BusinessModel');
 //get request
 
 exports.list =  function list(request, response) {
-    return response.json(business);
+    business.find({}, (err, bus)=>{
+        return response.json(bus);
+    })
    }
    exports.show = function show(request, response) {
         business.find({}, (err, bus)=>{
