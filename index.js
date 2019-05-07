@@ -11,6 +11,11 @@ app.use(express.static("public"));
 
 const thePort = 3001;
 
+let handleRoutes=(route)=>{
+  app.get(route, (req, res)=>{
+    res.json(req.params)
+  })
+}
 
 app.listen(thePort, (err) => {
  if (err) {
@@ -18,3 +23,5 @@ app.listen(thePort, (err) => {
  }
  console.log("Web server is now listening for messages on port",thePort);
 });
+
+handleRoutes("/comments")
