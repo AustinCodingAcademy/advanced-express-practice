@@ -8,8 +8,17 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static("public"));
+const commentRoutes = require("./routes/CommentRoutes")
+const contactRoutes = require("./routes/ContactRoutes")
+const productRoutes = require("./routes/ProductRoutes")
+const vehicleRoutes = require("./routes/VehicleRoutes")
+app.use(contactRoutes)
+app.use(commentRoutes)
+app.use(productRoutes)
+app.use(vehicleRoutes)
 
 const thePort = 3001;
+
 
 
 app.listen(thePort, (err) => {
