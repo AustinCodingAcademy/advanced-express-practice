@@ -1,26 +1,32 @@
-let contacts = require("../contacts.js")
+let Contact = require("../models/ContactModel.js")
+var ObjectId = require('mongodb').ObjectID;
 
 exports.list =  function list(request, response) {
-    return response.json(contacts);
+    Contact.find(function (err, contacts) {
+        if (err) return console.error(err);
+        return response.json(contacts)
+    })
+    
 }
 exports.show = function show(request, response) {
-    let contactId =  Number(request.params.id)
-    contacts.find((aContact) => {
-        if (aContact._id === contactId) {
-            return response.json(aContact)
-        }
+    let contactId =  ObjectId(request.params.id)
+    Contact.findById(contactId, function(err, contact) {
+        if (err) return console.error(err)
+        return response.json(contact)
     })
 }
 exports.create =  function create(request, response) {
-    oldId = contacts[contacts.length - 1]._id
     let body  = request.body
-    body._id = oldId + 1
-    contacts.push(body)
+    let contact = new Contact( { name: body.name, occupation: body.occupation, avatar: body.avatar} )
+    contact.save(function (err, comment) {
+        if (err) return console.error(err);
+    });
     return response.json(body);
+
 }
 exports.update =  function update(request, response) {
-    return response.json({theId: request.params.id});
+    
 }
 exports.remove =  function remove(request, response) {
-    return response.json({});
+    
 }

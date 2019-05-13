@@ -1,26 +1,32 @@
-let products = require("../products.js")
+let Product = require("../models/ProductModel.js")
+var ObjectId = require('mongodb').ObjectID;
 
 exports.list =  function list(request, response) {
-    return response.json(products);
+    Product.find(function (err, products) {
+        if (err) return console.error(err);
+        return response.json(products)
+    })
+    
 }
 exports.show = function show(request, response) {
-    let productId =  Number(request.params.id)
-    products.find((aProduct) => {
-        if (aProduct._id === productId) {
-            return response.json(aProduct)
-        }
+    let productId =  ObjectId(request.params.id)
+    Product.findById(productId, function(err, product) {
+        if (err) return console.error(err)
+        return response.json(product)
     })
 }
 exports.create =  function create(request, response) {
-    oldId = products[products.length - 1]._id
     let body  = request.body
-    body._id = oldId + 1
-    products.push(body)
+    let product = new Product( { name: body.name, description: body.description} )
+    product.save(function (err, comment) {
+        if (err) return console.error(err);
+    });
     return response.json(body);
+
 }
 exports.update =  function update(request, response) {
-    return response.json({theId: request.params.id});
+    
 }
 exports.remove =  function remove(request, response) {
-    return response.json({});
+    
 }

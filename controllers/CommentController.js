@@ -1,26 +1,34 @@
-let comments = require("../comments.js")
+let Comment = require("../models/CommentModel.js")
+var ObjectId = require('mongodb').ObjectID;
 
 exports.list =  function list(request, response) {
-    return response.json(comments);
+    Comment.find(function (err, comments) {
+        if (err) return console.error(err);
+        return response.json(comments)
+    })
+    
 }
 exports.show = function show(request, response) {
-    let commentId =  Number(request.params.id)
-    comments.find((aComment) => {
-        if (aComment._id === commentId) {
-            return response.json(aComment)
-        }
+    let commentId =  ObjectId(request.params.id)
+    Comment.findById(commentId, function(err, comment) {
+        if (err) return console.error(err)
+        return response.json(comment)
     })
 }
 exports.create =  function create(request, response) {
-    oldId = comments[comments.length - 1]._id
     let body  = request.body
-    body._id = oldId + 1
-    comments.push(body)
+    let comment = new Comment( { body: body.body} )
+    comment.save(function (err, comment) {
+        if (err) return console.error(err);
+    });
     return response.json(body);
+
+
+
 }
 exports.update =  function update(request, response) {
-    return response.json({theId: request.params.id});
+    
 }
 exports.remove =  function remove(request, response) {
-    return response.json({});
+    
 }

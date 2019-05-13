@@ -1,26 +1,32 @@
-let vehicles = require("../vehicles.js")
+let Vehicle = require("../models/VehicleModel.js")
+var ObjectId = require('mongodb').ObjectID;
 
 exports.list =  function list(request, response) {
-    return response.json(vehicles);
+    Vehicle.find(function (err, vehicles) {
+        if (err) return console.error(err);
+        return response.json(vehicles)
+    })
+    
 }
 exports.show = function show(request, response) {
-    let vehicleId =  Number(request.params.id)
-    vehicles.find((aVehicle) => {
-        if (aVehicle._id === vehicleId) {
-            return response.json(aVehicle)
-        }
+    let vehicleId =  ObjectId(request.params.id)
+    Vehicle.findById(vehicleId, function(err, vehicle) {
+        if (err) return console.error(err)
+        return response.json(vehicle)
     })
 }
 exports.create =  function create(request, response) {
-    oldId = vehicles[vehicles.length - 1]._id
     let body  = request.body
-    body._id = oldId + 1
-    vehicles.push(body)
+    let vehicle = new Vehicle( { year: body.year, make: body.make, model: body.model} )
+    vehicle.save(function (err, comment) {
+        if (err) return console.error(err);
+    });
     return response.json(body);
+
 }
 exports.update =  function update(request, response) {
-    return response.json({theId: request.params.id});
+    
 }
 exports.remove =  function remove(request, response) {
-    return response.json({});
+    
 }
