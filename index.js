@@ -1,4 +1,9 @@
 let express = require("express");
+const mongoose = require('mongoose');
+mongoose.connect(`mongodb+srv://aaron:testing123@cluster0-hlfen.mongodb.net/test?retryWrites=true`, {useNewUrlParser: true});
+
+let db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
 
 const app = express();
 const thePort = 3001;
