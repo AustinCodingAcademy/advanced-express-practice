@@ -49,7 +49,7 @@ We don't need to worry about update or delete.
 
 # Part 4 - Database
 * In server/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
-* Create the mongoose models for Contact, Vehicle, Comment Product
+* Create the mongoose models for Contact, Vehicle, Comment, Product
 * CommentModel - body
 * ContactModel - name, occupation, avatar
 * VehicleModel - year, make, model
