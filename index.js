@@ -1,13 +1,15 @@
 let express = require("express");
-let comments = require("./comments");
-let products = require("./products");
-let vehicles = require("./vehicles");
-let contacts  = require("./contacts");
-
-const bodyParser = require("body-parser");
+var contactRoutes = require("./routes/contacts")
+var vehicleRoutes = require("./routes/vehicles")
+var commentRoutes = require("./routes/comments")
+var productRoutes = require("./routes/products")
 const app = express();
-app.use(bodyParser.json());
+
 app.use(express.static("public"));
+app.use("/contacts", contactRoutes)
+app.use("/vehicles", vehicleRoutes)
+app.use("/comments", commentRoutes)
+app.use("/products", productRoutes)
 
 const thePort = 3001;
 
@@ -18,3 +20,23 @@ app.listen(thePort, (err) => {
  }
  console.log("Web server is now listening for messages on port",thePort);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
