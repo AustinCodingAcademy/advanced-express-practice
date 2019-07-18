@@ -1,8 +1,8 @@
-# Express Practice
+# Express Practice - **DONE**
 
 # Windows users - Make sure you remove single quotes from the package.json
 # Setup
-* fork, clone, npm install, node index.js
+* fork, clone, npm install, node index.js **DONE**  
 * A web page has been created for you
 * Your job is to build the server 
 * Ignore the `client` folder
@@ -12,22 +12,22 @@
 
 ### index.js
 * This is the starting point of the server, put all code here
-* Make your app listen to port 3001
+* Make your app listen to port 3001 **DONE**
 
 ### Body
-* Add body parser middleware to express
+* Add body parser middleware to express **DONE**
 
 ### Create express routes to get all things
-* Add .get() routes for /contacts, /vehicles, /comments, /products
-* response.json() the appropriate array
+* Add .get() routes for /contacts, /vehicles, /comments, /products **DONE**
+* response.json() the appropriate array **DONE**
 
-### Create express routes to get one thing
-* Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id
+### Create express routes to get one thing **DONE**
+* Add .get() routes for /contacts/:id, /vehicles/:id, /comments/:id, /products/:id 
 * add a path variable for id
 * use the params.id to .find() the item from the appropriate array
 * response.json() the item found
 
-### Create express routes to create one thing
+### Create express routes to create one thing **DONE**
 * Add .post() routes for /contacts, /vehicles, /comments, /products
 * Add the information from the body to the appropriate array
 
@@ -35,19 +35,19 @@ Once completed, the web page should be able to list out the information, create 
 We don't need to worry about update or delete.
 
 
-# Part 2 - Routes
+# Part 2 - Routes **DONE**
 * Create route files
 * Organize the routes for /contacts, /vehicles, /comments, /products using express Router
 * Import and use the Routers in index.js
 
-# Part 3 - Controllers
+# Part 3 - Controllers **DONE**
 * Create controller files 
 * Import the arrays into the controller
 * Take the code from the routes and put it into the controller
 * create functions for list, show and create
 * Import and use the controller functions in the appropiate Router
 
-# Part 4 - Database
+# Part 4 - Database **DONE**
 * In server/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
 * Create the mongoose models for Contact, Vehicle, Comment Product
 * CommentModel - body
@@ -61,3 +61,5 @@ We don't need to worry about update or delete.
 * Data shows in the page for the Lists - 5pts each (20pts)
 * Creating data works - 10pts each (40pts)
 * Can view one item at a time by id - 30pts
+
+**done**
