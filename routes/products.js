@@ -1,21 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const {list, show, create} = require("../controller/products")
 
-let products = require("../products");
+router.get("/products", list);
+router.get("/products/:idNum", show);
+router.post('/products', create);
 
-router.get("/products", (req, res) => {
-    res.json(products)
-});
-  
-router.get("/products/:idNum", (req, res) => {
-    let product = products.filter(p=>p._id == req.params.idNum);
-    res.json(product)
-});
-
-router.post('/products', (req,res) => {
-    let newProduct = req.body;
-    products.push(newProduct);
-    res.json(newProduct)
-});
-
-  module.exports = router;
+module.exports = router;
