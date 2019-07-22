@@ -1,21 +1,10 @@
 const express = require('express');
 const router = express.Router();
-let products = require('../products');
+const {list, show, create} = require('../controllers/product');
 
 // PRODUCTS
-router.get('/products', (req, res) => {
-  res.json(products);
-});
-
-router.get('/products/:productsId', (req, res) => {
-  let product = products.find(x => x._id == req.params.productsId);
-  res.json(product);
-});
-
-router.post('/products', (req, res) => {
-  let newProduct = req.body;
-  products.push(newProduct);
-  res.json(newProduct);
-});
+router.get('/products', list);
+router.get('/products/:productsId', show);
+router.post('/products', create);
 
 module.exports = router;
