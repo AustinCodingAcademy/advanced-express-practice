@@ -1,4 +1,4 @@
-let contacts = require("../products");
+let contacts = require("../contacts");
 
 exports.list = function list(req, res) {
     res.json(contacts)
