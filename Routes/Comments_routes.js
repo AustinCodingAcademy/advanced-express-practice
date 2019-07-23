@@ -1,17 +1,10 @@
 let express = require('express');
 let router = express.Router();
-const comments = require("./comments");
+const {list, show, create} = require("../Controllers/comm_Controller");
 
-router.get('/comments', (req, res)=>{
-    res.json(comments)
-  })
-  router.get('/comments/:id', (req, res)=>{
-    let comment = comments.find(c=>c.id === req.params._id);
-    res.json(comment)
-  })
-  router.post('/comments', (req,res)=>{
-    let newComment = req.body;
-    comments.push(newComment);
-  })
+
+router.get('/comments', list)
+router.get('/comments/:id', show)
+router.post('/comments', create)
 
 module.exports = router
