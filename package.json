@@ -10,6 +10,6 @@
   "devDependencies": {},
   "dependencies": {
     "body-parser": "*",
-    "express": "*"
+    "express": "^4.17.1"
   }
 }
