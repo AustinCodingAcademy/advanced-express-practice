@@ -1,26 +1,9 @@
 var express = require('express')
 var router = express.Router();
-let contacts  = require("../contacts");
-const app = express();
-const bodyParser = require("body-parser");
-app.use(bodyParser.json());
+const{list, show, create} = require('../controllers/contacts')
 
+router.get('/', list)
+router.get('/:id', show)
+router.post('/', create)
 
-router.get('/', function(req, res){
-    res.json(contacts);
-  })
-
-router.get('/:id', function(req, res){
-    let id = req.params.id
-    let contact = contacts.filter(c => c["_id"] == id);
-    res.json(contact);
-})
-
-router.post('/', function(req, res){
-    let contact = req.body;
-    contacts.push(contact);
-    res.json(contact);
-  })
-
-
-module.exports = router
+module.exports = router;
