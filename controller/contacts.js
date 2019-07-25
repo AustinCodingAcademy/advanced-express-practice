@@ -5,7 +5,7 @@ exports.list = function list(req, res) {
 }
 
 exports.show = function show(req, res) {
-    let contact = contact.filter(p=>p._id == req.params.idNum);
+    let contact = contact.find(p=>p._id == req.params.idNum);
     res.json(contact)
 }
 
@@ -16,13 +16,13 @@ exports.create = function create(req, res) {
 }
 
 exports.update = function update(req, res) {
-    let contact = contacts.filter(p=>p._id == req.params.idNum);
+    let contact = contacts.find(p=>p._id == req.params.idNum);
     contact.make = body.make;
     res.json(contact)
 }
 
 exports.remove = function remove(req, res) {
-    let contact = contacts.filter(p=>p._id == req.params.idNum);
+    let contact = contacts.find(p=>p._id == req.params.idNum);
     contact.isActive = false;
     res.send("deleted")
 }

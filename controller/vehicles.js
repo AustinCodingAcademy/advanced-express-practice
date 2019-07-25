@@ -5,7 +5,7 @@ exports.list = function list(req, res) {
 }
 
 exports.show = function show(req, res) {
-    let vehicle = vehicles.filter(p=>p._id == req.params.idNum);
+    let vehicle = vehicles.find(p=>p._id == req.params.idNum);
     res.json(vehicle)
 }
 
@@ -16,13 +16,13 @@ exports.create = function create(req, res) {
 }
 
 exports.update = function update(req, res) {
-    let vehicle = vehicles.filter(p=>p._id == req.params.idNum);
+    let vehicle = vehicles.find(p=>p._id == req.params.idNum);
     vehicle.make = body.make;
     res.json(vehicle)
 }
 
 exports.remove = function remove(req, res) {
-    let vehicle = vehicles.filter(p=>p._id == req.params.idNum);
+    let vehicle = vehicles.find(p=>p._id == req.params.idNum);
     vehicle.isActive = false;
     res.send("deleted")
 }

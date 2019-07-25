@@ -5,7 +5,7 @@ exports.list = function list(req, res) {
 }
 
 exports.show = function show(req, res) {
-    let product = products.filter(p=>p._id == req.params.idNum);
+    let product = products.find(p=>p._id == req.params.idNum);
     res.json(product)
 }
 
@@ -16,13 +16,13 @@ exports.create = function create(req, res) {
 }
 
 exports.update = function update(req, res) {
-    let product = products.filter(p=>p._id == req.params.idNum);
+    let product = products.find(p=>p._id == req.params.idNum);
     product.make = body.make;
     res.json(product)
 }
 
 exports.remove = function remove(req, res) {
-    let product = products.filter(p=>p._id == req.params.idNum);
+    let product = products.find(p=>p._id == req.params.idNum);
     product.isActive = false;
     res.send("deleted")
 }

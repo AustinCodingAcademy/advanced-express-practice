@@ -15,9 +15,9 @@ app.use(contactRoutes);
 app.use(productRoutes);
 app.use(commentRoutes);
 
-app.listen(3001, (err) => {
+app.listen(3002, (err) => {
  if (err) {
    return console.log("Error", err);
  }
- console.log("Web server is now listening for messages on port",3001);
+ console.log("Web server is now listening for messages on port",3002);
 });
