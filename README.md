@@ -46,7 +46,7 @@ We don't need to worry about update or delete.
 * Import and use the controller functions in the appropiate Router
 
 # Part 4 - Database
-* https://github.com/AustinCodingAcademy/mongodb-practice
+* https://github.com/AustinCodingAcademy/express-mongodb
 * Create a database somewhere for `advanced-express-practice`
 * Create a new file database.js, implement the code for MongoClient and connect()
 * Implement the mongodb client tool into your controllers for list, show, create
