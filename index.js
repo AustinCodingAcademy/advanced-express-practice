@@ -1,9 +1,9 @@
 let express = require("express");
 
-let vehicleRoutes = require('./routes/vehicles');
-let contactRoutes = require('./routes/contacts');
-let productRoutes = require('./routes/products');
-let commentRoutes = require('./routes/comments');
+let vehicleRoutes = require('./routes/vehiclesRoute');
+let contactRoutes = require('./routes/contactsRoute');
+let productRoutes = require('./routes/productsRoute');
+let commentRoutes = require('./routes/commentsRoute');
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -15,9 +15,15 @@ app.use(contactRoutes);
 app.use(productRoutes);
 app.use(commentRoutes);
 
-app.listen(3002, (err) => {
+let {connect} = require("./server/database");
+
+connect(()=>{
+    //start web server
+});
+
+app.listen(3004, (err) => {
  if (err) {
    return console.log("Error", err);
  }
- console.log("Web server is now listening for messages on port",3002);
+ console.log("Web server is now listening for messages on port",3004);
 });
