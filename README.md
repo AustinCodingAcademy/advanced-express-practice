@@ -46,13 +46,23 @@ We don't need to worry about update or delete.
 * Import and use the controller functions in the appropiate Router
 
 # Part 4 - Database
-* In server/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
-* Create the mongoose models for Contact, Vehicle, Comment Product
+* https://github.com/AustinCodingAcademy/express-mongodb
+* Create a database somewhere for advanced-express-practice
+* Create a new file database.js, implement the code for MongoClient and connect()
+* Implement the mongodb client tool into your controllers for list, show, create
+* Use insertMany() for create and find() for list and show
+* How are your controllers going to get access to const db = client.db("advanced-express-practice");
+
+# Part 5 - Mongoose
+
+* In server/index.js, import and use mongoose. Connect to a database "advanced-express-practice"
+* Create the mongoose models for * * Contact, Vehicle, Comment Product
 * CommentModel - body
 * ContactModel - name, occupation, avatar
 * VehicleModel - year, make, model
 * ProductModel - name, description
 * Change the code in the controllers to use the Models instead of hard coded arrays
+
 
 ### Points
 * Base - 10pts

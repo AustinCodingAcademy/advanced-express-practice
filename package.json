@@ -10,6 +10,8 @@
   "devDependencies": {},
   "dependencies": {
     "body-parser": "*",
-    "express": "*"
+    "dotenv": "^8.0.0",
+    "express": "*",
+    "mongodb": "^3.3.0-beta2"
   }
 }
