@@ -1,46 +1,37 @@
-    
-const {getDatabase} = require("../server/database");
+const Product = require('../server/schemas/productsSchema')
 
-exports.list = function(req,res) {
-    let db = getDatabase();
-    const collection = db.collection('products');
-    // Find some documents
-    let found = collection.find({});
-    found.toArray(function(err, products) {
-      res.json(products)
-    });
+exports.create = function(req,res) {
+  let item = {
+    name: req.body.name,
+    description: req.body.description
+  };
+  let newProduct = new Product(item)
+  newProduct.save();
 }
 
+exports.list = function(req,res) {
+  Product.find()
+    .then(function(doc) {
+      res.render('index:', {items: doc});
+    })
+}
 
-
-
-
-
-// let products = require("../products");
-
-// exports.list = function list(req, res) {
+// exports.list = function(req,res) {
+//   Product.find(function (err, products) {
+//     if (err) return console.error(err);
+//     console.log(products);
+//     })
 //     res.json(products)
 // }
 
-// exports.show = function show(req, res) {
-//     let product = products.find(p=>p._id == req.params.idNum);
-//     res.json(product)
-// }
+// const {getDatabase} = require("../server/database");
 
-// exports.create = function create(req, res) {
-//     let newProduct = req.body;
-//     products.push(newProduct);
-//     res.json(newProduct)
-// }
-
-// exports.update = function update(req, res) {
-//     let product = products.find(p=>p._id == req.params.idNum);
-//     product.make = body.make;
-//     res.json(product)
-// }
-
-// exports.remove = function remove(req, res) {
-//     let product = products.find(p=>p._id == req.params.idNum);
-//     product.isActive = false;
-//     res.send("deleted")
+// exports.create = function(req,res) {
+//     let db = getDatabase();
+//     // Get the documents collection
+//     let collection = db.collection('products');
+//     // Insert some documents
+//     collection.insertMany(req.body, function() {
+//       res.json(req.body)
+//     });
 // }

@@ -1,28 +1,21 @@
-let contacts = require("../contacts");
+const {getDatabase} = require("../server/database");
 
-exports.list = function list(req, res) {
-    res.json(contacts)
+exports.list = function(req,res) {
+    let db = getDatabase();
+    const collection = db.collection('contacts');
+    // Find some documents
+    let found = collection.find({});
+    found.toArray(function(err, contacts) {
+      res.json(contacts)
+    });
 }
 
-exports.show = function show(req, res) {
-    let contact = contact.find(p=>p._id == req.params.idNum);
-    res.json(contact)
-}
-
-exports.create = function create(req, res) {
-    let newContact = req.body;
-    contacts.push(newContact);
-    res.json(newContact)
-}
-
-exports.update = function update(req, res) {
-    let contact = contacts.find(p=>p._id == req.params.idNum);
-    contact.make = body.make;
-    res.json(contact)
-}
-
-exports.remove = function remove(req, res) {
-    let contact = contacts.find(p=>p._id == req.params.idNum);
-    contact.isActive = false;
-    res.send("deleted")
-}
+// exports.create = function(req,res) {
+//   let db = getDatabase();
+//   // Get the documents collection
+//   const collection = db.collection('contacts');
+//   // Insert some documents
+//   collection.insertMany({contacts}, function(err, result) {
+//     res.json(contacts)
+//   });
+// }

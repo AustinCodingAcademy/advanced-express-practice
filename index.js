@@ -10,20 +10,20 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(express.static("public"));
-app.use(vehicleRoutes);
-app.use(contactRoutes);
+// app.use(vehicleRoutes);
+// app.use(contactRoutes);
 app.use(productRoutes);
-app.use(commentRoutes);
+// app.use(commentRoutes);
 
-let {connect} = require("./server/database");
+// let {connect} = require("./server/database");
 
-connect(()=>{
-    //start web server
-});
+// connect(()=>{
+//     //start web server
+// });
 
-app.listen(3004, (err) => {
+app.listen(3002, (err) => {
  if (err) {
    return console.log("Error", err);
  }
- console.log("Web server is now listening for messages on port",3004);
+ console.log("Web server is now listening for messages on port",3002);
 });
