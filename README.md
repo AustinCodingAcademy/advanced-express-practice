@@ -54,7 +54,7 @@ We don't need to worry about update or delete.
 * How are your controllers going to get access to `const db = client.db("advanced-express-practice");`
 
 # Part 5 - Mongoose
-* In server/index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
+* In index.js, import and use mongoose. Connect to a database "advanced-express-practice" 
 * Create the mongoose models for Contact, Vehicle, Comment Product
 * CommentModel - body
 * ContactModel - name, occupation, avatar
