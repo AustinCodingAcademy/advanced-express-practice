@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/advanced-express-practice', {useNewUrlParser: true});
+=======
+// const MongoClient = require('mongodb').MongoClient;
+// const mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost:27017/advanced-express-practice', {useNewUrlParser: true});
+// //let db = null;
+
+
+>>>>>>> 034f465e377698466e468e332da06ad79b8d5b82
 
 
 // exports.connect = function(done){
