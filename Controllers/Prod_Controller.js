@@ -1,4 +1,5 @@
-const products = require("../products");
+//const products = require("../products");
+let Product = require('../Server/models/Product_model');
 
 //get all products
 exports.list =  function list(req, res) {
