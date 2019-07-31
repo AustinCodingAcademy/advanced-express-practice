@@ -1,21 +1,16 @@
-const {getDatabase} = require("../server/database");
+const Comment = require('../server/schemas/commentsSchema')
 
-exports.list = function(req,res) {
-    let db = getDatabase();
-    const collection = db.collection('comments');
-    // Find some documents
-    let found = collection.find({});
-    found.toArray(function(err, comments) {
-      res.json(comments)
-    });
+exports.create = function(req,res) {
+  let item = {
+    body: req.body.body
+  };
+  let newComment = new Comment(item)
+  newComment.save();
 }
 
-// exports.create = function(req,res) {
-//   let db = getDatabase();
-//   // Get the documents collection
-//   const collection = db.collection('comments');
-//   // Insert some documents
-//   collection.insertMany(comments, function(err, result) {
-//     res.json(comments)
-//   });
-// }
+exports.list = function(req,res) {
+  Comment.find()
+    .then(function(doc) {
+      res.render('index:', {items: doc});
+    })
+}

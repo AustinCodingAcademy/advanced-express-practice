@@ -1,21 +1,18 @@
-const {getDatabase} = require("../server/database");
+const Vehicle = require('../server/schemas/vehiclesSchema')
 
-exports.list = function(req,res) {
-    let db = getDatabase();
-    const collection = db.collection('vehicles');
-    // Find some documents
-    let found = collection.find({});
-    found.toArray(function(err, vehicles) {
-      res.json(vehicles)
-    });
+exports.create = function(req,res) {
+  let item = {
+    year: req.body.year,
+    make: req.body.make,
+    model: req.body.model
+  };
+  let newVehicle = new Vehicle(item)
+  newVehicle.save();
 }
 
-// exports.create = function(req,res) {
-//   let db = getDatabase();
-//   // Get the documents collection
-//   const collection = db.collection('vehicles');
-//   // Insert some documents
-//   collection.insertMany(vehicles, function(err, result) {
-//     res.json(vehicles)
-//   });
-// }
+exports.list = function(req,res) {
+  Vehicle.find()
+    .then(function(doc) {
+      res.render('index:', {items: doc});
+    })
+}

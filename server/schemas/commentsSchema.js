@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 
-var catSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    outdoor: Boolean
+let commentsSchema = new mongoose.Schema({
+    body: String
 });
 
-var Cat = mongoose.model('Cat', catSchema);
+let Comment = mongoose.model('comments', commentsSchema);
 
-module.exports = Cat;
+module.exports = Comment;

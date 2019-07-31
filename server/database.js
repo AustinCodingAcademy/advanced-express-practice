@@ -1,9 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/advanced-express-practice', {useNewUrlParser: true});
-//let db = null;
-
-
 
 
 // exports.connect = function(done){

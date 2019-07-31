@@ -21,9 +21,9 @@ app.use(productRoutes);
 //     //start web server
 // });
 
-app.listen(3002, (err) => {
+app.listen(3004, (err) => {
  if (err) {
    return console.log("Error", err);
  }
- console.log("Web server is now listening for messages on port",3002);
+ console.log("Web server is now listening for messages on port",3004);
 });
