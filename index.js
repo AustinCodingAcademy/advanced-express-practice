@@ -1,29 +1,17 @@
 let express = require("express");
-var contactRoutes = require("./routes/contacts")
-var vehicleRoutes = require("./routes/vehicles")
-var commentRoutes = require("./routes/comments")
-var productRoutes = require("./routes/products")
+
+var contactRoutes = require("./server/routes/contacts")
+var vehicleRoutes = require("./server/routes/vehicles")
+var commentRoutes = require("./server/routes/comments")
+var productRoutes = require("./server/routes/products")
+
 const app = express();
-const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://selenasolis:Ss-419057@selena-practice-s1rzj.mongodb.net/test?retryWrites=true&w=majority';
-const client = new MongoClient(url);
-let db;
+const bodyParser = require("body-parser");
 
-client.connect(doStuffAfterConnected, { useNewUrlParser: true });
-function doStuffAfterConnected(err){
-    if(err){
-      console.log(err);
-      return;
-    }
-    console.log("Connected successfully to server");
-    db = client.db("adv-exp-db");
-}
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/selena-practice", {useNewUrlParser: true});
 
-function getDatabase(){
-  return db;
-}
-
-
+app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use("/contacts", contactRoutes)
 app.use("/vehicles", vehicleRoutes)
@@ -32,28 +20,9 @@ app.use("/products", productRoutes)
 
 const thePort = 3001;
 
-
 app.listen(thePort, (err) => {
  if (err) {
    return console.log("Error", err);
  }
  console.log("Web server is now listening for messages on port",thePort);
 });
-
-
-module.exports = getDatabase
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
