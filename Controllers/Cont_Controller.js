@@ -1,16 +1,20 @@
-const contacts  = require("../Server/models/Contact_model");
+const Contact  = require("../Server/models/Contact_model");
 
 //get - returns all comments
    exports.list =  function list(req, res) {
-    return res.json(contacts);
+      Contact.find((e,c)=>{
+         return res.json(c);
+      });
    }
 //get one comment by id   
    exports.show = function show(req, res) {
-    let contact = contacts.find(c=>c.id === req.params._id);
-    res.json(contact)
+      Contact.findById(req.params.id, (err,c)=>{
+         return res.json(c);
+      });
    }
    exports.create =  function create(req, res) {
-    let newContact = req.body;
-    contacts.push(newContact);
-    res.json(newContact);
+      let newContact = new Contact(req.body);
+      newContact.save(()=>{
+         res.json(newContact);
+      });
    }

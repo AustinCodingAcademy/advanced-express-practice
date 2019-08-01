@@ -11,12 +11,11 @@ exports.list =  function list(req, res) {
       Vehicle.findById(req.params.id, (err,v)=>{
          return res.json(v);
      });
-  
-   //  let vehicle = vehicles.find(v=>v.id === req.params._id);
-   //  res.json(vehicle)
    }
+   //make a new vehicle
    exports.create =  function create(req, res) {
-    let newVehicle = req.body;
-    vehicles.push(newVehicle);
-    res.json(newVehicle);
+    let newVehicle = new Vehicle(req.body);
+    newVehicle.save(()=>{
+       return res.json(newVehicle);
+    });
    }

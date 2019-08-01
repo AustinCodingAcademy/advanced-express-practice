@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 let contactSchema = new mongoose.Schema({
     name: String,
     occupation: String,
-    avatar: Number
+    avatar: String
 });
 
 let Contact = mongoose.model('Contact', contactSchema);

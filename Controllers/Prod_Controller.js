@@ -9,10 +9,13 @@ exports.list =  function list(req, res) {
    }
 //get one comment by id   
    exports.show = function show(req, res) {
-    let product = products.find(p=>p.id === req.params._id);
-    res.json(product);
+    Products.findById(req.params.id,(err,p)=>{
+       return res.json(p);
+    });
    }
    exports.create =  function create(req, res) {
-    let newProduct = req.body;
-    products.push(newProduct);
+    let newProduct = new Product(req.body);
+    newProduct.save(()=>{
+       return res.json(newProduct);
+    });
    }
