@@ -9,7 +9,7 @@ const app = express();
 const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/selena-practice", {useNewUrlParser: true});
+mongoose.connect("mongodb://localhost:27017/adv-exp-db", {useNewUrlParser: true});
 
 app.use(bodyParser.json());
 app.use(express.static("public"));
