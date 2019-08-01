@@ -6,6 +6,6 @@ let contactsSchema = new mongoose.Schema({
     avatar: String
 });
 
-let Contact = mongoose.model('contacts', contactsSchema);
+let Contact = mongoose.model('Contact', contactsSchema);
 
 module.exports = Contact;

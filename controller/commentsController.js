@@ -1,6 +1,6 @@
 const Comment = require('../server/schemas/commentsSchema')
 
-exports.create = function(req,res) {
+exports.create = function create(req,res) {
   let item = {
     body: req.body.body
   };
@@ -8,9 +8,14 @@ exports.create = function(req,res) {
   newComment.save();
 }
 
-exports.list = function(req,res) {
-  Comment.find()
-    .then(function(doc) {
-      res.render('index:', {items: doc});
-    })
+exports.list = function list(req,res) {
+  Comment.find((e,v)=>{
+    return res.json(v);
+  });
+}
+
+exports.show = function show(req, res) {
+  Comment.findById(req.params.id, (err,v)=>{
+      return res.json(v);
+  });
 }

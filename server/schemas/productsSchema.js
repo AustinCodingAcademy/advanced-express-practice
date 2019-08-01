@@ -5,6 +5,6 @@ let productsSchema = new mongoose.Schema({
     description: String
 });
 
-let Product = mongoose.model('products', productsSchema);
+let Product = mongoose.model('Product', productsSchema);
 
 module.exports = Product;

@@ -1,6 +1,6 @@
 const Product = require('../server/schemas/productsSchema')
 
-exports.create = function(req,res) {
+exports.create = function create(req,res) {
   let item = {
     name: req.body.name,
     description: req.body.description
@@ -9,12 +9,18 @@ exports.create = function(req,res) {
   newProduct.save();
 }
 
-exports.list = function(req,res) {
-  Product.find()
-    .then(function(doc) {
-      res.render('index:', {items: doc});
-    })
+exports.list = function list(req,res) {
+  Product.find((e,v)=>{
+    return res.json(v);
+  });
 }
+
+exports.show = function show(req, res) {
+  Product.findById(req.params.id, (err,v)=>{
+      return res.json(v);
+  });
+}
+
 
 // exports.list = function(req,res) {
 //   Product.find(function (err, products) {

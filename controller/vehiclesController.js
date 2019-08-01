@@ -1,6 +1,6 @@
 const Vehicle = require('../server/schemas/vehiclesSchema')
 
-exports.create = function(req,res) {
+exports.create = function create(req,res) {
   let item = {
     year: req.body.year,
     make: req.body.make,
@@ -10,9 +10,14 @@ exports.create = function(req,res) {
   newVehicle.save();
 }
 
-exports.list = function(req,res) {
-  Vehicle.find()
-    .then(function(doc) {
-      res.render('index:', {items: doc});
-    })
+exports.list = function list(req,res) {
+  Vehicle.find((e,v)=>{
+    return res.json(v);
+  });
+}
+
+exports.show = function show(req, res) {
+  Vehicle.findById(req.params.id, (err,v)=>{
+      return res.json(v);
+  });
 }
