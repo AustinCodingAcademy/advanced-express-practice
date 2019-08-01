@@ -1,4 +1,4 @@
-const contacts  = require("../contacts");
+const contacts  = require("../Server/models/Contact_model");
 
 //get - returns all comments
    exports.list =  function list(req, res) {

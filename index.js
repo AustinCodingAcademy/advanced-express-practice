@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost/advanced-express-practice',{useNewUrlParser: true});
+mongoose.connect('mongodb+srv://Joe_Cluster:cluster@cluster0-2avxp.mongodb.net/advanced-express-practice',{useNewUrlParser: true});
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

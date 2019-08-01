@@ -1,4 +1,4 @@
-const comments = require("../comments");
+const comments = require("../Server/models/Comm_model");
 
 //get - returns all comments
    exports.list =  function list(req, res) {

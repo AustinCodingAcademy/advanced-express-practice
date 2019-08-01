@@ -3,7 +3,9 @@ let Product = require('../Server/models/Product_model');
 
 //get all products
 exports.list =  function list(req, res) {
-    return res.json(products);
+   Product.find((e,p)=>{
+    return res.json(p);
+   });
    }
 //get one comment by id   
    exports.show = function show(req, res) {
