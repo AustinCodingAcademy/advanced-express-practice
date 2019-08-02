@@ -1,7 +1,7 @@
 {
   "name": "advanced-server-practice",
   "version": "1.0.0",
-  "description": "* fork, clone, npm install, node index.js\r * A web page has been created for you\r * Your job is to build the server \r * Ignore the `client` folder\r * Look at http://localhost:3001",
+  "description": "",
   "main": "index.js",
   "scripts": {},
   "keywords": [],
@@ -9,17 +9,10 @@
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
-    "body-parser": "^1.17.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "dotenv": "^2.0.0",
-    "express": "^4.14.0",
-    "mongoose": "^4.6.8"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kelly-tnguyen/advanced-express-practice.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kelly-tnguyen/advanced-express-practice/issues"
-  },
-  "homepage": "https://github.com/kelly-tnguyen/advanced-express-practice#readme"
+    "express": "^4.17.1",
+    "mongoose": "*"
+  }
 }
