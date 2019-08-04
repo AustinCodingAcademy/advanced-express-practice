@@ -10,7 +10,7 @@ exports.list =  function list(request, response) {
 
 // get one vehicle by id
 exports.show = function show(request, response) {
-    CommentModel.findById(request.params.commentId, function (err, comment){
+    CommentModel.findById(request.params.id, function (err, comment){
         if (err) return console.error(err);
         return response.json(comment);
     })

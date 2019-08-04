@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 var contactSchema = new mongoose.Schema({
     name: String,
     occupation: String,
-    avatar: Boolean
+    avatar: String
 });
 
 var Contact = mongoose.model('Contact', contactSchema);

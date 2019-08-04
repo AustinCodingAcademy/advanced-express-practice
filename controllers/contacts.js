@@ -10,7 +10,7 @@ exports.list =  function list(request, response) {
 
 // get one vehicle by id
 exports.show = function show(request, response) {
-   ContactsModel.findById(request.params.contactId, function (err, contact){
+   ContactsModel.findById(request.params.id, function (err, contact){
         if (err) return console.error(err);
         return response.json(contact);
     })
