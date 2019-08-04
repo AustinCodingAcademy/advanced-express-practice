@@ -1,33 +1,40 @@
-let products = require("../products");
+let ProductModel = require("../models/ProductModel");
 
-// get - returns all products
+// get - returns all vehicles
 exports.list =  function list(request, response) {
-    return response.json(products);
+    ProductModel.find(function (err, products) {
+        if (err) return console.error(err);
+        return response.json(products);
+    })
 }
 
-// get one product by id
+// get one vehicle by id
 exports.show = function show(request, response) {
-    let id = products.filter(i => i._id == request.params.productId);
-    response.json(id)
+    ProductModel.findById(request.params.productId, function (err, product){
+        if (err) return console.error(err);
+        return response.json(product);
+    })
 }
    
 // post
 exports.create =  function create(request, response) {
-    let newProduct = request.body;
-    products.push(newProduct)
-    response.json(newProduct)
+    const newProduct= new ProductModel(request.body);
+    newProduct.save((err,p) => {
+        response.json(p);
+    });
 }
    
-// put
-exports.update =  function update(request, response) {
-    let product = products.find(i => i._id == request.params.productId);
-    product.make = body.make;
-    response.json(product);
-}
+// // put
+// exports.update =  function update(request, response) {
+//     let vehicle = vehicles.find(i => i._id == request.params.vehicleId);
+//     vehicle.make = body.make;
+//     response.json(vehicle);
+// }
 
-// delete
-exports.remove =  function remove(request, response) {
-    let product = products.find(i => i._id == request.params.productId);
-    product.isActive = false;
-    response.send("deleted");
-   }
+// // delete
+// exports.remove =  function remove(request, response) {
+//     let vehicle = vehicles.find(i => i._id == request.params.vehicleId);
+//     vehicle.isActive = false;
+//     response.send("deleted");
+//    }
+   
