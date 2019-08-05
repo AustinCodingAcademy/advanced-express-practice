@@ -1,63 +1,31 @@
 let express = require("express");
-let productRoutes = require("./routes/products.js")
+let vehicleRoutes = require("./routes/vehicles");
+let contactsRoutes = require("./routes/contacts");
+let commentsRoutes = require("./routes/comments");
+let productsRoutes = require("./routes/products");
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://user:tNZxHljP4LdATo58@cluster0-blr96.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true }, (err) => {
+  console.log("the error is", err)
+});
+
+
 const bodyParser = require("body-parser");
 const app = express();
-let { connect } = require("./database");
+app.use(bodyParser.json());
+app.use(express.static("public"));
 
-connect(() => {
-  app.use(bodyParser.json());
-  app.use(express.static("public"));
-  app.use(productRoutes);
-  app.get("/", function (req, res) {
-    res.json("I'm here");
-  })
-  const thePort = 3002;
+const thePort = 3001;
 
-  app.listen(3002, err => {
-    if (err) {
-      return console.log("Error", err);
-    }
-    console.log("Web server is now listening for messages on port", thePort);
-  });
-})
+app.use(vehicleRoutes);
+app.use(contactsRoutes);
+app.use(commentsRoutes);
+app.use(productsRoutes);
 
 
-
-
-
-
-
-
-// });
-// app.get("/contacts/:id", function (req, res) {
-//   let foundContact = contacts.filter(p => p._id == req.params.id);
-//   res.json(foundContact);
-// });
-
-// app.get("/contacts", function (req, res) {
-//   res.json(contacts);
-// });
-
-// app.post("/contacts", function (req, res) {
-//   let contact = req.body;
-//   contacts.push(contact);
-//   res.json(contacts)
-// })
-
-
-
-// app.get("/comments", function (req, res) {
-//   res.json(comments);
-// });
-
-// app.get("/comments/:id", function (req, res) {
-//   let comment = comments.find(p => p._id == req.params.id);
-//   res.json(comment);
-// })
-
-// app.post("/comments", function (req, res) {
-//   let comment = req.body;
-//   comments.push(comment);
-//   res.json(comments)
-// })
-
+app.listen(thePort, (err) => {
+  if (err) {
+    return console.log("Error", err);
+  }
+  console.log("Web server is now listening for messages on port", thePort);
+});
