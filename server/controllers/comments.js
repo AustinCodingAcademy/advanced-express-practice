@@ -11,7 +11,7 @@ exports.show = function show(req, res) {
    });
 }
 exports.create =  function create(req, res) {
-    const newComment = new Contact({
+    const newComment = new Comment({
         body: req.body.body
     })
     newComment.save().then(savedComment=>{

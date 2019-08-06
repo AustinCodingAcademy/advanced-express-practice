@@ -9,7 +9,7 @@ const app = express();
 const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/adv-exp-db", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://selenasolis:Ss-419057@selena-practice-s1rzj.mongodb.net/adv-exp-db", {useNewUrlParser: true});
 
 app.use(bodyParser.json());
 app.use(express.static("public"));

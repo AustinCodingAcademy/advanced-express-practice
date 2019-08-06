@@ -1,12 +1,12 @@
-let ContactModel = require("../models/contactModel")
+let Contact = require("../models/contactModel")
 
 exports.list =  function list(req, res) {
-   ContactModel.find((err,c)=>{
+   Contact.find((err,c)=>{
        return res.json(c);
    });
 }
 exports.show = function show(req, res) {
-   ContactModel.findById(req.params.id, (err,c)=>{
+   Contact.findById(req.params.id, (err,c)=>{
        return res.json(c);
    });
 }
