@@ -12,14 +12,24 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 let productRoutes = require("./server/routes/products");
-let vehicleRoutes = require("./server/routes/vehicles");
-let commentRoutes = require("./server/routes/comments");
+// let vehicleRoutes = require("./server/routes/vehicles");
+// let commentRoutes = require("./server/routes/comments");
 let contactRoutes = require("./server/routes/contacts");
 
 app.use(productRoutes);
-app.use(vehicleRoutes);
-app.use(commentRoutes);
+// app.use(vehicleRoutes);
+// app.use(commentRoutes);
 app.use(contactRoutes);
+
+const mongoose = require("mongoose");
+mongoose.connect(
+  "mongodb+srv://alaynapuck28:horseshoe2@cluster0-3umzc.mongodb.net/test?retryWrites=true&w=majority",
+  { useNewUrlParser: true },
+  err => {
+    console.log("the error is", err);
+    //start web server
+  }
+);
 
 const thePort = 3001;
 
@@ -30,6 +40,7 @@ app.listen(thePort, err => {
   console.log("Web server is now listening for messages on port", thePort);
 });
 
+//=========Original Code for indexjs==========/
 //*****Comments******/
 
 // app.get("/comments", function(req, res, next) {
