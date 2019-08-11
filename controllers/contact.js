@@ -1,30 +1,23 @@
-let contacts = require('../contacts');
+const {getDatabase} = require('../database');
+let db = getDatabase;
+const collection = db.collection('contacts');
+
+let comments = require('../comments');
 
 exports.list = function list(request, response) {
-    return response.json(contacts);
+    let found = collection.find({});
+    found.toArray(function(err, contacts) {
+      response.json(contacts);
 }
 
-exports.show = function show(request, response) {
-    let contact = contacts.find(x => x._id == request.params.contactId);
-    response.json(contact);
-}
-
-exports.create = function create(request, response) {
+exports.create = function(request, response) {
     let newContact = request.body;
-    contacts.push(newContact);
+    collection.insertMany(newContact);
     response.json(newContact);
 }
 
-exports.update = function update(request, response) {
-    let contact = contacts.find(x => x._id == request.params.contactId);
-    contact.name = body.name;
-    contact.occupation = body.occupation;
-    contact.avatar = body.avatar;
+exports.show = function(request, response) {
+    let findContact = request.params.contactId;
+    let contact = collection.find({_id: findContact});
     response.json(contact);
-}
-
-exports.remove = function remove(reqeust, response) {
-    let contact = contacts.find(x=> x._id == request.params.contactId);
-    contact.isActive = false;
-    response.send('deleted');
 }

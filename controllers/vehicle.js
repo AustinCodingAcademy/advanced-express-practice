@@ -1,33 +1,24 @@
 const {getDatabase} = require('../database');
+let db = getDatabase;
+const collection = db.collection('vehicles');
+
 let vehicles = require('../vehicles');
 
 exports.list = function list(request, response) {
-    return response.json(vehicles);
+    let found = collection.find({});
+    found.toArray(function(err, vehicles) {
+      response.json(vehicles)
+    });
 }
 
-exports.show = function show(request, response) {
-    let vehicle = vehicles.find(x => x._id == request.params.vehicleId);
+exports.create = function(request, response) {
+    let newVehicle = request.body;
+    collection.insertMany(newVehicle);
+    response.json(newVehicle);
+}
+
+exports.show = function(request, response) {
+    let findVehicle = request.params.vehicleId;
+    let vehicle = collection.find({_id: findVehicle});
     response.json(vehicle);
-}
-
-//* insert many
-
-// exports.create = function create(request, response) {
-//     let newVehicle = request.body;
-//     vehicles.push(newVehicle);
-//     response.json(newVehicle);
-// }
-
-exports.update = function update(request, response) {
-    let vehicle = vehicles.find(i => i._id == request.params.vehicleId);
-    vehicle.make = body.make;
-    vehicle.year = body.year;
-    vehicle.model = body.model;
-    response.json(vehicle);
-}
-
-exports.remove = function remove(request, response) {
-    let vehicle = vehicle.find(i => i._id == request.params.vehicleId);
-    vehicle.isActive = false;
-    response.send('deleted');
 }

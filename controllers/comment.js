@@ -1,28 +1,24 @@
+const {getDatabase} = require('../database');
+let db = getDatabase;
+const collection = db.collection('comments');
+
 let comments = require('../comments');
 
 exports.list = function list(request, response) {
-    return response.json(comments);
+    let found = collection.find({});
+    found.toArray(function(err, comments) {
+      response.json(comments)
+    });
 }
 
-exports.show = function show(request, response) {
-    let comment = comments.find(x => x._id == request.params.commentId);
-    response.json(comment);
-}
-
-exports.create = function create(request, response) {
+exports.create = function(request, response) {
     let newComment = request.body;
-    comments.push(newComment);
+    collection.insertMany(newComment);
     response.json(newComment);
 }
 
-exports.update = function update(request, response) {
-    let comment = comments.find(x => x._id == request.params.commentId);
-    comment.body = body.body;
+exports.show = function(request, response) {
+    let findComment = request.params.commentId;
+    let comment = collection.find({_id: findComment});
     response.json(comment);
-}
-
-exports.remove = function remove(reqeust, response) {
-    let comment = comments.find(x => x._id == request.params.commentId);
-    comment.isActive = false;
-    response.send('deleted');
 }
