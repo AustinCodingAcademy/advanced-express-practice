@@ -1,3 +1,4 @@
+const {getDatabase} = require('../database');
 let vehicles = require('../vehicles');
 
 exports.list = function list(request, response) {
@@ -9,11 +10,13 @@ exports.show = function show(request, response) {
     response.json(vehicle);
 }
 
-exports.create = function create(request, response) {
-    let newVehicle = request.body;
-    vehicles.push(newVehicle);
-    response.json(newVehicle);
-}
+//* insert many
+
+// exports.create = function create(request, response) {
+//     let newVehicle = request.body;
+//     vehicles.push(newVehicle);
+//     response.json(newVehicle);
+// }
 
 exports.update = function update(request, response) {
     let vehicle = vehicles.find(i => i._id == request.params.vehicleId);

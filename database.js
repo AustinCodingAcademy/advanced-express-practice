@@ -1,6 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const dotenv = require('dotenv').config();
+let db = null;
 
 
  
@@ -19,3 +20,7 @@ let areYouConnected = (err) => {
 
 // Use connect method to connect to the server
 client.connect(areYouConnected, { useNewUrlParser: true })
+
+exports.getDatabase = function() {
+    return db;
+}
