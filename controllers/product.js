@@ -1,23 +1,21 @@
-const {getDatabase} = require('../database');
-let db = getDatabase;
-const collection = db.collection('products');
+let Product = require("../models/productModel")
 
-let products = require('../products');
-
-exports.list = function list(request, response) {
-    let found = collection.find({});
-    found.toArray(function(err, products) {
-      response.json(products);
+exports.list =  function list(req, res) {
+   Product.find((err,p)=>{
+       return res.json(p);
+   });
 }
-
-exports.create = function(request, response) {
-    let newProduct = request.body;
-    collection.insertMany(newProduct);
-    response.json(newProduct);
+exports.show = function show(req, res) {
+   Product.findById(req.params.id, (err,p)=>{
+       return res.json(p);
+   });
 }
-
-exports.show = function(request, response) {
-    let findProduct = request.params.productId;
-    let product = collection.find({_id: findProduct});
-    response.json(product);
-}
+exports.create =  function create(req, res) {
+    const newProduct = new Product({
+        name: req.body.name,
+        description: req.body.description
+    })
+    newProduct.save().then(savedProduct=>{
+        console.log(savedProduct)
+    })    
+} 

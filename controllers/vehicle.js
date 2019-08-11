@@ -1,24 +1,25 @@
-const {getDatabase} = require('../database');
-let db = getDatabase;
-const collection = db.collection('vehicles');
+let Vehicle = require("../models/vehicleModel.js")
 
-let vehicles = require('../vehicles');
-
-exports.list = function list(request, response) {
-    let found = collection.find({});
-    found.toArray(function(err, vehicles) {
-      response.json(vehicles)
-    });
+exports.list =  function list(req, res) {
+   Vehicle.find((err,v)=>{
+       if(err){
+           console.log(err);
+       }
+       return res.json(v);
+   });
 }
-
-exports.create = function(request, response) {
-    let newVehicle = request.body;
-    collection.insertMany(newVehicle);
-    response.json(newVehicle);
+exports.show = function show(req, res) {
+   Vehicle.findById(req.params.id, (err,v)=>{
+       return res.json(v);
+   });
 }
-
-exports.show = function(request, response) {
-    let findVehicle = request.params.vehicleId;
-    let vehicle = collection.find({_id: findVehicle});
-    response.json(vehicle);
-}
+exports.create =  function create(req, res) {
+    const newVehicle = new Vehicle({
+        year: req.body.year,
+        make: req.body.make,
+        model: req.body.model
+    })
+    newVehicle.save().then(savedVehicle=>{
+        console.log(savedVehicle)
+    })    
+} 

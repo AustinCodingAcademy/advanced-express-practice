@@ -1,23 +1,22 @@
-const {getDatabase} = require('../database');
-let db = getDatabase;
-const collection = db.collection('contacts');
+let Contact = require("../models/contactModel")
 
-let comments = require('../comments');
-
-exports.list = function list(request, response) {
-    let found = collection.find({});
-    found.toArray(function(err, contacts) {
-      response.json(contacts);
+exports.list =  function list(req, res) {
+   Contact.find((err,c)=>{
+       return res.json(c);
+   });
 }
-
-exports.create = function(request, response) {
-    let newContact = request.body;
-    collection.insertMany(newContact);
-    response.json(newContact);
+exports.show = function show(req, res) {
+   Contact.findById(req.params.id, (err,c)=>{
+       return res.json(c);
+   });
 }
-
-exports.show = function(request, response) {
-    let findContact = request.params.contactId;
-    let contact = collection.find({_id: findContact});
-    response.json(contact);
-}
+exports.create =  function create(req, res) {
+    const newContact = new Contact({
+        name: req.body.name,
+        occupation: req.body.occupation,
+        avatar: req.body.avatar
+    })
+    newContact.save().then(savedContact=>{
+        console.log(savedContact)
+    })    
+} 

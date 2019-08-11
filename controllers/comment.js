@@ -1,24 +1,20 @@
-const {getDatabase} = require('../database');
-let db = getDatabase;
-const collection = db.collection('comments');
+let Comment = require("../models/commentModel")
 
-let comments = require('../comments');
-
-exports.list = function list(request, response) {
-    let found = collection.find({});
-    found.toArray(function(err, comments) {
-      response.json(comments)
-    });
+exports.list =  function list(req, res) {
+   Comment.find((err,c)=>{
+       return res.json(c);
+   });
 }
-
-exports.create = function(request, response) {
-    let newComment = request.body;
-    collection.insertMany(newComment);
-    response.json(newComment);
+exports.show = function show(req, res) {
+   Comment.findById(req.params.id, (err,c)=>{
+       return res.json(c);
+   });
 }
-
-exports.show = function(request, response) {
-    let findComment = request.params.commentId;
-    let comment = collection.find({_id: findComment});
-    response.json(comment);
-}
+exports.create =  function create(req, res) {
+    const newComment = new Comment({
+        body: req.body.body
+    })
+    newComment.save().then(savedComment=>{
+        console.log(savedComment)
+    })    
+} 
