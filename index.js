@@ -1,20 +1,28 @@
 let express = require("express");
-let comments = require("./comments");
-let products = require("./products");
-let vehicles = require("./vehicles");
-let contacts  = require("./contacts");
+let bodyParser = require("body-parser");
 
-const bodyParser = require("body-parser");
-const app = express();
+let vehicleRoutes = require("./routes/vehicle");
+let productRoutes = require("./routes/product");
+let contactRoutes = require("./routes/contact");
+let commentRoutes = require("./routes/comment");
+
+let app = express();
+
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-const thePort = 3001;
+app.use(vehicleRoutes);
+app.use(productRoutes);
+app.use(contactRoutes);
+app.use(commentRoutes);
+
+//const thePort = 3001;
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/advanced-express-practice', {useeNewUrlParser: true});
+const Vehicle = require("./models/VehicleModel.js");
+const Product = require("./models/ProductModel.js");
+const Comment = require("./models/CommentModel.js");
+const Contact = require("./models/ContactModel.js");
 
 
-app.listen(thePort, (err) => {
- if (err) {
-   return console.log("Error", err);
- }
- console.log("Web server is now listening for messages on port",thePort);
-});
